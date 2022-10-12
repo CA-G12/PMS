@@ -4,10 +4,19 @@
   "description": "System for Ministry of Health For keeping an eye on all Gaza Strip Pharmacies",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test jest",
-    "start": "NODE_ENV=production node server/index.ts",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q server/index.js\""
+    "dev": "NODE_ENV=dev nodemon ./server/index.ts",
+    "start": "NODE_ENV=production ts-node ./server/index.ts",
+    "test": "NODE_ENV=test jest server/test",
+    "lint": "eslint --ext .ts server/",
+    "lint-fix": "eslint --ext .ts server/ --fix && cd client && npm run lint-fix",
+    "lint:client": "cd client && npm run lint"
   },
+  "pre-commit": [
+    "lint-fix",
+    "lint",
+    "lint:client",
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CA-G12/MoH.git"
@@ -19,13 +28,31 @@
   },
   "homepage": "https://github.com/CA-G12/MoH#readme",
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/compression": "^1.7.2",
     "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/jest": "^27.4.1",
+    "@types/joi": "^17.2.3",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/node": "^17.0.25",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
     "concurrently": "^7.4.0",
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-promise": "^6.0.1",
     "jest": "^28.0.2",
     "nodemon": "^2.0.15",
-    "supertest": "^6.2.3"
+    "pre-commit": "^1.2.2",
+    "supertest": "^6.2.3",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.8.4"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

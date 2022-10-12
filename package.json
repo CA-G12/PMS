@@ -1,0 +1,44 @@
+{
+  "name": "moh",
+  "version": "1.0.0",
+  "description": "System for Ministry of Health For keeping an eye on all Gaza Strip Pharmacies",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test jest",
+    "start": "NODE_ENV=production node server/index.ts",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q server/index.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CA-G12/MoH.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CA-G12/MoH/issues"
+  },
+  "homepage": "https://github.com/CA-G12/MoH#readme",
+  "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/express": "^4.17.13",
+    "concurrently": "^7.4.0",
+    "jest": "^28.0.2",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.3"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cross-env": "^7.0.3",
+    "env2": "^2.2.2",
+    "express": "^4.18.0",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.19.0",
+    "ts-node": "^10.7.0"
+  }
+}

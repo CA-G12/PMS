@@ -1,7 +1,7 @@
 import { Model, DataTypes, NOW } from 'sequelize';
 import sequelize from '../database/config/connection';
 
-class salesHistory extends Model {
+export default class salesHistory extends Model {
   declare id: number;
 
   declare quantity: number;
@@ -23,7 +23,7 @@ salesHistory.init(
     date: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: NOW
+      defaultValue: NOW,
     },
   },
   { sequelize },

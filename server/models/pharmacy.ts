@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../database/config/connection';
 
-class Pharmacy extends Model {
+export default class Pharmacy extends Model {
   declare id:number;
 
   declare name:string;
@@ -59,7 +59,7 @@ Pharmacy.init(
     image: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 'https://static.spacecrafted.com/ecb84ffc05884cf7aabf40ca5697efae/i/b03141b87e364d97aca2548076e12e8d/1/4SoifmQp45JMgBnHp7ed2/Pharmacy%20Image%252831%2529.jpg'
+      defaultValue: 'https://static.spacecrafted.com/ecb84ffc05884cf7aabf40ca5697efae/i/b03141b87e364d97aca2548076e12e8d/1/4SoifmQp45JMgBnHp7ed2/Pharmacy%20Image%252831%2529.jpg',
     },
     description: {
       type: DataTypes.TEXT,
@@ -70,7 +70,7 @@ Pharmacy.init(
       allowNull: false,
     },
     status: {
-      type: DataTypes.ENUM('Opened','Closed','Rejected'),
+      type: DataTypes.ENUM('Opened', 'Closed', 'Rejected'),
       allowNull: false,
     },
     owner_id: {

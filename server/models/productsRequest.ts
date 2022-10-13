@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 
 import sequelize from '../database/config/connection';
 
-class productsRequest extends Model {
+export default class productsRequest extends Model {
   declare id: number;
 
   declare quantity: number;
@@ -22,7 +22,7 @@ productsRequest.init(
       allowNull: false,
     },
     status: {
-      type: DataTypes.ENUM('Approved','Pending','Rejected'),
+      type: DataTypes.ENUM('Approved', 'Pending', 'Rejected'),
       allowNull: false,
     },
   },

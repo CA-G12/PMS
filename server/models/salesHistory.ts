@@ -1,4 +1,4 @@
-import { Model, DataTypes } from 'sequelize';
+import { Model, DataTypes, NOW } from 'sequelize';
 import sequelize from '../database/config/connection';
 
 class salesHistory extends Model {
@@ -12,7 +12,7 @@ class salesHistory extends Model {
 salesHistory.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       autoIncrement: true,
       primaryKey: true,
     },
@@ -23,6 +23,7 @@ salesHistory.init(
     date: {
       type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: NOW
     },
   },
   { sequelize },

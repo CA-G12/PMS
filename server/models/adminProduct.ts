@@ -16,10 +16,6 @@ adminProduct.init(
             autoIncrement: true,
             allowNull: false,
         },
-        product_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
         expired_quantity: {
             type: DataTypes.INTEGER,
             allowNull: false,

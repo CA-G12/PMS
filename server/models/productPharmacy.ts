@@ -14,17 +14,9 @@ class productPharmacy extends Model {
 productPharmacy.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       autoIncrement: true,
       primaryKey: true,
-    },
-    pharmacy_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    product_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
     },
     quantity: {
       type: DataTypes.INTEGER,

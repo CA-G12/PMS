@@ -13,7 +13,7 @@ class productsRequest extends Model {
 productsRequest.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       autoIncrement: true,
       primaryKey: true,
     },
@@ -22,7 +22,7 @@ productsRequest.init(
       allowNull: false,
     },
     status: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM('Approved','Pending','Rejected'),
       allowNull: false,
     },
   },

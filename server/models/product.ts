@@ -19,7 +19,7 @@ class Product extends Model {
 Product.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       autoIncrement: true,
       primaryKey: true,
     },
@@ -42,6 +42,7 @@ Product.init(
     img: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: 'https://images-platform.99static.com/NDhiVKLyYmhNKMyMj_8R0ECcog8=/0x0:1500x1500/500x500/top/smart/99designs-contests-attachments/86/86093/attachment_86093607'
     },
   },
   { sequelize },

@@ -20,7 +20,7 @@ switch (NODE_ENV) {
     throw new Error('NODE_ENV is not set to any url');
 }
 
-if (!url) throw new Error('NODE_ENV is not set to any url');
+if (!url) throw new Error('There is no Url found');
 
 const sequelize = new Sequelize(url);
 

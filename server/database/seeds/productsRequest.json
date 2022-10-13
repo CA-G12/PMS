@@ -1,0 +1,103 @@
+[
+    {
+    "pharmacy_id": 1,
+    "product_id": 1,
+    "quantity": 10,
+    "status": "Pending"
+  }, {
+    "pharmacy_id": 1,
+    "product_id": 2,
+    "quantity": 60,
+    "status":"Rejected"
+  }, {
+    "pharmacy_id": 1,
+    "product_id": 3,
+    "quantity": 88,
+    "status":"Approved"
+  }, {
+    "pharmacy_id": 2,
+    "product_id": 4,
+    "quantity": 23,
+    "status":"Rejected"
+  }, {
+    "pharmacy_id": 2,
+    "product_id": 5,
+    "quantity": 83,
+    "status": "Pending"
+  }, {
+    "pharmacy_id": 2,
+    "product_id": 3,
+    "quantity": 86,
+    "status":"Rejected"
+  }, {
+    "pharmacy_id": 3,
+    "product_id": 3,
+    "quantity": 49,
+    "status": "Pending"
+  }, {
+    "pharmacy_id": 3,
+    "product_id": 5,
+    "quantity": 30,
+    "status":"Approved"
+  }, {
+    "pharmacy_id": 3,
+    "product_id": 5,
+    "quantity": 46,
+    "status": "Pending"
+  }, {
+    "pharmacy_id": 4,
+    "product_id": 5,
+    "quantity": 7,
+    "status":"Approved"
+  }, {
+    "pharmacy_id": 5,
+    "product_id": 1,
+    "quantity": 93,
+    "status": "Pending"
+  }, {
+    "pharmacy_id": 5,
+    "product_id": 2,
+    "quantity": 12,
+    "status":"Approved"
+  }, {
+    "pharmacy_id": 6,
+    "product_id": 3,
+    "quantity": 27,
+    "status":"Rejected"
+  }, {
+    "pharmacy_id": 5,
+    "product_id": 4,
+    "quantity": 45,
+    "status":"Approved"
+  }, {
+    "pharmacy_id": 6,
+    "product_id": 5,
+    "quantity": 9,
+    "status": "Pending"
+  }, {
+    "pharmacy_id": 7,
+    "product_id": 6,
+    "quantity": 68,
+    "status":"Rejected"
+  }, {
+    "pharmacy_id": 6,
+    "product_id": 7,
+    "quantity": 46,
+    "status": "Pending"
+  }, {
+    "pharmacy_id": 1,
+    "product_id": 8,
+    "quantity": 89,
+    "status":"Rejected"
+  }, {
+    "pharmacy_id": 2,
+    "product_id": 9,
+    "quantity": 23,
+    "status":"Rejected"
+  }, {
+    "pharmacy_id": 3,
+    "product_id": 5,
+    "quantity": 97,
+    "status": "Pending"
+  }
+]

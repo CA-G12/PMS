@@ -4,9 +4,9 @@
   "description": "System for Ministry of Health For keeping an eye on all Gaza Strip Pharmacies",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=dev nodemon ./server/index.ts",
-    "start": "NODE_ENV=production ts-node ./server/index.ts",
-    "test": "NODE_ENV=test jest server/test",
+    "dev": "cross-env NODE_ENV=dev nodemon ./server/index.ts",
+    "start": "cross-env NODE_ENV=production ts-node ./server/index.ts",
+    "test": "cross-env NODE_ENV=test jest server/test",
     "lint": "eslint --ext .ts server/",
     "lint-fix": "eslint --ext .ts server/ --fix && cd client && npm run lint-fix",
     "lint:client": "cd client && npm run lint"

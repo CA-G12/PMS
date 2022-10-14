@@ -22,7 +22,7 @@ productsRequest.init(
       allowNull: false,
     },
     status: {
-      type: DataTypes.ENUM('Approved','Pending','Rejected'),
+      type: DataTypes.ENUM('Approved', 'Pending', 'Rejected'),
       allowNull: false,
     },
   },

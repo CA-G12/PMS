@@ -23,7 +23,7 @@ salesHistory.init(
     date: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: NOW
+      defaultValue: NOW,
     },
   },
   { sequelize },

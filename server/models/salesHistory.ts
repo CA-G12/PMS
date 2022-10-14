@@ -1,7 +1,7 @@
 import { Model, DataTypes, NOW } from 'sequelize';
 import sequelize from '../database/config/connection';
 
-export default class salesHistory extends Model {
+export default class SalesHistory extends Model {
   declare id: number;
 
   declare quantity: number;
@@ -9,7 +9,7 @@ export default class salesHistory extends Model {
   declare date: number;
 }
 
-salesHistory.init(
+SalesHistory.init(
   {
     id: {
       type: DataTypes.UUID,

@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../database/config/connection';
 
-export default class productPharmacy extends Model {
+export default class ProductPharmacy extends Model {
   declare id:number;
 
   declare pharmacy_id:number;
@@ -11,7 +11,7 @@ export default class productPharmacy extends Model {
   declare quantity:number;
 }
 
-productPharmacy.init(
+ProductPharmacy.init(
   {
     id: {
       type: DataTypes.UUID,

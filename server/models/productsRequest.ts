@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 
 import sequelize from '../database/config/connection';
 
-export default class productsRequest extends Model {
+export default class ProductsRequest extends Model {
   declare id: number;
 
   declare quantity: number;
@@ -10,7 +10,7 @@ export default class productsRequest extends Model {
   declare status: String;
 }
 
-productsRequest.init(
+ProductsRequest.init(
   {
     id: {
       type: DataTypes.UUID,

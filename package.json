@@ -9,9 +9,11 @@
     "test": "NODE_ENV=test jest server/test",
     "lint": "eslint --ext .ts server/",
     "lint-fix": "eslint --ext .ts server/ --fix && cd client && npm run lint-fix",
-    "lint:client": "cd client && npm run lint"
+    "lint:client": "cd client && npm run lint",
+    "format-client": "cd client && npm run format"
   },
   "pre-commit": [
+    "format-client",
     "lint-fix",
     "lint",
     "lint:client",

@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const signInSchema = Joi.object({
+const loginSchema = Joi.object({
   email: Joi
     .string()
     .min(10)
@@ -14,4 +14,4 @@ const signInSchema = Joi.object({
     .ref('password'),
 });
 
-export default signInSchema;
+export default loginSchema;

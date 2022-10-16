@@ -2,7 +2,7 @@ import { Response, NextFunction } from 'express';
 import { CustomError } from '.';
 import { UserRequest } from './interfaces';
 
-const pharmacyAuth = async (req: UserRequest['user'], res: Response, next: NextFunction) => {
+const adminAuth = async (req: UserRequest['user'], res: Response, next: NextFunction) => {
   const { role } = req;
 
   if (role === 'admin') {
@@ -12,4 +12,4 @@ const pharmacyAuth = async (req: UserRequest['user'], res: Response, next: NextF
   }
 };
 
-export default pharmacyAuth;
+export default adminAuth;

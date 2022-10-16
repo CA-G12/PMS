@@ -1,22 +1,14 @@
 import { Response, Request, NextFunction } from 'express';
-// import verifyToken from '../utils'
-interface req extends Request {
-    user: Object | unknown
-}
-const pharmacyAuth = async (request: req, res: Response, next: NextFunction) => {
-  const token:string = request.cookies;
+import CustomError from '../middlewares';
+import CustomRequest from '../middlewares/interfaces'
 
-  if (!token) {
-    throw new Error('You are not authorized');
-  }
+const pharmacyAuth = async (req: CustomRequest, res: Response, next: NextFunction) => {
+  const role = req.user?.role;
 
-  try {
-    // const user = await verifyToken(token);
-    // if user
-    // req.user=user;
-    next();
-  } catch (err) {
-    next(new Error('Something wrong happened'));
+  if(role === 'pharmacy') {
+    next()
+  } else {
+    throw new CustomError(401, 'You are not authenticated');
   }
 };
 

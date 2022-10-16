@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../database/config/connection';
 
-class adminProduct extends Model {
+export default class AdminProduct extends Model {
   declare id: number;
 
   declare product_id: number;
@@ -11,7 +11,7 @@ class adminProduct extends Model {
   declare in_stock_quantity: number;
 }
 
-adminProduct.init(
+AdminProduct.init(
   {
     id: {
       type: DataTypes.UUID,

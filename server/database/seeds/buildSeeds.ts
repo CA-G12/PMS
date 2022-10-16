@@ -15,9 +15,9 @@ import {
   productsPharmacies,
   productsRequests,
   salesHistory,
-} from '../seeds';
+} from '.';
 
-const buildDB = async () => {
+const buildSeeds = async () => {
   await sequelize.sync({ force: true });
   await pharmacyModel.bulkCreate(pharmacies);
   await productsModel.bulkCreate(products);
@@ -27,6 +27,6 @@ const buildDB = async () => {
   await salesHistoryModel.bulkCreate(salesHistory);
 };
 
-buildDB();
+buildSeeds();
 
-export default buildDB;
+export default buildSeeds;

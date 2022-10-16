@@ -45,6 +45,7 @@ const Signup: React.FC = () => {
           confirmPassword,
         };
         const signupResult = await axios.post('/auth/signup', userData);
+        console.log(signupResult);
         // check the signup result and the json message
       } else {
         swal('Password and confirm password have to be matched');

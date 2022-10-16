@@ -4,14 +4,14 @@
   "private": true,
   "proxy": "http://localhost:8080",
   "dependencies": {
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.65",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.9",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.65",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
     "axios": "^1.1.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -25,7 +25,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint -c .eslintrc.json --ext .ts,.tsx .",
-    "lint-fix": "npm run lint -- --fix"
+    "lint-fix": "npm run lint -- --fix",
+    "format": "prettier --write src/**/*.{ts,tsx}"
   },
   "eslintConfig": {
     "extends": [
@@ -55,6 +56,7 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1",
     "typescript": "^4.8.4"
   }
 }

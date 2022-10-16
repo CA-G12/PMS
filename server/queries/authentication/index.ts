@@ -1,4 +1,4 @@
-import { Pharmacy } from '../../models';
+import { Pharmacy, Admin } from '../../models';
 
 const findPharmacy = async (licenceNumber:number) => Pharmacy.findOne({
   where: {
@@ -6,7 +6,13 @@ const findPharmacy = async (licenceNumber:number) => Pharmacy.findOne({
   },
 });
 
-const findEmail = async (email:string) => Pharmacy.findOne({
+const findPharmacyEmail = async (email:string) => Pharmacy.findOne({
+  where: {
+    email,
+  },
+});
+
+const findAdminEmail = async (email:string) => Admin.findOne({
   where: {
     email,
   },
@@ -16,4 +22,6 @@ const signup = async (data:Object, hashed:string) => Pharmacy.create({
   password: hashed,
 });
 
-export { findPharmacy, findEmail, signup };
+export {
+  findPharmacy, findPharmacyEmail, findAdminEmail, signup,
+};

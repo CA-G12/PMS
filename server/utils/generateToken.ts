@@ -4,7 +4,7 @@ require('env2')('.env');
 
 type payloadType = {
     owner_id: number,
-    pharmacyName:string,
+    role:string,
 }
 
 const key = process.env.SECRET_KEY || '';

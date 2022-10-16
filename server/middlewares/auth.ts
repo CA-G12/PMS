@@ -1,12 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
-
+import { Response, NextFunction } from 'express';
+import request from './interFaces/requsetInerFace';
 import { CustomError, verifyToken } from '../utils';
 
-require('env2')('.env');
-
-interface request extends Request{
-    user: Object | unknown
-}
 const checkAuth = async (req: request, res: Response, next: NextFunction) => {
   const { token } = req.cookies;
   if (!token) throw new CustomError(401, 'Unauthorized');
@@ -14,7 +9,7 @@ const checkAuth = async (req: request, res: Response, next: NextFunction) => {
     const user = await verifyToken(token);
     req.user = user;
   } catch (err) {
-    next(new CustomError(401, 'Unauthorized'));
+    next(err);
   }
 };
 

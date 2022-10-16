@@ -2,11 +2,14 @@ import express, { Request, Response } from 'express';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
+import authRouter from './routes/authentication/signUp';
 
 require('env2')('.env');
 
 const app = express();
-const { NODE_ENV } = process.env;
+const { NODE_ENV, PORT } = process.env;
+
+app.set('port', PORT || 8080);
 
 app.use([
   compression(),
@@ -14,15 +17,13 @@ app.use([
   express.urlencoded({ extended: false }),
 ]);
 
-app.set('port', process.env.PORT || 8080);
-
-app.get('/data', (req: Request, res:Response) => res.send('Hello There!'));
-
 if (NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));
   app.get('*', (req: Request, res: Response) => {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }
+
+app.use(authRouter);
 
 export default app;

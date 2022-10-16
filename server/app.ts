@@ -3,7 +3,7 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
 import authRouter from './routes/authentication/signUp';
-
+import ErrorMiddleware from './middlewares/'
 require('env2')('.env');
 
 const app = express();
@@ -25,5 +25,6 @@ if (NODE_ENV === 'production') {
 }
 
 app.use(authRouter);
+app.use(ErrorMiddleware);
 
 export default app;

@@ -34,12 +34,12 @@ const Signup: React.FC = () => {
     ) {
       if (password === confirmPassword) {
         const userData = {
-          fullName,
-          ownerID,
-          pharmacyName,
-          licenseNumber,
-          pharmacyLocation,
-          phoneNumber,
+          owner_name:fullName,
+          owner_id:ownerID,
+          name: pharmacyName,
+          license: licenseNumber,
+          location: pharmacyLocation,
+          phone: phoneNumber,
           email,
           password,
           confirmPassword,

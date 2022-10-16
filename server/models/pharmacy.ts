@@ -32,7 +32,7 @@ export default class Pharmacy extends Model {
 Pharmacy.init(
   {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
@@ -57,7 +57,7 @@ Pharmacy.init(
       allowNull: false,
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       defaultValue: 'https://static.spacecrafted.com/ecb84ffc05884cf7aabf40ca5697efae/i/b03141b87e364d97aca2548076e12e8d/1/4SoifmQp45JMgBnHp7ed2/Pharmacy%20Image%252831%2529.jpg',
     },
@@ -82,7 +82,7 @@ Pharmacy.init(
       allowNull: false,
     },
     owner_img: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   },

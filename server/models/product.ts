@@ -19,16 +19,16 @@ export default class Product extends Model {
 Product.init(
   {
     id: {
-      type: DataTypes.UUID,
-      autoIncrement: true,
+      type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     price: {
@@ -37,10 +37,10 @@ Product.init(
     },
     expired_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      // allowNull: false,
     },
     img: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       defaultValue: 'https://images-platform.99static.com/NDhiVKLyYmhNKMyMj_8R0ECcog8=/0x0:1500x1500/500x500/top/smart/99designs-contests-attachments/86/86093/attachment_86093607',
     },

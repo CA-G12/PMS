@@ -1,5 +1,7 @@
 import { Sequelize } from 'sequelize';
 
+require('env2')('.env');
+
 const {
   NODE_ENV, DATABASE_URL, DEV_DB_URL, TEST_DB_URL,
 } = process.env;

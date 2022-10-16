@@ -1,3 +1,4 @@
+import sequelize from '../database/config/connection';
 import AdminProduct from './adminProduct';
 import Pharmacy from './pharmacy';
 import Product from './product';
@@ -33,4 +34,5 @@ export {
   ProductPharmacy,
   SalesHistory,
   ProductsRequest,
+  sequelize,
 };

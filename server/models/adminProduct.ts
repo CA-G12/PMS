@@ -14,10 +14,9 @@ export default class AdminProduct extends Model {
 AdminProduct.init(
   {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      allowNull: false,
     },
     expired_quantity: {
       type: DataTypes.INTEGER,

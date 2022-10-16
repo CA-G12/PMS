@@ -2,7 +2,6 @@ import express, { Request, Response } from 'express';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
-import ErrorMiddleware from './middlewares/Error';
 
 require('env2')('.env');
 
@@ -25,7 +24,5 @@ if (NODE_ENV === 'production') {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }
-
-app.use(ErrorMiddleware);
 
 export default app;

@@ -30,4 +30,3 @@ const buildDB = async () => {
 buildDB();
 
 export default buildDB;
-

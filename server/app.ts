@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
+import router from './routes';
 
 require('env2')('.env');
 
@@ -15,8 +16,9 @@ app.use([
 ]);
 
 app.set('port', process.env.PORT || 8080);
+app.use(router);
 
-app.get('/data', (req: Request, res:Response) => res.send('Hello There!'));
+// app.get('/data', (req: Request, res:Response) => res.send('Hello There!'));
 
 if (NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));

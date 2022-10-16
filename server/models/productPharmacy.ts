@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../database/config/connection';
 
-class productPharmacy extends Model {
+export default class ProductPharmacy extends Model {
   declare id:number;
 
   declare pharmacy_id:number;
@@ -11,12 +11,12 @@ class productPharmacy extends Model {
   declare quantity:number;
 }
 
-productPharmacy.init(
+ProductPharmacy.init(
   {
     id: {
-      type: DataTypes.UUID,
-      autoIncrement: true,
+      type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
     },
     quantity: {
       type: DataTypes.INTEGER,

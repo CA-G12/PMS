@@ -3,6 +3,7 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
 import ErrorMiddleware from './middlewares/Error';
+
 require('env2')('.env');
 
 const app = express();

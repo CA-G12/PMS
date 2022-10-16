@@ -1,4 +1,4 @@
 import CustomError from './CustomError';
-import verifyToken from './verifyAcces';
+import verifyToken from './verifyToken';
 
 export { CustomError, verifyToken };

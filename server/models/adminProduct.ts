@@ -3,11 +3,8 @@ import sequelize from '../database/config/connection';
 
 export default class AdminProduct extends Model {
   declare id: number;
-
   declare product_id: number;
-
   declare expired_quantity: number;
-
   declare in_stock_quantity: number;
 }
 

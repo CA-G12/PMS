@@ -13,9 +13,9 @@ export default class ProductsRequest extends Model {
 ProductsRequest.init(
   {
     id: {
-      type: DataTypes.UUID,
-      autoIncrement: true,
+      type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
     },
     quantity: {
       type: DataTypes.INTEGER,

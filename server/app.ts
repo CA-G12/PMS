@@ -9,7 +9,7 @@ require('env2')('.env');
 const app = express();
 const { NODE_ENV, PORT } = process.env;
 
-app.set('port', PORT || 8080);
+app.set('port', PORT || 8070);
 
 app.use([
   compression(),

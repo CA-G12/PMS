@@ -3,14 +3,14 @@ import { sign } from 'jsonwebtoken';
 require('env2')('.env');
 
 type payloadType = {
-    fullName:string,
-    ownerID: number,
-    ownerImg:string
+    owner_id: number,
     pharmacyName:string,
 }
 
+const key = process.env.SECRET_KEY || '';
+
 const generateToken = (payload:payloadType) => new Promise((resolve, reject) => {
-  sign(payload, process.env.SECRET_KEY, (err, token) => {
+  sign(payload, key, (err, token) => {
     if (err) {
       reject(err);
     } else {

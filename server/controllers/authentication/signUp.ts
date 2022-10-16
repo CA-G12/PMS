@@ -1,49 +1,34 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { hash } from 'bcryptjs';
-import Pharmacy from '../../models/pharmacy';
+import { findPharmacy, findEmail, signup } from '../../queries/authentication';
 import signupSchema from '../../validation/signupSchema';
-import generateToken from '../../utils/generateToken';
+import { generateToken, CustomError } from '../../utils';
 
-const signUp = async (req: Request, res: Response) => {
+const signUp = async (req: Request, res: Response, next:NextFunction) => {
   try {
     await signupSchema(req.body);
 
-    const licenseExisted = await Pharmacy.findOne({
-      where: {
-        license_number: req.body.licenseNumber,
-      },
-    });
-
+    const licenseExisted = await findPharmacy(req.body.license_number);
     if (licenseExisted) {
-      return res.status(400).json('Try again, This Pharmacy is already Signed');
+      throw new CustomError(400, 'Try again, This Pharmacy is already Signed');
     }
 
-    const emailExisted = await Pharmacy.findOne({
-      where: {
-        email: req.body.email,
-      },
-    });
-
+    const emailExisted = await findEmail(req.body.email);
     if (emailExisted) {
-      return res.status(400).json('Try again, This email is already existed');
+      throw new CustomError(400, 'Try again, This email is already existed');
     }
 
     const hashed = await hash(req.body.password, 10);
-    const pharamcyData = await Pharmacy.create({
-      ...req.body,
-      password: hashed,
-    });
+    const pharamcyData = await signup(req.body, hashed);
 
     const token = await generateToken({
-      ownerID: pharamcyData.owner_id,
-      fullName: pharamcyData.owner_name,
-      ownerImg: pharamcyData.owner_img,
+      owner_id: pharamcyData.owner_id,
       pharmacyName: pharamcyData.name,
     });
 
     return res.cookie('token', token).json(pharamcyData);
   } catch (err) {
-    return res.status(400).json(err);
+    next(err);
   }
 };
 

@@ -15,6 +15,7 @@ app.use([
   compression(),
   cookieParser(),
   express.urlencoded({ extended: false }),
+  express.json()
 ]);
 
 if (NODE_ENV === 'production') {

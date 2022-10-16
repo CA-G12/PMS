@@ -16,7 +16,7 @@ export default class Pharmacy extends Model {
 
   declare desc:string;
 
-  declare pass:string;
+  declare password:string;
 
   declare license_number:number;
 

@@ -1,9 +1,7 @@
-// eslint-disable-next-line import/no-import-module-exports
 import { Request, Response, NextFunction } from 'express';
 
-// eslint-disable-next-line import/no-import-module-exports
 import loginQuery from '../../queries';
-// eslint-disable-next-line import/no-import-module-exports
+
 import loginSchema from '../../validation';
 
 const bcrypt = require('bcrypt');
@@ -11,13 +9,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 require('dotenv').config();
-
-// type dataType = {
-//     id:Number,
-//     password:String,
-//     name: String,
-//     img: String,
-// }
 
 const login = async (req : Request, res : Response, next : NextFunction) => {
   const { email, loginPassword } = req.body;
@@ -28,15 +19,14 @@ const login = async (req : Request, res : Response, next : NextFunction) => {
   } else {
     try {
       const data = await loginQuery(email);
-      //   const logIn = (data : userData) => {
-      if (data.rows.length === 0) throw new Error('invalid email or password');
+      if (data.length === 0) throw new Error('invalid email or password');
       else {
         const {
           password,
           id,
           name,
           img,
-        } = data.rows[0];
+        } = data[0];
 
         bcrypt.compare(loginPassword, password, (err : Error, result : {} | false | null | '') => {
           if (err) next(err);
@@ -52,12 +42,10 @@ const login = async (req : Request, res : Response, next : NextFunction) => {
           }
         });
       }
-    //   };
-    //   logIn(userData.rows);
     } catch (err : any) {
       res.json({ message: `${err}`, state: 'fail' });
     }
   }
 };
 
-module.exports = { login };
+export default login;

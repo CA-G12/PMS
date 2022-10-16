@@ -11,7 +11,7 @@ require('dotenv').config();
 
 const signIn = (req : Request, res : Response, next : NextFunction) => {
   const { email, password } = req.body;
-  const { error, value } = signInSchema.validate(req.body);
+  const { error } = signInSchema.validate(req.body);
 
   if (error) {
     res.status(401).send({ message: error.details[0].message, state: 'fail' });

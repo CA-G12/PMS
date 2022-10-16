@@ -12,9 +12,9 @@ export default class SalesHistory extends Model {
 SalesHistory.init(
   {
     id: {
-      type: DataTypes.UUID,
-      autoIncrement: true,
+      type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
     },
     quantity: {
       type: DataTypes.INTEGER,

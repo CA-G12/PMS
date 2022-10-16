@@ -1,3 +1,6 @@
-import login from './authentication';
+import { checkAuthData, login } from './authentication';
 
-export default login;
+export {
+  checkAuthData,
+  login,
+};

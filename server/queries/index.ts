@@ -1,3 +1,6 @@
-import loginQuery from './authentication';
+import { loginQuery, adminLoginQuery } from './authentication';
 
-export default loginQuery;
+export {
+  loginQuery,
+  adminLoginQuery,
+};

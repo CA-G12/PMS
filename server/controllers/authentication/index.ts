@@ -1,3 +1,7 @@
 import login from './login';
+import checkAuthData from './auth';
 
-export default login;
+export {
+  checkAuthData,
+  login,
+};

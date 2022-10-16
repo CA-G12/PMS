@@ -1,7 +1,7 @@
 import { Request } from 'express';
 
- interface request extends Request{
+ interface UserRequest extends Request{
     user: {id:number, role:string} | unknown
 }
 
-export default request;
+export default UserRequest;

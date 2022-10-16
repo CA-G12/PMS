@@ -1,5 +1,5 @@
 import { Response, NextFunction } from 'express';
-import request from './interFaces/requsetInerFace';
+import request from './interFaces/UserRequest';
 import { CustomError, verifyToken } from '../utils';
 
 const checkAuth = async (req: request, res: Response, next: NextFunction) => {

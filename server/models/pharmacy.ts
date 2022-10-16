@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../database/config/connection';
 
-class Pharmacy extends Model {
+export default class Pharmacy extends Model {
   declare id:number;
 
   declare name:string;

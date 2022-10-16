@@ -37,15 +37,18 @@ const Signup: React.FC = () => {
           owner_name:fullName,
           owner_id:ownerID,
           name: pharmacyName,
-          license: licenseNumber,
+          license_number: licenseNumber,
           location: pharmacyLocation,
           phone: phoneNumber,
           email,
           password,
           confirmPassword,
         };
-        const signupResult = await axios.post('/auth/signup', userData);
-        // check the signup result and the json message
+        try{
+          await axios.post('/auth/signup', userData);
+        } catch(err){
+          console.log('err: ', err);
+        }
       } else {
         swal('Password and confirm password have to be matched');
       }

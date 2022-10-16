@@ -17,11 +17,8 @@ import {
   salesHistory,
 } from '../seeds';
 
-// console.log(sequelize);
 const buildDB = async () => {
-  // console.log('build');
   await sequelize.sync({ force: true });
-  // console.log(pharmacies);
   await pharmacyModel.bulkCreate(pharmacies);
   await productsModel.bulkCreate(products);
   await adminProductsModel.bulkCreate(adminProducts);
@@ -34,25 +31,3 @@ buildDB();
 
 export default buildDB;
 
-// const buildModelData = async (data: {}[], table:any) => {
-// //   eslint-disable-next-line no-plusplus
-//   for (let i = 0; i < data.length; i++) {
-//     table.create(data[i]);
-//   }
-// };
-
-// const buildFakeData = async () => {
-//   await Promise.all([
-//     buildModelData(pharmacies, pharmacyModel),
-//     buildModelData(products, productsModel),
-//   ]);
-
-//   await Promise.all([
-//     buildModelData(adminProducts, adminProductsModel),
-//     buildModelData(productsPharmacies, productsPharmaciesModel),
-//     buildModelData(productsRequests, productsRequestsModel),
-//     buildModelData(salesHistory, salesHistoryModel),
-//   ]);
-// };
-
-// buildFakeData();

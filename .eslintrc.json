@@ -13,6 +13,7 @@
     "rules": {
       "import/no-unresolved": "off",
       "import/no-extraneous-dependencies": "off",
+      // "eslint-disable import/extensions ":"off",
       "import/extensions": [
         "error",
         "ignorePackages",
@@ -26,7 +27,7 @@
     "settings": {
       "import/resolver": {
         "node": {
-          "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
         }
       }
     }

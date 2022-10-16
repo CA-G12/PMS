@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import adminProducts from './adminProduct.json';
 import pharmacies from './pharmacy.json';
 import products from './product.json';

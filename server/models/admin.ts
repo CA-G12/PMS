@@ -6,7 +6,7 @@ export default class Admin extends Model {
 
   declare email:string;
 
-  declare img:string;
+  declare image:string;
 
   declare password:string;
 }

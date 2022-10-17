@@ -2,7 +2,8 @@ import express, { Request, Response } from 'express';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
-import router from './routes';
+import router from './routes/authentication/login';
+
 
 require('env2')('.env');
 
@@ -13,6 +14,8 @@ app.use([
   compression(),
   cookieParser(),
   express.urlencoded({ extended: false }),
+  express.json(),
+
 ]);
 
 app.set('port', process.env.PORT || 8080);

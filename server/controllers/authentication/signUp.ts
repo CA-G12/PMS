@@ -35,7 +35,7 @@ const signUp = async (req: Request, res: Response, next:NextFunction) => {
     return res.cookie('token', token).json({data: pharamcyData, msg: 'You have signed up successfully'});
   } catch (err) {
       if(err.name === 'ValidationError') {
-        next(new CustomError (401, 'you have a validation error when signing up'))
+        next(new CustomError (400, 'Something went wrong, sign up again'))
       } else {
         next(err);
       }

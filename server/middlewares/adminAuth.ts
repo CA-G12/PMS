@@ -8,7 +8,7 @@ const adminAuth = async (req: UserRequest['user'], res: Response, next: NextFunc
   if (role === 'admin') {
     next();
   } else {
-    throw new CustomError(401, 'You are not authenticated');
+    next(new CustomError(401, 'You are not authenticated'));
   }
 };
 

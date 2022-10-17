@@ -3,6 +3,6 @@ import { getAllPharmacies } from '../../controllers/admin';
 
 const adminRouter = Router();
 
-adminRouter.get('/admin/pharmacies/:pageNum/:status', getAllPharmacies);
+adminRouter.get('/admin/pharmacies', getAllPharmacies);
 
 export default adminRouter;

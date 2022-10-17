@@ -2,15 +2,14 @@ import express, { Request, Response } from 'express';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
-import adminRouter from './routes/admin/overview'
 import router from './routes/admin/requestStatus';
 import authRouter from './routes/authentication/signUp';
 import ErrorMiddleware from './middlewares/Error';
-
+import adminRouter from './routes/admin/overview'
 require('env2')('.env');
 
 const app = express();
-const { NODE_ENV} = process.env;
+const { NODE_ENV } = process.env;
 
 app.use([
   compression(),

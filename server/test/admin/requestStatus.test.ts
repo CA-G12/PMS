@@ -7,9 +7,6 @@ import app from '../../app';
 beforeAll(() => buildSeeds());
 
 describe('Testing pages routers and its status codes', () => {
-  test('test', () => {
-    expect(1).toBe(1);
-  });
   test('put Approved', (done) => {
     supertest(app)
       .put('/admin/requests/1')
@@ -52,7 +49,7 @@ describe('Testing pages routers and its status codes', () => {
       .send({ status: 'hello' })
       .end((err, res) => {
         if (err) return done(err);
-        expect(res.statusCode).toBe(400);
+        expect(res.statusCode).toBe(500);
         done();
       });
   });

@@ -29,16 +29,16 @@ const signUp = async (req: Request, res: Response, next:NextFunction) => {
     const token = await generateToken({
       id: pharamcyData.id,
       role: 'pharmacy',
-      owner_img: pharamcyData.owner_img
+      owner_img: pharamcyData.owner_img,
     });
 
-    return res.cookie('token', token).json({data: pharamcyData, msg: 'You have signed up successfully'});
+    return res.status(201).cookie('token', token).json({ data: pharamcyData, msg: 'You have signed up successfully' });
   } catch (err) {
-      if(err.name === 'ValidationError') {
-        next(new CustomError (400, 'Something went wrong, sign up again'))
-      } else {
-        next(err);
-      }
+    if (err.name === 'ValidationError') {
+      next(new CustomError(400, 'Something went wrong, sign up again'));
+    } else {
+      next(err);
+    }
   }
 };
 

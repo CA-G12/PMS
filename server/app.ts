@@ -2,8 +2,7 @@ import express, { Request, Response } from 'express';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
-
-require('env2')('.env');
+import router from './routes/admin/requestStatus';
 
 const app = express();
 const { NODE_ENV } = process.env;
@@ -12,11 +11,13 @@ app.use([
   compression(),
   cookieParser(),
   express.urlencoded({ extended: false }),
+  express.json(),
 ]);
 
 app.set('port', process.env.PORT || 8080);
 
-app.get('/data', (req: Request, res:Response) => res.send('Hello There!'));
+app.use(router);
+// app.get('/data', (req: Request, res:Response) => res.send('Hello There!'));
 
 if (NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));

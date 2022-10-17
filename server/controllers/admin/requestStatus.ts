@@ -2,13 +2,18 @@
 import { Request, Response, NextFunction } from 'express';
 
 import requestStatusQuery from '../../queries';
-// import { CustomError } from '../../utils';
+import { CustomError } from '../../utils';
 
 const requestStatus = async (req : Request, res : Response, next : NextFunction) => {
-  const { status } = req.body;
   try {
-    await requestStatusQuery(status);
-    res.json({ message: 'successful' });
+    const { status } = req.body;
+    const { requestId } = req.params;
+    if (status === 'Approved' || status === 'Pending' || status === 'Rejected') {
+      await requestStatusQuery(status, +requestId);
+      res.json({ message: 'successful' });
+    } else {
+      throw new CustomError(400, 'invalid input');
+    }
   } catch (err : any) {
     next(err);
   }

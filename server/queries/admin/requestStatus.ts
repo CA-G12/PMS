@@ -2,9 +2,10 @@ import {
   ProductsRequest as productsRequestModel,
 } from '../../models';
 
-const requestStatusQuery = (status: number) => productsRequestModel.findAll({
-  offset: 7 * (status - 1),
-  limit: 7,
+const requestStatusQuery = (requestStatus: 'Approved'| 'Pending' | 'Rejected', requestId: Number) => productsRequestModel.update({ status: requestStatus }, {
+  where: {
+    id: requestId,
+  },
 });
 
 export default requestStatusQuery;

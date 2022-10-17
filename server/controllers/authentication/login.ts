@@ -11,7 +11,7 @@ const key = process.env.SECRET_KEY || '';
 
 const login = async (req : Request, res : Response, next : NextFunction) => {
   const { email, loginPassword } = req.body;
-  const { error } = loginSchema.validate(req.body);
+  const { error } = await loginSchema.validateAsync(req.body);
   if (error) {
     throw new CustomError(401, error.details[0].message);
   } else {
@@ -23,7 +23,7 @@ const login = async (req : Request, res : Response, next : NextFunction) => {
           id,
           image,
         } = data[0];
-        const compare = bcrypt.compareSync(loginPassword, password);
+        const compare = await bcrypt.compare(loginPassword, password);
         if (compare) {
           const token = jwt.sign({
             id,
@@ -43,7 +43,7 @@ const login = async (req : Request, res : Response, next : NextFunction) => {
             id,
             owner_img,
           } = loginData[0];
-          const compare = bcrypt.compareSync(loginPassword, password);
+          const compare = await bcrypt.compare(loginPassword, password);
           if (compare) {
             const token = jwt.sign({
               id,

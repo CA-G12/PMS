@@ -8,7 +8,7 @@ const pharmacyAuth = async (req: UserRequest, res: Response, next: NextFunction)
   if(role === 'pharmacy') {
     next()
   } else {
-    throw new CustomError(401, 'You are not authenticated');
+    next(new CustomError(401, 'You are not authenticated'));
   }
 };
 

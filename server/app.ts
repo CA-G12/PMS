@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
-
+import adminRouter from './routes/admin/overview'
 require('env2')('.env');
 
 const app = express();
@@ -24,5 +24,6 @@ if (NODE_ENV === 'production') {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }
+app.use(adminRouter)
 
 export default app;

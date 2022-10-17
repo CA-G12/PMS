@@ -148,7 +148,7 @@
       "description": "Pharmacies licensed by the Ministry of Health All of their employees",
       "password": "$2y$10$038ZGt9SkWkMeCuRp6dJ..DgjoyZq8oTKWr43amGtneFWkbSvG/cG",
       "license_number": 548285,
-      "status": "Opened",
+      "status": "Pending",
       "owner_name": "Karel Webberley",
       "owner_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6xQvz4erHtT1cwDIasVCJK9Qa2zgnHbT9yg&usqp=CAU",
       "owner_id": 655948
@@ -176,7 +176,7 @@
       "description": "Pharmacies licensed by the Ministry of Health All of their employees",
       "password": "$2y$10$038ZGt9SkWkMeCuRp6dJ..DgjoyZq8oTKWr43amGtneFWkbSvG/cG",
       "license_number": 5486685,
-      "status": "Opened",
+      "status": "Pending",
       "owner_name": "Guglielmo Santer",
       "owner_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdMy5U2EGojTmDbddQNYftyN_DyXMxIQnPmQ&usqp=CAU",
       "owner_id": 9959878

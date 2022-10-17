@@ -70,8 +70,8 @@ Pharmacy.init(
       allowNull: false,
     },
     status: {
-      type: DataTypes.ENUM('Opened', 'Closed', 'Rejected'),
-      allowNull: false,
+      type: DataTypes.ENUM('Opened', 'Closed', 'Rejected', 'Pending'),
+      defaultValue:'Pending'
     },
     owner_id: {
       type: DataTypes.INTEGER,

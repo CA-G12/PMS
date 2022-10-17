@@ -4,6 +4,7 @@ import products from './product.json';
 import productsPharmacies from './productPharmacy.json';
 import productsRequests from './productsRequest.json';
 import salesHistory from './salesHistory.json';
+import admin from './admin.json';
 
 export {
   adminProducts,
@@ -12,4 +13,5 @@ export {
   productsPharmacies,
   productsRequests,
   salesHistory,
+  admin,
 };

@@ -12,8 +12,7 @@
     "lint:client": "cd client && npm run lint",
     "format-client": "cd client && npm run format",
     "buildDb": "cross-env NODE_ENV=development ts-node server/database/config/buildDb.ts",
-    "buildSeeds": "cross-env NODE_ENV=development ts-node server/database/seeds/buildSeeds.ts",
-    "buildTestSeeds": "cross-env NODE_ENV=test ts-node server/database/seeds/buildSeeds.ts"
+    "buildSeeds": "cross-env NODE_ENV=development ts-node server/database/seeds/buildSeeds.ts"
   },
   "pre-commit": [
     "format-client",

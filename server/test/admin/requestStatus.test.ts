@@ -1,11 +1,10 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-undef */
-// const {Request, Response} = require('express');
-// import buildSeeds from '../../database/seeds/buildSeeds';
 import supertest from 'supertest';
-// const router = require('../../app.t');
+import buildSeeds from '../../database/seeds/buildSeeds';
 import app from '../../app';
-// beforeAll(() => buildSeeds());
+
+beforeAll(() => buildSeeds());
 
 describe('Testing pages routers and its status codes', () => {
   test('test', () => {

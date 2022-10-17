@@ -4,7 +4,6 @@ import cookieParser from 'cookie-parser';
 import { join } from 'path';
 import router from './routes/authentication/login';
 
-
 require('env2')('.env');
 
 const app = express();

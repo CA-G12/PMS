@@ -1,11 +1,5 @@
 import { sign } from 'jsonwebtoken';
-
-require('env2')('.env');
-
-type payloadType = {
-    owner_id: number,
-    role:string,
-}
+import { payloadType } from '../middlewares/interfaces';
 
 const key = process.env.SECRET_KEY || '';
 

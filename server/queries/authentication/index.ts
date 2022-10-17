@@ -1,4 +1,4 @@
-import { Pharmacy, Admin } from '../../models';
+import { Pharmacy, admin } from '../../models';
 
 const findPharmacy = async (licenceNumber:number) => Pharmacy.findOne({
   where: {
@@ -12,7 +12,7 @@ const findPharmacyEmail = async (email:string) => Pharmacy.findOne({
   },
 });
 
-const findAdminEmail = async (email:string) => Admin.findOne({
+const findAdminEmail = async (email:string) => admin.findOne({
   where: {
     email,
   },

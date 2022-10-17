@@ -27,13 +27,18 @@ const signUp = async (req: Request, res: Response, next:NextFunction) => {
     const pharamcyData = await signup(req.body, hashed);
 
     const token = await generateToken({
-      owner_id: pharamcyData.owner_id,
+      id: pharamcyData.id,
       role: 'pharmacy',
+      owner_img: pharamcyData.owner_img
     });
 
-    return res.cookie('token', token).json(pharamcyData);
+    return res.cookie('token', token).json({data: pharamcyData, msg: 'You have signed up successfully'});
   } catch (err) {
-    next(err);
+      if(err.name === 'ValidationError') {
+        next(new CustomError (401, 'you have a validation error when signing up'))
+      } else {
+        next(err);
+      }
   }
 };
 

@@ -49,7 +49,7 @@ describe('Testing pages routers and its status codes', () => {
       .send({ status: 'hello' })
       .end((err, res) => {
         if (err) return done(err);
-        expect(res.statusCode).toBe(500);
+        expect(res.statusCode).toBe(400);
         done();
       });
   });

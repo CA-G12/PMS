@@ -8,15 +8,12 @@ const requestStatus = async (req : Request, res : Response, next : NextFunction)
   try {
     const { status } = req.body;
     const { requestId } = req.params;
-    const isValid = await requestStatusSchema.validateAsync({ status, requestId });
-    if (isValid) {
-      await requestStatusQuery(status, +requestId);
-      res.json({ msg: 'successful' });
-    } else {
-      throw new CustomError(400, 'invalid input');
-    }
+    await requestStatusSchema.validateAsync({ status, requestId });
+    await requestStatusQuery(status, +requestId);
+    res.json({ msg: 'successful' });
   } catch (err : any) {
-    next(err);
+    if (err.name === 'ValidationError') next(new CustomError(400, 'invalid input'));
+    else next(err);
   }
 };
 

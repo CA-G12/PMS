@@ -30,7 +30,7 @@ const login = async (req : Request, res : Response, next : NextFunction) => {
             role: 'admin',
             image,
           }, key);
-          res.cookie('token', token, { httpOnly: true }).json({ message: 'successful' });
+          res.cookie('token', token, { httpOnly: true }).json({ msg: 'successful' });
         } else {
           throw new CustomError(400, 'invalid email or password');
         }
@@ -50,7 +50,7 @@ const login = async (req : Request, res : Response, next : NextFunction) => {
               role: 'pharmacy',
               owner_img,
             }, key);
-            res.cookie('token', token, { httpOnly: true }).json({ message: 'successful' });
+            res.cookie('token', token, { httpOnly: true }).json({ msg: 'successful' });
           } else {
             throw new CustomError(400, 'invalid email or password');
           }

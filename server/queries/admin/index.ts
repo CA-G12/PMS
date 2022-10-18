@@ -1,3 +1,4 @@
 import requestQuery from './allRequests';
+import requestStatusQuery from './requestStatus';
 
-export default requestQuery ;
+export { requestQuery, requestStatusQuery };

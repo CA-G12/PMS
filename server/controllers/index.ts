@@ -1,8 +1,10 @@
-import { checkAuthData } from './authentication';
-import allRequests from './admin';
+
+import { checkAuthData, logout } from './authentication';
+import {requestStatus, allRequests } from './admin';
 
 export {
-  // eslint-disable-next-line import/prefer-default-export
   checkAuthData,
   allRequests,
+  logout,
+  requestStatus,
 };

@@ -3,6 +3,7 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
 import getStatus from './routes/admin/adminPharamcyStatus';
+import allProducts from './routes/admin/allAdminProduct';
 
 require('env2')('.env');
 
@@ -13,6 +14,7 @@ app.use([
   cookieParser(),
   express.urlencoded({ extended: false }),
 ]);
+app.use('/api/v1/', allProducts);
 app.use('/api/v1/', getStatus);
 
 app.set('port', process.env.PORT || 8080);

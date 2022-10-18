@@ -11,6 +11,9 @@ const getAllProductsAdmin = async (req:Request, res:Response) => {
       Quantity,
     });
     // res.json(Quantity);
-  } catch { throw new CustomError(400, 'No Products'); }
+  } catch (err) {
+    console.log(err);
+    throw new CustomError(400, 'No Products');
+  }
 };
 export default getAllProductsAdmin;

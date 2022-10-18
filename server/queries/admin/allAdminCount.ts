@@ -1,5 +1,13 @@
-import { ProductPharmacy } from '../../models/index';
+import { ProductPharmacy, Product } from '../../models/index';
 
-const getProductsAdminCount = async () => ProductPharmacy.count();
+const getProductsAdminQuantity = async () => Product.findAll(
+  {
+    include: [
+      {
+        model: ProductPharmacy,
+      },
+    ],
+  },
+);
 
-export default getProductsAdminCount;
+export default getProductsAdminQuantity;

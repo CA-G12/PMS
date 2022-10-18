@@ -1,5 +1,11 @@
-import { AdminProduct } from '../../models/index';
+import { AdminProduct, Product } from '../../models/index';
 
-const getProductsAdmin = async () => AdminProduct.findAll();
+const getProductsAdmin = async () => Product.findAll({
+  include: [
+    {
+      model: AdminProduct,
+    },
+  ],
+});
 
 export default getProductsAdmin;

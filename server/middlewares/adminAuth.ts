@@ -3,7 +3,7 @@ import CustomError from '../utils/CustomError';
 import { UserRequest } from './interfaces';
 
 const adminAuth = async (req: UserRequest['user'], res: Response, next: NextFunction) => {
-  const { role } = req;
+  const { role }:any = req;
 
   if (role === 'admin') {
     next();

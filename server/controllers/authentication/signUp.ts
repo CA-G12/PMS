@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { hash } from 'bcryptjs';
-import { findPharmacy, findPharmacyEmail, signup } from '../../queries/authentication';
+import { findPharmacy, findPharmacyEmail, findAdminEmail, signup } from '../../queries/authentication';
 import signupSchema from '../../validation/signupSchema';
 import { generateToken, CustomError } from '../../utils';
 
@@ -13,7 +13,7 @@ const signUp = async (req: Request, res: Response, next:NextFunction) => {
       throw new CustomError(400, 'Try again, This Pharmacy is already Signed');
     }
 
-    const adminExisted = await findPharmacyEmail(req.body.email);
+    const adminExisted = await findAdminEmail(req.body.email);
     if (adminExisted) {
       throw new CustomError(400, 'Try again, You can not sign up with this email');
     }

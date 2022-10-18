@@ -5,5 +5,5 @@ import userData from './userData';
 export {
   payloadType,
   UserRequest,
-  userData
+  userData,
 };

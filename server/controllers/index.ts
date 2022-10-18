@@ -1,6 +1,5 @@
-
 import { checkAuthData, logout } from './authentication';
-import {requestStatus, allRequests } from './admin';
+import { requestStatus, allRequests } from './admin';
 
 export {
   checkAuthData,

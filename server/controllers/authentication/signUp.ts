@@ -1,6 +1,9 @@
+/* eslint-disable consistent-return */
 import { Request, Response, NextFunction } from 'express';
 import { hash } from 'bcryptjs';
-import { findPharmacy, findPharmacyEmail, findAdminEmail, signup } from '../../queries/authentication';
+import {
+  findPharmacy, findPharmacyEmail, findAdminEmail, signup,
+} from '../../queries/authentication';
 import signupSchema from '../../validation/signupSchema';
 import { generateToken, CustomError } from '../../utils';
 

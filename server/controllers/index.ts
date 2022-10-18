@@ -1,6 +1,8 @@
-import { checkAuthData } from './authentication';
+import { checkAuthData, logout } from './authentication';
+import requestStatus from './admin';
 
 export {
-  // eslint-disable-next-line import/prefer-default-export
   checkAuthData,
+  logout,
+  requestStatus,
 };

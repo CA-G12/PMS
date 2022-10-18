@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { hash } from 'bcryptjs';
-import { findPharmacy, findPharmacyEmail, findAdminEmail, signup } from '../../queries/authentication';
+import {
+  findPharmacy, findPharmacyEmail, findAdminEmail, signup,
+} from '../../queries/authentication';
 import signupSchema from '../../validation/signupSchema';
 import { generateToken, CustomError } from '../../utils';
 
@@ -40,6 +42,7 @@ const signUp = async (req: Request, res: Response, next:NextFunction) => {
       next(err);
     }
   }
+  return true;
 };
 
 export default signUp;

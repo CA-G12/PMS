@@ -1,11 +1,15 @@
-import { AdminProduct, Product } from '../../models/index';
+import { AdminProduct, Product, ProductPharmacy } from '../../models';
 
 const getProductsAdmin = async () => Product.findAll({
   attributes: ['id', 'name'],
   include: [
     {
       model: AdminProduct,
-      attributes: ['product_id', 'expired_quantity', 'in_stock_quantity'],
+      attributes: ['expired_quantity', 'in_stock_quantity'],
+    },
+    {
+      model: ProductPharmacy,
+      attributes: ['quantity'],
     },
   ],
 });

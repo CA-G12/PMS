@@ -1,6 +1,7 @@
 import auth from './auth';
+import ErrorMiddleware from './Error';
 
 export {
-  // eslint-disable-next-line import/prefer-default-export
   auth,
+  ErrorMiddleware,
 };

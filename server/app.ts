@@ -4,13 +4,14 @@ import cookieParser from 'cookie-parser';
 import { join } from 'path';
 import router from './routes/admin/requestStatus';
 import authRouter from './routes/authentication/signUp';
-import ErrorMiddleware from './middlewares/'
+import ErrorMiddleware from './middlewares/Error';
+
 require('env2')('.env');
 
 const app = express();
 const { NODE_ENV, PORT } = process.env;
 
-app.set('port', PORT || 8080);
+app.set('port', PORT || 8070);
 
 app.use([
   compression(),

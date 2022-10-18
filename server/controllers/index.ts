@@ -1,8 +1,8 @@
 import { checkAuthData } from './authentication';
-import { getAllProductsAdmin } from './admin';
+import { getAllProductsAdmin, getPharmacyStatusId } from './admin';
 
 export {
-  // eslint-disable-next-line import/prefer-default-export
   checkAuthData,
   getAllProductsAdmin,
+  getPharmacyStatusId,
 };

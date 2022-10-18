@@ -3,20 +3,25 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
 import adminRouter from './routes/admin/overview'
+import router from './routes/admin/requestStatus';
 import authRouter from './routes/authentication/signUp';
-import ErrorMiddleware from './middlewares/'
+import ErrorMiddleware from './middlewares/Error';
+
 require('env2')('.env');
 
 const app = express();
-const { NODE_ENV, PORT } = process.env;
-
-app.set('port', PORT || 8080);
+const { NODE_ENV} = process.env;
 
 app.use([
   compression(),
   cookieParser(),
   express.urlencoded({ extended: false }),
+  express.json(),
 ]);
+
+app.set('port', process.env.PORT || 8080);
+
+app.use(router);
 
 if (NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));

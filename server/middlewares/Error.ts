@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import CustomError from './customError';
+import { CustomError } from '../utils';
 
 const ErrorMiddleware = ((err: CustomError, req: Request, res: Response, next: NextFunction) => {
-  const {status, message} = err;
+  const { status, message } = err;
 
   if (!status) {
     res.status(500).json({ msg: message });

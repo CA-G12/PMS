@@ -1,3 +1,3 @@
-import requestStatusQuery from './admin';
+import { requestStatusQuery } from './admin';
 
 export default requestStatusQuery;

@@ -54,3 +54,26 @@ describe('Testing pages routers and its status codes', () => {
       });
   });
 });
+
+describe('Testing pages routers and its status codes', () => {
+  test('put Approved for admin', (done) => {
+    supertest(app)
+      .put('/api/v1/admin/pharmacy/3')
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.statusCode).toBe(200);
+        done();
+      });
+  });
+
+  test('put invalid id', (done) => {
+    supertest(app)
+      .put('/api/v1/admin/pharmacy')
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.statusCode).toBe(404);
+        done();
+      });
+  });
+});

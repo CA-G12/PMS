@@ -6,7 +6,7 @@ import { Box, Typography } from '@mui/material';
 type Card = {
   ownerName: string;
   ownerId: number;
-  licenseNumber: string;
+  licenseNumber: number;
   pharmacyName: string;
 };
 interface Props {
@@ -55,7 +55,8 @@ const ApplicationCard = ({ card }: Props) => (
     >
       <Button
         sx={{
-          marginBottom: '1.5rem',
+          marginBottom: '1rem',
+          marginTop: '1rem',
           borderRadius: '50%',
           fontSize: '4rem',
         }}
@@ -68,7 +69,7 @@ const ApplicationCard = ({ card }: Props) => (
       <Button
         sx={{
           borderRadius: '50%',
-          marginTop: '1.5rem',
+          marginTop: '1rem',
           fontSize: '4rem',
         }}
         variant="outlined"

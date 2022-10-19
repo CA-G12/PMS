@@ -4,27 +4,28 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Box, Typography } from '@mui/material';
 
 type Card = {
-    ownerName:string;
-    ownerId:number;
-    licenseNumber: string;
-    pharmacyName:string;
+  ownerName: string;
+  ownerId: number;
+  licenseNumber: string;
+  pharmacyName: string;
 };
-interface Props{
-    card:Card
+interface Props {
+  card: Card;
 }
 
-const ApplicationCard = ({ card }:Props) => (
-  <Box sx={{
-    border: '2px solid #B6CAFD',
-    borderRadius: '2rem',
-    width: '80%',
-    margin: 'auto',
-    padding: '2rem 0',
-    paddingLeft: '3rem',
-    display: 'flex',
-    position: 'relative',
-    fontSize: '2rem',
-  }}
+const ApplicationCard = ({ card }: Props) => (
+  <Box
+    sx={{
+      border: '2px solid #B6CAFD',
+      borderRadius: '2rem',
+      width: '80%',
+      margin: 'auto',
+      padding: '2rem 0',
+      paddingLeft: '3rem',
+      display: 'flex',
+      position: 'relative',
+      fontSize: '2rem',
+    }}
   >
     <Box>
       <Typography sx={{ fontSize: '2rem' }}>
@@ -44,12 +45,13 @@ const ApplicationCard = ({ card }:Props) => (
         {card.pharmacyName}
       </Typography>
     </Box>
-    <Box sx={{
-      position: 'absolute',
-      right: '6rem',
-      display: 'flex',
-      flexDirection: 'column',
-    }}
+    <Box
+      sx={{
+        position: 'absolute',
+        right: '6rem',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
     >
       <Button
         sx={{

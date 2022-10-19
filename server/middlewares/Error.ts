@@ -1,7 +1,8 @@
-import { Request, Response } from 'express';
+/* eslint-disable no-unused-vars */
+import { NextFunction, Request, Response } from 'express';
 import { CustomError } from '../utils';
 
-const ErrorMiddleware = ((err: CustomError, req: Request, res: Response) => {
+const ErrorMiddleware = ((err: CustomError, req: Request, res: Response, next: NextFunction) => {
   const { status, message } = err;
 
   if (!status) {

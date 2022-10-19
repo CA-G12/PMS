@@ -3,8 +3,10 @@
 import supertest from 'supertest';
 import buildSeeds from '../../database/seeds/buildSeeds';
 import app from '../../app';
+import { sequelize } from '../../models';
 
 beforeAll(() => buildSeeds());
+afterAll(() => sequelize.close());
 
 describe('Testing pages routers and its status codes', () => {
   test('put Approved', (done) => {

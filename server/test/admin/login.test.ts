@@ -1,8 +1,10 @@
 import supertest from 'supertest';
 import buildSeeds from '../../database/seeds/buildSeeds';
 import app from '../../app';
+import { sequelize } from '../../models';
 
 beforeAll(() => buildSeeds());
+afterAll(() => sequelize.close());
 
 describe('login router', () => {
   test('check if login with invalid password', (done) => {
@@ -14,24 +16,29 @@ describe('login router', () => {
       })
       .expect('Content-Type', /json/)
       .end((err:any, res: any) => {
-        if (err) done(err);
+        if (err) {
+          return done(err);
+        }
         expect(res.body.msg).toEqual('invalid email or password');
         return done();
       });
   });
 
-  test('check if login with invalid email', (done) => {
+  test('check if login admin fails', (done) => {
     supertest(app)
       .post('/auth/login')
       .send({
-        email: 'ahmeddd@gmail.com',
-        loginPassword: '123456789aaa',
+        email: 'admin@gmail.com',
+        loginPassword: 'adminadmi',
       })
       .expect('Content-Type', /json/)
       .end((err:any, res: any) => {
-        if (err) done(err);
-        expect(res.body.msg).toEqual('invalid email or password');
-        done();
+        if (err) {
+          done(err);
+        } else {
+          expect(res.body.msg).toEqual('invalid email or password');
+          done();
+        }
       });
   });
 
@@ -44,9 +51,12 @@ describe('login router', () => {
       })
       .expect('Content-Type', /json/)
       .end((err:any, res: any) => {
-        if (err) done(err);
-        expect(res.body.msg).toEqual('successful');
-        done();
+        if (err) {
+          done(err);
+        } else {
+          expect(res.body.msg).toEqual('successful');
+          done();
+        }
       });
   });
 });

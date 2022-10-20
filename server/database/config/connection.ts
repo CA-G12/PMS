@@ -24,6 +24,6 @@ switch (NODE_ENV) {
 
 if (!url) throw new Error('There is no Url found');
 
-const sequelize = new Sequelize(url);
+const sequelize = new Sequelize(url, { logging: false });
 
 export default sequelize;

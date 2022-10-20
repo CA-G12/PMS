@@ -27,8 +27,8 @@ describe('login router', () => {
       .expect('Content-Type', /json/)
       .end((err:any, res: any) => {
         if (err) done(err);
-        expect(res.body.data[0].id).toBe(1);
-        expect(res.body.data.length).toBe(7);
+        expect(res.body.data.rows[0].id).toBe(1);
+        expect(res.body.data.rows.length).toBe(7);
         return done();
       });
   });
@@ -42,8 +42,8 @@ describe('login router', () => {
       .expect('Content-Type', /json/)
       .end((err:any, res: any) => {
         if (err) done(err);
-        expect(res.body.data[0].id).toBe(15);
-        expect(res.body.data.length).toBe(6);
+        expect(res.body.data.rows[0].id).toBe(15);
+        expect(res.body.data.rows.length).toBe(6);
         done();
       });
   });

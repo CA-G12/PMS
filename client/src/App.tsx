@@ -12,27 +12,27 @@ import "./App.css";
 const App = () => {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/admin",
       element: <DashboardLayout />,
       children: [
         {
-          path: "admin/overview",
+          path: "overview",
           element: <Overview />,
         },
         {
-          path: "/admin/pharmacies",
+          path: "pharmacies",
           element: <Pharmacies />,
         },
         {
-          path: "admin/products",
+          path: "products",
           element: <Products />,
         },
         {
-          path: "admin/requests",
+          path: "requests",
           element: <Requests />,
         },
         {
-          path: "admin/applications",
+          path: "applications",
           element: <Applications />,
         },
       ],

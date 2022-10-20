@@ -30,7 +30,8 @@ const ApplicationSection = () => {
     setCards(allApplications.data.rows);
   };
   const setStatus = async (status: string, id: number) => {
-    await axios.post(`/admin/pharmacy/${id}`, { status });
+    const allApplications = await axios.post(`/admin/pharmacy/${id}`, { status });
+    setCards(allApplications.data.rows);
   };
   useEffect(() => {
     getData();

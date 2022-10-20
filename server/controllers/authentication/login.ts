@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
 

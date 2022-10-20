@@ -2,11 +2,6 @@ body{
     background-color: #D9D9D9;
     font-family: 'Courier New', Courier, monospace;
 }
-.contaner{
-    background-color: white;
-    border-radius: 10px;
-    max-width: 1000px;
-}
 .contaner h2{
 padding: 20px;
 font-size: 28px;
@@ -31,4 +26,18 @@ font-size: 28px;
 }
 .columSelect{
     padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.pharmasyName{
+    display: flex;
+}
+.pharmasyName img{
+    width: 100px;
+}
+.pharmasyName p:first-child{
+    font-weight: bold;
+}
+.pharmasyName p:last-child{
+    opacity: 0.7;
 }

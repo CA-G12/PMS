@@ -1,20 +1,32 @@
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+} from "@mui/material";
 import { Link } from "react-router-dom";
-import DialpadIcon from "@mui/icons-material/Dialpad";
-import AttachFileIcon from "@mui/icons-material/AttachFile";
-import CategoryIcon from "@mui/icons-material/Category";
-import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
-import GridViewIcon from "@mui/icons-material/GridView";
+import {
+  Dialpad,
+  AttachFile,
+  Category,
+  RequestQuote,
+  GridView,
+} from "@mui/icons-material";
 import logo from "../assets/logo.png";
+
+const DRAWER_TABS_CONFIG = [
+  { component: <Dialpad />, slug: "Overview" },
+  { component: <AttachFile />, slug: "Pharmacies" },
+  { component: <Category />, slug: "Products" },
+  { component: <RequestQuote />, slug: "Requests" },
+  { component: <GridView />, slug: "Applications" },
+];
 
 const drawer = (
   <div>
-    <Link to="/">
+    <Link to="/admin">
       <img
         alt="logo"
         src={logo}
@@ -25,60 +37,16 @@ const drawer = (
     <Divider />
 
     <List>
-      <Link to="/admin/overview">
-        <ListItem>
-          <ListItemButton>
-            <ListItemIcon>
-              <DialpadIcon />
-            </ListItemIcon>
-            <ListItemText>Overview</ListItemText>
-          </ListItemButton>
-        </ListItem>
-      </Link>
-
-      <Link to="/admin/pharmacies">
-        <ListItem>
-          <ListItemButton>
-            <ListItemIcon>
-              <AttachFileIcon />
-            </ListItemIcon>
-            <ListItemText>Pharmacies</ListItemText>
-          </ListItemButton>
-        </ListItem>
-      </Link>
-
-      <Link to="/admin/products">
-        <ListItem>
-          <ListItemButton>
-            <ListItemIcon>
-              <CategoryIcon />
-            </ListItemIcon>
-            <ListItemText>Products</ListItemText>
-          </ListItemButton>
-        </ListItem>
-      </Link>
-
-      <Link to="/admin/requests">
-        <ListItem>
-          <ListItemButton>
-            <ListItemIcon>
-              <RequestQuoteIcon />
-            </ListItemIcon>
-            <ListItemText>Requests</ListItemText>
-          </ListItemButton>
-        </ListItem>
-      </Link>
-
-      <Link to="/admin/applications">
-        <ListItem>
-          <ListItemButton>
-            <ListItemIcon>
-              <GridViewIcon />
-            </ListItemIcon>
-            <ListItemText>Applications</ListItemText>
-          </ListItemButton>
-        </ListItem>
-      </Link>
+      {DRAWER_TABS_CONFIG.map(({ component, slug }) => (
+          <Link to={`/admin/${slug.toLowerCase()}`} key={slug}>
+            <ListItem>
+              <ListItemButton>
+                <ListItemIcon>{component}</ListItemIcon>
+                <ListItemText primary={slug} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+      ))}
     </List>
   </div>
 );

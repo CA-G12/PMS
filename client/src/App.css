@@ -32,13 +32,11 @@ a {
     main.MuiBox-root.css-hq9khu {
         width: calc(90% - 216px);
         padding-top: 100px;
-        padding-left: 267px;
     }
 }
 @media (max-width: 600px){
     main.MuiBox-root.css-hq9khu {
         width: 85%;
         padding-top: 100px;
-        padding-left: 30px;
     }
 }

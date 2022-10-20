@@ -1,6 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
+import { Outlet } from "react-router-dom";
 import drawer from "../components/drawer";
 import NavBar from "../components/NavBar";
 
@@ -10,7 +11,7 @@ interface Props {
   window?: () => Window;
 }
 
-export default function DashboardLayout(props: Props) {
+const DashboardLayout: React.FC = (props: Props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -61,6 +62,8 @@ export default function DashboardLayout(props: Props) {
           {drawer}
         </Drawer>
       </Box>
+      <Outlet />
     </Box>
   );
-}
+};
+export default DashboardLayout;

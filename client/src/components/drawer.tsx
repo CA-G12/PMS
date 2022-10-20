@@ -1,17 +1,16 @@
-import React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import DialpadIcon from "@mui/icons-material/Dialpad";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import CategoryIcon from "@mui/icons-material/Category";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import GridViewIcon from "@mui/icons-material/GridView";
+import logo from "../assets/logo.png";
 
 const drawer = (
   <div>
@@ -26,7 +25,7 @@ const drawer = (
     <Divider />
 
     <List>
-      <Link to="/">
+      <Link to="/admin/overview">
         <ListItem>
           <ListItemButton>
             <ListItemIcon>
@@ -37,7 +36,7 @@ const drawer = (
         </ListItem>
       </Link>
 
-      <Link to="/pharmacies">
+      <Link to="/admin/pharmacies">
         <ListItem>
           <ListItemButton>
             <ListItemIcon>
@@ -48,7 +47,7 @@ const drawer = (
         </ListItem>
       </Link>
 
-      <Link to="/products">
+      <Link to="/admin/products">
         <ListItem>
           <ListItemButton>
             <ListItemIcon>
@@ -59,7 +58,7 @@ const drawer = (
         </ListItem>
       </Link>
 
-      <Link to="/requests">
+      <Link to="/admin/requests">
         <ListItem>
           <ListItemButton>
             <ListItemIcon>
@@ -70,7 +69,7 @@ const drawer = (
         </ListItem>
       </Link>
 
-      <Link to="/applications">
+      <Link to="/admin/applications">
         <ListItem>
           <ListItemButton>
             <ListItemIcon>

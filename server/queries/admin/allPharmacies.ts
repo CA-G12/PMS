@@ -1,9 +1,7 @@
 import { Pharmacy } from '../../models';
 
 const getAllPharmaciesGeneral = async (status: any, page: any) =>{
-  console.log('status: ', status);
-  console.log('page: ', page);
-  if(status && page){
+  if(status){
     return Pharmacy.findAndCountAll({
       where: {
         status: status,

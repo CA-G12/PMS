@@ -2,9 +2,7 @@ import express, { Request, Response } from 'express';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
-import loginRouter from './routes/authentication/login';
-import requestStatus from './routes/admin/requestStatus';
-import authRouter from './routes/authentication/signUp';
+import router from './routes';
 import ErrorMiddleware from './middlewares/Error';
 
 require('env2')('.env');
@@ -22,9 +20,6 @@ app.use([
 ]);
 
 app.set('port', process.env.PORT || 8080);
-app.use(requestStatus);
-
-app.use(loginRouter);
 
 if (NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));
@@ -33,7 +28,7 @@ if (NODE_ENV === 'production') {
   });
 }
 
-app.use(authRouter);
+app.use(router);
 app.use(ErrorMiddleware);
 
 export default app;

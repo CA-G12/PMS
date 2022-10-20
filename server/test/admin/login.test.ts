@@ -34,11 +34,10 @@ describe('login router', () => {
       .expect('Content-Type', /json/)
       .end((err:any, res: any) => {
         if (err) {
-          done(err);
-        } else {
-          expect(res.body.msg).toEqual('invalid email or password');
-          done();
+          return done(err);
         }
+        expect(res.body.msg).toEqual('invalid email or password');
+        return done();
       });
   });
 
@@ -69,11 +68,10 @@ describe('login router', () => {
       .expect('Content-Type', /json/)
       .end((err:any, res: any) => {
         if (err) {
-          done(err);
-        } else {
-          expect(res.body.msg).toEqual('\"email\" must be a valid email');
-          done();
+          return done(err);
         }
+        expect(res.body.msg.slice(8)).toEqual('must be a valid email');
+        return done();
       });
   });
 });

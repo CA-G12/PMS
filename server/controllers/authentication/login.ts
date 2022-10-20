@@ -1,10 +1,9 @@
-/* eslint-disable camelcase */
 import { Request, Response, NextFunction } from 'express';
-import bcrypt from 'bcryptjs';
+import { compare } from 'bcryptjs';
 
+import loginSchema from '../../validation';
 import { loginQuery, adminLoginQuery } from '../../queries';
 import { generateToken, CustomError } from '../../utils';
-import loginSchema from '../../validation';
 
 const login = async (req : Request, res : Response, next : NextFunction) => {
   try {
@@ -21,8 +20,8 @@ const login = async (req : Request, res : Response, next : NextFunction) => {
         image,
       } = admin;
 
-      const compare = await bcrypt.compare(loginPassword, password);
-      if (!compare) throw new CustomError(400, 'invalid email or password');
+      const passwordCompare = await compare(loginPassword, password);
+      if (!passwordCompare) throw new CustomError(400, 'invalid email or password');
 
       const token = await generateToken({ id, role: 'admin', image });
       return res.cookie('token', token, { httpOnly: true }).json({ data: { id, image }, msg: 'successful' });
@@ -35,8 +34,8 @@ const login = async (req : Request, res : Response, next : NextFunction) => {
       id,
       owner_img,
     } = loginData[0];
-    const compare = await bcrypt.compare(loginPassword, password);
-    if (!compare) throw new CustomError(400, 'invalid email or password');
+    const passwordCompare = await compare(loginPassword, password);
+    if (!passwordCompare) throw new CustomError(400, 'invalid email or password');
 
     const token = await generateToken({ id, role: 'pharmacy', owner_img });
     return res.cookie('token', token, { httpOnly: true }).json({ data: { id, owner_img }, msg: 'successful' });

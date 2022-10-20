@@ -59,4 +59,21 @@ describe('login router', () => {
         }
       });
   });
+  test('check if login fails', (done) => {
+    supertest(app)
+      .post('/auth/login')
+      .send({
+        email: 'admin',
+        loginPassword: 'adm',
+      })
+      .expect('Content-Type', /json/)
+      .end((err:any, res: any) => {
+        if (err) {
+          done(err);
+        } else {
+          expect(res.body.msg).toEqual('\"email\" must be a valid email');
+          done();
+        }
+      });
+  });
 });

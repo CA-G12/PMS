@@ -1,21 +1,15 @@
 /* eslint-disable camelcase */
 import { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 
 import { loginQuery, adminLoginQuery } from '../../queries';
-import { CustomError } from '../../utils';
+import { generateToken, CustomError } from '../../utils';
 import loginSchema from '../../validation';
-
-const key = process.env.SECRET_KEY || '';
 
 const login = async (req : Request, res : Response, next : NextFunction) => {
   try {
     const { email, loginPassword } = req.body;
-    const { error } = await loginSchema.validateAsync(req.body);
-    if (error) {
-      throw new CustomError(401, error.details[0].message);
-    }
+    await loginSchema.validateAsync(req.body);
 
     const data = await adminLoginQuery(email);
     const admin = data[0];
@@ -30,14 +24,9 @@ const login = async (req : Request, res : Response, next : NextFunction) => {
       const compare = await bcrypt.compare(loginPassword, password);
       if (!compare) throw new CustomError(400, 'invalid email or password');
 
-      const token = jwt.sign({
-        id,
-        role: 'admin',
-        image,
-      }, key);
-      return res.cookie('token', token, { httpOnly: true }).json({ msg: 'successful' });
+      const token = await generateToken({ id, role: 'admin', image });
+      return res.cookie('token', token, { httpOnly: true }).json({ data: { id, image }, msg: 'successful' });
     }
-
     const loginData = await loginQuery(email);
     if (loginData.length === 0) throw new CustomError(400, 'invalid email or password');
 
@@ -49,12 +38,8 @@ const login = async (req : Request, res : Response, next : NextFunction) => {
     const compare = await bcrypt.compare(loginPassword, password);
     if (!compare) throw new CustomError(400, 'invalid email or password');
 
-    const token = jwt.sign({
-      id,
-      role: 'pharmacy',
-      owner_img,
-    }, key);
-    return res.cookie('token', token, { httpOnly: true }).json({ msg: 'successful' });
+    const token = await generateToken({ id, role: 'pharmacy', owner_img });
+    return res.cookie('token', token, { httpOnly: true }).json({ data: { id, owner_img }, msg: 'successful' });
   } catch (err : any) {
     return next(err);
   }

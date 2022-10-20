@@ -16,22 +16,21 @@ const card = {
   pharmacyName: 'ahmed pharmacy',
 };
 
-const arrayOfCardsFakeData1 = [card, card, card, card];
-const arrayOfCardsFakeData2 = [card, card, card, card, card, card];
+const fakeCards = [card, card, card, card, card, card];
 
 const ApplicationSection = () => {
-  const [cards, setCards] = useState(arrayOfCardsFakeData1);
+  const [cards, setCards] = useState<Card[]>([] as Card[]);
   const getData = () => {
-    setCards(arrayOfCardsFakeData2);
+    setCards(fakeCards);
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, [cards]);
   // eslint-disable-next-line max-len
   const getAllTasksApplications = (arr :Array<Card>) => arr.map((application) => <ApplicationCard card={application} />);
   return (
-    <Box sx={{ padding: '2rem 0', fontSize: '1rem' }}>
-      <Typography sx={{ margin: '4rem 10%' }} variant="h1" gutterBottom>
+    <Box sx={{ padding: '2rem 0' }}>
+      <Typography sx={{ margin: '4rem 10%', fontSize: '3rem' }} variant="h1" gutterBottom>
         Applications
       </Typography>
       { getAllTasksApplications(cards) }

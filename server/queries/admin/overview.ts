@@ -21,12 +21,10 @@ const openedApplicationsCount = async () => Pharmacy.count({
 
 const productCount = async () => Product.count();
 
-const expiredProductsCount = async () => AdminProduct.findAndCountAll({
-  attributes: ['expired_quantity'],
+const expiredAndInStockProductsCount = async () => AdminProduct.findAndCountAll({
+  attributes: ['expired_quantity', 'in_stock_quantity'],
 });
-const inStockProductsCount = async () => AdminProduct.findAndCountAll({
-  attributes: ['in_stock_quantity'],
-});
+
 
 const requestsCount = async () => ProductsRequest.count();
 
@@ -37,6 +35,5 @@ export {
   pendingApplicationsCount,
   openedApplicationsCount,
   closedApplicationsCount,
-  expiredProductsCount,
-  inStockProductsCount,
+  expiredAndInStockProductsCount,
 };

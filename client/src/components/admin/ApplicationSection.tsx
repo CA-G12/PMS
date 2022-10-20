@@ -1,33 +1,50 @@
 import { Box, Typography } from '@mui/material';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ApplicationCard from './ApplicationCard';
 
-type Card = {
-    ownerName: string;
-    ownerId: number;
-    licenseNumber: number;
-    pharmacyName: string;
+type row = {
+  id: number,
+  name: string,
+  email: string,
+  password: string,
+  phone: number,
+  location: string,
+  image: string,
+  description: string,
+  license_number: number,
+  status: string,
+  owner_id: number,
+  owner_name: string,
+  owner_img: string,
+  createdAt: string,
+  updatedAt: string
   };
 
-const card = {
-  ownerName: 'ahmed',
-  ownerId: 1116,
-  licenseNumber: 123456,
-  pharmacyName: 'ahmed pharmacy',
-};
-
-const fakeCards = [card, card, card, card, card, card];
-
 const ApplicationSection = () => {
-  const [cards, setCards] = useState<Card[]>([] as Card[]);
-  const getData = () => {
-    setCards(fakeCards);
+  const [cards, setCards] = useState<row[]>([] as row[]);
+  const getData = async () => {
+    const allApplications = await axios.post('/admin/pharmacies?status=Pending');
+    setCards(allApplications.data.rows);
+  };
+  const setStatus = async (status: string, id: number) => {
+    await axios.post(`/admin/pharmacy/${id}`, { status });
   };
   useEffect(() => {
     getData();
-  }, [cards]);
-  // eslint-disable-next-line max-len
-  const getAllTasksApplications = (arr :Array<Card>) => arr.map((application) => <ApplicationCard card={application} />);
+  }, []);
+  const getAllTasksApplications = (arr :Array<row>) => arr.map((application) => (
+    <ApplicationCard
+      card={{
+        ownerName: application.owner_name,
+        ownerId: application.owner_id,
+        licenseNumber: application.license_number,
+        pharmacyName: application.name,
+      }}
+      setApproved={() => setStatus('Approved', application.id)}
+      setRejected={() => setStatus('Rejected', application.id)}
+    />
+  ));
   return (
     <Box sx={{ padding: '2rem 0' }}>
       <Typography sx={{ margin: '4rem 10%', fontSize: '3rem' }} variant="h1" gutterBottom>

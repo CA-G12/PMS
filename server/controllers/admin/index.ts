@@ -1,5 +1,5 @@
 import getAllProductsAdmin from './allAdminProducts';
-import getPharmacyStatusId from './PharmacyStatus';
+import getPharmacyStatusId from './pharmacyStatus';
 import requestStatus from './requestStatus';
 import getOneProductForId from './getDataForOneProduct';
 

@@ -20,10 +20,7 @@ const CustomizedInputBase = () => (
     <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
       <SearchIcon />
     </IconButton>
-    <InputBase
-      sx={{ ml: 1, flex: 1 }}
-      placeholder="Search"
-    />
+    <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search" />
   </Paper>
 );
 

@@ -20,7 +20,7 @@ const Signup: React.FC = () => {
   type sendUserDataType = () => void;
 
   const sendUserData: sendUserDataType = async () => {
-    try{
+    try {
       if (
         fullName &&
         ownerID &&
@@ -42,19 +42,22 @@ const Signup: React.FC = () => {
             phone: phoneNumber,
             email,
             password,
-            confirmPassword }
+            confirmPassword
+          }
 
-            await axios.post("/auth/signup", userData);
-          } else throw new Error("Password and confirm password have to be matched");
+          await axios.post("/auth/signup", userData);
+        } else throw new Error("Password and confirm password have to be matched");
 
       } else throw new Error("In order to sign up, all of these inputs have to be filled");
-      
-    } catch(err){
-      if(err.response.data.msg){
-        swal(err.response.data.msg)
-      } else swal(err)
+
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        swal(err.response?.data?.msg)
+      } else if (err instanceof Error) {
+        swal(err.message)
+      }
     }
-};
+  };
 
   return (
     <Box

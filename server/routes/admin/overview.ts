@@ -1,8 +1,9 @@
 import { Router } from 'express';
 import { getAdminOverview } from '../../controllers/admin';
+import adminAuth from '../../middlewares/adminAuth';
 
-const adminRouter = Router();
+const overviewRouter = Router();
 
-adminRouter.get('/admin/statistics', getAdminOverview);
+overviewRouter.get('/admin/statistics', adminAuth, getAdminOverview);
 
-export default adminRouter;
+export default overviewRouter;

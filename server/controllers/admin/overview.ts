@@ -10,30 +10,26 @@ import {
 } from '../../queries/admin/overview';
 
 const getAdminOverview = async (req:Request, res:Response, next:NextFunction) => {
-  const pharmaciesNumber = await pharmacyCount();
-  const productsNumber = await productCount();
-  const productsRequestsNumber = await requestsCount();
 
-  const pendingApplications = await pendingApplicationsCount();
-  const pendingApplicationsNumber = ((pendingApplications / pharmaciesNumber) * 100).toFixed(1);
-
-  const openedApplications = await openedApplicationsCount();
-  const openedApplicationsNumber = ((openedApplications / pharmaciesNumber) * 100).toFixed(1);
-
-  const closedApplications = await closedApplicationsCount();
-  const closedApplicationsNumber = ((closedApplications / pharmaciesNumber) * 100).toFixed(1);
-
-  const allKindProductsCount= await expiredAndInStockProductsCount();
-
+  const data = await Promise.all([
+    pharmacyCount(),
+    productCount(),
+    requestsCount(),
+    pendingApplicationsCount(),
+    openedApplicationsCount(),
+    closedApplicationsCount(),
+    expiredAndInStockProductsCount()
+  ])
+  
   res.json({
     data: {
-      pharmaciesNumber,
-      productsNumber,
-      productsRequestsNumber,
-      pendingApplicationsNumber,
-      openedApplicationsNumber,
-      closedApplicationsNumber,
-      allKindProductsCount,
+      pharmaciesNumber:data[0],
+      productsNumber:data[1],
+      productsRequestsNumber:data[2],
+      pendingApplicationsNumber:data[3],
+      openedApplicationsNumber:data[4],
+      closedApplicationsNumber:data[5],
+      allKindProductsCount:data[6],
     },
     msg: 'Statistics are sent successfully',
   });

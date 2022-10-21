@@ -5,7 +5,7 @@ import { join } from 'path';
 import router from './routes/admin/requestStatus';
 import authRouter from './routes/authentication/signUp';
 import ErrorMiddleware from './middlewares/Error';
-import adminRouter from './routes/admin/overview'
+import adminRouter from './routes/admin'
 require('env2')('.env');
 
 const app = express();

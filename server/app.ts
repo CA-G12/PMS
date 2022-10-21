@@ -5,7 +5,7 @@ import { join } from 'path';
 import router from './routes/admin/requestStatus';
 import authRouter from './routes/authentication/signUp';
 import ErrorMiddleware from './middlewares/Error';
-import adminRouter from './routes/admin/allPharmacies';
+import adminRouter from './routes/admin';
 
 require('env2')('.env');
 
@@ -30,8 +30,8 @@ if (NODE_ENV === 'production') {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }
-app.use(adminRouter);
 
+app.use(adminRouter);
 app.use(authRouter);
 app.use(ErrorMiddleware);
 

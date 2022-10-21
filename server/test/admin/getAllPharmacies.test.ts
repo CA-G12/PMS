@@ -63,4 +63,16 @@ describe('Testing to get all Pharmacies', () => {
         return done();
       });
   });
+
+  test('Get all pharmacies with sending status and page as invalid type', (done) => {
+    supertest(app)
+      .get('/admin/pharmacies?status=Closed&page=1hhh')
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.statusCode).toBe(500);
+        expect(res.body.msg).toBe("\"page\" must be a number")
+        return done();
+      });
+  });
 });

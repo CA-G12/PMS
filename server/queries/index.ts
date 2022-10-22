@@ -1,5 +1,5 @@
 import {
-  getProductsAdmin, getProductsAdminQuantity, pharmacyStatus, requestStatusQuery, getOneProduct,
+  getProductsAdmin, getProductsAdminQuantity, pharmacyStatus, requestStatusQuery,
 } from './admin';
 
 export {
@@ -7,5 +7,4 @@ export {
   getProductsAdminQuantity,
   pharmacyStatus,
   requestStatusQuery,
-  getOneProduct,
 };

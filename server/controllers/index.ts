@@ -1,6 +1,6 @@
 import { checkAuthData, logout } from './authentication';
 import {
-  requestStatus, getAllProductsAdmin, getPharmacyStatusId, getOneProductForId,
+  requestStatus, getAllProductsAdmin, getPharmacyStatusId,
 } from './admin';
 
 export {
@@ -9,5 +9,4 @@ export {
   getPharmacyStatusId,
   logout,
   requestStatus,
-  getOneProductForId,
 };

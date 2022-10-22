@@ -3,8 +3,7 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
 import router from './routes/admin/requestStatus';
-import getPharmacyStatusId from './routes/admin/pharamcyStatus';
-import getAllProducts from './routes/admin/allAdminProduct';
+
 // import authRouter from './routes/authentication/signUp';
 import { ErrorMiddleware } from './middlewares';
 
@@ -23,8 +22,6 @@ app.use([
 ]);
 
 app.set('port', process.env.PORT || 8080);
-app.use('/api/v1', getAllProducts);
-app.use('/api/v1', getPharmacyStatusId);
 app.use(router);
 
 if (NODE_ENV === 'production') {

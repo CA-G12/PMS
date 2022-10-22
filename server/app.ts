@@ -6,7 +6,7 @@ import router from './routes/admin/requestStatus';
 import getPharmacyStatusId from './routes/admin/pharamcyStatus';
 import getAllProducts from './routes/admin/allAdminProduct';
 // import authRouter from './routes/authentication/signUp';
-// import ErrorMiddleware from './middlewares';
+import { ErrorMiddleware } from './middlewares';
 
 require('env2')('.env');
 
@@ -35,6 +35,6 @@ if (NODE_ENV === 'production') {
 }
 
 // app.use(authRouter);
-// app.use(ErrorMiddleware);
+app.use(ErrorMiddleware);
 
 export default app;

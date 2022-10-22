@@ -73,7 +73,22 @@ const AdminAllProducts = () => (
                   <Box>
                     <img src="./img/image31.png" alt="Logo" />
                   </Box>
-                  <Box>{row.name}</Box>
+                  <Box>
+                    <Box sx={{
+                      fontWeight: 'bold',
+                    }}
+                    >
+                      {row.name}
+                    </Box>
+                    <br />
+                    <Box sx={{
+                      opacity: 0.7,
+                    }}
+                    >
+                      151515151551
+                    </Box>
+                  </Box>
+
                 </Box>
               </TableCell>
 

@@ -39,7 +39,10 @@ const login = async (req : Request, res : Response, next : NextFunction) => {
 
     const token = await generateToken({ id, role: 'pharmacy', owner_img });
     return res.cookie('token', token, { httpOnly: true }).json({ data: { id, owner_img }, msg: 'successful' });
-  } catch (err : any) {
+  } catch (err) {
+    if (err.name === 'ValidationError') {
+      return next(new CustomError(400, 'Something went wrong, sign up again'));
+    }
     return next(err);
   }
 };

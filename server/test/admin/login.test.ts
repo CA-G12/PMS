@@ -70,7 +70,7 @@ describe('login router', () => {
         if (err) {
           return done(err);
         }
-        expect(res.body.msg.slice(8)).toEqual('must be a valid email');
+        expect(res.body.msg).toEqual('Something went wrong, sign up again');
         return done();
       });
   });

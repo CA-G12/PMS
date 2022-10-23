@@ -1,4 +1,4 @@
-import { Response, NextFunction, Request } from 'express';
+import { Response, NextFunction } from 'express';
 import { CustomError, verifyToken } from '../utils';
 
 const auth = async (req: any, res: Response, next: NextFunction) => {

@@ -1,7 +1,6 @@
-import Button from '@mui/material/Button';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 
 type Card = {
   ownerName: string;
@@ -11,9 +10,11 @@ type Card = {
 };
 interface Props {
   card: Card;
+  setApproved: () => Promise<void>;
+  setRejected: () => Promise<void>;
 }
 
-const ApplicationCard = ({ card }: Props) => (
+const ApplicationCard = ({ card, setApproved, setRejected }: Props) => (
   <Box
     sx={{
       border: '2px solid #B6CAFD',
@@ -61,6 +62,7 @@ const ApplicationCard = ({ card }: Props) => (
           fontSize: '2.5rem',
         }}
         variant="contained"
+        onClick={() => setApproved()}
       >
         <CheckIcon sx={{ fontSize: '2.5rem' }}>
           <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
@@ -73,6 +75,7 @@ const ApplicationCard = ({ card }: Props) => (
           fontSize: '2.5rem',
         }}
         variant="outlined"
+        onClick={() => setRejected()}
       >
         <CloseIcon sx={{ fontSize: '2.5rem' }}>
           <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />

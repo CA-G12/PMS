@@ -9,6 +9,7 @@ import {
 } from './pages';
 import './App.css';
 
+
 const App = () => {
   const router = createBrowserRouter([
     {

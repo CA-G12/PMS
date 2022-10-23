@@ -1,10 +1,43 @@
-import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  Overview,
+  Pharmacies,
+  Products,
+  Requests,
+  DashboardLayout,
+} from './pages';
+import './App.css';
 import ApplicationSection from './components/admin/ApplicationSection';
 
-const App: React.FC = () => (
-  <div className="App">
-    <ApplicationSection />
-  </div>
-);
-
+const App = () => {
+  const router = createBrowserRouter([
+    {
+      path: '/admin',
+      element: <DashboardLayout />,
+      children: [
+        {
+          path: 'overview',
+          element: <Overview />,
+        },
+        {
+          path: 'pharmacies',
+          element: <Pharmacies />,
+        },
+        {
+          path: 'products',
+          element: <Products />,
+        },
+        {
+          path: 'requests',
+          element: <Requests />,
+        },
+        {
+          path: 'applications',
+          element: <ApplicationSection />,
+        },
+      ],
+    },
+  ]);
+  return <RouterProvider router={router} />;
+};
 export default App;

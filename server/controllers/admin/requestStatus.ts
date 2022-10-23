@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 
-import requestStatusQuery from '../../queries';
+import { requestStatusQuery } from '../../queries';
 import { CustomError } from '../../utils';
-import requestStatusSchema from '../../validation/requestStatusSchema';
+import { requestStatusSchema } from '../../validation';
 
 const requestStatus = async (req : Request, res : Response, next : NextFunction) => {
   try {

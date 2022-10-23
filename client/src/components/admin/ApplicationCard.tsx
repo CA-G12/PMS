@@ -1,7 +1,6 @@
-import Button from '@mui/material/Button';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 
 type Card = {
   ownerName: string;
@@ -20,13 +19,14 @@ const ApplicationCard = ({ card, setApproved, setRejected }: Props) => (
     sx={{
       border: '2px solid #B6CAFD',
       borderRadius: '20px',
-      width: '80%',
+      width: '95%',
       margin: '2rem auto',
       padding: '2rem 0',
       paddingLeft: '3rem',
       display: 'flex',
       position: 'relative',
       fontSize: '1.3rem',
+      backgroundColor: '#fff',
     }}
   >
     <Box>

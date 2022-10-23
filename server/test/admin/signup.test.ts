@@ -1,8 +1,10 @@
 import supertest from 'supertest';
 import buildSeeds from '../../database/seeds/buildSeeds';
 import app from '../../app';
+import { sequelize } from '../../models';
 
 beforeAll(() => buildSeeds());
+afterAll(() => sequelize.close());
 
 describe('sign up router', () => {
   test('check if Pharmacy signed up successfully', (done) => {
@@ -22,9 +24,10 @@ describe('sign up router', () => {
       .expect(201)
       .expect('Content-Type', /json/)
       .end((err:any, res: any) => {
-        if (err) done(err);
+        if (err) return done(err);
+
         expect(res.body.msg).toEqual('You have signed up successfully');
-        done();
+        return done();
       });
   });
 
@@ -45,9 +48,10 @@ describe('sign up router', () => {
       .expect(400)
       .expect('Content-Type', /json/)
       .end((err:any, res: any) => {
-        if (err) done(err);
+        if (err) return done(err);
+
         expect(res.body.msg).toEqual('Try again, This Pharmacy is already Signed');
-        done();
+        return done();
       });
   });
 
@@ -68,9 +72,10 @@ describe('sign up router', () => {
       .expect(400)
       .expect('Content-Type', /json/)
       .end((err:any, res: any) => {
-        if (err) done(err);
+        if (err) return done(err);
+
         expect(res.body.msg).toEqual('Try again, This email is already existed');
-        done();
+        return done();
       });
   });
 
@@ -91,9 +96,10 @@ describe('sign up router', () => {
       .expect(400)
       .expect('Content-Type', /json/)
       .end((err:any, res: any) => {
-        if (err) done(err);
+        if (err) return done(err);
+
         expect(res.body.msg).toEqual('Try again, You can not sign up with this email');
-        done();
+        return done();
       });
   });
 
@@ -114,9 +120,10 @@ describe('sign up router', () => {
       .expect(400)
       .expect('Content-Type', /json/)
       .end((err:any, res: any) => {
-        if (err) done(err);
+        if (err) return done(err);
+
         expect(res.body.msg).toEqual('Something went wrong, sign up again');
-        done();
+        return done();
       });
   });
 });

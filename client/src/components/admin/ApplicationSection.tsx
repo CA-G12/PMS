@@ -7,35 +7,38 @@ type row = {
   id: number;
   name: string;
   email: string;
-  password: string;
   phone: number;
   location: string;
   image: string;
   description: string;
-  license_number: number;
+  licenseNumber: number;
   status: string;
-  owner_id: number;
-  owner_name: string;
-  owner_img: string;
+  ownerId: number;
+  ownerName: string;
+  ownerImg: string;
   createdAt: string;
   updatedAt: string;
 };
 
 const ApplicationSection = () => {
   const [cards, setCards] = useState<row[]>([] as row[]);
+
   const getData = async () => {
-    const allApplications = await axios.post(
-      '/admin/pharmacies?status=Pending',
-    );
-    setCards(allApplications.data.rows);
+    const { data } = await axios.get('/admin/pharmacies?status=Pending');
+    setCards(data.data.rows);
   };
+
   const setStatus = async (status: string, id: number) => {
-    const allApplications = await axios.post(`/admin/pharmacy/${id}`, { status });
+    const allApplications = await axios.put(`/admin/pharmacy/${id}`, {
+      status,
+    });
     setCards(allApplications.data.rows);
   };
+
   useEffect(() => {
     getData();
   }, []);
+
   const getAllTasksApplications = (arr: Array<row>) => arr.map((application) => (
     <ApplicationCard
       card={{
@@ -49,9 +52,9 @@ const ApplicationSection = () => {
     />
   ));
   return (
-    <Box sx={{ padding: '2rem 0' }}>
+    <Box sx={{ padding: '2rem 8%', width: '100%' }}>
       <Typography
-        sx={{ margin: '4rem 10%', fontSize: '3rem' }}
+        sx={{ margin: '4rem 3%', fontSize: '3rem' }}
         variant="h1"
         gutterBottom
       >

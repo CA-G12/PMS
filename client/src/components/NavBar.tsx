@@ -30,7 +30,7 @@ const NavBar: React.FC<NavBarProps> = ({ handleDrawerToggle }) => {
 
   const handleClose = async () => {
     try {
-      await axios.get("/logout");
+      await axios.post("/logout");
       navigate("/");
     } catch (err) {
       swal("Something went wrong when trying to log out");

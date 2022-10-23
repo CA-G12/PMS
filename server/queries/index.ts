@@ -1,5 +1,5 @@
 import { loginQuery, adminLoginQuery } from './authentication';
-import requestStatusQuery from './admin';
+import { requestStatusQuery } from './admin';
 
 export {
   loginQuery,

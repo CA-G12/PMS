@@ -25,6 +25,7 @@ const expiredAndInStockProductsCount = async () => AdminProduct.findAndCountAll(
   attributes: ['expired_quantity', 'in_stock_quantity'],
 });
 
+
 const requestsCount = async () => ProductsRequest.count();
 
 export {

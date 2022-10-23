@@ -1,10 +1,12 @@
-import { checkAuthData, logout, login } from './authentication';
-import { requestStatus, getAdminOverview } from './admin';
+import { checkAuthData, logout, login, signUp } from './authentication';
+import { requestStatus, getAllPharmacies, getAdminOverview } from './admin';
 
 export {
   checkAuthData,
   logout,
   login,
+  signUp,
   requestStatus,
-  getAdminOverview,
+  getAllPharmacies,
+  getAdminOverview
 };

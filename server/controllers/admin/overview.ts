@@ -1,4 +1,5 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
+
 import {
   pharmacyCount,
   productCount,
@@ -9,7 +10,8 @@ import {
   expiredAndInStockProductsCount,
 } from '../../queries/admin/overview';
 
-const getAdminOverview = async (req:Request, res:Response) => {
+const getAdminOverview = async (req:Request, res:Response, next:NextFunction) => {
+
   const data = await Promise.all([
     pharmacyCount(),
     productCount(),
@@ -17,18 +19,18 @@ const getAdminOverview = async (req:Request, res:Response) => {
     pendingApplicationsCount(),
     openedApplicationsCount(),
     closedApplicationsCount(),
-    expiredAndInStockProductsCount(),
-  ]);
-
+    expiredAndInStockProductsCount()
+  ])
+  
   res.json({
     data: {
-      pharmaciesNumber: data[0],
-      productsNumber: data[1],
-      productsRequestsNumber: data[2],
-      pendingApplicationsNumber: data[3],
-      openedApplicationsNumber: data[4],
-      closedApplicationsNumber: data[5],
-      allKindProductsCount: data[6],
+      pharmaciesNumber:data[0],
+      productsNumber:data[1],
+      productsRequestsNumber:data[2],
+      pendingApplicationsNumber:data[3],
+      openedApplicationsNumber:data[4],
+      closedApplicationsNumber:data[5],
+      allKindProductsCount:data[6],
     },
     msg: 'Statistics are sent successfully',
   });

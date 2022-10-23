@@ -4,7 +4,7 @@ import { hash } from 'bcryptjs';
 import {
   findPharmacy, findPharmacyEmail, findAdminEmail, signup,
 } from '../../queries/authentication';
-import signupSchema from '../../validation/signupSchema';
+import { signupSchema } from '../../validation';
 import { generateToken, CustomError } from '../../utils';
 
 const signUp = async (req: Request, res: Response, next:NextFunction) => {

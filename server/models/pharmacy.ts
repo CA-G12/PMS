@@ -16,7 +16,7 @@ export default class Pharmacy extends Model {
 
   declare desc:string;
 
-  declare pass:string;
+  declare password:string;
 
   declare license_number:number;
 
@@ -63,15 +63,15 @@ Pharmacy.init(
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      defaultValue: 'Pharmacies licensed by the Ministry of Health All of their employees',
     },
     license_number: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     status: {
-      type: DataTypes.ENUM('Opened', 'Closed', 'Rejected'),
-      allowNull: false,
+      type: DataTypes.ENUM('Opened', 'Closed', 'Rejected', 'Pending'),
+      defaultValue: 'Pending',
     },
     owner_id: {
       type: DataTypes.INTEGER,
@@ -83,7 +83,7 @@ Pharmacy.init(
     },
     owner_img: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      defaultValue: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
     },
   },
   { sequelize },

@@ -22,36 +22,43 @@ const Signup: React.FC = () => {
   type sendUserDataType = () => void;
 
   const sendUserData: sendUserDataType = async () => {
-    if (
-      fullName
-      && ownerID
-      && pharmacyName
-      && licenseNumber
-      && pharmacyLocation
-      && phoneNumber
-      && email
-      && password
-    ) {
-      if (password === confirmPassword) {
-        const userData = {
-          fullName,
-          ownerID,
-          pharmacyName,
-          licenseNumber,
-          pharmacyLocation,
-          phoneNumber,
-          email,
-          password,
-          confirmPassword,
-        };
-        const signupResult = await axios.post('/auth/signup', userData);
-        console.log(signupResult);
-        // check the signup result and the json message
+    try {
+      if (
+        fullName
+        && ownerID
+        && pharmacyName
+        && licenseNumber
+        && pharmacyLocation
+        && phoneNumber
+        && email
+        && password
+      ) {
+        if (password === confirmPassword) {
+          const userData = {
+            owner_name: fullName,
+            owner_id: ownerID,
+            name: pharmacyName,
+            license_number: licenseNumber,
+            location: pharmacyLocation,
+            phone: phoneNumber,
+            email,
+            password,
+            confirmPassword,
+          };
+
+          await axios.post('/auth/signup', userData);
+        } else throw new Error('Password and confirm password have to be matched');
       } else {
-        swal('Password and confirm password have to be matched');
+        throw new Error(
+          'In order to sign up, all of these inputs have to be filled',
+        );
       }
-    } else {
-      swal('In order to sign up, all of these inputs have to be filled');
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        swal(err.response?.data?.msg);
+      } else if (err instanceof Error) {
+        swal(err.message);
+      }
     }
   };
 

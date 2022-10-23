@@ -6,6 +6,7 @@ import {
   ProductPharmacy as productsPharmaciesModel,
   ProductsRequest as productsRequestsModel,
   SalesHistory as salesHistoryModel,
+  admin as adminModel,
 } from '../../models';
 
 import {
@@ -15,6 +16,7 @@ import {
   productsPharmacies,
   productsRequests,
   salesHistory,
+  admin,
 } from '.';
 
 const buildSeeds = async () => {
@@ -25,8 +27,8 @@ const buildSeeds = async () => {
   await productsPharmaciesModel.bulkCreate(productsPharmacies);
   await productsRequestsModel.bulkCreate(productsRequests);
   await salesHistoryModel.bulkCreate(salesHistory);
+  await adminModel.bulkCreate(admin);
 };
-
-buildSeeds();
+if (process.env.NODE_ENV === 'development') { buildSeeds(); }
 
 export default buildSeeds;

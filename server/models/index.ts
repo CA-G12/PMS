@@ -5,6 +5,7 @@ import Product from './product';
 import ProductsRequest from './productsRequest';
 import SalesHistory from './salesHistory';
 import ProductPharmacy from './productPharmacy';
+import admin from './admin';
 
 Pharmacy.hasMany(ProductPharmacy, { foreignKey: 'pharmacy_id' });
 ProductPharmacy.belongsTo(Pharmacy);
@@ -34,5 +35,6 @@ export {
   ProductPharmacy,
   SalesHistory,
   ProductsRequest,
+  admin,
   sequelize,
 };

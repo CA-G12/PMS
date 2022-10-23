@@ -14,17 +14,27 @@ const Login: React.FC = () => {
   type sendUserDataType = () => void;
 
   const sendUserData: sendUserDataType = async () => {
-    if (email && password) {
-      const userData = {
-        email,
-        password,
-      };
-      const loginResult = await axios.post('/auth/login', userData);
-      if (loginResult.data.message !== 'successful') {
-        swal('email or password is invalid');
+    try {
+      if (email && password) {
+        const userData = {
+          email,
+          password,
+        };
+        const loginResult = await axios.post('/auth/login', userData);
+        if (loginResult.data.message !== 'successful') {
+          throw new Error('email or password is invalid');
+        }
+      } else {
+        throw new Error(
+          'In order to login, all of these inputs have to be filled',
+        );
       }
-    } else {
-      swal('In order to login, all of these inputs have to be filled');
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        swal(err.response?.data?.msg);
+      } else if (err instanceof Error) {
+        swal(err.message);
+      }
     }
   };
 

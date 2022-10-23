@@ -11,8 +11,7 @@ const updatePharmacyStatusId = async (req:Request, res:Response, next:NextFuncti
     await pharmacyStatus(+pharmacyId, status);
     res.json({ msg: 'Updated Successfully' });
   } catch (err : any) {
-    if (err.name === 'ValidationError') next(new CustomError(400, 'invalid input'));
-    else next();
+    next(err);
   }
 };
 export default updatePharmacyStatusId;

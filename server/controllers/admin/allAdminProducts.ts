@@ -9,8 +9,7 @@ const getAllProductsAdmin = async (req:Request, res:Response, next:NextFunction)
       data,
     });
   } catch (err:any) {
-    if (err) next(new CustomError(400, 'No Products'));
-    else next(err);
+    next(err);
   }
 };
 export default getAllProductsAdmin;

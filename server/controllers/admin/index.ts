@@ -1,3 +1,7 @@
+import getAdminOverview from './overview';
 import requestStatus from './requestStatus';
 
-export default requestStatus;
+export {
+  getAdminOverview,
+  requestStatus,
+};

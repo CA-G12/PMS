@@ -8,9 +8,7 @@ import ErrorMiddleware from './middlewares/Error';
 require('env2')('.env');
 
 const app = express();
-const { NODE_ENV, PORT } = process.env;
-
-app.set('port', PORT || 8070);
+const { NODE_ENV } = process.env;
 
 app.use([
   compression(),
@@ -27,7 +25,6 @@ if (NODE_ENV === 'production') {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }
-
 app.use(router);
 app.use(ErrorMiddleware);
 

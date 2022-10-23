@@ -16,7 +16,6 @@ app.use([
   express.urlencoded({ extended: false }),
   express.json(),
 ]);
-
 app.set('port', process.env.PORT || 8080);
 
 if (NODE_ENV === 'production') {

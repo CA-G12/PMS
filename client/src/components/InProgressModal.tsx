@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   Box, Button, Typography, Modal,
 } from '@mui/material';
-// eslint-disable-next-line import/no-unresolved
 import 'typeface-mulish';
 import './style.css';
 

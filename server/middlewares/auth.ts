@@ -1,4 +1,4 @@
-import { Response, NextFunction } from 'express';
+import { Response, NextFunction, Request } from 'express';
 import { CustomError, verifyToken } from '../utils';
 
 const auth = async (req: any, res: Response, next: NextFunction) => {
@@ -7,6 +7,7 @@ const auth = async (req: any, res: Response, next: NextFunction) => {
   try {
     const user = await verifyToken(token);
     req.user = user;
+    next();
   } catch (err) {
     next(err);
   }

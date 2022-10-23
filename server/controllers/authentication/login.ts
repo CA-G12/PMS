@@ -2,7 +2,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { compare } from 'bcryptjs';
 
-import loginSchema from '../../validation';
+import { loginSchema } from '../../validation';
 import { loginQuery, adminLoginQuery } from '../../queries';
 import { generateToken, CustomError } from '../../utils';
 

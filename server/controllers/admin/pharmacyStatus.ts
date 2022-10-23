@@ -11,6 +11,7 @@ const updatePharmacyStatusId = async (req:Request, res:Response, next:NextFuncti
     await pharmacyStatus(+pharmacyId, status);
     res.json({ msg: 'Updated Successfully' });
   } catch (err : any) {
+    if (err) next(new CustomError(400, 'didnt update'));
     next(err);
   }
 };

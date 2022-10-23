@@ -1,3 +1,11 @@
+import pharmacyStatusSchema from "./pharmacyStatusSchema";
 import loginSchema from './loginSchema';
+import signupSchema from "./signupSchema";
+import requestStatusSchema from "./requestStatusSchema";
 
-export default loginSchema;
+export  {
+    pharmacyStatusSchema,
+    loginSchema,
+    signupSchema,
+    requestStatusSchema
+};

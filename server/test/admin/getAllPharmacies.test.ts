@@ -23,7 +23,7 @@ describe('Testing to get all Pharmacies', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.statusCode).toBe(200);
-        expect(res.body.data.count).toBe(6);
+        expect(res.body.data.count).toBe(14);
         return done();
       });
   });
@@ -35,8 +35,8 @@ describe('Testing to get all Pharmacies', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.statusCode).toBe(200);
-        expect(res.body.data.count).toBe(0);
-        expect(res.body.data.rows.length).toBe(0);
+        expect(res.body.data.count).toBe(4);
+        expect(res.body.data.rows.length).toBe(1);
         return done();
       });
   });
@@ -48,7 +48,7 @@ describe('Testing to get all Pharmacies', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.statusCode).toBe(200);
-        expect(res.body.data.count).toBe(4);
+        expect(res.body.data.count).toBe(15);
         return done();
       });
   });

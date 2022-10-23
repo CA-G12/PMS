@@ -1,6 +1,6 @@
 import { Pharmacy } from '../../models';
 
-const getAllPharmaciesGeneral = async (status: any, page: any) =>{
+const getAllPharmaciesGeneral = async (status: string, page: number) =>{
   let limit =3 ;
   if(status){
     return Pharmacy.findAndCountAll({

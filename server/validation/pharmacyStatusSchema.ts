@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-const pharmacyStatusSchema = (status:any, page:number) => {
+const pharmacyStatusSchema = (status:string, page:number) => {
   const schema = Joi.object({
     status: Joi.string().valid("Opened", "Pending", "Rejected", "Closed"),
     page: Joi.number().required(),

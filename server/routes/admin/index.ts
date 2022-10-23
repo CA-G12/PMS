@@ -5,7 +5,7 @@ import adminAuth from '../../middlewares/adminAuth';
 
 const adminRouter = Router();
 
-adminRouter.get('/admin/pharmacies', auth, adminAuth, getAllPharmacies);
+adminRouter.get('/admin/pharmacies',auth, adminAuth, getAllPharmacies);
 adminRouter.put('/admin/requests/:requestId', auth, adminAuth, requestStatus);
 
 export default adminRouter;

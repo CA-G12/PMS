@@ -1,8 +1,15 @@
 import React from 'react';
-import { Box, IconButton, Toolbar, Typography, AppBar, Menu, MenuItem } from '@mui/material';
+import {
+  Box,
+  IconButton,
+  Toolbar,
+  Typography,
+  AppBar,
+  Menu,
+  MenuItem,
+} from '@mui/material';
 import { AccountCircle, Notifications } from '@mui/icons-material';
-import MenuIcon from '@mui/icons-material/Menu'
-
+import MenuIcon from '@mui/icons-material/Menu';
 
 type NavBarProps = {
   handleDrawerToggle: () => void;
@@ -20,7 +27,7 @@ const NavBar: React.FC<NavBarProps> = ({ handleDrawerToggle }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
+
   return (
     <AppBar
       position="fixed"
@@ -43,14 +50,21 @@ const NavBar: React.FC<NavBarProps> = ({ handleDrawerToggle }) => {
         <Typography variant="h6" noWrap component="div">
           Dashboard
         </Typography>
-        <Box sx={{ display: 'flex', gap: '13px', color: 'grey !important', alignItems:'center' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            gap: '13px',
+            color: 'grey !important',
+            alignItems: 'center',
+          }}
+        >
           <Notifications fontSize="large" />
-          <IconButton 
+          <IconButton
             aria-controls={open ? 'basic-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
-            onClick={handleClick}>
-
+            onClick={handleClick}
+          >
             <AccountCircle fontSize="large" />
           </IconButton>
           <Menu
@@ -67,7 +81,7 @@ const NavBar: React.FC<NavBarProps> = ({ handleDrawerToggle }) => {
         </Box>
       </Toolbar>
     </AppBar>
-  )
+  );
 };
 
 export default NavBar;

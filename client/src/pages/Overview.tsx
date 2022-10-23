@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography } from '@mui/material';
 
 const Overview = () => {
   const drawerWidth = 240;
@@ -8,7 +8,7 @@ const Overview = () => {
       sx={{
         flexGrow: 1,
         p: 3,
-        width: { sm: `calc(100% - ${drawerWidth}px)`, md: "" },
+        width: { sm: `calc(100% - ${drawerWidth}px)`, md: '' },
       }}
     >
       <Typography paragraph>Overview</Typography>

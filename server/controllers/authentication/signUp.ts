@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { Request, Response, NextFunction } from 'express';
 import { hash } from 'bcryptjs';
 import {
@@ -41,7 +42,6 @@ const signUp = async (req: Request, res: Response, next:NextFunction) => {
     }
     return next(err);
   }
-  return true;
 };
 
 export default signUp;

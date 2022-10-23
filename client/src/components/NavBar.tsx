@@ -1,4 +1,7 @@
 import React from 'react';
+import axios from 'axios';
+import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   IconButton,
@@ -19,12 +22,22 @@ const NavBar: React.FC<NavBarProps> = ({ handleDrawerToggle }) => {
   const drawerWidth = 240;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+
+  const handleClose = async () => {
+    try{
+      const logOutResult = await axios.get('/logout');
+      if(logOutResult){
+        navigate('/')
+      }
+    }catch(err){
+      swal('Something went wrong when trying to log out');
+    }
     setAnchorEl(null);
   };
 

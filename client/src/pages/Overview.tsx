@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Box, Typography } from "@mui/material";
-=======
 import { Box, Typography } from '@mui/material';
->>>>>>> b5959ddd9b16bf0ef5af0b9c23c0f6cc05a70898
 
 const Overview = () => {
   const drawerWidth = 240;

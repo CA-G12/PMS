@@ -1,6 +1,7 @@
 import auth from './auth';
+import pharmacyAuth from './pharmacyAuth';
 
 export {
-  // eslint-disable-next-line import/prefer-default-export
+  pharmacyAuth,
   auth,
 };

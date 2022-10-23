@@ -1,5 +1,5 @@
 import { Response, NextFunction } from 'express';
-import { CustomError } from '.';
+import { CustomError } from '../utils';
 import { UserRequest } from './interfaces';
 
 const pharmacyAuth = async (req: UserRequest, res: Response, next: NextFunction) => {

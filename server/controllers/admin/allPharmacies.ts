@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction, RequestHandler } from "express";
 import { getAllPharmaciesGeneral } from '../../queries/admin';
 import { pharmacyStatus } from "../../middlewares/interfaces";
-import  pharmacyStatusSchema  from '../../validation'
+import { pharmacyStatusSchema }  from '../../validation'
 
 
 const getAllPharmacies = async (req: Request<pharmacyStatus> | Request, res:Response, next:NextFunction)=>{

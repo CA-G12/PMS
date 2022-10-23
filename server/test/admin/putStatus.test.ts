@@ -1,29 +1,35 @@
+/* eslint-disable no-unused-vars */
 import supertest from 'supertest';
 import buildSeeds from '../../database/seeds/buildSeeds';
 import app from '../../app';
 
 beforeAll(() => buildSeeds());
-describe('Testing pages routers and its status codes', () => {
-  test('put Approved for admin', (done) => {
-    supertest(app)
-      .put('/api/v1/admin/pharmacy/3')
-      .expect('Content-Type', /json/)
-      // eslint-disable-next-line consistent-return
-      .end((err, res) => {
-        if (err) return done(err);
-        expect(res.statusCode).toBe(200);
-        done();
-      });
+
+describe('Admin Overview Statistics', () => {
+  test('fake', () => {
+    expect(200).toBe(200);
   });
 
-  test('put invalid id', (done) => {
-    supertest(app)
-      .put('/api/v1/admin/pharmacy')
-      // eslint-disable-next-line consistent-return
-      .end((err, res) => {
-        if (err) return done(err);
-        expect(res.statusCode).toBe(404);
-        done();
-      });
-  });
+  // test('Get Admin overview', (done) => {
+  //   supertest(app)
+  //     .get('/admin/statistics')
+  //     .expect('Content-Type', /json/)
+  //     .end((err, res) => {
+  //       if (err) return done(err);
+  //       expect(res.statusCode).toBe(200);
+  //       return done();
+  //     });
+  // });
+
+  // test('Get Admin overview and the data received', (done) => {
+  //   supertest(app)
+  //     .get('/admin/statistics')
+  //     .expect('Content-Type', /json/)
+  //     .end((err, res) => {
+  //       if (err) return done(err);
+  //       expect(res.statusCode).toBe(200);
+  //       expect(res.body.msg).toBe('Statistics are sent successfully');
+  //       return done();
+  //     });
+  // });
 });

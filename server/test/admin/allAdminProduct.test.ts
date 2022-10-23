@@ -9,7 +9,7 @@ beforeAll(() => buildSeeds());
 describe('Testing pages routers for all admin products ', () => {
   test('get all product admin  for admin', (done) => {
     supertest(app)
-      .get('/api/v1/admin/products')
+      .get('/admin/products')
       .expect('Content-Type', /json/)
       .end((err, res) => {
         if (err) return done(err);

@@ -1,9 +1,9 @@
 import auth from './auth';
-import ErrorMiddleware from './Error';
+import pharmacyAuth from './pharmacyAuth';
 import adminAuth from './adminAuth';
 
 export {
+  pharmacyAuth,
   auth,
-  ErrorMiddleware,
   adminAuth,
 };

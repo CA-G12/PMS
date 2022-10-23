@@ -1,8 +1,8 @@
 import Router from 'express';
 import { requestStatus } from '../../controllers';
 
-const router = Router();
+const requestStatusRouter = Router();
 
-router.put('/admin/requests/:requestId', requestStatus);
+requestStatusRouter.put('/admin/requests/:requestId', requestStatus);
 
-export default router;
+export default requestStatusRouter;

@@ -1,5 +1,5 @@
 import { Response, NextFunction } from 'express';
-import CustomError from '../utils/CustomError';
+import { CustomError } from '../utils';
 import { UserRequest } from './interfaces';
 
 const adminAuth = async (req: UserRequest['user'], res: Response, next: NextFunction) => {

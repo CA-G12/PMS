@@ -1,3 +1,9 @@
+import getAdminOverview from './overview';
 import requestStatus from './requestStatus';
+import getAllPharmacies from './allPharmacies';
 
-export default requestStatus;
+export {
+  getAllPharmacies,
+  getAdminOverview,
+  requestStatus
+};

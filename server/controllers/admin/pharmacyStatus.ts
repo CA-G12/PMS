@@ -3,7 +3,7 @@ import { pharmacyStatus } from '../../queries';
 import { CustomError } from '../../utils';
 import pharmacyStatusval from '../../validation/pharmasyStatus';
 
-const getPharmacyStatusId = async (req:Request, res:Response, next:NextFunction) => {
+const updatePharmacyStatusId = async (req:Request, res:Response, next:NextFunction) => {
   const { pharmacyId } = req.params;
   const { status } = req.body;
   try {
@@ -15,4 +15,4 @@ const getPharmacyStatusId = async (req:Request, res:Response, next:NextFunction)
     else next();
   }
 };
-export default getPharmacyStatusId;
+export default updatePharmacyStatusId;

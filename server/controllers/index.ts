@@ -2,14 +2,14 @@ import {
   checkAuthData, logout, login,
 } from './authentication';
 import {
-  getAllProductsAdmin, getPharmacyStatusId, getAdminOverview,
+  getAllProductsAdmin, updatePharmacyStatusId, getAdminOverview,
   requestStatus,
 } from './admin';
 
 export {
   checkAuthData,
   getAllProductsAdmin,
-  getPharmacyStatusId,
+  updatePharmacyStatusId,
   logout,
   login,
   requestStatus,

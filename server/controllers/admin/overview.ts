@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response} from 'express';
 import {
   pharmacyCount,
   productCount,
@@ -10,7 +9,7 @@ import {
   expiredAndInStockProductsCount,
 } from '../../queries/admin/overview';
 
-const getAdminOverview = async (req:Request, res:Response, next:NextFunction) => {
+const getAdminOverview = async (req:Request, res:Response) => {
   const data = await Promise.all([
     pharmacyCount(),
     productCount(),

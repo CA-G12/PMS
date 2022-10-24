@@ -1,10 +1,10 @@
 import { Request } from 'express';
 
  interface UserRequest extends Request{
-    user: { 
+    user: {
         id:number,
-        role:string 
-    } 
+        role:string
+    }
 }
 
 export default UserRequest;

@@ -137,7 +137,9 @@ const AllRequests = () => {
                 <TableCell align="left">
                   <LongMenu
                     id={row.id}
-                    setStatus={(status, PharmacyId) => setStatus(status, PharmacyId)}
+                    setStatus={(status, PharmacyId) =>
+                      setStatus(status, PharmacyId)
+                    }
                   />
                 </TableCell>
               </TableRow>

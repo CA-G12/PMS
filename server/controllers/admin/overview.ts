@@ -8,9 +8,10 @@ import {
   openedApplicationsCount,
   closedApplicationsCount,
   expiredAndInStockProductsCount,
+  expiredAndInStockProductsCountOrder,
 } from '../../queries/admin/overview';
 
-const getAdminOverview = async (req:Request, res:Response) => {
+const getAdminOverview = async (req: Request, res: Response) => {
   const data = await Promise.all([
     pharmacyCount(),
     productCount(),
@@ -19,6 +20,7 @@ const getAdminOverview = async (req:Request, res:Response) => {
     openedApplicationsCount(),
     closedApplicationsCount(),
     expiredAndInStockProductsCount(),
+    expiredAndInStockProductsCountOrder(),
   ]);
 
   res.json({
@@ -30,6 +32,7 @@ const getAdminOverview = async (req:Request, res:Response) => {
       openedApplicationsNumber: data[4],
       closedApplicationsNumber: data[5],
       allKindProductsCount: data[6],
+      allKindProductsCountOrder: data[7],
     },
     msg: 'Statistics are sent successfully',
   });

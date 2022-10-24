@@ -18,7 +18,8 @@ const DashboardLayout: React.FC = (props: Props) => {
     setMobileOpen(!mobileOpen);
   };
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: 'flex' }}>

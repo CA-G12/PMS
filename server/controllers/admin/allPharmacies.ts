@@ -5,8 +5,11 @@ import { getAllPharmaciesGeneral } from '../../queries/admin';
 import { pharmacyStatus } from '../../middlewares/interfaces';
 import { pharmacyStatusSchema } from '../../validation';
 
-const getAllPharmacies = async (req: Request<pharmacyStatus> | Request, res:Response
-                                , next:NextFunction) => {
+const getAllPharmacies = async (
+  req: Request<pharmacyStatus> | Request,
+  res:Response,
+  next:NextFunction,
+) => {
   const { status, page = 1 } = req.query;
   try {
     await pharmacyStatusSchema(status as string, +(page));

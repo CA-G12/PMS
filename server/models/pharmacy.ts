@@ -63,15 +63,15 @@ Pharmacy.init(
     },
     description: {
       type: DataTypes.TEXT,
-      defaultValue: 'Pharmacies licensed by the Ministry of Health All of their employees',
+      allowNull: false,
     },
     license_number: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     status: {
-      type: DataTypes.ENUM('Opened', 'Closed', 'Rejected', 'Pending'),
-      defaultValue: 'Pending',
+      type: DataTypes.ENUM('Opened', 'Closed', 'Rejected'),
+      allowNull: false,
     },
     owner_id: {
       type: DataTypes.INTEGER,
@@ -83,7 +83,7 @@ Pharmacy.init(
     },
     owner_img: {
       type: DataTypes.TEXT,
-      defaultValue: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
+      allowNull: false,
     },
   },
   { sequelize },

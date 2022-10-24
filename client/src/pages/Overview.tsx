@@ -1,20 +1,30 @@
 import { CChart } from "@coreui/react-chartjs";
 import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 import axios from "axios";
+import { string } from "joi";
 import { useEffect, useState } from "react";
 import 'typeface-mulish';
 import chart from '../assets/chart1.png';
 
 const Overview = () => {
   const drawerWidth = 240;
-  const [productsQuantity, setProductsQuantity] = useState({});
+  const [productsQuantity, setProductsQuantity] = useState([]);
+  const [productsQuantityOrder, setProductsQuantityOrder] = useState([]);
+  const [data, setData] = useState([]);
+  let inStock: number[] = [];
+  let expired: number[] = [];
+  let inStockOrder: number[] = [];
+  let expiredOrder: number[] = [];
+
   useEffect(() => {
     const controller = new AbortController();
     const getData = async () => {
       try {
         const { data: { data } } = await axios.get('/admin/statistics', { signal: controller.signal })
-        setProductsQuantity(data)
-        console.log('statistics: ', data);
+        setProductsQuantity(data.allKindProductsCount.rows);
+        setProductsQuantityOrder(data.allKindProductsCountOrder.rows);
+        setData(data)
+        console.log('data: ', data);
       } catch (err) {
         console.log(err)
       }
@@ -25,6 +35,17 @@ const Overview = () => {
       controller.abort();
     }
   }, [])
+
+  productsQuantity.map(({ expired_quantity, in_stock_quantity }) => {
+    inStock.push(in_stock_quantity);
+    expired.push(expired_quantity)
+  });
+
+  productsQuantityOrder.map(({ expired_quantity, in_stock_quantity }) => {
+    inStockOrder.push(in_stock_quantity);
+    expiredOrder.push(expired_quantity)
+  })
+
   return (
     <Box
       component="main"
@@ -54,7 +75,7 @@ const Overview = () => {
                 Pharmacies
               </Typography>
               <Typography fontFamily='Mulish' variant="h6" marginTop="0px" fontWeight="bold">
-                1,350
+                {data?.pharmaciesNumber}
               </Typography>
             </Box>
             <List>
@@ -71,7 +92,7 @@ const Overview = () => {
                 ></span>
                 <ListItemText sx={{ fontSize: '13px' }}>
                   <Typography paragraph sx={{ fontWeight: '700', fontSize: '.8rem', marginBottom: '0' }}>
-                    30% Licensed
+                    {((+(data.openedApplicationsNumber)/ +(data.pharmaciesNumber))*100).toFixed(1)}% Licensed
                   </Typography>
                 </ListItemText>
               </ListItem>
@@ -88,7 +109,7 @@ const Overview = () => {
                 ></span>
                 <ListItemText sx={{ fontSize: '13px' }}>
                   <Typography paragraph sx={{ fontWeight: '700', fontSize: '.8rem', marginBottom: '0' }}>
-                    40% Pending
+                  {((+(data.pendingApplicationsNumber)/ +(data.pharmaciesNumber))*100).toFixed(1)}% Pending
                   </Typography>
                 </ListItemText>
               </ListItem>
@@ -105,7 +126,7 @@ const Overview = () => {
                 ></span>
                 <ListItemText sx={{ fontSize: '13px' }}>
                   <Typography paragraph sx={{ fontWeight: '700', fontSize: '.8rem', marginBottom: '0' }}>
-                    20% Rejected
+                  {((+(data.closedApplicationsNumber)/ +(data.pharmaciesNumber))*100).toFixed(1)}% Rejected
                   </Typography>
                 </ListItemText>
               </ListItem>
@@ -118,7 +139,7 @@ const Overview = () => {
                 Products
               </Typography>
               <Typography fontFamily='Mulish' variant="h6" marginTop="0px" fontWeight="bold">
-                1,350
+              {data?.productsNumber}
               </Typography>
             </Box>
             <List>
@@ -135,7 +156,7 @@ const Overview = () => {
                 ></span>
                 <ListItemText sx={{ fontSize: '13px' }}>
                   <Typography paragraph sx={{ fontWeight: '700', fontSize: '.8rem', marginBottom: '0' }}>
-                    30% In Pharmacies
+                    {data.productsNumber} In Pharmacies
                   </Typography>
                 </ListItemText>
               </ListItem>
@@ -152,7 +173,7 @@ const Overview = () => {
                 ></span>
                 <ListItemText sx={{ fontSize: '13px' }}>
                   <Typography paragraph sx={{ fontWeight: '700', fontSize: '.8rem', marginBottom: '0' }}>
-                    40% In Stock
+                    45% In Stock
                   </Typography>
                 </ListItemText>
               </ListItem>
@@ -223,7 +244,7 @@ const Overview = () => {
             }}
           >
             <Typography fontFamily='Mulish' fontWeight="bold" paragraph marginBottom="0px" fontSize='1.2rem' sx={{ color: 'grey' }}>
-              Products
+              Applications
             </Typography>
             <Typography fontFamily='Mulish' fontWeight="bold" paragraph marginBottom="0px" fontSize='1.5rem' sx={{ color: 'grey' }} marginTop='20px'>
               598
@@ -243,7 +264,7 @@ const Overview = () => {
             }}
           >
             <Typography fontFamily='Mulish' fontWeight="bold" paragraph marginBottom="0px" fontSize='1.2rem' sx={{ color: 'grey' }}>
-              Products
+              Pharmacies
             </Typography>
             <Typography fontFamily='Mulish' fontWeight="bold" paragraph marginBottom="0px" fontSize='1.5rem' sx={{ color: 'grey' }} marginTop='20px'>
               250
@@ -263,7 +284,7 @@ const Overview = () => {
             }}
           >
             <Typography fontFamily='Mulish' fontWeight="bold" paragraph marginBottom="0px" fontSize='1.2rem' sx={{ color: 'grey' }}>
-              Products
+              Requests
             </Typography>
             <Typography fontFamily='Mulish' fontWeight="bold" paragraph marginBottom="0px" fontSize='1.5rem' sx={{ color: 'grey' }} marginTop='20px'>
               154
@@ -272,11 +293,9 @@ const Overview = () => {
         </Box>
       </Box>
 
-      <Box>
-        <Box sx={{ backgroundColor: 'white', borderRadius: '10px' }}>
-
-        </Box>
-      </Box>
+      <Typography fontWeight="bold" paragraph marginBottom="0px" fontFamily='Mulish' className='chart' marginTop='70px' color='#706c6c'>
+        Chart for Most used Products Quantity
+      </Typography>
 
       <CChart
         type="line"
@@ -285,19 +304,47 @@ const Overview = () => {
           datasets: [
             {
               label: "In Stock Quantity",
-              backgroundColor: "rgba(220, 220, 220, 0.2)",
-              borderColor: "rgba(220, 220, 220, 1)",
+              backgroundColor: "#58ffeb",
+              borderColor: "#58ffeb",
               pointBackgroundColor: "rgba(220, 220, 220, 1)",
-              pointBorderColor: "#fff",
-              data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
+              pointBorderColor: "#58ffeb",
+              data: inStock
             },
             {
               label: "Expired Quantity",
-              backgroundColor: "rgba(151, 187, 205, 0.2)",
-              borderColor: "rgba(151, 187, 205, 1)",
+              backgroundColor: "#4d96be",
+              borderColor: "#4d96be",
               pointBackgroundColor: "rgba(151, 187, 205, 1)",
-              pointBorderColor: "#fff",
-              data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
+              pointBorderColor: "#4d96be",
+              data: expired
+            },
+          ],
+        }}
+      />
+
+      <Typography fontWeight="bold" paragraph marginBottom="0px" fontFamily='Mulish' className='chart' marginTop='240px' color='#706c6c'>
+        Chart for Least used Products Quantity
+      </Typography>
+      <CChart
+        type="line"
+        data={{
+          labels: ["Product A", "Product B", "Product C", "Product D", "Product E", "Product F", "Product J"],
+          datasets: [
+            {
+              label: "In Stock Quantity",
+              backgroundColor: "#58ffeb",
+              borderColor: "#58ffeb",
+              pointBackgroundColor: "rgba(220, 220, 220, 1)",
+              pointBorderColor: "#58ffeb",
+              data: inStockOrder
+            },
+            {
+              label: "Expired Quantity",
+              backgroundColor: "#4d96be",
+              borderColor: "#4d96be",
+              pointBackgroundColor: "rgba(151, 187, 205, 1)",
+              pointBorderColor: "#4d96be",
+              data: expiredOrder
             },
           ],
         }}

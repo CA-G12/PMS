@@ -62,6 +62,37 @@ h6{
     color: grey;
 }
 
+.chart-wrapper {
+    width: 961px;
+    margin-top: 30px;
+    margin-bottom:80px
+}
+
+table {
+    margin-left: 248px;
+    margin-top: -240px;
+}
+
+canvas {
+    background-color: white;
+    display: block;
+    box-sizing: border-box;
+    height: 400px;
+    width: 800px;
+    padding: 20px;
+    border-radius: 7px;
+    color: white;
+    margin-left: 13px;
+}
+
+.chartjs-tooltip {
+    margin-top: -263px !important;
+    margin-left: 250px !important;
+}
+
+.chart{
+    text-align: center;
+}
 @media (min-width: 600px){
     main.MuiBox-root.css-hq9khu {
         width: calc(90% - 216px);

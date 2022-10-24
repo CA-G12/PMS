@@ -1,7 +1,10 @@
-import { Box, Typography } from '@mui/material';
+import {
+  Box, Typography, Pagination, CircularProgress,
+} from '@mui/material';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ApplicationCard from './ApplicationCard';
+import empty from '../../assets/empty.webp';
 
 type row = {
   id: number;
@@ -22,10 +25,16 @@ type row = {
 
 const ApplicationSection = () => {
   const [cards, setCards] = useState<row[]>([] as row[]);
+  const [pageNum, setPageNum] = useState(1);
+  const [numOfApplications, setNumOfApplications] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const getData = async () => {
-    const { data } = await axios.get('/admin/pharmacies?status=Pending');
-    setCards(data.data.rows);
+    setLoading(true);
+    const { data: { data: { rows, count } } } = await axios.get(`/admin/pharmacies?page=${10}&status=Pending`);
+    setCards(rows);
+    setNumOfApplications(count);
+    setLoading(false);
   };
 
   const setStatus = async (status: string, id: number) => {
@@ -37,20 +46,33 @@ const ApplicationSection = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [pageNum]);
 
   const getAllTasksApplications = (arr: Array<row>) => arr.map((application) => (
     <ApplicationCard
       card={{
-        ownerName: application.owner_name,
-        ownerId: application.owner_id,
-        licenseNumber: application.license_number,
+        ownerName: application.ownerName,
+        ownerId: application.ownerId,
+        licenseNumber: application.licenseNumber,
         pharmacyName: application.name,
       }}
       setApproved={() => setStatus('Approved', application.id)}
       setRejected={() => setStatus('Rejected', application.id)}
     />
   ));
+  if (loading) {
+    return (
+      <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
+        <CircularProgress />
+      </Box>
+    );
+  }
+  if (cards.length === 0) {
+    return (
+      <Box sx={{ width: '100%', height: '100%', margin: 'auto 7rem' }}><img src={empty} alt="Logo" /></Box>
+
+    );
+  }
   return (
     <Box sx={{ padding: '2rem 8%', width: '100%' }}>
       <Typography
@@ -61,6 +83,16 @@ const ApplicationSection = () => {
         Applications
       </Typography>
       {getAllTasksApplications(cards)}
+      <Pagination
+        count={Math.ceil(numOfApplications / 3)}
+        color="primary"
+        page={pageNum}
+        onChange={
+          (event: React.ChangeEvent<unknown>, page: number) => {
+            setPageNum(page);
+          }
+        }
+      />
     </Box>
   );
 };

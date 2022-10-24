@@ -29,6 +29,8 @@ const buildSeeds = async () => {
   await salesHistoryModel.bulkCreate(salesHistory);
   await adminModel.bulkCreate(admin);
 };
-if (process.env.NODE_ENV === 'development') { buildSeeds(); }
+if (process.env.NODE_ENV === 'development') {
+  buildSeeds();
+}
 
 export default buildSeeds;

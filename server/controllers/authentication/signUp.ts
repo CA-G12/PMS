@@ -1,10 +1,16 @@
+/* eslint-disable consistent-return */
 import { Request, Response, NextFunction } from 'express';
 import { hash } from 'bcryptjs';
-import { findPharmacy, findPharmacyEmail, findAdminEmail, signup } from '../../queries/authentication';
-import signupSchema from '../../validation/signupSchema';
+import {
+  findPharmacy,
+  findPharmacyEmail,
+  findAdminEmail,
+  signup,
+} from '../../queries/authentication';
+import { signupSchema } from '../../validation';
 import { generateToken, CustomError } from '../../utils';
 
-const signUp = async (req: Request, res: Response, next:NextFunction) => {
+const signUp = async (req: Request, res: Response, next: NextFunction) => {
   try {
     await signupSchema(req.body);
 
@@ -15,7 +21,10 @@ const signUp = async (req: Request, res: Response, next:NextFunction) => {
 
     const adminExisted = await findAdminEmail(req.body.email);
     if (adminExisted) {
-      throw new CustomError(400, 'Try again, You can not sign up with this email');
+      throw new CustomError(
+        400,
+        'Try again, You can not sign up with this email'
+      );
     }
 
     const emailExisted = await findPharmacyEmail(req.body.email);
@@ -32,13 +41,15 @@ const signUp = async (req: Request, res: Response, next:NextFunction) => {
       owner_img: pharamcyData.owner_img,
     });
 
-    return res.status(201).cookie('token', token).json({ data: pharamcyData, msg: 'You have signed up successfully' });
+    return res
+      .status(201)
+      .cookie('token', token)
+      .json({ data: pharamcyData, msg: 'You have signed up successfully' });
   } catch (err) {
     if (err.name === 'ValidationError') {
-      next(new CustomError(400, 'Something went wrong, sign up again'));
-    } else {
-      next(err);
+      return next(new CustomError(400, 'Something went wrong, sign up again'));
     }
+    return next(err);
   }
 };
 

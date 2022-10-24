@@ -1,9 +1,8 @@
-import { Response, NextFunction } from 'express';
-import { CustomError } from '.';
-import { UserRequest } from './interfaces';
+import { Response, NextFunction, Request } from 'express';
+import { CustomError } from '../utils';
 
-const adminAuth = async (req: UserRequest['user'], res: Response, next: NextFunction) => {
-  const { role } = req;
+const adminAuth = async (req: any , res: Response, next: NextFunction) => {
+  const { role } = req?.user;
 
   if (role === 'admin') {
     next();

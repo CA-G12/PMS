@@ -1,3 +1,8 @@
-import requestStatusQuery from './admin';
+import { loginQuery, adminLoginQuery } from './authentication';
+import { requestStatusQuery } from './admin';
 
-export default requestStatusQuery;
+export {
+  loginQuery,
+  adminLoginQuery,
+  requestStatusQuery,
+};

@@ -1,3 +1,6 @@
+import loginQuery from './login';
+import adminLoginQuery from './adminLogin';
+
 import { Pharmacy, admin } from '../../models';
 
 const findPharmacy = async (licenceNumber:number) => Pharmacy.findOne({
@@ -23,5 +26,5 @@ const signup = async (data:Object, hashed:string) => Pharmacy.create({
 });
 
 export {
-  findPharmacy, findPharmacyEmail, findAdminEmail, signup,
+  findPharmacy, findPharmacyEmail, findAdminEmail, signup, loginQuery, adminLoginQuery,
 };

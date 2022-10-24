@@ -1,7 +1,14 @@
+import {
+  getProductsAdmin,
+  pharmacyStatus,
+  requestStatusQuery,
+  requestQuery,
+} from './admin';
 import { loginQuery, adminLoginQuery } from './authentication';
-import { requestStatusQuery, requestQuery } from './admin';
 
 export {
+  getProductsAdmin,
+  pharmacyStatus,
   loginQuery,
   adminLoginQuery,
   requestStatusQuery,

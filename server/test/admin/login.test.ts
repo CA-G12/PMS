@@ -15,7 +15,7 @@ describe('login router', () => {
         loginPassword: '123456789aaa',
       })
       .expect('Content-Type', /json/)
-      .end((err:any, res: any) => {
+      .end((err: any, res: any) => {
         if (err) {
           return done(err);
         }
@@ -32,7 +32,7 @@ describe('login router', () => {
         loginPassword: 'adminadmi',
       })
       .expect('Content-Type', /json/)
-      .end((err:any, res: any) => {
+      .end((err: any, res: any) => {
         if (err) {
           return done(err);
         }
@@ -49,7 +49,7 @@ describe('login router', () => {
         loginPassword: 'adminadmin',
       })
       .expect('Content-Type', /json/)
-      .end((err:any, res: any) => {
+      .end((err: any, res: any) => {
         if (err) {
           done(err);
         } else {
@@ -66,7 +66,7 @@ describe('login router', () => {
         loginPassword: 'adm',
       })
       .expect('Content-Type', /json/)
-      .end((err:any, res: any) => {
+      .end((err: any, res: any) => {
         if (err) {
           return done(err);
         }

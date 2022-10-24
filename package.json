@@ -14,7 +14,8 @@
   },
   "pre-commit": [
     "lint",
-    "add"
+    "add",
+    "test"
   ],
   "repository": {
     "type": "git",

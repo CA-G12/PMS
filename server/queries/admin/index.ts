@@ -3,5 +3,5 @@ import getAllPharmaciesGeneral from './allPharmacies';
 
 export {
   getAllPharmaciesGeneral,
-  requestStatusQuery
+  requestStatusQuery,
 };

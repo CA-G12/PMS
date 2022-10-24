@@ -37,7 +37,6 @@ const expiredAndInStockProductsCountOrder = async () => AdminProduct.findAndCoun
   limit:8
 });
 
-
 const requestsCount = async () => ProductsRequest.count();
 
 export {

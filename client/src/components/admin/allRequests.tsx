@@ -10,18 +10,16 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import {
-  Pagination, CircularProgress,
-} from '@mui/material';
+import { Pagination, CircularProgress } from '@mui/material';
 import CustomizedInputBase from '../Extra/Search';
 import LongMenu from '../Extra/Options';
 import image31 from '../../assets/image31.png';
 
 type row = {
   id: number;
-  status:string,
-  Pharmacy:{name:string, },
-  Product:{name:string},
+  status: string;
+  Pharmacy: { name: string };
+  Product: { name: string };
 };
 const fakeData = [
   {
@@ -58,12 +56,16 @@ const AllRequests = () => {
 
   const getData = async () => {
     setLoading(true);
-    const { data: { data: { rows, count } } } = await axios.get(`/admin/requests?numOffSet=${pageNum}`);
+    const {
+      data: {
+        data: { rows, count },
+      },
+    } = await axios.get(`/admin/requests?numOffSet=${pageNum}`);
     setData(rows);
     setNumOfRequests(count);
     setLoading(false);
   };
-  const setStatus = async (status: string, PharmacyId :number) => {
+  const setStatus = async (status: string, PharmacyId: number) => {
     await axios.put(`/admin/requests/${PharmacyId}`, {
       status,
     });
@@ -148,11 +150,9 @@ const AllRequests = () => {
         count={Math.ceil(numRequests / 7)}
         color="primary"
         page={pageNum}
-        onChange={
-          (event: React.ChangeEvent<unknown>, page: number) => {
-            setPageNum(page);
-          }
-        }
+        onChange={(event: React.ChangeEvent<unknown>, page: number) => {
+          setPageNum(page);
+        }}
         sx={{ marginTop: '2rem' }}
       />
     </Box>

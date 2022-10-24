@@ -10,10 +10,10 @@ const ITEM_HEIGHT = 48;
 interface Props {
   id: number;
   // eslint-disable-next-line no-unused-vars
-  setStatus: (status: string, PharmacyId :number) => Promise<void>;
+  setStatus: (status: string, PharmacyId: number) => Promise<void>;
 }
 
-const LongMenu = ({ id, setStatus }:Props) => {
+const LongMenu = ({ id, setStatus }: Props) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {

@@ -1,8 +1,11 @@
 import React from 'react';
 import { Button } from '@mui/material';
-import ButtonComponentType from '../utils';
+import { ButtonComponentType } from '../utils';
 
-const ButtonComponent: React.FC<ButtonComponentType> = ({ text, sendUserData }) => (
+const ButtonComponent: React.FC<ButtonComponentType> = ({
+  text,
+  sendUserData,
+}) => (
   <Button
     sx={{
       backgroundColor: '#83B239',

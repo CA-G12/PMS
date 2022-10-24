@@ -1,5 +1,5 @@
-import { Box, Input, FormLabel } from '@mui/material';
-import React from 'react';
+import { Box, Input, FormLabel } from "@mui/material";
+import React from "react";
 
 type InputFormProps = {
   label: string;
@@ -8,12 +8,12 @@ type InputFormProps = {
 };
 
 const InputForm: React.FC<InputFormProps> = ({ label, state, setState }) => (
-  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+  <Box sx={{ display: "flex", flexDirection: "column" }}>
     <FormLabel
       sx={{
-        fontFamily: 'Mulish',
-        fontWeight: 'bold',
-        color: '#000000a6',
+        fontFamily: "Mulish",
+        fontWeight: "bold",
+        color: "#000000a6",
       }}
     >
       {label}
@@ -22,11 +22,11 @@ const InputForm: React.FC<InputFormProps> = ({ label, state, setState }) => (
       value={state}
       onChange={(e) => setState(e.target.value)}
       sx={{
-        padding: '4px 0 5px',
-        border: '1px solid #00000026',
-        height: '45px',
-        width: '270px',
-        marginTop: '10px  ',
+        padding: "4px 0 5px",
+        border: "1px solid #00000026",
+        height: "45px",
+        width: "270px",
+        marginTop: "10px  ",
       }}
     />
   </Box>

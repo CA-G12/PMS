@@ -15,11 +15,7 @@
     "buildSeeds": "cross-env NODE_ENV=development ts-node server/database/seeds/buildSeeds.ts"
   },
   "pre-commit": [
-    "format-client",
-    "lint-fix",
-    "lint",
-    "lint:client",
-    "test"
+    "format-client"
   ],
   "repository": {
     "type": "git",

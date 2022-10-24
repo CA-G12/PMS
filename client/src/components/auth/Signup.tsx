@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import swal from 'sweetalert';
-import axios from 'axios';
-import { Box, FormLabel, Input, Typography } from '@mui/material';
-import 'typeface-mulish';
-import ButtonComponent from '../Button';
-import InputForm from '../InputForm';
+import React, { useState } from "react";
+import swal from "sweetalert";
+import axios from "axios";
+import { Box, FormLabel, Input, Typography } from "@mui/material";
+import "typeface-mulish";
+import ButtonComponent from "../Button";
+import InputForm from "../InputForm";
 
 const Signup: React.FC = () => {
-  const [fullName, setFullName] = useState('');
-  const [ownerID, setOwnerID] = useState('');
-  const [pharmacyName, setPharmacyName] = useState('');
-  const [licenseNumber, setLicenseNumber] = useState('');
-  const [pharmacyLocation, setPharmacyLocation] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [fullName, setFullName] = useState("");
+  const [ownerID, setOwnerID] = useState("");
+  const [pharmacyName, setPharmacyName] = useState("");
+  const [licenseNumber, setLicenseNumber] = useState("");
+  const [pharmacyLocation, setPharmacyLocation] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   type sendUserDataType = () => void;
 
@@ -44,12 +44,12 @@ const Signup: React.FC = () => {
             confirmPassword,
           };
 
-          await axios.post('/auth/signup', userData);
+          await axios.post("/auth/signup", userData);
         } else
-          throw new Error('Password and confirm password have to be matched');
+          throw new Error("Password and confirm password have to be matched");
       } else {
         throw new Error(
-          'In order to sign up, all of these inputs have to be filled'
+          "In order to sign up, all of these inputs have to be filled"
         );
       }
     } catch (err) {
@@ -64,11 +64,11 @@ const Signup: React.FC = () => {
   return (
     <Box
       sx={{
-        width: '50vw',
-        backgroundColor: '#fdfdfd',
-        boxShadow: '0px 0px 14px #0000001c',
-        margin: '0 auto',
-        marginBottom: '50px',
+        width: "50vw",
+        backgroundColor: "#fdfdfd",
+        boxShadow: "0px 0px 14px #0000001c",
+        margin: "0 auto",
+        marginBottom: "50px",
       }}
     >
       <Typography
@@ -79,16 +79,16 @@ const Signup: React.FC = () => {
         pt="20px"
         display="flex"
         justifyContent="center"
-        sx={{ color: '#617BAD', textShadow: '6px 3px 14px #6D85B3' }}
+        sx={{ color: "#617BAD", textShadow: "6px 3px 14px #6D85B3" }}
       >
         Sign up Your Pharmacy
       </Typography>
       <Box>
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            marginBottom: '20px',
+            display: "flex",
+            justifyContent: "space-around",
+            marginBottom: "20px",
           }}
         >
           <InputForm
@@ -100,12 +100,12 @@ const Signup: React.FC = () => {
         </Box>
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            marginBottom: '20px',
+            display: "flex",
+            justifyContent: "space-around",
+            marginBottom: "20px",
           }}
         >
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
             <InputForm
               label="Pharmacy Name"
               state={pharmacyName}
@@ -113,7 +113,7 @@ const Signup: React.FC = () => {
             />
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
             <InputForm
               label="License Number"
               state={licenseNumber}
@@ -123,12 +123,12 @@ const Signup: React.FC = () => {
         </Box>
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            marginBottom: '20px',
+            display: "flex",
+            justifyContent: "space-around",
+            marginBottom: "20px",
           }}
         >
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
             <InputForm
               label="Pharmacy Location"
               state={pharmacyLocation}
@@ -136,7 +136,7 @@ const Signup: React.FC = () => {
             />
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
             <InputForm
               label="Phone Number"
               state={phoneNumber}
@@ -146,18 +146,18 @@ const Signup: React.FC = () => {
         </Box>
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            marginBottom: '20px',
-            marginLeft: '37px',
+            display: "flex",
+            flexDirection: "column",
+            marginBottom: "20px",
+            marginLeft: "37px",
           }}
         >
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
             <FormLabel
               sx={{
-                fontFamily: 'Mulish',
-                fontWeight: 'bold',
-                color: '#000000a6',
+                fontFamily: "Mulish",
+                fontWeight: "bold",
+                color: "#000000a6",
               }}
             >
               Email
@@ -166,23 +166,23 @@ const Signup: React.FC = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               sx={{
-                padding: '4px 0 5px',
-                border: '1px solid #00000026',
-                height: '45px',
-                width: '94%',
-                marginTop: '10px  ',
+                padding: "4px 0 5px",
+                border: "1px solid #00000026",
+                height: "45px",
+                width: "94%",
+                marginTop: "10px  ",
               }}
             />
           </Box>
         </Box>
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            marginBottom: '5px',
+            display: "flex",
+            justifyContent: "space-around",
+            marginBottom: "5px",
           }}
         >
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
             <InputForm
               label="Password"
               state={password}
@@ -190,7 +190,7 @@ const Signup: React.FC = () => {
             />
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
             <InputForm
               label="Confirm Password"
               state={confirmPassword}
@@ -204,15 +204,16 @@ const Signup: React.FC = () => {
           fontFamily="mulish"
           marginLeft="35px"
         >
-          You already have an account?{' '}
-          <span style={{ color: '#83B239' }}>Login</span>
+          You already have an account?{" "}
+          <span style={{ color: "#83B239" }}>Login</span>
+
         </Typography>
       </Box>
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-          marginRight: '20px',
+          display: "flex",
+          justifyContent: "flex-end",
+          marginRight: "20px",
         }}
       >
         <ButtonComponent text="Sign up" sendUserData={sendUserData} />

@@ -22,10 +22,21 @@ const openedApplicationsCount = async () =>
 
 const productCount = async () => Product.count();
 
-const expiredAndInStockProductsCount = async () =>
-  AdminProduct.findAndCountAll({
-    attributes: ['expired_quantity', 'in_stock_quantity'],
-  });
+const expiredAndInStockProductsCount = async () => AdminProduct.findAndCountAll({
+  attributes: ['expired_quantity', 'in_stock_quantity'],
+  order:[
+    ['in_stock_quantity', 'DESC']
+  ],
+  limit:8
+});
+
+const expiredAndInStockProductsCountOrder = async () => AdminProduct.findAndCountAll({
+  attributes: ['expired_quantity', 'in_stock_quantity'],
+  order:[
+    ['in_stock_quantity', 'ASC']
+  ],
+  limit:8
+});
 
 const requestsCount = async () => ProductsRequest.count();
 
@@ -37,4 +48,5 @@ export {
   openedApplicationsCount,
   closedApplicationsCount,
   expiredAndInStockProductsCount,
+  expiredAndInStockProductsCountOrder
 };

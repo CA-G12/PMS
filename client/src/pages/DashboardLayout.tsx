@@ -1,9 +1,8 @@
-import * as React from 'react';
-import { Box, Drawer } from '@mui/material';
-// eslint-disable-next-line import/no-unresolved
-import { Outlet } from 'react-router-dom';
-import drawer from '../components/drawer';
-import NavBar from '../components/NavBar';
+import * as React from "react";
+import { Box, Drawer } from "@mui/material";
+import { Outlet } from "react-router-dom";
+import drawer from "../components/drawer";
+import NavBar from "../components/NavBar";
 
 const drawerWidth = 240;
 
@@ -23,7 +22,7 @@ const DashboardLayout: React.FC = (props: Props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: "flex" }}>
       <NavBar handleDrawerToggle={handleDrawerToggle} />
       <Box
         component="nav"
@@ -38,9 +37,9 @@ const DashboardLayout: React.FC = (props: Props) => {
             keepMounted: true,
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
               width: drawerWidth,
             },
           }}
@@ -51,9 +50,9 @@ const DashboardLayout: React.FC = (props: Props) => {
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
+            display: { xs: "none", sm: "block" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
               width: drawerWidth,
             },
           }}

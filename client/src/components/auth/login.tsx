@@ -130,7 +130,7 @@ const Login: React.FC = () => {
         <Typography variant="caption" fontFamily="mulish" marginLeft="150px">
           Don`t have an account?{" "}
           <span style={{ color: "#83B239" }}>Sign up</span>
-        </Typography>
+
       </Box>
       <Box
         sx={{

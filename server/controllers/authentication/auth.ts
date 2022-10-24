@@ -1,6 +1,6 @@
 import { Response } from 'express';
 
-const checkAuthData = (req:any, res:Response) => {
+const checkAuthData = (req: any, res: Response) => {
   res.json(req.user);
 };
 

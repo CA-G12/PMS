@@ -11,7 +11,7 @@ import {
   expiredAndInStockProductsCountOrder
 } from '../../queries/admin/overview';
 
-const getAdminOverview = async (req:Request, res:Response) => {
+const getAdminOverview = async (req: Request, res: Response) => {
   const data = await Promise.all([
     pharmacyCount(),
     productCount(),

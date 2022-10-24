@@ -206,6 +206,7 @@ const Signup: React.FC = () => {
         >
           You already have an account?{" "}
           <span style={{ color: "#83B239" }}>Login</span>
+
         </Typography>
       </Box>
       <Box

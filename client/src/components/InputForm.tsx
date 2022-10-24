@@ -1,5 +1,5 @@
-import { Box, Input, FormLabel } from '@mui/material';
 import React from 'react';
+import { Box, Input, FormLabel } from '@mui/material';
 
 type InputFormProps = {
   label: string;

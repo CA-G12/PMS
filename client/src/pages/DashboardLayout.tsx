@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Box, Drawer } from '@mui/material';
+// eslint-disable-next-line import/no-unresolved
 import { Outlet } from 'react-router-dom';
 import drawer from '../components/drawer';
 import NavBar from '../components/NavBar';

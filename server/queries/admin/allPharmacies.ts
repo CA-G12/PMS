@@ -7,12 +7,12 @@ const getAllPharmaciesGeneral = async (status: string, page: number) => {
       where: {
         status,
       },
-      offset: ((page - 1) * limit),
+      offset: (page - 1) * limit,
       limit,
     });
   }
   return Pharmacy.findAndCountAll({
-    offset: ((page - 1) * limit),
+    offset: (page - 1) * limit,
     limit,
   });
 };

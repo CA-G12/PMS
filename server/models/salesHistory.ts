@@ -26,5 +26,5 @@ SalesHistory.init(
       defaultValue: NOW,
     },
   },
-  { sequelize },
+  { sequelize }
 );

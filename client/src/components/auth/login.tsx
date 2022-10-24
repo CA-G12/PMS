@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import swal from 'sweetalert';
 import axios from 'axios';
-import {
-  Box, FormLabel, Input, Typography,
-} from '@mui/material';
+import { Box, FormLabel, Input, Typography } from '@mui/material';
 import 'typeface-mulish';
 import { useNavigate } from 'react-router-dom';
 import ButtonComponent from '../Button';
@@ -26,7 +24,7 @@ const Login: React.FC = () => {
         navigate('/');
       } else {
         throw new Error(
-          'In order to login, all of these inputs have to be filled',
+          'In order to login, all of these inputs have to be filled'
         );
       }
     } catch (err: any) {
@@ -130,8 +128,7 @@ const Login: React.FC = () => {
         </Box>
         {/* end password */}
         <Typography variant="caption" fontFamily="mulish" marginLeft="150px">
-          Don`t have an account?
-          {' '}
+          Don`t have an account?{' '}
           <span style={{ color: '#83B239' }}>Sign up</span>
         </Typography>
       </Box>

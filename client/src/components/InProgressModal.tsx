@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {
-  Box, Button, Typography, Modal,
-} from '@mui/material';
+import { Box, Button, Typography, Modal } from '@mui/material';
 import 'typeface-mulish';
 import './style.css';
 

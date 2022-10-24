@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import swal from 'sweetalert';
 import axios from 'axios';
-import {
-  Box, FormLabel, Input, Typography,
-} from '@mui/material';
+import { Box, FormLabel, Input, Typography } from '@mui/material';
 import 'typeface-mulish';
 import ButtonComponent from '../Button';
 import InputForm from '../InputForm';
@@ -24,14 +22,14 @@ const Signup: React.FC = () => {
   const sendUserData: sendUserDataType = async () => {
     try {
       if (
-        fullName
-        && ownerID
-        && pharmacyName
-        && licenseNumber
-        && pharmacyLocation
-        && phoneNumber
-        && email
-        && password
+        fullName &&
+        ownerID &&
+        pharmacyName &&
+        licenseNumber &&
+        pharmacyLocation &&
+        phoneNumber &&
+        email &&
+        password
       ) {
         if (password === confirmPassword) {
           const userData = {
@@ -47,10 +45,11 @@ const Signup: React.FC = () => {
           };
 
           await axios.post('/auth/signup', userData);
-        } else throw new Error('Password and confirm password have to be matched');
+        } else
+          throw new Error('Password and confirm password have to be matched');
       } else {
         throw new Error(
-          'In order to sign up, all of these inputs have to be filled',
+          'In order to sign up, all of these inputs have to be filled'
         );
       }
     } catch (err) {
@@ -205,8 +204,7 @@ const Signup: React.FC = () => {
           fontFamily="mulish"
           marginLeft="35px"
         >
-          You already have an account?
-          {' '}
+          You already have an account?{' '}
           <span style={{ color: '#83B239' }}>Login</span>
         </Typography>
       </Box>

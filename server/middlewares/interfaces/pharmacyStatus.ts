@@ -1,6 +1,6 @@
 interface pharmacyStatus {
-    status: string,
-    page: number
+  status: string;
+  page: number;
 }
 
 export default pharmacyStatus;

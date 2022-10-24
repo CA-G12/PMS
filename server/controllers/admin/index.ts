@@ -5,5 +5,5 @@ import getAllPharmacies from './allPharmacies';
 export {
   getAllPharmacies,
   getAdminOverview,
-  requestStatus
+  requestStatus,
 };

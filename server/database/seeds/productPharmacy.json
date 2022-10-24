@@ -5,7 +5,6 @@
 {"quantity":44,"product_id":2,"pharmacy_id":8},
 {"quantity":100,"product_id":17,"pharmacy_id":2},
 {"quantity":1,"product_id":7,"pharmacy_id":4},
-{"quantity":97,"product_id":15,"pharmacy_id":5},
 {"quantity":55,"product_id":10,"pharmacy_id":13},
 {"quantity":10,"product_id":22,"pharmacy_id":2},
 {"quantity":13,"product_id":32,"pharmacy_id":11},
@@ -13,5 +12,5 @@
 {"quantity":69,"product_id":35,"pharmacy_id":6},
 {"quantity":17,"product_id":18,"pharmacy_id":1},
 {"quantity":1,"product_id":14,"pharmacy_id":2},
-{"quantity":69,"product_id":36,"pharmacy_id":3},
+{"quantity":69,"product_id":16,"pharmacy_id":3},
 {"quantity":49,"product_id":23,"pharmacy_id":2}]

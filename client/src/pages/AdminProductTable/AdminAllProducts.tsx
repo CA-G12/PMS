@@ -1,0 +1,107 @@
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import axios from 'axios';
+import { useState } from 'react';
+import CustomizedInputBase from './Extra/Search';
+// admin/products
+
+const AdminAllProducts = () => {
+  const [adminProducts, setAdminProducts] = useState([]);
+  axios({
+    method: 'get',
+    url: '/admin/products',
+  }).then((response) => {
+    setAdminProducts(response.data.data);
+  });
+
+  return (
+    <Box>
+      <TableContainer component={Paper}>
+        <Box>
+          <Typography
+            sx={{
+              fontSize: '30px',
+              padding: '10px',
+            }}
+          >
+            All Products
+          </Typography>
+          <hr />
+        </Box>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                <CustomizedInputBase />
+              </TableCell>
+              <TableCell align="center">Number of Products in Stock </TableCell>
+              <TableCell align="center">Number of Products in Pharmisis  </TableCell>
+              <TableCell align="center">Number of  Expired Products</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {adminProducts.map((row:any) => (
+              <TableRow
+                key={row.id}
+                sx={{
+                  '&:last-child td, &:last-child th': {
+                    border: 0,
+                    dispaly: 'flex',
+                  },
+                }}
+              >
+                <TableCell align="left" component="th" scope="row">
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Box>
+                      <img src="../../assets/image31.png" alt="Logo" />
+                    </Box>
+                    <Box>
+                      <Box sx={{
+                        fontWeight: 'bold',
+                      }}
+                      >
+                        {row.name}
+                      </Box>
+                      <br />
+                      <Box sx={{
+                        opacity: 0.7,
+                      }}
+                      >
+                        151515151551
+                      </Box>
+                    </Box>
+
+                  </Box>
+                </TableCell>
+
+                <TableCell align="center">
+                  {row.AdminProducts.map((e:any) => (
+                    e.in_stock_quantity
+                  ))}
+                </TableCell>
+                <TableCell align="center">
+                  {
+                  row.ProductPharmacies.map((e:any) => (typeof e.quantity === 'number' ? e.quantity : 0))
+                  }
+                </TableCell>
+                <TableCell align="center">
+                  {row.AdminProducts.map((e:any) => (
+                    e.expired_quantity
+                  ))}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
+  );
+};
+export default AdminAllProducts;

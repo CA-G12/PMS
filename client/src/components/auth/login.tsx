@@ -5,11 +5,13 @@ import {
   Box, FormLabel, Input, Typography,
 } from '@mui/material';
 import 'typeface-mulish';
+import { useNavigate } from 'react-router-dom';
 import ButtonComponent from '../Button';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   type sendUserDataType = () => void;
 
@@ -20,19 +22,17 @@ const Login: React.FC = () => {
           email,
           password,
         };
-        const loginResult = await axios.post('/auth/login', userData);
-        if (loginResult.data.message !== 'successful') {
-          throw new Error('email or password is invalid');
-        }
+        await axios.post('/auth/login', userData);
+        navigate('/');
       } else {
         throw new Error(
           'In order to login, all of these inputs have to be filled',
         );
       }
-    } catch (err) {
-      if (axios.isAxiosError(err)) {
+    } catch (err: any) {
+      if (err.response?.data?.msg) {
         swal(err.response?.data?.msg);
-      } else if (err instanceof Error) {
+      } else {
         swal(err.message);
       }
     }

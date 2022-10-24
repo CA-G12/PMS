@@ -21,7 +21,6 @@ export const AuthProvider: FC<childrenProps> = ({ children }) => {
         id: 0,
         role: '',
         image: '',
-        iat: 0
     });
 
     useEffect(() => {
@@ -31,7 +30,11 @@ export const AuthProvider: FC<childrenProps> = ({ children }) => {
                 const { data } = await axios.get('/auth', { signal: controller.signal });
                 setAuthData(data);
             } catch (err) {
-                swal('something went wrong');
+                setAuthData({
+                    id:0,
+                    role: 'user',
+                    image:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'
+                });
             }
         }
         getAuthData();

@@ -30,7 +30,8 @@ const Overview = () => {
         setProductsQuantityOrder(data.allKindProductsCountOrder.rows);
         setData(data);
       } catch (err) {
-        swal("Something went wrong, try again");
+        setProductsQuantity([]);
+        setProductsQuantityOrder([]);
       }
     };
     getData();

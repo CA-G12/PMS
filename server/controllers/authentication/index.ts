@@ -7,5 +7,5 @@ export {
   checkAuthData,
   login,
   logout,
-  signUp
+  signUp,
 };

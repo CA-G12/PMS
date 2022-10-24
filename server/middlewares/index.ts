@@ -7,5 +7,5 @@ export {
   pharmacyAuth,
   auth,
   adminAuth,
-  Error
+  Error,
 };

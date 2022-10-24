@@ -1,6 +1,6 @@
-import { Router } from "express";
-import adminRouter from "./adminRoutes";
-import authRouter from "./authRoutes";
+import { Router } from 'express';
+import adminRouter from './adminRoutes';
+import authRouter from './authRoutes';
 
 const router = Router();
 

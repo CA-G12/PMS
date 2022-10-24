@@ -26,6 +26,7 @@ const LongMenu = () => {
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
         onClick={handleClick}
+        sx={{ backgroundColor: '#aaa' }}
       >
         <MoreVertIcon />
       </IconButton>

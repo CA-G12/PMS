@@ -17,29 +17,43 @@ import CustomizedInputBase from '../Extra/Search';
 import LongMenu from '../Extra/Options';
 import image31 from '../../assets/image31.png';
 
-// function createData(
-//   name: string,
-//   calories: string,
-//   carbs: string,
-// ) {
-//   return {
-//     name,
-//     calories,
-//     carbs,
-//   };
-// }
-
 type row = {
   id: number;
   status:string,
   Pharmacy:{name:string, },
   Product:{name:string},
 };
+const fakeData = [
+  {
+    id: 1,
+    status: 'Approved',
+    Pharmacy: { name: 'Ahmed Pharmacy 1' },
+    Product: { name: 'Ahmed Product 1' },
+  },
+  {
+    id: 2,
+    status: 'Approved',
+    Pharmacy: { name: 'Ahmed Pharmacy 2' },
+    Product: { name: 'Ahmed Product 2' },
+  },
+  {
+    id: 3,
+    status: 'Approved',
+    Pharmacy: { name: 'Ahmed Pharmacy 3' },
+    Product: { name: 'Ahmed Product 3' },
+  },
+  {
+    id: 4,
+    status: 'Approved',
+    Pharmacy: { name: 'Ahmed Pharmacy 3' },
+    Product: { name: 'Ahmed Product 3' },
+  },
+];
 
 const AllRequests = () => {
-  const [data, setData] = useState<row[]>([] as row[]);
+  const [data, setData] = useState<row[]>(fakeData);
   const [pageNum, setPageNum] = useState(1);
-  const [numRequests, setNumOfRequests] = useState(1);
+  const [numRequests, setNumOfRequests] = useState(14);
   const [loading, setLoading] = useState(true);
 
   const getData = async () => {
@@ -49,11 +63,17 @@ const AllRequests = () => {
     setNumOfRequests(count);
     setLoading(false);
   };
+  const setStatus = async (status: string, PharmacyId :number) => {
+    await axios.put(`/admin/requests/${PharmacyId}`, {
+      status,
+    });
+    getData();
+  };
 
   useEffect(() => {
     getData();
   }, [pageNum]);
-  if (loading) {
+  if (loading && false) {
     return (
       <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
         <CircularProgress />
@@ -113,7 +133,10 @@ const AllRequests = () => {
                 <TableCell align="left">{row.Product.name}</TableCell>
                 <TableCell align="left">{row.status}</TableCell>
                 <TableCell align="left">
-                  <LongMenu />
+                  <LongMenu
+                    id={row.id}
+                    setStatus={(status, PharmacyId) => setStatus(status, PharmacyId)}
+                  />
                 </TableCell>
               </TableRow>
             ))}
@@ -122,7 +145,7 @@ const AllRequests = () => {
       </TableContainer>
 
       <Pagination
-        count={Math.ceil(numRequests / 3)}
+        count={Math.ceil(numRequests / 7)}
         color="primary"
         page={pageNum}
         onChange={
@@ -130,6 +153,7 @@ const AllRequests = () => {
             setPageNum(page);
           }
         }
+        sx={{ marginTop: '2rem' }}
       />
     </Box>
   );

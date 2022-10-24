@@ -4,10 +4,16 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-const options = ['Opened', 'Closed', 'Rejected'];
+const options = ['Approved', 'Rejected'];
 const ITEM_HEIGHT = 48;
 
-const LongMenu = () => {
+interface Props {
+  id: number;
+  // eslint-disable-next-line no-unused-vars
+  setStatus: (status: string, PharmacyId :number) => Promise<void>;
+}
+
+const LongMenu = ({ id, setStatus }:Props) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -49,7 +55,10 @@ const LongMenu = () => {
           <MenuItem
             key={option}
             selected={option === 'Pyxis'}
-            onClick={handleClose}
+            onClick={() => {
+              setStatus(option, id);
+              handleClose();
+            }}
           >
             {option}
           </MenuItem>

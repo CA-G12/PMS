@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { useState } from 'react';
 import CustomizedInputBase from './Extra/Search';
+import image31 from '../../assets/image31.png';
 // admin/products
 
 const AdminAllProducts = () => {
@@ -35,7 +36,8 @@ const AdminAllProducts = () => {
           </Typography>
           <hr />
         </Box>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: 650, marginLeft: '0px',
+    marginTop: '0px',}} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>
@@ -46,7 +48,10 @@ const AdminAllProducts = () => {
               <TableCell align="center">Number of  Expired Products</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+
+          <TableBody sx={{
+            marginTop: '50px',
+          }}>
             {adminProducts.map((row:any) => (
               <TableRow
                 key={row.id}
@@ -60,7 +65,7 @@ const AdminAllProducts = () => {
                 <TableCell align="left" component="th" scope="row">
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <Box>
-                      <img src="../../assets/image31.png" alt="Logo" />
+                      <img src={image31} alt="Logo" />
                     </Box>
                     <Box>
                       <Box sx={{
@@ -82,19 +87,19 @@ const AdminAllProducts = () => {
                 </TableCell>
 
                 <TableCell align="center">
-                  {row.AdminProducts.map((e:any) => (
-                    e.in_stock_quantity
-                  ))}
-                </TableCell>
-                <TableCell align="center">
                   {
-                  row.ProductPharmacies.map((e:any) => (typeof e.quantity === 'number' ? e.quantity : 0))
+                  row.AdminProducts.length === 1 ? row.AdminProducts.map((e:any) => (e.in_stock_quantity)) : 0
                   }
                 </TableCell>
                 <TableCell align="center">
-                  {row.AdminProducts.map((e:any) => (
-                    e.expired_quantity
-                  ))}
+                  {
+                  row.ProductPharmacies.length === 1 ? row.ProductPharmacies.map((e:any) => (e.quantity)) : 0
+                  }
+                </TableCell>
+                <TableCell align="center">
+                  {
+                  row.AdminProducts.length === 1 ? row.AdminProducts.map((e:any) => (e.expired_quantity)) : 0
+                  }
                 </TableCell>
               </TableRow>
             ))}

@@ -1,4 +1,4 @@
-import { Box ,Typography} from '@mui/material';
+import { Box, Typography } from "@mui/material";
 import AdminAllProducts from './AdminProductTable/AdminAllProducts';
 
 const Products = () => {

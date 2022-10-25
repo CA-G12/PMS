@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import {
   Overview,
   Pharmacies,
@@ -6,33 +6,33 @@ import {
   Requests,
   Applications,
   DashboardLayout,
-} from "./pages";
-import "./App.css";
+} from './pages';
+import './App.css';
 
 const App = () => {
   const router = createBrowserRouter([
     {
-      path: "/admin",
+      path: '/admin',
       element: <DashboardLayout />,
       children: [
         {
-          path: "overview",
+          path: 'overview',
           element: <Overview />,
         },
         {
-          path: "pharmacies",
+          path: 'pharmacies',
           element: <Pharmacies />,
         },
         {
-          path: "products",
+          path: 'products',
           element: <Products />,
         },
         {
-          path: "requests",
+          path: 'requests',
           element: <Requests />,
         },
         {
-          path: "applications",
+          path: 'applications',
           element: <Applications />,
         },
       ],

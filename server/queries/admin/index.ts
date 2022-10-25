@@ -1,3 +1,4 @@
+import requestQuery from './allRequests';
 import getProductsAdmin from './allAdminProducts';
 import pharmacyStatus from './adminPharmacyStatus';
 import requestStatusQuery from './requestStatus';
@@ -8,4 +9,5 @@ export {
   pharmacyStatus,
   getAllPharmaciesGeneral,
   requestStatusQuery,
+  requestQuery,
 };

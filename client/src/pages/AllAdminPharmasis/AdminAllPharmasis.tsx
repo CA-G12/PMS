@@ -10,6 +10,8 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import CustomizedInputBase from './Extra/Search';
 import LongMenu from './Extra/Options';
 import image31 from '../../assets/image31.png';
@@ -38,11 +40,29 @@ const AllAdminPharmasis = () => {
       await updatePharmacyStatus(status, pharmacyId);
       const pharmacies = await getPharmacies();
       setData(pharmacies);
-
+      toast.success('updated status', {
+        position: 'bottom-left',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      // toast.error('Something went wrong');
+      toast.error('cant not update status', {
+        position: 'bottom-left',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
     }
   };
 

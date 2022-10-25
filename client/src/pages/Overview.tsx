@@ -2,10 +2,13 @@ import { Box, List, ListItem, ListItemText, Typography } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import 'typeface-mulish';
+import { ToastContainer } from 'react-toastify';
 import chart from '../assets/chart1.png';
 import BoxComponent from '../components/admin/BoxComponent';
 import ChartComponent from '../components/admin/ChartComponent';
 import ListItemComponent from '../components/admin/ListItemComponent';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const Overview = () => {
   const drawerWidth = 240;
@@ -268,6 +271,18 @@ const Overview = () => {
         Chart for Least used Products Quantity
       </Typography>
       <ChartComponent inStock={inStockOrder} expired={expiredOrder} />
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </Box>
   );
 };

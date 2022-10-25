@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material';
+import { ToastContainer } from 'react-toastify';
 import AllAdminPharmasis from './AllAdminPharmasis/AdminAllPharmasis';
 
 const Pharmacies = () => {
@@ -13,6 +14,18 @@ const Pharmacies = () => {
       }}
     >
       <Typography paragraph>
+        <ToastContainer
+          position="bottom-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
         <AllAdminPharmasis />
       </Typography>
     </Box>

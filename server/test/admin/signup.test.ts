@@ -95,10 +95,12 @@ describe('sign up router', () => {
       })
       .expect(400)
       .expect('Content-Type', /json/)
-      .end((err:any, res: any) => {
+      .end((err: any, res: any) => {
         if (err) return done(err);
 
-        expect(res.body.msg).toEqual('Try again, You can not sign up with this email');
+        expect(res.body.msg).toEqual(
+          'Try again, You can not sign up with this email'
+        );
         return done();
       });
   });
@@ -119,7 +121,7 @@ describe('sign up router', () => {
       })
       .expect(400)
       .expect('Content-Type', /json/)
-      .end((err:any, res: any) => {
+      .end((err: any, res: any) => {
         if (err) return done(err);
 
         expect(res.body.msg).toEqual('Something went wrong, sign up again');

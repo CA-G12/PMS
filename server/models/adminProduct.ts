@@ -27,5 +27,5 @@ AdminProduct.init(
       allowNull: false,
     },
   },
-  { sequelize },
+  { sequelize }
 );

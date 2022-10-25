@@ -28,6 +28,71 @@ a {
     color: white;
 }
 
+.cardStatistics{
+    display: flex;
+    border-radius: 15px;
+    background-color: white;
+    border:1px solid #80808026;
+    width: 223px;
+    height: 253px;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.css-j7lo2a-MuiTypography-root {
+    font-size: 1.55rem;
+    margin-top: 3px;
+}
+
+h6{
+    color: #4D4D4D;
+}
+
+.css-1vsal3o-MuiTypography-root {
+    color: grey;
+}
+
+.css-vyr5dt-MuiTypography-root {
+    color: grey;
+}
+
+.css-sf82k2-MuiTypography-root {
+    color: grey;
+}
+
+.chart-wrapper {
+    width: 961px;
+    margin-top: 30px;
+    margin-bottom:80px
+}
+
+table {
+    margin-left: 248px;
+    margin-top: -240px;
+}
+
+canvas {
+    background-color: white;
+    display: block;
+    box-sizing: border-box;
+    height: 400px;
+    width: 800px;
+    padding: 20px;
+    border-radius: 7px;
+    color: white;
+    margin-left: 13px;
+}
+
+.chartjs-tooltip {
+    margin-top: -263px !important;
+    margin-left: 250px !important;
+}
+
+.chart{
+    text-align: center;
+}
 @media (min-width: 600px){
     main.MuiBox-root.css-hq9khu {
         width: calc(90% - 216px);

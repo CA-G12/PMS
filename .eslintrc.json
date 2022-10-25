@@ -5,13 +5,14 @@
     "node": true,
     "jest": true
   },
-  "extends": ["airbnb-base"],
+  "extends": ["airbnb-base", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["prettier"],
   "rules": {
+    "prettier/prettier": "error",
     "import/no-unresolved": "off",
     "import/no-extraneous-dependencies": "off",
     "import/extensions": [
@@ -26,6 +27,7 @@
     "no-nested-ternary": "off",
     "consistent-return":"off",
     "no-unused-vars":"off"
+    
   },
   "settings": {
     "import/resolver": {
@@ -35,3 +37,4 @@
     }
   }
 }
+

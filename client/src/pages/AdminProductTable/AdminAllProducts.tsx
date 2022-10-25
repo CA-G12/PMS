@@ -33,12 +33,6 @@ const AdminAllProducts = () => {
     })();
   }, []);
 
-  // axios({
-  //   method: 'get',
-  //   url: '/admin/products',
-  // }).then((response) => {
-  //   setAdminProducts(response.data.data);
-  // });
   if (error) {
     return <Box>{error}</Box>;
   }

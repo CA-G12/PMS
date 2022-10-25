@@ -7,6 +7,7 @@ import NavBar from '../components/NavBar';
 const drawerWidth = 240;
 
 interface Props {
+  // eslint-disable-next-line react/require-default-props
   window?: () => Window;
 }
 

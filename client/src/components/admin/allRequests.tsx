@@ -9,11 +9,13 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Pagination, CircularProgress } from '@mui/material';
+import swal from 'sweetalert';
 import CustomizedInputBase from '../Extra/Search';
 import LongMenu from '../Extra/Options';
 import image31 from '../../assets/image31.png';
+import dataLoadingError from '../../assets/dataLoadingError.png';
 
 type row = {
   id: number;
@@ -27,28 +29,54 @@ const AllRequests = () => {
   const [pageNum, setPageNum] = useState(1);
   const [numRequests, setNumOfRequests] = useState(14);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  const getData = async () => {
-    setLoading(true);
+  const getMedicineRequests = useCallback(async () => {
     const {
       data: {
         data: { rows, count },
       },
     } = await axios.get(`/admin/requests?numOffSet=${pageNum}`);
-    setData(rows);
-    setNumOfRequests(count);
-    setLoading(false);
-  };
-  const setStatus = async (status: string, PharmacyId: number) => {
-    await axios.put(`/admin/requests/${PharmacyId}`, {
+
+    return { rows, count };
+  }, [pageNum]);
+
+  const updateMedicineRequests = async (status: string, pharmacyId: number) =>
+    axios.put(`/admin/requests/${pharmacyId}`, {
       status,
     });
-    getData();
+
+  const setStatus = async (status: string, pharmacyId: number) => {
+    try {
+      setLoading(true);
+
+      await updateMedicineRequests(status, pharmacyId);
+      await getMedicineRequests();
+
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      swal('Something went wrong');
+    }
   };
 
   useEffect(() => {
-    getData();
-  }, [pageNum]);
+    (async () => {
+      try {
+        setLoading(true);
+
+        const { rows, count } = await getMedicineRequests();
+
+        setData(rows);
+        setNumOfRequests(count);
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+        setError('Something went wrong');
+      }
+    })();
+  }, [getMedicineRequests]);
+
   if (loading) {
     return (
       <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
@@ -56,6 +84,21 @@ const AllRequests = () => {
       </Box>
     );
   }
+
+  if (error) {
+    return (
+      <Box
+        sx={{
+          margin: '6rem 5%',
+          borderRadius: '5px',
+          width: '80%',
+        }}
+      >
+        <img src={dataLoadingError} alt="Logo" />
+      </Box>
+    );
+  }
+
   return (
     <Box
       sx={{

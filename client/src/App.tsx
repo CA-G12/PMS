@@ -1,13 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import {
-  Overview,
-  Pharmacies,
-  Products,
-  Applications,
-  DashboardLayout,
-} from './pages';
-import AllRequests from './components/admin/AllRequests';
+import { Overview, Pharmacies, Products, DashboardLayout } from './pages';
+import AllRequests from './components/admin/allRequests';
 import './App.css';
+import ApplicationSection from './components/admin/ApplicationSection';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -33,7 +28,7 @@ const App = () => {
         },
         {
           path: 'applications',
-          element: <Applications />,
+          element: <ApplicationSection />,
         },
       ],
     },

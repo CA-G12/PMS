@@ -19,6 +19,7 @@ adminRouter.get('/admin/requests', auth, adminAuth, allRequests);
 adminRouter.get('/admin/products', auth, adminAuth, getAllProductsAdmin);
 adminRouter.put(
   '/admin/pharmacy/:pharmacyId',
+  auth, adminAuth,
   updatePharmacyStatusId
 );
 export default adminRouter;

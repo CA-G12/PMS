@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import { userData } from '../middlewares/interfaces';
 
-const signupSchema = (data:userData) => {
+const signupSchema = (data: userData) => {
   const schema = Joi.object({
     owner_name: Joi.string().required(),
     owner_id: Joi.number().required(),

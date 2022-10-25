@@ -1,6 +1,4 @@
-import {
-  Box, Typography, Pagination, CircularProgress,
-} from '@mui/material';
+import { Box, Typography, Pagination, CircularProgress } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ApplicationCard from './ApplicationCard';
@@ -31,7 +29,11 @@ const ApplicationSection = () => {
 
   const getData = async () => {
     setLoading(true);
-    const { data: { data: { rows, count } } } = await axios.get(`/admin/pharmacies?page=${10}&status=Pending`);
+    const {
+      data: {
+        data: { rows, count },
+      },
+    } = await axios.get(`/admin/pharmacies?page=${pageNum}&status=Pending`);
     setCards(rows);
     setNumOfApplications(count);
     setLoading(false);
@@ -48,18 +50,19 @@ const ApplicationSection = () => {
     getData();
   }, [pageNum]);
 
-  const getAllTasksApplications = (arr: Array<row>) => arr.map((application) => (
-    <ApplicationCard
-      card={{
-        ownerName: application.ownerName,
-        ownerId: application.ownerId,
-        licenseNumber: application.licenseNumber,
-        pharmacyName: application.name,
-      }}
-      setApproved={() => setStatus('Approved', application.id)}
-      setRejected={() => setStatus('Rejected', application.id)}
-    />
-  ));
+  const getAllTasksApplications = (arr: Array<row>) =>
+    arr.map((application) => (
+      <ApplicationCard
+        card={{
+          ownerName: application.ownerName,
+          ownerId: application.ownerId,
+          licenseNumber: application.licenseNumber,
+          pharmacyName: application.name,
+        }}
+        setApproved={() => setStatus('Approved', application.id)}
+        setRejected={() => setStatus('Rejected', application.id)}
+      />
+    ));
   if (loading) {
     return (
       <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
@@ -69,8 +72,9 @@ const ApplicationSection = () => {
   }
   if (cards.length === 0) {
     return (
-      <Box sx={{ width: '100%', height: '100%', margin: 'auto 7rem' }}><img src={empty} alt="Logo" /></Box>
-
+      <Box sx={{ width: '100%', height: '100%', margin: 'auto 7rem' }}>
+        <img src={empty} alt="Logo" />
+      </Box>
     );
   }
   return (
@@ -87,11 +91,9 @@ const ApplicationSection = () => {
         count={Math.ceil(numOfApplications / 3)}
         color="primary"
         page={pageNum}
-        onChange={
-          (event: React.ChangeEvent<unknown>, page: number) => {
-            setPageNum(page);
-          }
-        }
+        onChange={(event: React.ChangeEvent<unknown>, page: number) => {
+          setPageNum(page);
+        }}
       />
     </Box>
   );

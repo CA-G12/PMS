@@ -2,9 +2,7 @@ import { Sequelize } from 'sequelize';
 
 require('env2')('.env');
 
-const {
-  NODE_ENV, DATABASE_URL, DEV_DB_URL, TEST_DB_URL,
-} = process.env;
+const { NODE_ENV, DATABASE_URL, DEV_DB_URL, TEST_DB_URL } = process.env;
 
 let url: string | undefined;
 
@@ -24,6 +22,6 @@ switch (NODE_ENV) {
 
 if (!url) throw new Error('There is no Url found');
 
-const sequelize = new Sequelize(url);
+const sequelize = new Sequelize(url, { logging: false });
 
 export default sequelize;

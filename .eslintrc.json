@@ -1,35 +1,40 @@
 {
-    "env": {
-      "commonjs": true,
-      "es2021": true,
-      "node": true,
-      "jest": true
-    },
-    "extends": ["airbnb-base"],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "ecmaVersion": "latest"
-    },
-    "plugins": ["@typescript-eslint"],
-    "rules": {
-      "import/no-unresolved": "off",
-      "import/no-extraneous-dependencies": "off",
-      "import/extensions": [
-        "error",
-        "ignorePackages",
-        {
-          "ts": "never",
-          "json": "never"
-        }
-      ],
-      "no-nested-ternary": "off"
-    },
-    "settings": {
-      "import/resolver": {
-        "node": {
-          "extensions": [".js", ".jsx", ".ts", ".tsx"]
-        }
+  "env": {
+    "commonjs": true,
+    "es2021": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": ["airbnb-base", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "json": "never",
+        "":"never"
+      }
+    ],
+    "no-nested-ternary": "off",
+    "consistent-return":"off",
+    "no-unused-vars":"off"
+    
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   }
-  
+}
+

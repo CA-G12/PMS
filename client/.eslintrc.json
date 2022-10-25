@@ -8,7 +8,8 @@
     "extends": [
         "plugin:react/recommended",
         "airbnb", 
-        "plugin:react/jsx-runtime"
+        "plugin:react/jsx-runtime",
+        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -21,9 +22,11 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "react-hooks"
+        "react-hooks",
+        "prettier"
     ],
     "rules": {
+        "prettier/prettier": "error",
         "no-nested-ternary": 0,
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
@@ -42,11 +45,11 @@
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "import/prefer-default-export": "off",
-        "react/function-component-definition": [2, { "namedComponents": "arrow-function" }]
+        "react/function-component-definition": [2, { "namedComponents": "arrow-function" }] 
     },
     "settings": {
         "import/resolver": {
-        "typescript": {}
+            "typescript": {}
         }
     }
 }

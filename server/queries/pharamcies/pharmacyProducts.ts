@@ -24,25 +24,43 @@ const getAllProductsQuery = async (
       offset: (page - 1) * limit,
     });
   }
+  if (pharmacyId) {
+    return ProductPharmacy.findAndCountAll({
+      include: [
+        {
+          model: Product,
+        },
+      ],
+      where: {
+        pharmacy_id: pharmacyId,
+      },
+
+      limit,
+      offset: (page - 1) * limit,
+    });
+  }
   if (pharmacyName) {
-    return Product.findAndCountAll({
+    return Pharmacy.findAndCountAll({
       include: [
         {
           model: ProductPharmacy,
           include: [
             {
-              model: Pharmacy,
+              model: Product,
             },
           ],
         },
       ],
       where: {
-        id: 5,
+        name: {
+          [Op.iLike]: `%${pharmacyName}%`,
+        },
       },
       limit,
       offset: (page - 1) * limit,
     });
   }
+
   return Product.findAndCountAll({
     include: [
       {

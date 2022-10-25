@@ -3,6 +3,7 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
 import router from './routes';
+import pharmacyRouter from './routes/pharamcies/pharmacyProducts';
 import ErrorMiddleware from './middlewares/Error';
 
 require('env2')('.env');
@@ -25,6 +26,7 @@ if (NODE_ENV === 'production') {
   });
 }
 app.use(router);
+app.use(pharmacyRouter);
 app.use(ErrorMiddleware);
 
 export default app;

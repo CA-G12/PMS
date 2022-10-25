@@ -102,7 +102,10 @@ const AllRequests = () => {
           </Typography>
           <hr />
         </Box>
-        <Table sx={{ Width: '100%' }} aria-label="simple table">
+        <Table
+          sx={{ Width: '100%', margin: '1rem 0%' }}
+          aria-label="simple table"
+        >
           <TableHead>
             <TableRow>
               <TableCell>

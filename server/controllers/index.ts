@@ -5,10 +5,12 @@ import {
   getAllProductsAdmin,
   updatePharmacyStatusId,
   getAllPharmacies,
+  allRequests,
 } from './admin';
 
 export {
   checkAuthData,
+  allRequests,
   getAllProductsAdmin,
   updatePharmacyStatusId,
   logout,

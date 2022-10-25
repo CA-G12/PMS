@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import { Request, Response, NextFunction } from 'express';
 import { hash } from 'bcryptjs';
 import {

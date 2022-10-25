@@ -21,35 +21,9 @@ type row = {
   Pharmacy: { name: string };
   Product: { name: string };
 };
-const fakeData = [
-  {
-    id: 1,
-    status: 'Approved',
-    Pharmacy: { name: 'Ahmed Pharmacy 1' },
-    Product: { name: 'Ahmed Product 1' },
-  },
-  {
-    id: 2,
-    status: 'Approved',
-    Pharmacy: { name: 'Ahmed Pharmacy 2' },
-    Product: { name: 'Ahmed Product 2' },
-  },
-  {
-    id: 3,
-    status: 'Approved',
-    Pharmacy: { name: 'Ahmed Pharmacy 3' },
-    Product: { name: 'Ahmed Product 3' },
-  },
-  {
-    id: 4,
-    status: 'Approved',
-    Pharmacy: { name: 'Ahmed Pharmacy 3' },
-    Product: { name: 'Ahmed Product 3' },
-  },
-];
-
+const options = ['Approved', 'Rejected'];
 const AllRequests = () => {
-  const [data, setData] = useState<row[]>(fakeData);
+  const [data, setData] = useState<row[]>([]);
   const [pageNum, setPageNum] = useState(1);
   const [numRequests, setNumOfRequests] = useState(14);
   const [loading, setLoading] = useState(true);
@@ -75,7 +49,7 @@ const AllRequests = () => {
   useEffect(() => {
     getData();
   }, [pageNum]);
-  if (loading && false) {
+  if (loading) {
     return (
       <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
         <CircularProgress />
@@ -143,6 +117,7 @@ const AllRequests = () => {
                     setStatus={(status, PharmacyId) =>
                       setStatus(status, PharmacyId)
                     }
+                    options={options}
                   />
                 </TableCell>
               </TableRow>

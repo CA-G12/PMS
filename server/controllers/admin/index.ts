@@ -1,3 +1,4 @@
+import allRequests from './allRequests';
 import getAllProductsAdmin from './allAdminProducts';
 import updatePharmacyStatusId from './pharmacyStatus';
 import requestStatus from './requestStatus';
@@ -9,5 +10,6 @@ export {
   updatePharmacyStatusId,
   getAdminOverview,
   requestStatus,
+  allRequests,
   getAllPharmacies,
 };

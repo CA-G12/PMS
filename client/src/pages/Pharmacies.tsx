@@ -1,5 +1,6 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography } from '@mui/material';
 import AllAdminPharmasis from './AllAdminPharmasis/AdminAllPharmasis';
+
 const Pharmacies = () => {
   const drawerWidth = 240;
   return (
@@ -8,10 +9,12 @@ const Pharmacies = () => {
       sx={{
         flexGrow: 1,
         p: 3,
-        width: { sm: `calc(100% - ${drawerWidth}px)`, md: "" },
+        width: { sm: `calc(100% - ${drawerWidth}px)`, md: '' },
       }}
     >
-      <Typography paragraph><AllAdminPharmasis /></Typography>
+      <Typography paragraph>
+        <AllAdminPharmasis />
+      </Typography>
     </Box>
   );
 };

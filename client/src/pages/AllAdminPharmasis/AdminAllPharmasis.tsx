@@ -8,91 +8,94 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import BasicSelect from './Extra/Select';
+import axios from 'axios';
+import { useState } from 'react';
 import CustomizedInputBase from './Extra/Search';
 import LongMenu from './Extra/Options';
+import image31 from '../../assets/image31.png';
 
-function createData(
-  name: string,
-  calories: string,
-  fat: string,
-  carbs: string,
-) {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
+const options = ['Opened', 'Closed'];
+
+const AllAdminPharmasis = () => {
+  const [data, setData] = useState([]);
+  const setStatus = async (status: string, PharmacyId: number) => {
+    await axios.put(`/admin/pharmacy/${PharmacyId}`, {
+      status,
+    });
   };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 'John Doe', 'Palestine - Gaza', 'Approved'),
-  createData('Ice cream sandwich', 'John Doe', 'Palestine - Gaza', 'Rejected'),
-  createData('Eclair', 'John Doe', 'Palestine - Gaza', 'Closed'),
-  createData('Cupcake', 'John Doe', 'Palestine - Gaza', 'Approved'),
-  createData('Gingerbread', 'John Doe', 'Palestine - Gaza', 'Rejected'),
-  createData('Nader', 'John Doe', 'Palestine - Gaza', 'Approved'),
-];
-
-const AllAdminPharmasis = () => (
-  <Box>
-    <TableContainer component={Paper}>
-      <Box>
-        <Typography
-          sx={{
-            fontSize: '30px',
-            padding: '10px',
-          }}
+  axios({
+    method: 'get',
+    url: '/admin/pharmacies',
+  }).then((response) => {
+    setData(response.data.data.rows);
+  });
+  return (
+    <Box>
+      <TableContainer component={Paper}>
+        <Box>
+          <Typography
+            sx={{
+              fontSize: '30px',
+              padding: '10px',
+            }}
+          >
+            All Pharmacies
+          </Typography>
+          <hr />
+        </Box>
+        <Table
+          sx={{ minWidth: 650, marginLeft: '0px', marginTop: '0px' }}
+          aria-label="simple table"
         >
-          All Pharmacies
-        </Typography>
-        {/* <img src="./img/image31.png" alt="Logo" /> */}
-        <hr />
-      </Box>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>
-              <CustomizedInputBase />
-            </TableCell>
-            <TableCell align="center">Pharmacy Owner</TableCell>
-            <TableCell align="center">Pharmacy Location</TableCell>
-            <TableCell align="center">Pharmacy Status</TableCell>
-            <TableCell align="center">
-              <BasicSelect />
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{
-                '&:last-child td, &:last-child th': {
-                  border: 0,
-                  dispaly: 'flex',
-                },
-              }}
-            >
-              <TableCell align="left" component="th" scope="row">
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Box>
-                    <img src="./img/image31.png" alt="Logo" />
-                  </Box>
-                  <Box>{row.name}</Box>
-                </Box>
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                <CustomizedInputBase />
               </TableCell>
-
-              <TableCell align="center">{row.calories}</TableCell>
-              <TableCell align="center">{row.fat}</TableCell>
-              <TableCell align="center">{row.carbs}</TableCell>
-              <TableCell align="center"><LongMenu /></TableCell>
+              <TableCell align="center">Pharmacy Owner</TableCell>
+              <TableCell align="center">Pharmacy Location</TableCell>
+              <TableCell align="center">Pharmacy Status</TableCell>
+              <TableCell align="center">Option</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  </Box>
-);
+          </TableHead>
+          <TableBody>
+            {data.map((row) => (
+              <TableRow
+                key={row.id}
+                sx={{
+                  '&:last-child td, &:last-child th': {
+                    border: 0,
+                    dispaly: 'flex',
+                  },
+                }}
+              >
+                <TableCell align="left" component="th" scope="row">
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Box>
+                      <img src={image31} alt="Logo" />
+                    </Box>
+                    <Box>{row.name}</Box>
+                  </Box>
+                </TableCell>
+
+                <TableCell align="center">{row.owner_name}</TableCell>
+                <TableCell align="center">{row.location}</TableCell>
+                <TableCell align="center">{row.status}</TableCell>
+                <TableCell align="center">
+                  <LongMenu
+                    id={row.id}
+                    setStatus={(status, PharmacyId) =>
+                      setStatus(status, PharmacyId)
+                    }
+                    options={options}
+                  />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
+  );
+};
 export default AllAdminPharmasis;

@@ -1,12 +1,11 @@
-import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import swal from "sweetalert";
-import "typeface-mulish";
-import chart from "../assets/chart1.png";
-import BoxComponent from "../components/admin/BoxComponent";
-import ChartComponent from "../components/admin/ChartComponent";
-import ListItemComponent from "../components/admin/ListItemComponent";
+import { Box, List, ListItem, ListItemText, Typography } from '@mui/material';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import 'typeface-mulish';
+import chart from '../assets/chart1.png';
+import BoxComponent from '../components/admin/BoxComponent';
+import ChartComponent from '../components/admin/ChartComponent';
+import ListItemComponent from '../components/admin/ListItemComponent';
 
 const Overview = () => {
   const drawerWidth = 240;
@@ -14,10 +13,10 @@ const Overview = () => {
   const [productsQuantityOrder, setProductsQuantityOrder] = useState([]);
   const [data, setData] = useState([]);
 
-  let inStock: number[] = [];
-  let expired: number[] = [];
-  let inStockOrder: number[] = [];
-  let expiredOrder: number[] = [];
+  const inStock: number[] = [];
+  const expired: number[] = [];
+  const inStockOrder: number[] = [];
+  const expiredOrder: number[] = [];
 
   useEffect(() => {
     const controller = new AbortController();
@@ -25,7 +24,7 @@ const Overview = () => {
       try {
         const {
           data: { data },
-        } = await axios.get("/admin/statistics", { signal: controller.signal });
+        } = await axios.get('/admin/statistics', { signal: controller.signal });
         setProductsQuantity(data.allKindProductsCount.rows);
         setProductsQuantityOrder(data.allKindProductsCountOrder.rows);
         setData(data);
@@ -57,18 +56,18 @@ const Overview = () => {
       sx={{
         flexGrow: 1,
         p: 3,
-        width: { sm: `calc(100% - ${drawerWidth}px)`, md: "" },
+        width: { sm: `calc(100% - ${drawerWidth}px)`, md: '' },
       }}
     >
-      <Box sx={{ display: "flex", height: "40vh", flexWrap: "wrap" }}>
+      <Box sx={{ display: 'flex', height: '40vh', flexWrap: 'wrap' }}>
         <Box
           sx={{
-            height: "40vh",
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "flex-start",
-            width: "53%",
-            flexWrap: "wrap",
+            height: '40vh',
+            display: 'flex',
+            justifyContent: 'space-around',
+            alignItems: 'flex-start',
+            width: '53%',
+            flexWrap: 'wrap',
           }}
         >
           <Box className="cardStatistics">
@@ -92,23 +91,23 @@ const Overview = () => {
             </Box>
             <List>
               <ListItem
-                sx={{ paddingTop: "0px", paddingBottom: "0px", gap: "15px" }}
+                sx={{ paddingTop: '0px', paddingBottom: '0px', gap: '15px' }}
               >
                 <span
                   style={{
-                    backgroundColor: "#42CAEB",
-                    width: "13px",
-                    height: "13px",
-                    borderRadius: "4px",
+                    backgroundColor: '#42CAEB',
+                    width: '13px',
+                    height: '13px',
+                    borderRadius: '4px',
                   }}
-                ></span>
-                <ListItemText sx={{ fontSize: "13px" }}>
+                />
+                <ListItemText sx={{ fontSize: '13px' }}>
                   <Typography
                     paragraph
                     sx={{
-                      fontWeight: "700",
-                      fontSize: ".8rem",
-                      marginBottom: "0",
+                      fontWeight: '700',
+                      fontSize: '.8rem',
+                      marginBottom: '0',
                     }}
                   >
                     {(
@@ -121,23 +120,23 @@ const Overview = () => {
                 </ListItemText>
               </ListItem>
               <ListItem
-                sx={{ paddingTop: "0px", paddingBottom: "0px", gap: "15px" }}
+                sx={{ paddingTop: '0px', paddingBottom: '0px', gap: '15px' }}
               >
                 <span
                   style={{
-                    backgroundColor: "#3EFFE8",
-                    width: "13px",
-                    height: "13px",
-                    borderRadius: "4px",
+                    backgroundColor: '#3EFFE8',
+                    width: '13px',
+                    height: '13px',
+                    borderRadius: '4px',
                   }}
-                ></span>
-                <ListItemText sx={{ fontSize: "13px" }}>
+                />
+                <ListItemText sx={{ fontSize: '13px' }}>
                   <Typography
                     paragraph
                     sx={{
-                      fontWeight: "700",
-                      fontSize: ".8rem",
-                      marginBottom: "0",
+                      fontWeight: '700',
+                      fontSize: '.8rem',
+                      marginBottom: '0',
                     }}
                   >
                     {(
@@ -150,23 +149,23 @@ const Overview = () => {
                 </ListItemText>
               </ListItem>
               <ListItem
-                sx={{ paddingTop: "0px", paddingBottom: "0px", gap: "15px" }}
+                sx={{ paddingTop: '0px', paddingBottom: '0px', gap: '15px' }}
               >
                 <span
                   style={{
-                    backgroundColor: "#4D96BE",
-                    width: "13px",
-                    height: "13px",
-                    borderRadius: "4px",
+                    backgroundColor: '#4D96BE',
+                    width: '13px',
+                    height: '13px',
+                    borderRadius: '4px',
                   }}
-                ></span>
-                <ListItemText sx={{ fontSize: "13px" }}>
+                />
+                <ListItemText sx={{ fontSize: '13px' }}>
                   <Typography
                     paragraph
                     sx={{
-                      fontWeight: "700",
-                      fontSize: ".8rem",
-                      marginBottom: "0",
+                      fontWeight: '700',
+                      fontSize: '.8rem',
+                      marginBottom: '0',
                     }}
                   >
                     {(
@@ -183,7 +182,7 @@ const Overview = () => {
               alt="chart"
               src={chart}
               width="95px"
-              style={{ marginLeft: "130px" }}
+              style={{ marginLeft: '130px' }}
             />
           </Box>
 
@@ -223,18 +222,18 @@ const Overview = () => {
               alt="chart"
               src={chart}
               width="95px"
-              style={{ marginLeft: "130px" }}
+              style={{ marginLeft: '130px' }}
             />
           </Box>
         </Box>
 
         <Box
           sx={{
-            height: "40vh",
-            display: "flex",
-            width: "45%",
-            gap: "20px",
-            flexWrap: "wrap",
+            height: '40vh',
+            display: 'flex',
+            width: '45%',
+            gap: '20px',
+            flexWrap: 'wrap',
           }}
         >
           <BoxComponent label="Products" value="260" />

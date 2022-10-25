@@ -1,4 +1,4 @@
-import UserData from "./UserData";
+import UserData from './UserData';
 
 interface UserContextType {
   authData: UserData | null;

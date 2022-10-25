@@ -7,13 +7,12 @@ import {
   useMemo,
 } from 'react';
 import axios from 'axios';
-import { UserContextType } from '../utils';
 
 type childrenProps = {
   children: ReactNode;
 };
 
-export const authContext = createContext<UserContextType>({});
+export const authContext = createContext({});
 
 export const AuthProvider: FC<childrenProps> = ({ children }) => {
   const [authData, setAuthData] = useState({

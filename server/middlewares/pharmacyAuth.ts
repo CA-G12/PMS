@@ -2,11 +2,7 @@ import { Response, NextFunction } from 'express';
 import { CustomError } from '../utils';
 import { UserRequest } from './interfaces';
 
-const pharmacyAuth = async (
-  req: UserRequest,
-  res: Response,
-  next: NextFunction
-) => {
+const pharmacyAuth = async (req: any, res: Response, next: NextFunction) => {
   const { role } = req.user;
 
   if (role === 'pharmacy') {

@@ -1,15 +1,74 @@
-.boxModal{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30vw;
-    height: 51vh;
-    background-color: white;
-    border-radius: 3px;
-    padding: 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center
+.boxModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  height: 51vh;
+  background-color: white;
+  border-radius: 3px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.filterComponent.MuiBox-root.css-0 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 35px 72px;
+  width: 80%;
+}
+
+p.MuiTypography-root.MuiTypography-body1.css-ahj2mt-MuiTypography-root {
+  color: navy;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: 'mulish';
+}
+
+.filtered-inputs.MuiBox-root.css-0 {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2%;
+  width: 91%;
+}
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.css-1ps6pg7-MuiPaper-root {
+  width: 50%;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #e0e0e047 !important ;
+}
+
+.css-1gtpq4r-MuiButtonBase-root-MuiIconButton-root {
+  padding: 17px;
+}
+
+.css-i4bv87-MuiSvgIcon-root {
+  font-size: 1.7rem !important;
+  color: #000000bf !important;
+}
+
+.MuiInputBase-root.MuiInputBase-colorPrimary.css-1le28he-MuiInputBase-root {
+  width: 90%;
+}
+
+button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.SearchButton.css-1gtpq4r-MuiButtonBase-root-MuiIconButton-root {
+  background-color: #83b239;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.searchIcon.css-i4bv87-MuiSvgIcon-root {
+  color: white !important;
+}
+
+button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-1gtpq4r-MuiButtonBase-root-MuiIconButton-root {
+  padding: 15px;
 }

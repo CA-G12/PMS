@@ -7,8 +7,9 @@ const pharmacyAuth = async (
   res: Response,
   next: NextFunction
 ) => {
+  console.log(req.user);
   const { role } = req.user;
-
+  
   if (role === 'pharmacy') {
     next();
   } else {

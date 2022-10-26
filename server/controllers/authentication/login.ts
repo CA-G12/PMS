@@ -30,15 +30,15 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
     if (loginData.length === 0)
       throw new CustomError(400, 'invalid email or password');
 
-    const { password, id, owner_img } = loginData[0];
+    const { password, id, owner_img , status} = loginData[0];
     const passwordCompare = await compare(loginPassword, password);
     if (!passwordCompare)
       throw new CustomError(400, 'invalid email or password');
 
-    const token = await generateToken({ id, role: 'pharmacy', owner_img });
+    const token = await generateToken({ id, role: 'pharmacy', owner_img, status:'Panding' });
     return res
       .cookie('token', token, { httpOnly: true })
-      .json({ data: { id, owner_img }, msg: 'successful' });
+      .json({ data: { id, owner_img, status }, msg: 'successful' });
   } catch (err) {
     if (err.name === 'ValidationError') {
       return next(new CustomError(400, 'Something went wrong, sign up again'));

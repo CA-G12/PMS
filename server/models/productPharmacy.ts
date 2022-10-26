@@ -2,13 +2,13 @@ import { Model, DataTypes } from 'sequelize';
 import sequelize from '../database/config/connection';
 
 export default class ProductPharmacy extends Model {
-  declare id:number;
+  declare id: number;
 
-  declare pharmacy_id:number;
+  declare pharmacy_id: number;
 
-  declare product_id:number;
+  declare product_id: number;
 
-  declare quantity:number;
+  declare quantity: number;
 }
 
 ProductPharmacy.init(
@@ -23,5 +23,5 @@ ProductPharmacy.init(
       allowNull: false,
     },
   },
-  { sequelize },
+  { sequelize }
 );

@@ -4,10 +4,10 @@ import {
   Pharmacies,
   Products,
   Requests,
-  Applications,
   DashboardLayout,
 } from './pages';
 import './App.css';
+import ApplicationSection from './components/admin/ApplicationSection';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -33,7 +33,7 @@ const App = () => {
         },
         {
           path: 'applications',
-          element: <Applications />,
+          element: <ApplicationSection />,
         },
       ],
     },

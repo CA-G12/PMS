@@ -12,7 +12,6 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import CustomizedInputBase from './Extra/Search';
 import LongMenu from './Extra/Options';
 import image31 from '../../assets/image31.png';
 
@@ -110,9 +109,7 @@ const AllAdminPharmasis = () => {
         >
           <TableHead>
             <TableRow>
-              <TableCell>
-                <CustomizedInputBase />
-              </TableCell>
+              <TableCell>All Pharmacy</TableCell>
               <TableCell align="center">Pharmacy Owner</TableCell>
               <TableCell align="center">Pharmacy Location</TableCell>
               <TableCell align="center">Pharmacy Status</TableCell>

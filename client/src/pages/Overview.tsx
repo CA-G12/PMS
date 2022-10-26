@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-unused-vars */
 import { Box, List, ListItem, ListItemText, Typography } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -8,13 +10,20 @@ import BoxComponent from '../components/admin/BoxComponent';
 import ChartComponent from '../components/admin/ChartComponent';
 import ListItemComponent from '../components/admin/ListItemComponent';
 
+// eslint-disable-next-line import/no-unresolved
 import 'react-toastify/dist/ReactToastify.css';
 
 const Overview = () => {
   const drawerWidth = 240;
   const [productsQuantity, setProductsQuantity] = useState([]);
   const [productsQuantityOrder, setProductsQuantityOrder] = useState([]);
-  const [data, setData] = useState<any>([]);
+  const [statistics, setStatistics] = useState({
+    pharmaciesNumber: 0,
+    openedApplicationsNumber: 0,
+    productsNumber: 0,
+    pendingApplicationsNumber: 0,
+    closedApplicationsNumber: 0,
+  });
 
   const inStock: number[] = [];
   const expired: number[] = [];
@@ -30,7 +39,7 @@ const Overview = () => {
         } = await axios.get('/admin/statistics', { signal: controller.signal });
         setProductsQuantity(data.allKindProductsCount.rows);
         setProductsQuantityOrder(data.allKindProductsCountOrder.rows);
-        setData(data);
+        setStatistics(data);
       } catch (err) {
         setProductsQuantity([]);
         setProductsQuantityOrder([]);
@@ -43,15 +52,25 @@ const Overview = () => {
     };
   }, []);
 
-  productsQuantity.map(({ expired_quantity, in_stock_quantity }) => {
-    inStock.push(in_stock_quantity);
-    expired.push(expired_quantity);
-  });
+  productsQuantity.forEach(
+    ({
+      expired_quantity: expiredQuantity,
+      in_stock_quantity: inStockQuantity,
+    }) => {
+      inStock.push(inStockQuantity);
+      expired.push(expiredQuantity);
+    }
+  );
 
-  productsQuantityOrder.map(({ expired_quantity, in_stock_quantity }) => {
-    inStockOrder.push(in_stock_quantity);
-    expiredOrder.push(expired_quantity);
-  });
+  productsQuantityOrder.forEach(
+    ({
+      expired_quantity: expiredQuantity,
+      in_stock_quantity: inStockQuantity,
+    }) => {
+      inStockOrder.push(inStockQuantity);
+      expiredOrder.push(expiredQuantity);
+    }
+  );
 
   return (
     <Box
@@ -89,7 +108,7 @@ const Overview = () => {
                 marginTop="0px"
                 fontWeight="bold"
               >
-                {data?.pharmaciesNumber}
+                {statistics?.pharmaciesNumber}
               </Typography>
             </Box>
             <List>
@@ -114,8 +133,8 @@ const Overview = () => {
                     }}
                   >
                     {(
-                      (+data.openedApplicationsNumber /
-                        +data.pharmaciesNumber) *
+                      (+statistics.openedApplicationsNumber /
+                        +statistics.pharmaciesNumber) *
                       100
                     ).toFixed(1)}
                     % Licensed
@@ -143,8 +162,8 @@ const Overview = () => {
                     }}
                   >
                     {(
-                      (+data.pendingApplicationsNumber /
-                        +data.pharmaciesNumber) *
+                      (+statistics.pendingApplicationsNumber /
+                        +statistics.pharmaciesNumber) *
                       100
                     ).toFixed(1)}
                     % Pending
@@ -172,8 +191,8 @@ const Overview = () => {
                     }}
                   >
                     {(
-                      (+data.closedApplicationsNumber /
-                        +data.pharmaciesNumber) *
+                      (+statistics.closedApplicationsNumber /
+                        +statistics.pharmaciesNumber) *
                       100
                     ).toFixed(1)}
                     % Rejected
@@ -205,13 +224,13 @@ const Overview = () => {
                 marginTop="0px"
                 fontWeight="bold"
               >
-                {data?.productsNumber}
+                {statistics?.productsNumber}
               </Typography>
             </Box>
             <List>
               <ListItemComponent
                 bgcolor="#4D96BE"
-                value={data.productsNumber}
+                value={statistics.productsNumber}
                 label="In Pharmacies"
               />
               <ListItemComponent

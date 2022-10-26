@@ -4,14 +4,14 @@ import IdValidator from '../../validation/IdValidator';
 
 const addSales = async (req: Request, res: Response, next: NextFunction) => {
   const { pharmacyId } = req.params;
-  const { productName, quantity } = req.body;
+  const { productId, quantity } = req.body;
   try {
-    await IdValidator(+pharmacyId);
-    const sales = await addSalesHistory(productName, +quantity, +pharmacyId)
-    res.json({
-        data: sales,
-        msg:"Sales are added successfully"
-    })
+    await IdValidator(+pharmacyId, +quantity, +pharmacyId);
+    const sales = await addSalesHistory(+productId, +quantity, +pharmacyId);
+    res.status(201).json({
+      data: sales,
+      msg: 'Sales are added successfully',
+    });
   } catch (err) {
     next(err);
   }

@@ -1,3 +1,3 @@
-import addSales from "./addSales";
+import addSales from './addSales';
 
 export default addSales;

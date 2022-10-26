@@ -23,7 +23,7 @@ describe('sign up router', () => {
       })
       .expect(201)
       .expect('Content-Type', /json/)
-      .end((err:any, res: any) => {
+      .end((err: any, res: any) => {
         if (err) return done(err);
 
         expect(res.body.msg).toEqual('You have signed up successfully');
@@ -47,10 +47,12 @@ describe('sign up router', () => {
       })
       .expect(400)
       .expect('Content-Type', /json/)
-      .end((err:any, res: any) => {
+      .end((err: any, res: any) => {
         if (err) return done(err);
 
-        expect(res.body.msg).toEqual('Try again, This Pharmacy is already Signed');
+        expect(res.body.msg).toEqual(
+          'Try again, This Pharmacy is already Signed'
+        );
         return done();
       });
   });
@@ -71,10 +73,12 @@ describe('sign up router', () => {
       })
       .expect(400)
       .expect('Content-Type', /json/)
-      .end((err:any, res: any) => {
+      .end((err: any, res: any) => {
         if (err) return done(err);
 
-        expect(res.body.msg).toEqual('Try again, This email is already existed');
+        expect(res.body.msg).toEqual(
+          'Try again, This email is already existed'
+        );
         return done();
       });
   });

@@ -7,5 +7,6 @@ const router = Router();
 
 router.use(authRouter);
 router.use(adminRouter);
-router.use(pharmacyRouter)
+router.use(pharmacyRouter);
+
 export default router;

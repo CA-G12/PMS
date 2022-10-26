@@ -7,7 +7,6 @@ import {
   useMemo,
 } from 'react';
 import axios from 'axios';
-import swal from 'sweetalert';
 import { UserContextType } from '../utils';
 
 type childrenProps = {

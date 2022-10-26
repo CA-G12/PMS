@@ -9,24 +9,18 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import CustomizedInputBase from './Extra/Search';
 import image31 from '../../assets/image31.png';
 // admin/products
 
 const AdminAllProducts = () => {
   const [adminProducts, setAdminProducts] = useState([]);
   const [error, setError] = useState('');
-  const getProducts = async () => {
-    const res = await axios.get('/admin/products');
-    return res.data.data;
-  };
+
   useEffect(() => {
     (async () => {
       try {
-        const products = await getProducts();
-        console.log(products);
-
-        setAdminProducts(products);
+        const res = await axios.get('/admin/products');
+        setAdminProducts(res.data.data);
       } catch (err) {
         setError('Somethig went wrong.');
       }
@@ -57,9 +51,7 @@ const AdminAllProducts = () => {
         >
           <TableHead>
             <TableRow>
-              <TableCell>
-                <CustomizedInputBase />
-              </TableCell>
+              <TableCell>Products Name</TableCell>
               <TableCell align="center">Number of Products in Stock </TableCell>
               <TableCell align="center">
                 Number of Products in Pharmisis{' '}

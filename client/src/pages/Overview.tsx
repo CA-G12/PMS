@@ -1,7 +1,6 @@
 import { Box, List, ListItem, ListItemText, Typography } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import swal from 'sweetalert';
 import 'typeface-mulish';
 import chart from '../assets/chart1.png';
 import BoxComponent from '../components/admin/BoxComponent';
@@ -24,6 +23,7 @@ const Overview = () => {
     const getData = async () => {
       try {
         const {
+          // eslint-disable-next-line @typescript-eslint/no-shadow
           data: { data },
         } = await axios.get('/admin/statistics', { signal: controller.signal });
         setProductsQuantity(data.allKindProductsCount.rows);
@@ -41,11 +41,13 @@ const Overview = () => {
     };
   }, []);
 
+  // eslint-disable-next-line camelcase, array-callback-return
   productsQuantity.map(({ expired_quantity, in_stock_quantity }) => {
     inStock.push(in_stock_quantity);
     expired.push(expired_quantity);
   });
 
+  // eslint-disable-next-line camelcase, array-callback-return
   productsQuantityOrder.map(({ expired_quantity, in_stock_quantity }) => {
     inStockOrder.push(in_stock_quantity);
     expiredOrder.push(expired_quantity);

@@ -1,6 +1,6 @@
-import eidtRequestsQuery from './eidtRequestsQuery';
+import {
+  eidtRequestsQueryQuantity,
+  eidtRequestsQueryName,
+} from './eidtRequestsQuery';
 
-export {
-  // eslint-disable-next-line import/prefer-default-export
-  eidtRequestsQuery,
-};
+export { eidtRequestsQueryQuantity, eidtRequestsQueryName };

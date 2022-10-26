@@ -1,6 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { eidtRequestsQuery } from '../../queries';
+import {
+  eidtRequestsQueryName,
+  eidtRequestsQueryQuantity,
+} from '../../queries';
 
 const editRequests = async (
   req: Request,
@@ -8,10 +11,10 @@ const editRequests = async (
   next: NextFunction
 ) => {
   try {
-    const { quantity, productId, name } = req.body;
-    // const { pharmacyId } = req.params;
-    const result = await eidtRequestsQuery(+quantity, +productId, name);
-    res.status(201).json({ data: result, msg: 'add requests done' });
+    const { productId, quantity, name } = req.body;
+    await eidtRequestsQueryName(+productId, name);
+    await eidtRequestsQueryQuantity(+productId, +quantity);
+    res.status(201).json({ msg: 'Edit Requests done' });
   } catch (err: any) {
     next(err);
   }

@@ -5,7 +5,7 @@ import {
   requestQuery,
 } from './admin';
 import { loginQuery, adminLoginQuery } from './authentication';
-import { eidtRequestsQuery } from './pharamcies';
+import { eidtRequestsQueryQuantity, eidtRequestsQueryName } from './pharamcies';
 
 export {
   getProductsAdmin,
@@ -14,5 +14,6 @@ export {
   adminLoginQuery,
   requestStatusQuery,
   requestQuery,
-  eidtRequestsQuery,
+  eidtRequestsQueryQuantity,
+  eidtRequestsQueryName,
 };

@@ -1,10 +1,17 @@
 import { Product, ProductsRequest } from '../../models';
 
-const eidtRequestsQuery = (id: number, quantity: number, name: string) =>
+const eidtRequestsQueryQuantity = (id: number, quantity: number) =>
   ProductsRequest.update(
     { quantity },
     {
       where: { product_id: id },
     }
   );
-export default eidtRequestsQuery;
+const eidtRequestsQueryName = (id: number, name: string) =>
+  Product.update(
+    { name },
+    {
+      where: { product_id: id },
+    }
+  );
+export { eidtRequestsQueryQuantity, eidtRequestsQueryName };

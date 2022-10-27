@@ -8,13 +8,12 @@ import {
 } from './pages';
 import './App.css';
 import ApplicationSection from './components/admin/ApplicationSection';
-import YourApplicationIsInReview from './components/YourApplicationIsInReview';
 
 const App = () => {
   const router = createBrowserRouter([
     {
       path: '/admin',
-      element: <YourApplicationIsInReview />,
+      element: <DashboardLayout />,
       children: [
         {
           path: 'overview',

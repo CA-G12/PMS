@@ -5,6 +5,7 @@ import {
   requestQuery,
 } from './admin';
 import { loginQuery, adminLoginQuery } from './authentication';
+import productsInStockQuery from './pharamcies';
 
 export {
   getProductsAdmin,
@@ -13,4 +14,5 @@ export {
   adminLoginQuery,
   requestStatusQuery,
   requestQuery,
+  productsInStockQuery,
 };

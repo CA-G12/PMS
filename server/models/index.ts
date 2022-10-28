@@ -26,7 +26,7 @@ Product.hasOne(ProductsRequest, { foreignKey: 'product_id' });
 ProductsRequest.belongsTo(Product, { foreignKey: 'pharmacy_id' });
 
 Product.hasMany(AdminProduct, { foreignKey: 'product_id' });
-AdminProduct.belongsTo(Product, { foreignKey: 'pharmacy_id' });
+AdminProduct.belongsTo(Product, { foreignKey: 'product_id' });
 
 export {
   AdminProduct,

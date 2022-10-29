@@ -1,7 +1,13 @@
+/* eslint-disable no-unused-vars */
 import { Request, Response, NextFunction } from 'express';
 import { CustomError } from '../utils';
 
-const ErrorMiddleware = ((err: CustomError, req: Request, res: Response, next: NextFunction) => {
+const ErrorMiddleware = (
+  err: CustomError,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const { status, message } = err;
 
   if (!status) {
@@ -9,6 +15,6 @@ const ErrorMiddleware = ((err: CustomError, req: Request, res: Response, next: N
   } else {
     res.status(status).json({ msg: message });
   }
-});
+};
 
 export default ErrorMiddleware;

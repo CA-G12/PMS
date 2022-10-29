@@ -26,5 +26,5 @@ ProductsRequest.init(
       allowNull: false,
     },
   },
-  { sequelize },
+  { sequelize }
 );

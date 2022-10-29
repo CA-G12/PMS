@@ -1,6 +1,6 @@
 import auth from './auth';
+import pharmacyAuth from './pharmacyAuth';
+import adminAuth from './adminAuth';
+import Error from './Error';
 
-export {
-  // eslint-disable-next-line import/prefer-default-export
-  auth,
-};
+export { pharmacyAuth, auth, adminAuth, Error };

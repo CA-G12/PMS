@@ -13,10 +13,14 @@ function createData(
   calories: number,
   fat: number,
   carbs: number,
-  protein: number,
+  protein: number
 ) {
   return {
-    name, calories, fat, carbs, protein,
+    name,
+    calories,
+    fat,
+    carbs,
+    protein,
   };
 }
 
@@ -47,15 +51,17 @@ const BasicTable = () => (
               }}
             >
               <img src="./img/image31.png" alt="pharmacy" />
-              <Box sx={{
-                // display: 'flex',
-                // flexDirection: 'column',
-              }}
+              <Box
+                sx={
+                  {
+                    // display: 'flex',
+                    // flexDirection: 'column',
+                  }
+                }
               >
                 <Typography>{row.name}</Typography>
                 <Typography sx={{ opacity: 0.7 }}>123456</Typography>
               </Box>
-
             </TableCell>
             <TableCell align="center">{row.calories}</TableCell>
             <TableCell align="center">{row.fat}</TableCell>

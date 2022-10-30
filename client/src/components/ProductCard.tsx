@@ -17,17 +17,20 @@ const ProductCard = ({ product }: Props) => (
       borderTopLeftRadius: '40px',
       borderBottomRightRadius: '40px',
       width: '15%',
-      padding: '0 3% 25px 3%',
+      padding: '0 1% 35px 1%',
       textAlign: 'center',
       boxShadow: '2px 2px 5px 2px #aaa',
       position: 'relative',
+      backgroundColor: '#F5F5F5',
     }}
   >
     <img src={product.img} alt="product img" width="80%" height="40%" />
     <h4 style={{ color: '#00007F', fontSize: '1.5rem', margin: '5px auto' }}>
       {product.name}
     </h4>
-    <p style={{ fontSize: '14px', fontWeight: '600' }}>{product.description}</p>
+    <p style={{ fontSize: '14px', fontWeight: '600', width: '95%' }}>
+      {product.description}
+    </p>
     <h5
       style={{
         color: '#00007F',

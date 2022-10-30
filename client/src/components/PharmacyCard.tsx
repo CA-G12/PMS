@@ -20,7 +20,7 @@ const PharmacyCard = ({ pharmacy }: Props) => (
       textAlign: 'center',
       boxShadow: '2px 2px 5px 2px #aaa',
       position: 'relative',
-      margin: '1rem',
+      margin: ' 10rem 1rem 1rem 1rem',
       marginTop: '7%',
       backgroundColor: '#F5F5F5',
       minHeight: '220px',
@@ -39,25 +39,27 @@ const PharmacyCard = ({ pharmacy }: Props) => (
         borderBottomRightRadius: '40px',
       }}
     />
-    <h4
-      style={{
-        color: '#00007F',
-        fontSize: '1.5rem',
-        margin: '5px auto',
-        marginTop: '55%',
-      }}
-    >
-      {pharmacy.name}
-    </h4>
-    <h5
-      style={{
-        fontSize: '1rem',
-        margin: ' 15px 0',
-        opacity: '63%',
-      }}
-    >
-      {pharmacy.location}
-    </h5>
+    <Box>
+      <h4
+        style={{
+          color: '#00007F',
+          fontSize: '1.5rem',
+          margin: '5px auto',
+          paddingTop: '55%',
+        }}
+      >
+        {pharmacy.name}
+      </h4>
+      <h5
+        style={{
+          fontSize: '1rem',
+          margin: ' 15px 0',
+          opacity: '63%',
+        }}
+      >
+        {pharmacy.location}
+      </h5>
+    </Box>
   </Box>
 );
 export default PharmacyCard;

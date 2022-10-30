@@ -1,6 +1,6 @@
 interface ButtonComponentProps {
   text: string;
-  sendUserData: () => void;
+  sendUserData?: () => void;
 }
 
 export default ButtonComponentProps;

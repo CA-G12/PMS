@@ -1,14 +1,16 @@
-import { Box } from '@mui/material'
-import React from 'react'
-import ButtonComponent from '../Button'
+import { Link } from 'react-router-dom';
+import { Box } from '@mui/material';
+import ButtonComponent from '../Button';
 
-const UserNavbar = () => {
-    return (
-        <Box>
-            <ButtonComponent text='Login' sendUserData={() => console.log} />
-            <ButtonComponent text='Sign up' sendUserData={() => console.log} />
-        </Box>
-    )
-}
+const UserNavbar = () => (
+  <Box>
+    <Link to="/login">
+      <ButtonComponent text="Login" />
+    </Link>
+    <Link to="/signUp">
+      <ButtonComponent text="Sign up" />
+    </Link>
+  </Box>
+);
 
-export default UserNavbar
+export default UserNavbar;

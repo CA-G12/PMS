@@ -1,11 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import {
-  Overview,
-  Pharmacies,
-  Products,
-  Requests,
-  DashboardLayout,
-} from './pages';
+import { Overview, Pharmacies, Products, DashboardLayout } from './pages';
+import AllRequests from './components/admin/allRequests';
 import './App.css';
 import ApplicationSection from './components/admin/ApplicationSection';
 import {
@@ -39,7 +34,7 @@ const App = () => {
         },
         {
           path: 'requests',
-          element: <Requests />,
+          element: <AllRequests />,
         },
         {
           path: 'applications',

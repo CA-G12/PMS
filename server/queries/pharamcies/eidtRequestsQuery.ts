@@ -8,7 +8,7 @@ const eidtRequestsQueryQuantity = (
   ProductsRequest.update(
     { quantity },
     {
-      where: { product_id: idProduct, id: idRequest },
+      where: { product_id: idProduct, id: idRequest, status: 'Pending' },
     }
   );
 const eidtRequestsQueryName = (idProduct: number, name: string) =>

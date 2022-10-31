@@ -1,16 +1,17 @@
-import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, List, ListItem, ListItemText } from '@mui/material';
 import PharmacyNavbar from './PharmacyNavbar';
 import UserNavbar from './UserNavbar';
 import Logo from '../../assets/logo.png';
 import './Navbar.css';
+import { authContext } from '../../context/authContext';
 
-type NavBarProps = {
-  role: string;
-};
+const Navbar = () => {
+  const {
+    authData: { role },
+  } = useContext(authContext);
 
-const Navbar: React.FC<NavBarProps> = ({ role }) => {
   const navigationMenu = ['Home', 'Pharmacies', 'Products', 'Contact Us'];
 
   return (

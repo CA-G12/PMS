@@ -1,49 +1,99 @@
-import { Box, IconButton, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
-import React from 'react'
+import {
+  Box,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Skeleton,
+  Typography,
+} from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import { LocalPhone, Email, LocationOn } from '@mui/icons-material';
-import './info.css'
-const GeneralInfo = () => {
-    return (
-        <Box>
-            <Typography className="GeneralInfo">
-                General Info
-            </Typography>
-            <Box>
-                <Typography className="name">
-                    Pharmacy of Palestine
-                </Typography>
-                <Typography className='desc' paragraph>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque molestias dignissimos qui vel ut cumque, delectus dolorum blanditiis nemo harum omnis id facere, possimus, ipsa eligendi minima dolorem modi perferendis.
-                </Typography>
-                <List className='info'>
-                    <ListItem className='infoItem'>
-                        <ListItemButton className='InfoButton'>
-                            <IconButton>
-                                <LocalPhone />
-                            </IconButton>
-                            <ListItemText primary='+98712358' className='infoText'/>
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem className='infoItem'>
-                        <ListItemButton className='InfoButton'>
-                            <IconButton>
-                                <Email />
-                            </IconButton>
-                            <ListItemText primary='ibtisamhemmo@gmail.com' className='infoText'/>
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem className='infoItem'>
-                        <ListItemButton className='InfoButton'>
-                            <IconButton>
-                                <LocationOn />
-                            </IconButton>
-                            <ListItemText primary='Palestine - Gaza City' className='infoText'/>
-                        </ListItemButton>
-                    </ListItem>
-                </List>
-            </Box>
-        </Box>
-    )
-}
+import './info.css';
+import axios from 'axios';
 
-export default GeneralInfo
+type pharmacyData = {
+  name: string,
+  description: string,
+  phone: string,
+  location: string,
+  email: string
+}
+const GeneralInfo = () => {
+  const [data, setData] = useState<pharmacyData | null>();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const getData = async () => {
+      try {
+        const { data: { pharmacyData } } = await axios.get(`/pharmacy/1`, { signal: controller.signal })
+        setData(pharmacyData[0])
+        setLoading(true)
+      } catch (err) {
+        setData(null)
+        setLoading(true)
+      }
+    }
+    getData();
+    return () => {
+      controller.abort()
+    }
+  }, []);
+
+  const LoadingItem = () => {
+    return (
+    <Box sx={{ width: 300 }}>
+      <Skeleton />
+      <Skeleton animation="wave" />
+      <Skeleton animation={false} />
+    </Box>)
+  };
+
+  return (
+    loading ? <LoadingItem /> :
+    <Box>
+      <Typography className="GeneralInfo">General Info</Typography>
+      <Box>
+        <Typography className="name">{data?.name}</Typography>
+        <Typography className="desc" paragraph>
+          {data?.description}
+        </Typography>
+        <List className="info">
+          <ListItem className="infoItem">
+            <ListItemButton className="InfoButton">
+              <IconButton>
+                <LocalPhone />
+              </IconButton>
+              <ListItemText primary={data?.phone} className="infoText" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem className="infoItem">
+            <ListItemButton className="InfoButton">
+              <IconButton>
+                <Email />
+              </IconButton>
+              <ListItemText
+                primary={data?.email}
+                className="infoText"
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem className="infoItem">
+            <ListItemButton className="InfoButton">
+              <IconButton>
+                <LocationOn />
+              </IconButton>
+              <ListItemText
+                primary={data?.location}
+                className="infoText"
+              />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Box>
+    </Box>
+  );
+}
+export default GeneralInfo;

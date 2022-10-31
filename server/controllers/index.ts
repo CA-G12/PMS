@@ -10,7 +10,6 @@ import {
 import pharmacyOverview from './pharamcies';
 import pharmacies from './users';
 
-
 export {
   checkAuthData,
   allRequests,
@@ -23,5 +22,5 @@ export {
   getAllPharmacies,
   getAdminOverview,
   pharmacyOverview,
-  pharmacies
+  pharmacies,
 };

@@ -1,28 +1,6 @@
 body{
     background-color: #F9F9F9;
 }
-.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation0.MuiDrawer-paper.MuiDrawer-paperAnchorLeft.MuiDrawer-paperAnchorDockedLeft.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
-    background-color: #031737;
-}
-.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorLeft.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
-    background-color: #031737;
-}
-
-a {
-    color: white;
-    text-decoration: none;
-}
-
-.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root:hover,:focus {
-    background: #6F7C9E;
-    border-radius: 3px;
-    transition: transform ease .3s;
-    transform: scale(1.05);
-}
-
-.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.css-hyum1k-MuiToolbar-root {
-    justify-content: space-between;
-}
 
 .css-i4bv87-MuiSvgIcon-root {
     color: white;

@@ -1,5 +1,8 @@
 import { Router } from 'express';
-import { getPharmacyStatistics, getAllProducts } from '../../controllers/pharamcies';
+import {
+  getPharmacyStatistics,
+  getAllProducts,
+} from '../../controllers/pharamcies';
 
 const pharmacyRouter = Router();
 

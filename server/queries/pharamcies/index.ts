@@ -4,4 +4,10 @@ import getAllProductsQuery from './pharmacyProducts';
 import pharmacyOverviewQuery from './pharmacyOverview';
 import getPharmacyRequestsQuery from './pharamcyRequests';
 
-export { getAllProductsQuery, pharmacyOverviewQuery, getPharmacyRequestsQuery, addSalesHistory, pharmacyStatistics  };
+export {
+  getAllProductsQuery,
+  pharmacyOverviewQuery,
+  getPharmacyRequestsQuery,
+  addSalesHistory,
+  pharmacyStatistics,
+};

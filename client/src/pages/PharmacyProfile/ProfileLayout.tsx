@@ -1,3 +1,6 @@
+import { Outlet, Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import {
   Box,
   List,
@@ -7,9 +10,6 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material';
-import { Outlet, Link, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import {
   Dialpad,
   AttachFile,
@@ -17,20 +17,10 @@ import {
   RequestQuote,
 } from '@mui/icons-material';
 import './profile.css';
-import Profile from '../../assets/profile.jpg';
-
-type pharmacyData = {
-  name: string,
-  location:string,
-  email:string,
-  phone:string,
-  description:string,
-  owner_name:string,
-  owner_img:string,
-}
+import pharmacyDataType from '../../utils/PharmacyData';
 
 const ProfileLayout = () => {
-  const [data, setData] = useState<pharmacyData | null>();
+  const [data, setData] = useState<pharmacyDataType | null>();
   const id = useParams();
 
   const TABS_CONFIG = [
@@ -43,7 +33,9 @@ const ProfileLayout = () => {
     const controller = new AbortController();
     const getData = async () => {
       try {
-        const {data:{pharmacyData}} = await axios.get(`/pharmacy/${id}`, {
+        const {
+          data: { pharmacyData },
+        } = await axios.get(`/pharmacy/${id}`, {
           signal: controller.signal,
         });
         setData(pharmacyData[0]);

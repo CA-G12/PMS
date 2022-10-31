@@ -15,6 +15,9 @@ import {
   ProfileOverview,
   SalesHistory,
 } from './pages/PharmacyProfile';
+import { AuthProvider } from './context/authContext';
+import Login from './components/auth/login';
+import Signup from './components/auth/Signup';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -66,7 +69,19 @@ const App = () => {
         },
       ],
     },
+    {
+      path: '/login',
+      element: <Login />,
+    },
+    {
+      path: '/signUp',
+      element: <Signup />,
+    },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 };
 export default App;

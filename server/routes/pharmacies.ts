@@ -1,6 +1,11 @@
 import { Router } from 'express';
 import { pharmacyOverview } from '../controllers';
-import { getAllProducts, getPharmacyRequests, addSales, getPharmacyStatistics } from '../controllers/pharamcies';
+import {
+  getAllProducts,
+  getPharmacyRequests,
+  addSales,
+  getPharmacyStatistics,
+} from '../controllers/pharamcies';
 import { auth, pharmacyAuth } from '../middlewares';
 
 const pharmaciesRouter = Router();

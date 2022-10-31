@@ -12,7 +12,7 @@ describe('login router', () => {
       .post('/auth/login')
       .send({
         email: 'ahmed@gmail.com',
-        loginPassword: '123456789aaa',
+        password: '123456789aaa',
       })
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
@@ -29,7 +29,7 @@ describe('login router', () => {
       .post('/auth/login')
       .send({
         email: 'admin@gmail.com',
-        loginPassword: 'adminadmi',
+        password: 'adminadmi',
       })
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
@@ -46,7 +46,7 @@ describe('login router', () => {
       .post('/auth/login')
       .send({
         email: 'admin@gmail.com',
-        loginPassword: 'adminadmin',
+        password: 'adminadmin',
       })
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
@@ -63,7 +63,7 @@ describe('login router', () => {
       .post('/auth/login')
       .send({
         email: 'admin',
-        loginPassword: 'adm',
+        password: 'adm',
       })
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {

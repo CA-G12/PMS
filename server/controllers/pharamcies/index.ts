@@ -1,3 +1,4 @@
 import getPharmacyStatistics from './pharmacyStatistics';
+import pharmacyOverview from './pharmacyOverview';
 
-export default getPharmacyStatistics;
+export { getPharmacyStatistics, pharmacyOverview };

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import pharmacyStatistics from '../../queries/pharamcies';
+import { pharmacyStatistics } from '../../queries/pharamcies';
 import { pharmacyIdSchema } from '../../validation';
 
 const getPharmacyStatistics = async (

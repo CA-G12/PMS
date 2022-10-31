@@ -1,3 +1,4 @@
 import pharmacyStatistics from './pharmacyStatistics';
+import pharmacyOverviewQuery from './pharmacyOverview';
 
-export default pharmacyStatistics;
+export { pharmacyStatistics, pharmacyOverviewQuery };

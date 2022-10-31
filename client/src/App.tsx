@@ -8,6 +8,13 @@ import {
 } from './pages';
 import './App.css';
 import ApplicationSection from './components/admin/ApplicationSection';
+import {
+  ActiveRequests,
+  PharmacyProducts,
+  ProfileLayout,
+  ProfileOverview,
+  SalesHistory,
+} from './pages/PharmacyProfile';
 import { AuthProvider } from './context/authContext';
 import Login from './components/auth/login';
 import Signup from './components/auth/Signup';
@@ -37,6 +44,28 @@ const App = () => {
         {
           path: 'applications',
           element: <ApplicationSection />,
+        },
+      ],
+    },
+    {
+      path: '/pharmacy',
+      element: <ProfileLayout />,
+      children: [
+        {
+          path: 'profile overview',
+          element: <ProfileOverview />,
+        },
+        {
+          path: 'pharmacy products',
+          element: <PharmacyProducts />,
+        },
+        {
+          path: 'active requests',
+          element: <ActiveRequests />,
+        },
+        {
+          path: 'sales history',
+          element: <SalesHistory />,
         },
       ],
     },

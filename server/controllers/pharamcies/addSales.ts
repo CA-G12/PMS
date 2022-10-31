@@ -1,13 +1,13 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Response } from 'express';
 import addSalesHistory from '../../queries/pharamcies';
 import IdValidator from '../../validation/IdValidator';
 
-const addSales = async (req: Request, res: Response, next: NextFunction) => {
-  const { pharmacyId } = req.params;
+const addSales = async (req: any, res: Response, next: NextFunction) => {
+  const { id } = req.user;
   const { productId, quantity } = req.body;
   try {
-    await IdValidator(+pharmacyId, +quantity, +pharmacyId);
-    const sales = await addSalesHistory(+productId, +quantity, +pharmacyId);
+    await IdValidator(+id, +quantity, +productId);
+    const sales = await addSalesHistory(+productId, +quantity, +id);
     res.status(201).json({
       data: sales,
       msg: 'Sales are added successfully',

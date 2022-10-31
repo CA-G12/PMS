@@ -1,3 +1,4 @@
 import getAllProducts from './pharmacyProducts';
+import pharmacyOverview from './pharmacyOverview';
 
-export default getAllProducts;
+export { getAllProducts, pharmacyOverview };

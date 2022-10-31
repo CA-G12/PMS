@@ -1,3 +1,4 @@
 import getAllProductsQuery from './pharmacyProducts';
+import pharmacyOverviewQuery from './pharmacyOverview';
 
-export default getAllProductsQuery;
+export { getAllProductsQuery, pharmacyOverviewQuery };

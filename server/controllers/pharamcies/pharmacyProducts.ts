@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import getAllProductsQuery from '../../queries/pharamcies';
+import { getAllProductsQuery } from '../../queries/pharamcies';
 import { nameNumberValidator } from '../../validation';
 
 const getAllProducts = async (

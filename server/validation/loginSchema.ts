@@ -1,8 +1,12 @@
-const Joi = require('joi');
+import Joi from 'joi';
 
-const loginSchema = Joi.object({
-  email: Joi.string().email().required(),
-  loginPassword: Joi.string().required(),
-});
+const loginSchema = (email: string, loginPassword: string) => {
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    loginPassword: Joi.string().required(),
+  });
+
+  return schema.validateAsync({ email, loginPassword });
+};
 
 export default loginSchema;

@@ -1,3 +1,15 @@
+import getPharmacyStatistics from './pharmacyStatistics';
+import addSales from './addSales';
+import getAllProducts from './pharmacyProducts';
+import pharmacyOverview from './pharmacyOverview';
+import getPharmacyRequests from './pharamcyRequests';
 import salesHistory from './salesHistory';
 
-export default salesHistory;
+export {
+  getAllProducts,
+  pharmacyOverview,
+  getPharmacyRequests,
+  addSales,
+  getPharmacyStatistics,
+  salesHistory,
+};

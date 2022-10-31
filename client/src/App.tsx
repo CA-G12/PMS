@@ -5,6 +5,7 @@ import {
   Products,
   Requests,
   DashboardLayout,
+  AllProducts,
 } from './pages';
 import './App.css';
 import ApplicationSection from './components/admin/ApplicationSection';
@@ -36,6 +37,10 @@ const App = () => {
           element: <ApplicationSection />,
         },
       ],
+    },
+    {
+      path: 'AllProducts',
+      element: <AllProducts />,
     },
   ]);
   return <RouterProvider router={router} />;

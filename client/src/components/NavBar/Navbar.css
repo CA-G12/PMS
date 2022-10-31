@@ -1,7 +1,6 @@
 header.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation4.MuiAppBar-root.MuiAppBar-colorPrimary.MuiAppBar-positionFixed.mui-fixed.css-11b3ww9-MuiPaper-root-MuiAppBar-root {
   height: 61px;
   background-color: inherit;
-  color: navy;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -34,4 +33,8 @@ span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-10hburv-
 button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-l396rh-MuiButtonBase-root-MuiButton-root {
   margin-bottom: 0;
   margin-right: 21px;
+}
+
+a{
+  color: navy;
 }

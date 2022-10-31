@@ -1,4 +1,5 @@
-import getPharmacyRequests from './pharamcyRequests';
+import getAllProducts from './pharmacyProducts';
 import pharmacyOverview from './pharmacyOverview';
+import getPharmacyRequests from './pharamcyRequests';
 
-export { getPharmacyRequests, pharmacyOverview };
+export { getAllProducts, pharmacyOverview, getPharmacyRequests };

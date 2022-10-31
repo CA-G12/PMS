@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import getPharmacyRequestsQuery from '../../queries/pharamcies';
+import { getPharmacyRequestsQuery } from '../../queries/pharamcies';
 import pageIdSchema from '../../validation/IdPageSchema';
 
 const getPharmacyRequests = async (

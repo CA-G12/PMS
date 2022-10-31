@@ -1,3 +1,4 @@
 import getPharmacyRequests from './pharamcyRequests';
+import pharmacyOverview from './pharmacyOverview';
 
-export default getPharmacyRequests;
+export { getPharmacyRequests, pharmacyOverview };

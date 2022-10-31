@@ -5,6 +5,7 @@ import {
   Products,
   Requests,
   DashboardLayout,
+  AllPharmacies,
 } from './pages';
 import './App.css';
 import ApplicationSection from './components/admin/ApplicationSection';
@@ -36,6 +37,10 @@ const App = () => {
           element: <ApplicationSection />,
         },
       ],
+    },
+    {
+      path: 'pharmacies',
+      element: <AllPharmacies />,
     },
   ]);
   return <RouterProvider router={router} />;

@@ -6,10 +6,6 @@ import app from '../../app';
 beforeAll(() => buildSeeds());
 
 describe('Admin Overview Statistics', () => {
-  test('fake', () => {
-    expect(200).toBe(200);
-  });
-
   test('Get Admin overview', (done) => {
     supertest(app)
       .get('/admin/statistics')

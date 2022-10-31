@@ -20,6 +20,7 @@ type pharmacyData = {
   location: string,
   email: string
 }
+
 const GeneralInfo = () => {
   const [data, setData] = useState<pharmacyData | null>();
   const [loading, setLoading] = useState(true);
@@ -30,9 +31,8 @@ const GeneralInfo = () => {
       try {
         const { data: { pharmacyData } } = await axios.get(`/pharmacy/1`, { signal: controller.signal })
         setData(pharmacyData[0])
-        setLoading(true)
+        setLoading(false)
       } catch (err) {
-        setData(null)
         setLoading(true)
       }
     }

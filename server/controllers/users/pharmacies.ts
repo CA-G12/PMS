@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-
 import { pharmaciesQuery } from '../../queries';
 
 const pharmacies = async (req: Request, res: Response, next: NextFunction) => {

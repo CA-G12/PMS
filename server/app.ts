@@ -4,7 +4,6 @@ import cookieParser from 'cookie-parser';
 import { join } from 'path';
 import router from './routes';
 import ErrorMiddleware from './middlewares/Error';
-import pharmacyRoutes from './routes/pharamcies/pharamcyRequests';
 
 require('env2')('.env');
 
@@ -26,7 +25,6 @@ if (NODE_ENV === 'production') {
   });
 }
 app.use(router);
-app.use(pharmacyRoutes);
 app.use(ErrorMiddleware);
 
 export default app;

@@ -7,9 +7,9 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import {
   Dialpad,
   AttachFile,
@@ -19,8 +19,19 @@ import {
 import './profile.css';
 import Profile from '../../assets/profile.jpg';
 
+type pharmacyData = {
+  name: string,
+  location:string,
+  email:string,
+  phone:string,
+  description:string,
+  owner_name:string,
+  owner_img:string,
+}
+
 const ProfileLayout = () => {
-  const [owner, setOwner] = useState<AxiosResponse | null>();
+  const [data, setData] = useState<pharmacyData | null>();
+  const id = useParams();
 
   const TABS_CONFIG = [
     { component: <Dialpad />, slug: 'Profile Overview' },
@@ -32,20 +43,19 @@ const ProfileLayout = () => {
     const controller = new AbortController();
     const getData = async () => {
       try {
-        const result = await axios.get('/pharmacy/:id', {
+        const {data:{pharmacyData}} = await axios.get(`/pharmacy/${id}`, {
           signal: controller.signal,
         });
-        setOwner(result);
-        console.log(owner);
+        setData(pharmacyData[0]);
       } catch (err) {
-        setOwner(null);
+        setData(null);
       }
     };
     getData();
     return () => {
       controller.abort();
     };
-  });
+  }, []);
   return (
     <>
       {/* Here goes the navbar */}
@@ -53,10 +63,10 @@ const ProfileLayout = () => {
         <Box className="dashboard">
           <Box className="personInfo">
             <Link to="/pharmacy">
-              <img alt="profile" src={Profile} />
+              <img alt="profile" src={data?.owner_img} />
             </Link>
             <Box className="info">
-              <Typography className="username">Ibtisam Hemmo</Typography>
+              <Typography className="username">{data?.owner_name}</Typography>
               <Typography className="job">Pharmacist</Typography>
             </Box>
           </Box>

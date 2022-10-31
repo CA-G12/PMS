@@ -4,8 +4,13 @@ import {
   requestStatusQuery,
   requestQuery,
 } from './admin';
+import pharmaciesQuery from './users';
 import { loginQuery, adminLoginQuery } from './authentication';
-import { eidtRequestsQueryQuantity, eidtRequestsQueryName } from './pharamcies';
+import {
+  eidtRequestsQueryQuantity,
+  eidtRequestsQueryName,
+  pharmacyOverviewQuery,
+} from './pharamcies';
 
 export {
   getProductsAdmin,
@@ -16,4 +21,6 @@ export {
   requestQuery,
   eidtRequestsQueryQuantity,
   eidtRequestsQueryName,
+  pharmacyOverviewQuery,
+  pharmaciesQuery,
 };

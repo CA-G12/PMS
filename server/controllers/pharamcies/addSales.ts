@@ -1,5 +1,5 @@
 import { NextFunction, Response } from 'express';
-import addSalesHistory from '../../queries/pharamcies';
+import { addSalesHistory } from '../../queries/pharamcies';
 import IdValidator from '../../validation/IdValidator';
 
 const addSales = async (req: any, res: Response, next: NextFunction) => {

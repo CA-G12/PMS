@@ -1,3 +1,4 @@
 import addSalesHistory from './addSales';
+import pharmacyOverviewQuery from './pharmacyOverview';
 
-export default addSalesHistory;
+export { addSalesHistory, pharmacyOverviewQuery };

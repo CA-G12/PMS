@@ -1,3 +1,4 @@
 import addSales from './addSales';
+import pharmacyOverview from './pharmacyOverview';
 
-export default addSales;
+export { addSales, pharmacyOverview };

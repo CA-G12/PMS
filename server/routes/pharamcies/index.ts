@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { getPharmacyStatistics } from '../../controllers/pharamcies';
+import { getPharmacyStatistics, getAllProducts } from '../../controllers/pharamcies';
 
 const pharmacyRouter = Router();
 
 pharmacyRouter.get('/pharmacy/:pharmacyId/statistics', getPharmacyStatistics);
+pharmacyRouter.get('/product', getAllProducts);
 
 export default pharmacyRouter;

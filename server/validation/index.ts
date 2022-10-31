@@ -3,6 +3,7 @@ import loginSchema from './loginSchema';
 import signupSchema from './signupSchema';
 import requestStatusSchema from './requestStatusSchema';
 import pharmacyIdSchema from './pharmacyIdSchema';
+import nameNumberValidator from './nameNumberValidator';
 
 export {
   pharmacyStatusSchema,
@@ -10,4 +11,5 @@ export {
   signupSchema,
   requestStatusSchema,
   pharmacyIdSchema,
+  nameNumberValidator,
 };

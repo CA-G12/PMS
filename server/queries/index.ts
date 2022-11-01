@@ -6,7 +6,11 @@ import {
 } from './admin';
 import pharmaciesQuery from './users';
 import { loginQuery, adminLoginQuery } from './authentication';
-import { salesHistoryQuery, pharmacyOverviewQuery } from './pharamcies';
+import {
+  addRequestsQuery,
+  pharmacyOverviewQuery,
+  salesHistoryQuery,
+} from './pharamcies';
 
 export {
   getProductsAdmin,
@@ -16,6 +20,7 @@ export {
   requestStatusQuery,
   requestQuery,
   salesHistoryQuery,
+  addRequestsQuery,
   pharmacyOverviewQuery,
   pharmaciesQuery,
 };

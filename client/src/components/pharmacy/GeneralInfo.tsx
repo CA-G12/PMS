@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { LocalPhone, Email, LocationOn } from '@mui/icons-material';
 import './info.css';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 type pharmacyData = {
   name: string;
@@ -24,6 +25,7 @@ type pharmacyData = {
 const GeneralInfo = () => {
   const [data, setData] = useState<pharmacyData | null>();
   const [loading, setLoading] = useState(true);
+  const id = useParams();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -31,11 +33,11 @@ const GeneralInfo = () => {
       try {
         const {
           data: { pharmacyData },
-        } = await axios.get(`/pharmacy/1`, { signal: controller.signal });
+        } = await axios.get(`/pharmacy/${id}`, { signal: controller.signal });
         setData(pharmacyData[0]);
         setLoading(false);
       } catch (err) {
-        setLoading(true);
+        setData(null);
       }
     };
     getData();

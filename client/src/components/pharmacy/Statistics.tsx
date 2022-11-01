@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import BoxComponent from '../admin/BoxComponent';
 import ListItemComponent from '../admin/ListItemComponent';
 import chart from '../../assets/chart1.png';
+import { useParams } from 'react-router-dom';
 
 type dataType = {
   Products: {
@@ -18,14 +19,14 @@ type dataType = {
 const Statistics = () => {
   const [usedData, setUsedData] = useState<dataType | null>(null);
   const [loading, setLoading] = useState(true);
-
+  const id = useParams()
   useEffect(() => {
     const controller = new AbortController();
     const getData = async () => {
       try {
         const {
           data: { data },
-        } = await axios.get(`/pharmacy/2/statistics`, {
+        } = await axios.get(`/pharmacy/${id}/statistics`, {
           signal: controller.signal,
         });
         setUsedData(data);

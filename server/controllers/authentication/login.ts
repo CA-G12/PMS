@@ -35,7 +35,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
     if (!passwordCompare)
       throw new CustomError(400, 'invalid email or password');
 
-    const token = await generateToken({ id, role: 'pharmacy', owner_img, status:'Panding' });
+    const token = await generateToken({ id, role: 'pharmacy', owner_img, status });
     return res
       .cookie('token', token, { httpOnly: true })
       .json({ data: { id, owner_img, status }, msg: 'successful' });

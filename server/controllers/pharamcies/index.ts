@@ -4,6 +4,7 @@ import addSales from './addSales';
 import getAllProducts from './pharmacyProducts';
 import pharmacyOverview from './pharmacyOverview';
 import getPharmacyRequests from './pharamcyRequests';
+import addRequests from './addRequests';
 
 export default pharmacyOverview;
 export {
@@ -13,4 +14,5 @@ export {
   getPharmacyRequests,
   addSales,
   getPharmacyStatistics,
+  addRequests,
 };

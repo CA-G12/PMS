@@ -21,5 +21,6 @@ pharmaciesRouter.get(
   pharmacyAuth,
   getPharmacyRequests
 );
+pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth);
 
 export default pharmaciesRouter;

@@ -7,7 +7,7 @@ import {
   getAllPharmacies,
   allRequests,
 } from './admin';
-import { editRequests, pharmacyOverview } from './pharamcies';
+import { editRequests, pharmacyOverview, addRequests } from './pharamcies';
 import pharmacies from './users';
 
 export {
@@ -22,6 +22,7 @@ export {
   getAllPharmacies,
   getAdminOverview,
   editRequests,
+  addRequests,
   pharmacyOverview,
   pharmacies,
 };

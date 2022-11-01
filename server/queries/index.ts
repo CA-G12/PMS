@@ -9,8 +9,8 @@ import { loginQuery, adminLoginQuery } from './authentication';
 import {
   eidtRequestsQueryQuantity,
   eidtRequestsQueryName,
-  pharmacyOverviewQuery,
   checkStatusRequest,
+  pharmacyOverviewQuery,
 } from './pharamcies';
 
 export {

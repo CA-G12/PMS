@@ -1,7 +1,16 @@
 import editRequests from './editRequests';
+import getPharmacyStatistics from './pharmacyStatistics';
+import addSales from './addSales';
+import getAllProducts from './pharmacyProducts';
 import pharmacyOverview from './pharmacyOverview';
-
-// eslint-disable-next-line import/prefer-default-export
-export { editRequests, pharmacyOverview };
+import getPharmacyRequests from './pharamcyRequests';
 
 export default pharmacyOverview;
+export {
+  editRequests,
+  getAllProducts,
+  pharmacyOverview,
+  getPharmacyRequests,
+  addSales,
+  getPharmacyStatistics,
+};

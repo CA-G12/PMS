@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-undef */
 import supertest from 'supertest';
 import buildSeeds from '../../database/seeds/buildSeeds';
 import app from '../../app';
@@ -20,7 +18,7 @@ describe('Testing pages routers and its status codes', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.statusCode).toBe(200);
-        done();
+        return done();
       });
   });
 
@@ -35,7 +33,7 @@ describe('Testing pages routers and its status codes', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.statusCode).toBe(200);
-        done();
+        return done();
       });
   });
 
@@ -50,7 +48,7 @@ describe('Testing pages routers and its status codes', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.statusCode).toBe(200);
-        done();
+        return done();
       });
   });
 
@@ -64,7 +62,7 @@ describe('Testing pages routers and its status codes', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.statusCode).toBe(400);
-        done();
+        return done();
       });
   });
 });

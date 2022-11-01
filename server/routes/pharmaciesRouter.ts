@@ -4,6 +4,7 @@ import {
   editRequests,
   addRequests,
   salesHistory,
+  productsInStock,
 } from '../controllers';
 
 import {
@@ -16,6 +17,12 @@ import { auth, pharmacyAuth } from '../middlewares';
 
 const pharmaciesRouter = Router();
 
+pharmaciesRouter.get(
+  '/pharmacy/productsInStock',
+  auth,
+  pharmacyAuth,
+  productsInStock
+);
 pharmaciesRouter.get('/pharmacy/:pharmacyId', pharmacyOverview);
 pharmaciesRouter.put('/pharmacy/requests', auth, pharmacyAuth, editRequests);
 pharmaciesRouter.get('/pharmacy/:pharmacyId/statistics', getPharmacyStatistics);

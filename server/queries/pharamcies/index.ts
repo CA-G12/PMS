@@ -9,6 +9,7 @@ import pharmacyOverviewQuery from './pharmacyOverview';
 import getPharmacyRequestsQuery from './pharamcyRequests';
 import salesHistoryQuery from './salesHistory';
 import addRequestsQuery from './addRequests';
+import productsInStockQuery from './productsInStock';
 
 export {
   eidtRequestsQueryQuantity,
@@ -20,4 +21,5 @@ export {
   pharmacyStatistics,
   salesHistoryQuery,
   addRequestsQuery,
+  productsInStockQuery,
 };

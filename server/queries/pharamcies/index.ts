@@ -1,3 +1,7 @@
+import {
+  eidtRequestsQueryQuantity,
+  checkStatusRequest,
+} from './eidtRequestsQuery';
 import pharmacyStatistics from './pharmacyStatistics';
 import addSalesHistory from './addSales';
 import getAllProductsQuery from './pharmacyProducts';
@@ -7,8 +11,10 @@ import salesHistoryQuery from './salesHistory';
 import addRequestsQuery from './addRequests';
 
 export {
-  getAllProductsQuery,
+  eidtRequestsQueryQuantity,
   pharmacyOverviewQuery,
+  checkStatusRequest,
+  getAllProductsQuery,
   getPharmacyRequestsQuery,
   addSalesHistory,
   pharmacyStatistics,

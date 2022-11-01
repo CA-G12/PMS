@@ -1,6 +1,11 @@
 import { Router } from 'express';
+import {
+  pharmacyOverview,
+  editRequests,
+  addRequests,
+  salesHistory,
+} from '../controllers';
 
-import { pharmacyOverview, addRequests, salesHistory } from '../controllers';
 import {
   getAllProducts,
   getPharmacyRequests,
@@ -12,9 +17,11 @@ import { auth, pharmacyAuth } from '../middlewares';
 const pharmaciesRouter = Router();
 
 pharmaciesRouter.get('/pharmacy/:pharmacyId', pharmacyOverview);
+pharmaciesRouter.put('/pharmacy/requests', auth, pharmacyAuth, editRequests);
 pharmaciesRouter.get('/pharmacy/:pharmacyId/statistics', getPharmacyStatistics);
 pharmaciesRouter.post('/pharmacy/sales', auth, pharmacyAuth, addSales);
-pharmaciesRouter.get('/product', getAllProducts);
+pharmaciesRouter.get('/product', auth, pharmacyAuth, getAllProducts);
+pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
 pharmaciesRouter.get(
   '/pharmacy/:pharmacyId/requests',
   auth,
@@ -27,6 +34,5 @@ pharmaciesRouter.get(
   pharmacyAuth,
   salesHistory
 );
-pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
 
 export default pharmaciesRouter;

@@ -7,8 +7,10 @@ import {
 import pharmaciesQuery from './users';
 import { loginQuery, adminLoginQuery } from './authentication';
 import {
-  addRequestsQuery,
+  eidtRequestsQueryQuantity,
+  checkStatusRequest,
   pharmacyOverviewQuery,
+  addRequestsQuery,
   salesHistoryQuery,
 } from './pharamcies';
 
@@ -19,8 +21,10 @@ export {
   adminLoginQuery,
   requestStatusQuery,
   requestQuery,
+  eidtRequestsQueryQuantity,
   salesHistoryQuery,
   addRequestsQuery,
   pharmacyOverviewQuery,
   pharmaciesQuery,
+  checkStatusRequest,
 };

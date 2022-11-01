@@ -18,6 +18,7 @@ import {
 } from '@mui/icons-material';
 import './profile.css';
 import pharmacyDataType from '../../utils/PharmacyData';
+import Navbar from '../../components/NavBar/Navbar';
 
 const ProfileLayout = () => {
   const [data, setData] = useState<pharmacyDataType | null>();
@@ -50,12 +51,12 @@ const ProfileLayout = () => {
   }, []);
   return (
     <>
-      {/* Here goes the navbar */}
+      <Navbar />
       <Box className="layout">
         <Box className="dashboard">
           <Box className="personInfo">
             <Link to="/pharmacy">
-              <img alt="profile" src={data?.owner_img} />
+              <img alt="profile" src={data?.owner_img} width='80px' height='80px'/>
             </Link>
             <Box className="info">
               <Typography className="username">{data?.owner_name}</Typography>

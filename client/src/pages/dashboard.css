@@ -20,3 +20,10 @@ a {
 .MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.css-hyum1k-MuiToolbar-root {
     justify-content: space-between;
 }
+
+ul.MuiList-root.MuiList-padding.css-h4y409-MuiList-root {
+    display: flex;
+    gap: 1px;
+    flex-direction: column;
+    align-items: flex-start;
+}

@@ -10,10 +10,10 @@ const oneProductId = async (
   const { productId } = req.params;
   try {
     const result = await getProductId(+productId);
-    res.json(result);
+    res.json({ data: result });
   } catch (err: any) {
-    if (err) next(new CustomError(400, 'no Products'));
     next(err);
   }
 };
+
 export default oneProductId;

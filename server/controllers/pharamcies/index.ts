@@ -1,17 +1,22 @@
 import oneProductId from './oneProductId';
+import editRequests from './editRequests';
 import getPharmacyStatistics from './pharmacyStatistics';
 import addSales from './addSales';
 import getAllProducts from './pharmacyProducts';
 import pharmacyOverview from './pharmacyOverview';
 import getPharmacyRequests from './pharamcyRequests';
+import salesHistory from './salesHistory';
+import addRequests from './addRequests';
 
-// eslint-disable-next-line import/prefer-default-export
-
+export default pharmacyOverview;
 export {
+  editRequests,
   getAllProducts,
   pharmacyOverview,
   getPharmacyRequests,
   addSales,
   getPharmacyStatistics,
   oneProductId,
+  salesHistory,
+  addRequests,
 };

@@ -1,17 +1,25 @@
 import getProductId from './getOneProductId';
+import {
+  eidtRequestsQueryQuantity,
+  checkStatusRequest,
+} from './eidtRequestsQuery';
 import pharmacyStatistics from './pharmacyStatistics';
 import addSalesHistory from './addSales';
 import getAllProductsQuery from './pharmacyProducts';
 import pharmacyOverviewQuery from './pharmacyOverview';
 import getPharmacyRequestsQuery from './pharamcyRequests';
-
-// eslint-disable-next-line import/prefer-default-export
+import salesHistoryQuery from './salesHistory';
+import addRequestsQuery from './addRequests';
 
 export {
-  getAllProductsQuery,
+  eidtRequestsQueryQuantity,
   pharmacyOverviewQuery,
+  checkStatusRequest,
+  getAllProductsQuery,
   getPharmacyRequestsQuery,
   addSalesHistory,
   pharmacyStatistics,
   getProductId,
+  salesHistoryQuery,
+  addRequestsQuery,
 };

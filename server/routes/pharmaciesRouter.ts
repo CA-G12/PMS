@@ -17,7 +17,7 @@ import { auth, pharmacyAuth } from '../middlewares';
 const pharmaciesRouter = Router();
 
 pharmaciesRouter.get('/pharmacy/:pharmacyId', pharmacyOverview);
-pharmaciesRouter.put('/pharmacy/requests/requestId', editRequests);
+pharmaciesRouter.put('/pharmacy/requests', auth, pharmacyAuth, editRequests);
 pharmaciesRouter.get('/pharmacy/:pharmacyId/statistics', getPharmacyStatistics);
 pharmaciesRouter.post('/pharmacy/sales', auth, pharmacyAuth, addSales);
 pharmaciesRouter.get('/product', auth, pharmacyAuth, getAllProducts);

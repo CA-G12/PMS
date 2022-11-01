@@ -13,6 +13,7 @@ import {
   editRequests,
   addRequests,
   salesHistory,
+  productsInStock,
 } from './pharamcies';
 import pharmacies from './users';
 
@@ -28,6 +29,7 @@ export {
   getAllPharmacies,
   getAdminOverview,
   oneProductId,
+  productsInStock,
   editRequests,
   salesHistory,
   addRequests,

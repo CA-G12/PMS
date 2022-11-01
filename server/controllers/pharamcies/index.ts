@@ -7,6 +7,7 @@ import pharmacyOverview from './pharmacyOverview';
 import getPharmacyRequests from './pharamcyRequests';
 import salesHistory from './salesHistory';
 import addRequests from './addRequests';
+import productsInStock from './productsInStock';
 
 export default pharmacyOverview;
 export {
@@ -19,4 +20,5 @@ export {
   oneProductId,
   salesHistory,
   addRequests,
+  productsInStock,
 };

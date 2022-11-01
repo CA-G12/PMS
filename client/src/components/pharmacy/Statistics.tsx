@@ -1,10 +1,10 @@
 import { Box, List, Skeleton, Typography } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import BoxComponent from '../admin/BoxComponent';
 import ListItemComponent from '../admin/ListItemComponent';
 import chart from '../../assets/chart1.png';
-import { useParams } from 'react-router-dom';
 
 type dataType = {
   Products: {
@@ -19,7 +19,7 @@ type dataType = {
 const Statistics = () => {
   const [usedData, setUsedData] = useState<dataType | null>(null);
   const [loading, setLoading] = useState(true);
-  const id = useParams()
+  const id = useParams();
   useEffect(() => {
     const controller = new AbortController();
     const getData = async () => {

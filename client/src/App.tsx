@@ -1,13 +1,18 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import {
-  Overview,
-  Pharmacies,
-  Products,
-  Requests,
-  DashboardLayout,
-} from './pages';
+import { Overview, Pharmacies, Products, DashboardLayout } from './pages';
+import AllRequests from './components/admin/allRequests';
 import './App.css';
 import ApplicationSection from './components/admin/ApplicationSection';
+import {
+  ActiveRequests,
+  PharmacyProducts,
+  ProfileLayout,
+  ProfileOverview,
+  SalesHistory,
+} from './pages/PharmacyProfile';
+import { AuthProvider } from './context/authContext';
+import Login from './components/auth/login';
+import Signup from './components/auth/Signup';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -29,7 +34,7 @@ const App = () => {
         },
         {
           path: 'requests',
-          element: <Requests />,
+          element: <AllRequests />,
         },
         {
           path: 'applications',
@@ -37,7 +42,41 @@ const App = () => {
         },
       ],
     },
+    {
+      path: '/pharmacy',
+      element: <ProfileLayout />,
+      children: [
+        {
+          path: 'profile overview',
+          element: <ProfileOverview />,
+        },
+        {
+          path: 'pharmacy products',
+          element: <PharmacyProducts />,
+        },
+        {
+          path: 'active requests',
+          element: <ActiveRequests />,
+        },
+        {
+          path: 'sales history',
+          element: <SalesHistory />,
+        },
+      ],
+    },
+    {
+      path: '/login',
+      element: <Login />,
+    },
+    {
+      path: '/signUp',
+      element: <Signup />,
+    },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 };
 export default App;

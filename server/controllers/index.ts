@@ -7,7 +7,12 @@ import {
   getAllPharmacies,
   allRequests,
 } from './admin';
-import { editRequests, pharmacyOverview, addRequests } from './pharamcies';
+import {
+  editRequests,
+  pharmacyOverview,
+  addRequests,
+  salesHistory,
+} from './pharamcies';
 import pharmacies from './users';
 
 export {
@@ -22,6 +27,7 @@ export {
   getAllPharmacies,
   getAdminOverview,
   editRequests,
+  salesHistory,
   addRequests,
   pharmacyOverview,
   pharmacies,

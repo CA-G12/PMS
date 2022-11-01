@@ -11,6 +11,7 @@ import {
   checkStatusRequest,
   pharmacyOverviewQuery,
   addRequestsQuery,
+  salesHistoryQuery,
 } from './pharamcies';
 
 export {
@@ -21,6 +22,7 @@ export {
   requestStatusQuery,
   requestQuery,
   eidtRequestsQueryQuantity,
+  salesHistoryQuery,
   addRequestsQuery,
   pharmacyOverviewQuery,
   pharmaciesQuery,

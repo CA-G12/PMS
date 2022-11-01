@@ -1,11 +1,16 @@
 import { Router } from 'express';
-import { pharmacyOverview, editRequests } from '../controllers';
+import {
+  pharmacyOverview,
+  editRequests,
+  addRequests,
+  salesHistory,
+} from '../controllers';
+
 import {
   getAllProducts,
   getPharmacyRequests,
   addSales,
   getPharmacyStatistics,
-  addRequests,
 } from '../controllers/pharamcies';
 import { auth, pharmacyAuth } from '../middlewares';
 
@@ -23,6 +28,11 @@ pharmaciesRouter.get(
   pharmacyAuth,
   getPharmacyRequests
 );
-pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth);
+pharmaciesRouter.get(
+  '/pharmacy/:pharmacyId/sales',
+  auth,
+  pharmacyAuth,
+  salesHistory
+);
 
 export default pharmaciesRouter;

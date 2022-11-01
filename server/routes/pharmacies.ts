@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { pharmacyOverview, addRequests } from '../controllers';
+
+import { pharmacyOverview, addRequests, salesHistory } from '../controllers';
 import {
   getAllProducts,
   getPharmacyRequests,
@@ -19,6 +20,12 @@ pharmaciesRouter.get(
   auth,
   pharmacyAuth,
   getPharmacyRequests
+);
+pharmaciesRouter.get(
+  '/pharmacy/:pharmacyId/sales',
+  auth,
+  pharmacyAuth,
+  salesHistory
 );
 pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
 

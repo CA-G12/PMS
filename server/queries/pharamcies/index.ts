@@ -3,6 +3,7 @@ import addSalesHistory from './addSales';
 import getAllProductsQuery from './pharmacyProducts';
 import pharmacyOverviewQuery from './pharmacyOverview';
 import getPharmacyRequestsQuery from './pharamcyRequests';
+import salesHistoryQuery from './salesHistory';
 import addRequestsQuery from './addRequests';
 
 export {
@@ -11,5 +12,6 @@ export {
   getPharmacyRequestsQuery,
   addSalesHistory,
   pharmacyStatistics,
+  salesHistoryQuery,
   addRequestsQuery,
 };

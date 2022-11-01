@@ -6,9 +6,9 @@ const eidtRequestsQueryQuantity = (
   quantity: number
 ) =>
   ProductsRequest.update(
-    { idProduct, quantity },
+    { product_id: idProduct, quantity },
     {
-      where: { product_id: idProduct, id: idRequest, status: 'Pending' },
+      where: { id: idRequest, status: 'Pending' },
     }
   );
 const checkStatusRequest = (idRequest: number) =>

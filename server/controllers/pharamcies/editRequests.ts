@@ -3,6 +3,7 @@ import { CustomError } from '../../utils';
 import {
   eidtRequestsQueryName,
   eidtRequestsQueryQuantity,
+  checkStatusRequest,
 } from '../../queries';
 
 const editRequests = async (
@@ -12,6 +13,10 @@ const editRequests = async (
 ) => {
   try {
     const { id, product_id: productId, quantity, name } = req.body;
+    const checkStatus = await checkStatusRequest(id);
+    if (checkStatus?.status !== 'Pending') {
+      return res.send({ msg: 'Can not edit this request' });
+    }
     await eidtRequestsQueryQuantity(id, productId, quantity);
     await eidtRequestsQueryName(productId, name);
     res.status(200).json({ msg: 'Edit Requests done' });

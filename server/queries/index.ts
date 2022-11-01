@@ -10,6 +10,7 @@ import {
   eidtRequestsQueryQuantity,
   eidtRequestsQueryName,
   pharmacyOverviewQuery,
+  checkStatusRequest,
 } from './pharamcies';
 
 export {
@@ -23,4 +24,5 @@ export {
   eidtRequestsQueryName,
   pharmacyOverviewQuery,
   pharmaciesQuery,
+  checkStatusRequest,
 };

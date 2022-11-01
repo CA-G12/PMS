@@ -11,6 +11,9 @@ const eidtRequestsQueryQuantity = (
       where: { product_id: idProduct, id: idRequest, status: 'Pending' },
     }
   );
+const checkStatusRequest = (idRequest: number) =>
+  ProductsRequest.findOne({ where: { id: idRequest } });
+
 const eidtRequestsQueryName = (idProduct: number, name: string) =>
   Product.update(
     { name },
@@ -18,4 +21,4 @@ const eidtRequestsQueryName = (idProduct: number, name: string) =>
       where: { id: idProduct },
     }
   );
-export { eidtRequestsQueryQuantity, eidtRequestsQueryName };
+export { eidtRequestsQueryQuantity, eidtRequestsQueryName, checkStatusRequest };

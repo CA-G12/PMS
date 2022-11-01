@@ -1,6 +1,5 @@
 import {
   eidtRequestsQueryQuantity,
-  eidtRequestsQueryName,
   checkStatusRequest,
 } from './eidtRequestsQuery';
 import pharmacyStatistics from './pharmacyStatistics';
@@ -11,7 +10,6 @@ import getPharmacyRequestsQuery from './pharamcyRequests';
 
 export {
   eidtRequestsQueryQuantity,
-  eidtRequestsQueryName,
   pharmacyOverviewQuery,
   checkStatusRequest,
   getAllProductsQuery,

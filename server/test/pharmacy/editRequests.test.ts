@@ -21,7 +21,7 @@ describe('Edit test', () => {
       .end((err: any, res: any) => {
         if (err) return done(err);
 
-        expect(res.statusCode).toBe(200);
+        expect(res.statusCode).toBe(404);
         expect(res.body.msg).toEqual('Can not edit this request');
 
         return done();

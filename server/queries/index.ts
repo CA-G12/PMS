@@ -10,6 +10,9 @@ import {
   addRequestsQuery,
   pharmacyOverviewQuery,
   productsInStockQuery,
+  eidtRequestsQueryQuantity,
+  checkStatusRequest,
+  salesHistoryQuery,
 } from './pharamcies';
 
 export {
@@ -20,7 +23,10 @@ export {
   requestStatusQuery,
   requestQuery,
   productsInStockQuery,
+  eidtRequestsQueryQuantity,
+  salesHistoryQuery,
   addRequestsQuery,
   pharmacyOverviewQuery,
   pharmaciesQuery,
+  checkStatusRequest,
 };

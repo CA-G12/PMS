@@ -3,6 +3,7 @@ import { Box, Drawer } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import drawer from '../components/drawer';
 import NavBar from '../components/NavBar';
+import './dashboard.css';
 
 const drawerWidth = 240;
 

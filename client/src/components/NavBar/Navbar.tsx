@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <AppBar>
       <img alt="logo" src={Logo} width="150px" />
-      <List>
+      <List sx={{ display: 'flex', flexDirection: 'row' }}>
         {navigationMenu.map((menu) => (
           <Link to={`/${menu.toLowerCase()}`} key={menu}>
             <ListItem>

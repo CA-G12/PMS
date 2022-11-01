@@ -1,3 +1,11 @@
-const ProfileOverview = () => <div>Profile Overview</div>;
+import GeneralInfo from '../../components/pharmacy/GeneralInfo';
+import Statistics from '../../components/pharmacy/Statistics';
+
+const ProfileOverview = () => (
+  <>
+    <Statistics />
+    <GeneralInfo />
+  </>
+);
 
 export default ProfileOverview;

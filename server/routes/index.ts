@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import adminRouter from './adminRoutes';
 import authRouter from './authRoutes';
-import pharmaciesRouter from './pharamcies';
+import pharmaciesRouter from './pharmacies';
 
 const router = Router();
 

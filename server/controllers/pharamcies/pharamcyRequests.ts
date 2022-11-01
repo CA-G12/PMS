@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { getPharmacyRequestsQuery } from '../../queries/pharamcies';
-import pageIdSchema from '../../validation/IdPageSchema';
+import { pageIdSchema } from '../../validation';
 
 const getPharmacyRequests = async (
   req: Request,
@@ -17,7 +17,7 @@ const getPharmacyRequests = async (
     );
     res.json({
       data: requests,
-      msg: 'Pharmacy Requests are sent successfully',
+      msg: 'Success',
     });
   } catch (err) {
     next(err);

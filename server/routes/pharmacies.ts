@@ -5,11 +5,6 @@ import pharmacyAuth from '../middlewares/pharmacyAuth';
 
 const pharmaciesRouter = Router();
 
-pharmaciesRouter.post(
-  '/pharmacy/:pharmacyId/requests',
-  auth,
-  pharmacyAuth,
-  addRequests
-);
+pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
 
 export default pharmaciesRouter;

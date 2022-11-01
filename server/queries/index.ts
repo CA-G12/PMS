@@ -4,8 +4,9 @@ import {
   requestStatusQuery,
   requestQuery,
 } from './admin';
+import pharmaciesQuery from './users';
 import { loginQuery, adminLoginQuery } from './authentication';
-import { getProductId } from './pharamcies';
+import { pharmacyOverviewQuery, getProductId } from './pharamcies';
 
 export {
   getProductsAdmin,
@@ -15,4 +16,6 @@ export {
   requestStatusQuery,
   requestQuery,
   getProductId,
+  pharmacyOverviewQuery,
+  pharmaciesQuery,
 };

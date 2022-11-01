@@ -8,18 +8,18 @@ import {
   Skeleton,
   Typography,
 } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LocalPhone, Email, LocationOn } from '@mui/icons-material';
 import './info.css';
 import axios from 'axios';
 
 type pharmacyData = {
-  name: string,
-  description: string,
-  phone: string,
-  location: string,
-  email: string
-}
+  name: string;
+  description: string;
+  phone: string;
+  location: string;
+  email: string;
+};
 
 const GeneralInfo = () => {
   const [data, setData] = useState<pharmacyData | null>();
@@ -29,33 +29,31 @@ const GeneralInfo = () => {
     const controller = new AbortController();
     const getData = async () => {
       try {
-        const { data: { pharmacyData } } = await axios.get(`/pharmacy/1`, { signal: controller.signal })
-        setData(pharmacyData[0])
-        setLoading(false)
+        const {
+          data: { pharmacyData },
+        } = await axios.get(`/pharmacy/1`, { signal: controller.signal });
+        setData(pharmacyData[0]);
+        setLoading(false);
       } catch (err) {
-        setLoading(true)
+        setLoading(true);
       }
-    }
+    };
     getData();
     return () => {
-      controller.abort()
-    }
+      controller.abort();
+    };
   }, []);
 
-  const LoadingItem = () => {
-    return (
-    <Box sx={{ width: 300 }}>
+  return loading ? (
+    <Box sx={{ width: '53vw', marginTop: '50px' }}>
       <Skeleton />
       <Skeleton animation="wave" />
       <Skeleton animation={false} />
-    </Box>)
-  };
-
-  return (
-    loading ? <LoadingItem /> :
-    <Box>
+    </Box>
+  ) : (
+    <Box sx={{ marginTop: '50px' }}>
       <Typography className="GeneralInfo">General Info</Typography>
-      <Box>
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Typography className="name">{data?.name}</Typography>
         <Typography className="desc" paragraph>
           {data?.description}
@@ -74,10 +72,7 @@ const GeneralInfo = () => {
               <IconButton>
                 <Email />
               </IconButton>
-              <ListItemText
-                primary={data?.email}
-                className="infoText"
-              />
+              <ListItemText primary={data?.email} className="infoText" />
             </ListItemButton>
           </ListItem>
           <ListItem className="infoItem">
@@ -85,15 +80,12 @@ const GeneralInfo = () => {
               <IconButton>
                 <LocationOn />
               </IconButton>
-              <ListItemText
-                primary={data?.location}
-                className="infoText"
-              />
+              <ListItemText primary={data?.location} className="infoText" />
             </ListItemButton>
           </ListItem>
         </List>
       </Box>
     </Box>
   );
-}
+};
 export default GeneralInfo;

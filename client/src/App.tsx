@@ -1,8 +1,13 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Overview, Pharmacies, Products, DashboardLayout } from './pages';
-import AllRequests from './components/admin/allRequests';
+import {
+  Overview,
+  Pharmacies,
+  Products,
+  DashboardLayout,
+  Requests,
+  Applications,
+} from './pages/AdminDashboard';
 import './App.css';
-import ApplicationSection from './components/admin/ApplicationSection';
 import {
   ActiveRequests,
   PharmacyProducts,
@@ -34,11 +39,11 @@ const App = () => {
         },
         {
           path: 'requests',
-          element: <AllRequests />,
+          element: <Requests />,
         },
         {
           path: 'applications',
-          element: <ApplicationSection />,
+          element: <Applications />,
         },
       ],
     },
@@ -47,19 +52,19 @@ const App = () => {
       element: <ProfileLayout />,
       children: [
         {
-          path: 'profile overview',
+          path: 'overview',
           element: <ProfileOverview />,
         },
         {
-          path: 'pharmacy products',
+          path: 'products',
           element: <PharmacyProducts />,
         },
         {
-          path: 'active requests',
+          path: 'requests',
           element: <ActiveRequests />,
         },
         {
-          path: 'sales history',
+          path: 'history',
           element: <SalesHistory />,
         },
       ],

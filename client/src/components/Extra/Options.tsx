@@ -32,9 +32,8 @@ const LongMenu = ({ id, setStatus, options }: Props) => {
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
         onClick={handleClick}
-        sx={{ backgroundColor: '#aaa' }}
       >
-        <MoreVertIcon />
+        <MoreVertIcon color="disabled" />
       </IconButton>
       <Menu
         id="long-menu"

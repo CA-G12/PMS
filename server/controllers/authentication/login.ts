@@ -1,15 +1,15 @@
 /* eslint-disable camelcase */
 import { Request, Response, NextFunction } from 'express';
 import { compare } from 'bcryptjs';
-
 import { loginSchema } from '../../validation';
 import { loginQuery, adminLoginQuery } from '../../queries';
 import { generateToken, CustomError } from '../../utils';
 
 const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { email, loginPassword } = req.body;
-    await loginSchema.validateAsync(req.body);
+    const { email, password: loginPassword } = req.body;
+
+    await loginSchema(email, loginPassword);
 
     const data = await adminLoginQuery(email);
     const admin = data[0];

@@ -7,6 +7,14 @@ import {
   getAllPharmacies,
   allRequests,
 } from './admin';
+import {
+  editRequests,
+  pharmacyOverview,
+  addRequests,
+  salesHistory,
+  productsInStock,
+} from './pharamcies';
+import pharmacies from './users';
 
 export {
   checkAuthData,
@@ -19,4 +27,10 @@ export {
   requestStatus,
   getAllPharmacies,
   getAdminOverview,
+  productsInStock,
+  editRequests,
+  salesHistory,
+  addRequests,
+  pharmacyOverview,
+  pharmacies,
 };

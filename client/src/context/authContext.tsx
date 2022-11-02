@@ -12,7 +12,13 @@ type childrenProps = {
   children: ReactNode;
 };
 
-export const authContext = createContext({});
+export const authContext = createContext({
+  authData: {
+    id: 0,
+    role: '',
+    image: '',
+  },
+});
 
 export const AuthProvider: FC<childrenProps> = ({ children }) => {
   const [authData, setAuthData] = useState({

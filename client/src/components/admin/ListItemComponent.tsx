@@ -3,7 +3,7 @@ import React from 'react';
 
 type ListItemComponentProps = {
   bgcolor: string;
-  value: number;
+  value: number | null;
   label: string;
 };
 const ListItemComponent: React.FC<ListItemComponentProps> = ({

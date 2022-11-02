@@ -23,7 +23,7 @@ ProductsRequest.init(
     },
     status: {
       type: DataTypes.ENUM('Approved', 'Pending', 'Rejected'),
-      allowNull: false,
+      defaultValue: 'Pending',
     },
   },
   { sequelize }

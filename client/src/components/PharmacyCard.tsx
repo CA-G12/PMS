@@ -20,7 +20,7 @@ const PharmacyCard = ({ pharmacy }: Props) => (
       textAlign: 'center',
       boxShadow: '2px 2px 5px 2px #aaa',
       position: 'relative',
-      margin: ' 10rem 1rem 3rem 1rem',
+      margin: ' 10rem 1rem 1rem 1rem',
       marginTop: '7%',
       backgroundColor: '#F5F5F5',
       minHeight: '220px',

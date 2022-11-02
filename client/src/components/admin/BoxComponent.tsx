@@ -3,7 +3,7 @@ import React from 'react';
 
 type BoxComponentProps = {
   label: string;
-  value: string;
+  value: string | null;
 };
 
 const BoxComponent: React.FC<BoxComponentProps> = ({ label, value }) => (
@@ -27,7 +27,7 @@ const BoxComponent: React.FC<BoxComponentProps> = ({ label, value }) => (
       paragraph
       marginBottom="0px"
       fontSize="1.2rem"
-      sx={{ color: 'grey' }}
+      sx={{ color: 'grey', textAlign: 'center' }}
     >
       {label}
     </Typography>

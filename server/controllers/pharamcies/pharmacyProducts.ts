@@ -7,7 +7,13 @@ const getAllProducts = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { pharmacyName, medicineName, page = 1, limit = 9 } = req.query;
+  const {
+    pharmacyName,
+    medicineName,
+    page = 1,
+    limit = 9,
+    id = -1,
+  } = req.query;
   try {
     await nameNumberValidator(
       pharmacyName as string,
@@ -19,7 +25,8 @@ const getAllProducts = async (
       pharmacyName as string,
       medicineName as string,
       page as number,
-      limit as number
+      limit as number,
+      id as number
     );
     res.json({ data: productsResult, msg: 'Products are sent successfully' });
   } catch (err) {

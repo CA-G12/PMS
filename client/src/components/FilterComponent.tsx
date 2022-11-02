@@ -16,8 +16,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({ text }) => {
   const [pharmacy, setPharmacy] = useState('');
   const [location, setLocation] = useState('');
   const [medicine, setMedicine] = useState('');
-  const [FilteredData, setFilteredData] = useState<AxiosResponse | null>(null);
-  console.log('FilteredData: ', FilteredData);
+  const [, setFilteredData] = useState<AxiosResponse | null>(null);
 
   const getFilteredData = async () => {
     try {

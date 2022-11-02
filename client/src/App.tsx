@@ -47,19 +47,19 @@ const App = () => {
       element: <ProfileLayout />,
       children: [
         {
-          path: 'profile overview',
+          path: 'profile/overview',
           element: <ProfileOverview />,
         },
         {
-          path: 'pharmacy products',
+          path: 'pharmacy/products',
           element: <PharmacyProducts />,
         },
         {
-          path: 'active requests',
+          path: 'active/requests',
           element: <ActiveRequests />,
         },
         {
-          path: 'sales history',
+          path: 'sales/history',
           element: <SalesHistory />,
         },
       ],

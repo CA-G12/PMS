@@ -7,7 +7,6 @@ import {
   productsInStock,
 } from '../controllers';
 import {
-  getAllProducts,
   getPharmacyRequests,
   addSales,
   getPharmacyStatistics,
@@ -25,7 +24,8 @@ pharmaciesRouter.get(
 );
 pharmaciesRouter.get('/pharmacy/:pharmacyId', pharmacyOverview);
 pharmaciesRouter.get('/pharmacy/:pharmacyId/statistics', getPharmacyStatistics);
-pharmaciesRouter.get('/product', getAllProducts);
+pharmaciesRouter.post('/pharmacy/sales', auth, pharmacyAuth, addSales);
+pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
 pharmaciesRouter.get(
   '/pharmacy/:pharmacyId/requests',
   auth,

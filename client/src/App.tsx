@@ -53,23 +53,23 @@ const App = () => {
       element: <AllPharmacies />,
     },
     {
-      path: '/pharmacy',
+      path: '//pharmacy/:pharmacyId',
       element: <ProfileLayout />,
       children: [
         {
-          path: 'profile overview',
+          path: 'overview',
           element: <ProfileOverview />,
         },
         {
-          path: 'pharmacy products',
+          path: 'products',
           element: <PharmacyProducts />,
         },
         {
-          path: 'active requests',
+          path: 'requests',
           element: <ActiveRequests />,
         },
         {
-          path: 'sales history',
+          path: 'sales-history',
           element: <SalesHistory />,
         },
       ],

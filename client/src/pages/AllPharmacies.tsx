@@ -2,43 +2,41 @@ import {
   Box,
   TextField,
   InputAdornment,
-  CircularProgress,
   Pagination,
+  CircularProgress,
 } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
+import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import ProductCard from '../../components/ProductCard';
-import empty from '../../assets/empty.webp';
+import PharmacyCard from '../components/PharmacyCard';
+import empty from '../assets/empty.webp';
 
 type row = {
+  id: number;
   name: string;
-  description: string;
-  price: number;
-  img: string;
+  location: string;
+  image: string;
 };
-const PharmacyProducts = () => {
-  const [searchMedicine, setSearchMedicine] = useState('');
-  const [products, setProducts] = useState<row[]>([] as row[]);
+
+const AllPharmacies = () => {
+  const [searchPharmacy, setSearchPharmacy] = useState('');
+  const [searchLocation, setSearchLocation] = useState('');
+  const [pharmacies, setPharmacies] = useState<row[]>([] as row[]);
   const [numOfApplications, setNumOfApplications] = useState(1);
   const [loading, setLoading] = useState(true);
   const [pageNum, setPageNum] = useState(1);
-  const { pharmacyId } = useParams();
-
   const getData = async () => {
-    let URL = `/product?page=${pageNum}&id=${pharmacyId}`;
-    if (searchMedicine) {
-      URL += `&medicineName=${searchMedicine}`;
-    }
     setLoading(true);
     const {
       data: {
         data: { rows, count },
       },
-    } = await axios.get(URL);
+    } = await axios.get(
+      `/pharmacy?page=${pageNum}&location=${searchLocation}&name=${searchPharmacy}`
+    );
 
-    setProducts(rows);
+    setPharmacies(rows);
     setNumOfApplications(count);
     setLoading(false);
   };
@@ -47,17 +45,17 @@ const PharmacyProducts = () => {
     getData();
   }, [pageNum]);
 
-  const gitAllProducts = () =>
-    products.map((Product) => (
-      <ProductCard
-        product={{
-          img: Product.img,
-          name: Product.name,
-          description: Product.description,
-          price: Product.price,
+  const gitAllPharmacies = () =>
+    pharmacies.map((pharmacy) => (
+      <PharmacyCard
+        pharmacy={{
+          img: pharmacy.image,
+          name: pharmacy.name,
+          location: pharmacy.location,
         }}
       />
     ));
+
   return (
     <Box
       sx={{
@@ -75,13 +73,13 @@ const PharmacyProducts = () => {
           marginLeft: '10px',
         }}
       >
-        Filter your Products
+        Filter your Pharmacies
       </h4>
       <Box sx={{ display: 'flex', marginBottom: '2rem' }}>
         <Box
           component="form"
           sx={{
-            '& > :not(style)': { m: 1, width: '90%', height: '100%' },
+            '& > :not(style)': { m: 1, width: '48%', height: '100%' },
             width: '95%',
           }}
           noValidate
@@ -89,10 +87,10 @@ const PharmacyProducts = () => {
         >
           <TextField
             id="filled-basic"
-            label="Search any medicine"
+            label="Search any pharmacy"
             variant="filled"
-            value={searchMedicine}
-            onChange={(e) => setSearchMedicine(e.target.value)}
+            value={searchPharmacy}
+            onChange={(e) => setSearchPharmacy(e.target.value)}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -105,12 +103,27 @@ const PharmacyProducts = () => {
               ),
             }}
           />
+          <TextField
+            id="filled-basic"
+            label="Set your Location"
+            variant="filled"
+            value={searchLocation}
+            onChange={(e) => setSearchLocation(e.target.value)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <AddLocationAltIcon
+                    sx={{
+                      color: '#6E6E6E',
+                    }}
+                  />
+                </InputAdornment>
+              ),
+            }}
+          />
         </Box>
         <Box
-          onClick={() => {
-            getData();
-            setPageNum(1);
-          }}
+          onClick={() => getData()}
           sx={{
             backgroundColor: '#83B239',
             width: '56px',
@@ -136,13 +149,12 @@ const PharmacyProducts = () => {
           <CircularProgress />
         </Box>
       )}
-      {!loading && products.length === 0 && (
+      {!loading && pharmacies.length === 0 && (
         <Box sx={{ width: '100%', height: '100%', margin: 'auto 7rem' }}>
           <img src={empty} alt="Logo" />
         </Box>
       )}
-
-      {!loading && products.length !== 0 && (
+      {!loading && pharmacies.length !== 0 && (
         <>
           <Box
             sx={{
@@ -152,14 +164,14 @@ const PharmacyProducts = () => {
               margin: 'auto',
             }}
           >
-            {gitAllProducts()}
+            {gitAllPharmacies()}
           </Box>
           <Pagination
             sx={{
               margin: '5rem 0',
               marginLeft: '2rem',
             }}
-            count={Math.ceil(numOfApplications / 9)}
+            count={Math.ceil(numOfApplications / 12)}
             color="primary"
             page={pageNum}
             onChange={(event: React.ChangeEvent<unknown>, page: number) => {
@@ -172,4 +184,4 @@ const PharmacyProducts = () => {
   );
 };
 
-export default PharmacyProducts;
+export default AllPharmacies;

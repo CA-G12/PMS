@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import { getProductsAdmin } from '../../queries';
-import { CustomError } from '../../utils';
 
 const getAllProductsAdmin = async (
   req: Request,
@@ -11,6 +10,7 @@ const getAllProductsAdmin = async (
     const data = await getProductsAdmin();
     res.json({
       data,
+      msg: 'Success',
     });
   } catch (err: any) {
     next(err);

@@ -1,0 +1,43 @@
+body{
+    background-color: #D9D9D9;
+    font-family: 'Courier New', Courier, monospace;
+}
+.contaner h2{
+padding: 20px;
+font-size: 28px;
+}
+.headerTable{
+    display: flex;
+    flex-wrap: wrap;
+}
+.colums{
+    display: flex;
+    flex-wrap: wrap;
+}
+.columName{
+    display: flex;
+    margin: 10px;
+    justify-content: space-between;
+    background-color: #EFF0F6;
+    border-radius: 10px;
+}
+.columName p {
+    padding: 5px;
+}
+.columSelect{
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.pharmasyName{
+    display: flex;
+}
+.pharmasyName img{
+    width: 100px;
+}
+.pharmasyName p:first-child{
+    font-weight: bold;
+}
+.pharmasyName p:last-child{
+    opacity: 0.7;
+}

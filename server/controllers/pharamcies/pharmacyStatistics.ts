@@ -11,10 +11,7 @@ const getPharmacyStatistics = async (
   try {
     await pharmacyIdSchema(+pharmacyId);
     const result = await pharmacyStatistics(+(pharmacyId as string));
-    res.json({
-      data: result,
-      msg: 'Statistics are sent successfully',
-    });
+    res.json({ data: result, msg: 'Success' });
   } catch (err) {
     next(err);
   }

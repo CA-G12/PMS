@@ -10,7 +10,7 @@ const pharmacyOverview = async (
   const { pharmacyId } = req.params;
   try {
     const pharmacyData = await pharmacyOverviewQuery(Number(pharmacyId));
-    res.json({ pharmacyData });
+    res.json({ pharmacyData, msg: 'Success' });
   } catch (err: any) {
     next(err);
   }

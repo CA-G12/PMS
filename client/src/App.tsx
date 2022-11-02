@@ -5,6 +5,7 @@ import {
   Products,
   DashboardLayout,
   AllProducts,
+  AllPharmacies,
 } from './pages';
 import AllRequests from './components/admin/allRequests';
 import './App.css';
@@ -53,23 +54,27 @@ const App = () => {
       element: <AllProducts />,
     },
     {
-      path: '/pharmacy',
+      path: 'pharmacies',
+      element: <AllPharmacies />,
+    },
+    {
+      path: '//pharmacy/:pharmacyId',
       element: <ProfileLayout />,
       children: [
         {
-          path: 'profile overview',
+          path: 'overview',
           element: <ProfileOverview />,
         },
         {
-          path: 'pharmacy products',
+          path: 'products',
           element: <PharmacyProducts />,
         },
         {
-          path: 'active requests',
+          path: 'requests',
           element: <ActiveRequests />,
         },
         {
-          path: 'sales history',
+          path: 'sales-history',
           element: <SalesHistory />,
         },
       ],

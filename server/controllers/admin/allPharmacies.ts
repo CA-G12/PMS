@@ -17,7 +17,7 @@ const getAllPharmacies = async (
     );
     res.json({
       data: pharmaciesResult,
-      msg: 'Pharmacies are returned successfully',
+      msg: 'Success',
     });
   } catch (err) {
     next(err);

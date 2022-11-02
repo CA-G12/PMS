@@ -1,3 +1,4 @@
+import getProductId from './getOneProductId';
 import {
   eidtRequestsQueryQuantity,
   checkStatusRequest,
@@ -19,6 +20,7 @@ export {
   getPharmacyRequestsQuery,
   addSalesHistory,
   pharmacyStatistics,
+  getProductId,
   salesHistoryQuery,
   addRequestsQuery,
   productsInStockQuery,

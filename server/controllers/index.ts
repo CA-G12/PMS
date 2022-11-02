@@ -14,6 +14,7 @@ import {
   addRequests,
   salesHistory,
   productsInStock,
+  getAllProducts,
 } from './pharamcies';
 import pharmacies from './users';
 
@@ -35,4 +36,5 @@ export {
   addRequests,
   pharmacyOverview,
   pharmacies,
+  getAllProducts,
 };

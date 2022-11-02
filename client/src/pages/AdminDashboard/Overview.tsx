@@ -14,6 +14,9 @@ import BoxComponent from '../../components/admin/BoxComponent';
 import ChartComponent from '../../components/admin/ChartComponent';
 import ListItemComponent from '../../components/admin/ListItemComponent';
 
+// eslint-disable-next-line import/no-unresolved
+import 'react-toastify/dist/ReactToastify.css';
+
 const Overview = () => {
   const drawerWidth = 240;
   const [productsQuantity, setProductsQuantity] = useState([]);
@@ -308,8 +311,20 @@ const Overview = () => {
         Chart for Least used Products Quantity
       </Typography>
       <ChartComponent inStock={inStockOrder} expired={expiredOrder} />
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </Box>
   );
 };
 
-export default Overview;
+// export default Overview;

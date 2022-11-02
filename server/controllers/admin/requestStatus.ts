@@ -12,9 +12,9 @@ const requestStatus = async (
   try {
     const { status } = req.body;
     const { requestId } = req.params;
-    await requestStatusSchema.validateAsync({ status, requestId });
+    await requestStatusSchema(status, +requestId);
     await requestStatusQuery(status, +requestId);
-    res.json({ msg: 'successful' });
+    res.json({ msg: 'Success' });
   } catch (err: any) {
     if (err.name === 'ValidationError')
       next(new CustomError(400, 'invalid input'));

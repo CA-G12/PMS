@@ -7,7 +7,7 @@ import {
   Requests,
   Applications,
 } from './pages/AdminDashboard';
-import './App.css';
+ import  AllPharmacies from './pages/AllPharmacies';
 import {
   ActiveRequests,
   PharmacyProducts,
@@ -46,6 +46,10 @@ const App = () => {
           element: <Applications />,
         },
       ],
+    },
+    {
+      path: 'pharmacies',
+      element: <AllPharmacies />,
     },
     {
       path: '/pharmacy',

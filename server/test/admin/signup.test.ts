@@ -6,8 +6,8 @@ import { sequelize } from '../../models';
 beforeAll(() => buildSeeds());
 afterAll(() => sequelize.close());
 
-describe('sign up router', () => {
-  test('check if Pharmacy signed up successfully', (done) => {
+describe('Testing Sign up router', () => {
+  test('Check if Pharmacy signed up successfully', (done) => {
     supertest(app)
       .post('/auth/signup')
       .send({
@@ -25,13 +25,12 @@ describe('sign up router', () => {
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
         if (err) return done(err);
-
-        expect(res.body.msg).toEqual('You have signed up successfully');
+        expect(res.body.msg).toEqual('Success');
         return done();
       });
   });
 
-  test('check if Pharmacy already signed with the same license number', (done) => {
+  test('check if Pharmacy is already signed with the same license number', (done) => {
     supertest(app)
       .post('/auth/signup')
       .send({
@@ -49,7 +48,6 @@ describe('sign up router', () => {
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
         if (err) return done(err);
-
         expect(res.body.msg).toEqual(
           'Try again, This Pharmacy is already Signed'
         );
@@ -57,7 +55,7 @@ describe('sign up router', () => {
       });
   });
 
-  test('check if this emails Pharmacy already with the same email address', (done) => {
+  test('check if this emails Pharmacy is already with the same email address', (done) => {
     supertest(app)
       .post('/auth/signup')
       .send({
@@ -75,7 +73,6 @@ describe('sign up router', () => {
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
         if (err) return done(err);
-
         expect(res.body.msg).toEqual(
           'Try again, This email is already existed'
         );
@@ -101,7 +98,6 @@ describe('sign up router', () => {
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
         if (err) return done(err);
-
         expect(res.body.msg).toEqual(
           'Try again, You can not sign up with this email'
         );
@@ -109,7 +105,7 @@ describe('sign up router', () => {
       });
   });
 
-  test('check if this emails Pharmacy is validated ang good to go', (done) => {
+  test('check if this emails Pharmacy is validated ang good to be signed up', (done) => {
     supertest(app)
       .post('/auth/signup')
       .send({
@@ -127,7 +123,6 @@ describe('sign up router', () => {
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
         if (err) return done(err);
-
         expect(res.body.msg).toEqual('Something went wrong, sign up again');
         return done();
       });

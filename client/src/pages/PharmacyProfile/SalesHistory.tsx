@@ -17,7 +17,7 @@ const SalesHistory = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get('/pharmacy/5/sales');
+        const res = await axios.get('/pharmacy/:pharmacyId/sales');
         setDataRequests(res.data.SalesHistory.rows);
       } catch (err) {
         setError('Somethig went wrong.');

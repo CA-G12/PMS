@@ -10,11 +10,8 @@ const pharmacyOverview = async (
   try {
     const { pharmacyId } = req.params;
     const { page = 1 } = req.query;
-    const SalesHistory = await salesHistoryQuery(
-      Number(pharmacyId),
-      Number(page)
-    );
-    res.json({ SalesHistory });
+    const SalesHistory = await salesHistoryQuery(+pharmacyId, +page);
+    res.json({ SalesHistory, msg: 'Success' });
   } catch (err: any) {
     next(err);
   }

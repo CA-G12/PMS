@@ -13,7 +13,7 @@ describe('Test for getting the Pharmacy Statistics', () => {
       .end((err: any, res: any) => {
         if (err) done(err);
         expect(res.statusCode).toBe(200);
-        expect(res.body.msg).toEqual('Statistics are sent successfully');
+        expect(res.body.msg).toEqual('Success');
         return done();
       });
   });

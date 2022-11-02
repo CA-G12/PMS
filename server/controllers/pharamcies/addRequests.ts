@@ -12,7 +12,7 @@ const addRequests = async (req: any, res: Response, next: NextFunction) => {
       Number(productId),
       Number(id)
     );
-    res.status(201).json({ data: result, msg: 'add requests done' });
+    res.status(201).json({ data: result, msg: 'Success' });
   } catch (err: any) {
     next(err);
   }

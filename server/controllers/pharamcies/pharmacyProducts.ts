@@ -28,7 +28,7 @@ const getAllProducts = async (
       limit as number,
       id as number
     );
-    res.json({ data: productsResult, msg: 'Products are sent successfully' });
+    res.json({ data: productsResult, msg: 'Success' });
   } catch (err) {
     next(err);
   }

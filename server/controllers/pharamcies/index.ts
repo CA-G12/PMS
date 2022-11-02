@@ -1,3 +1,4 @@
+import oneProductId from './oneProductId';
 import editRequests from './editRequests';
 import getPharmacyStatistics from './pharmacyStatistics';
 import addSales from './addSales';
@@ -16,6 +17,7 @@ export {
   getPharmacyRequests,
   addSales,
   getPharmacyStatistics,
+  oneProductId,
   salesHistory,
   addRequests,
   productsInStock,

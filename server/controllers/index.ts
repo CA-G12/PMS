@@ -8,11 +8,13 @@ import {
   allRequests,
 } from './admin';
 import {
-  editRequests,
+  oneProductId,
   pharmacyOverview,
+  editRequests,
   addRequests,
   salesHistory,
   productsInStock,
+  getAllProducts,
 } from './pharamcies';
 import pharmacies from './users';
 
@@ -27,10 +29,12 @@ export {
   requestStatus,
   getAllPharmacies,
   getAdminOverview,
+  oneProductId,
   productsInStock,
   editRequests,
   salesHistory,
   addRequests,
   pharmacyOverview,
   pharmacies,
+  getAllProducts,
 };

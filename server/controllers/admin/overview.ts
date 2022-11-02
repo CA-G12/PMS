@@ -34,7 +34,7 @@ const getAdminOverview = async (req: Request, res: Response) => {
       allKindProductsCount: data[6],
       allKindProductsCountOrder: data[7],
     },
-    msg: 'Statistics are sent successfully',
+    msg: 'Success',
   });
 };
 

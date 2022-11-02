@@ -21,7 +21,7 @@ describe('Add Sales router', () => {
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
         if (err) return done(err);
-        expect(res.body.msg).toEqual('Sales are added successfully');
+        expect(res.body.msg).toEqual('Success');
         return done();
       });
   });

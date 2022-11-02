@@ -13,6 +13,7 @@ import {
   eidtRequestsQueryQuantity,
   checkStatusRequest,
   salesHistoryQuery,
+  getProductId,
 } from './pharamcies';
 
 export {
@@ -22,6 +23,7 @@ export {
   adminLoginQuery,
   requestStatusQuery,
   requestQuery,
+  getProductId,
   productsInStockQuery,
   eidtRequestsQueryQuantity,
   salesHistoryQuery,

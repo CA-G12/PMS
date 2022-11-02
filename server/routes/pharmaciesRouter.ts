@@ -6,12 +6,11 @@ import {
   salesHistory,
   productsInStock,
 } from '../controllers';
-
 import {
-  getAllProducts,
   getPharmacyRequests,
   addSales,
   getPharmacyStatistics,
+  oneProductId,
 } from '../controllers/pharamcies';
 import { auth, pharmacyAuth } from '../middlewares';
 
@@ -24,10 +23,8 @@ pharmaciesRouter.get(
   productsInStock
 );
 pharmaciesRouter.get('/pharmacy/:pharmacyId', pharmacyOverview);
-pharmaciesRouter.put('/pharmacy/requests', auth, pharmacyAuth, editRequests);
 pharmaciesRouter.get('/pharmacy/:pharmacyId/statistics', getPharmacyStatistics);
 pharmaciesRouter.post('/pharmacy/sales', auth, pharmacyAuth, addSales);
-pharmaciesRouter.get('/product', auth, pharmacyAuth, getAllProducts);
 pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
 pharmaciesRouter.get(
   '/pharmacy/:pharmacyId/requests',
@@ -35,11 +32,17 @@ pharmaciesRouter.get(
   pharmacyAuth,
   getPharmacyRequests
 );
+pharmaciesRouter.get('/product/:productId', oneProductId);
 pharmaciesRouter.get(
   '/pharmacy/:pharmacyId/sales',
   auth,
   pharmacyAuth,
   salesHistory
 );
+
+pharmaciesRouter.put('/pharmacy/requests', auth, pharmacyAuth, editRequests);
+
+pharmaciesRouter.post('/pharmacy/sales', auth, pharmacyAuth, addSales);
+pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
 
 export default pharmaciesRouter;

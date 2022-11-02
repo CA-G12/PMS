@@ -9,7 +9,7 @@ const productsInStock = async (
 ) => {
   try {
     const allProductsInStock = await productsInStockQuery();
-    res.json({ data: allProductsInStock, msg: 'Data fetched successfully' });
+    res.json({ data: allProductsInStock, msg: 'Success' });
   } catch (err: any) {
     next(err);
   }

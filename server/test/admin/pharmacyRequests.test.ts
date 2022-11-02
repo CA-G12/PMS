@@ -16,7 +16,7 @@ describe('Test for getting the Pharmacy Requests', () => {
       .end((err: any, res: any) => {
         if (err) done(err);
         expect(res.statusCode).toBe(200);
-        expect(res.body.msg).toEqual('Pharmacy Requests are sent successfully');
+        expect(res.body.msg).toEqual('Success');
         return done();
       });
   });

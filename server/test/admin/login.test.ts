@@ -7,41 +7,7 @@ beforeAll(() => buildSeeds());
 afterAll(() => sequelize.close());
 
 describe('login router', () => {
-  test('check if login with invalid password', (done) => {
-    supertest(app)
-      .post('/auth/login')
-      .send({
-        email: 'ahmed@gmail.com',
-        password: '123456789aaa',
-      })
-      .expect('Content-Type', /json/)
-      .end((err: any, res: any) => {
-        if (err) {
-          return done(err);
-        }
-        expect(res.body.msg).toEqual('invalid email or password');
-        return done();
-      });
-  });
-
-  test('check if login admin fails', (done) => {
-    supertest(app)
-      .post('/auth/login')
-      .send({
-        email: 'admin@gmail.com',
-        password: 'adminadmi',
-      })
-      .expect('Content-Type', /json/)
-      .end((err: any, res: any) => {
-        if (err) {
-          return done(err);
-        }
-        expect(res.body.msg).toEqual('invalid email or password');
-        return done();
-      });
-  });
-
-  test('check if login successfully', (done) => {
+  test('check if admin is logged in successfully', (done) => {
     supertest(app)
       .post('/auth/login')
       .send({
@@ -53,12 +19,45 @@ describe('login router', () => {
         if (err) {
           done(err);
         } else {
-          expect(res.body.msg).toEqual('successful');
+          expect(res.body.msg).toEqual('Success');
           done();
         }
       });
   });
-  test('check if login fails', (done) => {
+
+  test('check if login throws error when logging with invalid password', (done) => {
+    supertest(app)
+      .post('/auth/login')
+      .send({
+        email: 'ahmed@gmail.com',
+        password: '123456789aaa',
+      })
+      .expect('Content-Type', /json/)
+      .end((err: any, res: any) => {
+        if (err) {
+          return done(err);
+        }
+        expect(res.body.msg).toEqual('Invalid email or password, Try again');
+        return done();
+      });
+  });
+
+  test('check if admin login throws error when logging with invalid password', (done) => {
+    supertest(app)
+      .post('/auth/login')
+      .send({
+        email: 'admin@gmail.com',
+        password: 'adminadmi',
+      })
+      .expect('Content-Type', /json/)
+      .end((err: any, res: any) => {
+        if (err) return done(err);
+        expect(res.body.msg).toEqual('Wrong Password, Try again');
+        return done();
+      });
+  });
+
+  test('check if login fails when validation error', (done) => {
     supertest(app)
       .post('/auth/login')
       .send({
@@ -70,7 +69,7 @@ describe('login router', () => {
         if (err) {
           return done(err);
         }
-        expect(res.body.msg).toEqual('Something went wrong, sign up again');
+        expect(res.body.msg).toEqual('Something went wrong, Try again');
         return done();
       });
   });

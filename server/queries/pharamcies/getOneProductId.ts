@@ -1,19 +1,21 @@
 import { ProductPharmacy, Pharmacy, Product } from '../../models';
 
 const getProductId = async (productId: number) =>
-  ProductPharmacy.findAll({
-    attributes: ['id', 'pharmacy_id', 'product_id'],
+  Product.findAll({
+    attributes: ['id', 'name', 'img'],
     include: [
       {
-        model: Pharmacy,
-        attributes: ['id', 'name', 'image', 'owner_name', 'owner_img'],
+        model: ProductPharmacy,
+        attributes: ['id', 'pharmacy_id', 'product_id'],
         where: {
           id: productId,
         },
-      },
-      {
-        model: Product,
-        attributes: ['id', 'name', 'img'],
+        include: [
+          {
+            model: Pharmacy,
+            attributes: ['id', 'name', 'image', 'owner_name', 'owner_img'],
+          },
+        ],
       },
     ],
   });

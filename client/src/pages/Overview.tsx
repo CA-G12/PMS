@@ -35,6 +35,7 @@ const Overview = () => {
     const getData = async () => {
       try {
         const {
+          // eslint-disable-next-line @typescript-eslint/no-shadow
           data: { data },
         } = await axios.get('/admin/statistics', { signal: controller.signal });
         setProductsQuantity(data.allKindProductsCount.rows);

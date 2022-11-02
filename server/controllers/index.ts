@@ -8,8 +8,9 @@ import {
   allRequests,
 } from './admin';
 import {
-  editRequests,
+  oneProductId,
   pharmacyOverview,
+  editRequests,
   addRequests,
   salesHistory,
   productsInStock,
@@ -27,6 +28,7 @@ export {
   requestStatus,
   getAllPharmacies,
   getAdminOverview,
+  oneProductId,
   productsInStock,
   editRequests,
   salesHistory,

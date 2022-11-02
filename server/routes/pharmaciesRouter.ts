@@ -12,6 +12,7 @@ import {
   getPharmacyRequests,
   addSales,
   getPharmacyStatistics,
+  oneProductId,
 } from '../controllers/pharamcies';
 import { auth, pharmacyAuth } from '../middlewares';
 
@@ -35,6 +36,7 @@ pharmaciesRouter.get(
   pharmacyAuth,
   getPharmacyRequests
 );
+pharmaciesRouter.get('/product/:productId', oneProductId);
 pharmaciesRouter.get(
   '/pharmacy/:pharmacyId/sales',
   auth,

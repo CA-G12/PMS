@@ -15,7 +15,7 @@ describe('addRequests router', () => {
       .end((err: any, res: any) => {
         if (err) done(err);
         expect(res.statusCode).toEqual(200);
-        expect(res.body.msg).toEqual('Data fetched successfully');
+        expect(res.body.msg).toEqual('Success');
         expect(res.body.data.length).toBe(6);
 
         return done();

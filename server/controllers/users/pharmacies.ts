@@ -9,7 +9,7 @@ const pharmacies = async (req: Request, res: Response, next: NextFunction) => {
       location as string,
       name as string
     );
-    res.json({ data: allPharmacies });
+    res.json({ data: allPharmacies, msg: 'Success' });
   } catch (err: any) {
     next(err);
   }

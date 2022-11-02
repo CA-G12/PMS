@@ -9,13 +9,14 @@ const editRequests = async (
 ) => {
   try {
     const { id, product_id: productId, quantity } = req.body;
-    const checkStatus = await checkStatusRequest(id);
+    const checkStatus = await checkStatusRequest(+id);
+
     if (checkStatus?.status !== 'Pending') {
       throw new CustomError(404, 'Can not edit this request');
     }
 
-    await eidtRequestsQueryQuantity(id, productId, quantity);
-    res.status(200).json({ msg: 'Edit Requests done' });
+    await eidtRequestsQueryQuantity(+id, +productId, +quantity);
+    res.json({ msg: 'Success' });
   } catch (err: any) {
     next(err);
   }

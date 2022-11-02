@@ -1,65 +1,69 @@
-import { Box, TextField, InputAdornment } from '@mui/material';
-import { useState } from 'react';
+import {
+  Box,
+  TextField,
+  InputAdornment,
+  CircularProgress,
+  Pagination,
+} from '@mui/material';
+import React, { useState, useEffect } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
+import axios from 'axios';
 import ProductCard from '../components/ProductCard';
+import empty from '../assets/empty.webp';
 
-const arrData = [
-  {
-    name: 'Aceril 12.5 mg',
-    description:
-      'Its contain captopril 12.5 mg uses for  Hypertension,Diabetic Kidney Disease,Left Ventricular Dysfunction,Congestive Heart Failure,Nephropathy,Diabetes Mellitus,Heart Failure,Heart Attack,Echocardiogram .  Method of action: Agents Acting In The Renin-Angiotensin System,Antihypertensive,Hypotensive,Vasodilator',
-    price: 12,
-    img: 'https://pillintrip.com/style/images/medicines/aceril/aceril1.jpg',
-  },
-  {
-    name: 'Aceril 12.5 mg',
-    description:
-      'Its contain captopril 12.5 mg uses for  Hypertension,Diabetic Kidney Disease,Left Ventricular Dysfunction,Congestive Heart Failure,Nephropathy,Diabetes Mellitus,Heart Failure,Heart Attack,Echocardiogram .  Method of action: Agents Acting In The Renin-Angiotensin System,Antihypertensive,Hypotensive,Vasodilator',
-    price: 12,
-    img: 'https://pillintrip.com/style/images/medicines/aceril/aceril1.jpg',
-  },
-  {
-    name: 'Aceril 12.5 mg',
-    description:
-      'Its contain captopril 12.5 mg uses for  Hypertension,Diabetic Kidney Disease,Left Ventricular Dysfunction,Congestive Heart Failure,Nephropathy,Diabetes Mellitus,Heart Failure,Heart Attack,Echocardiogram .  Method of action: Agents Acting In The Renin-Angiotensin System,Antihypertensive,Hypotensive,Vasodilator',
-    price: 12,
-    img: 'https://pillintrip.com/style/images/medicines/aceril/aceril1.jpg',
-  },
-  {
-    name: 'Aceril 12.5 mg',
-    description:
-      'Its contain captopril 12.5 mg uses for  Hypertension,Diabetic Kidney Disease,Left Ventricular Dysfunction,Congestive Heart Failure,Nephropathy,Diabetes Mellitus,Heart Failure,Heart Attack,Echocardiogram .  Method of action: Agents Acting In The Renin-Angiotensin System,Antihypertensive,Hypotensive,Vasodilator',
-    price: 12,
-    img: 'https://pillintrip.com/style/images/medicines/aceril/aceril1.jpg',
-  },
-  {
-    name: 'Aceril 12.5 mg',
-    description:
-      'Its contain captopril 12.5 mg uses for  Hypertension,Diabetic Kidney Disease,Left Ventricular Dysfunction,Congestive Heart Failure,Nephropathy,Diabetes Mellitus,Heart Failure,Heart Attack,Echocardiogram .  Method of action: Agents Acting In The Renin-Angiotensin System,Antihypertensive,Hypotensive,Vasodilator',
-    price: 12,
-    img: 'https://pillintrip.com/style/images/medicines/aceril/aceril1.jpg',
-  },
-  {
-    name: 'Aceril 12.5 mg',
-    description:
-      'Its contain captopril 12.5 mg uses for  Hypertension,Diabetic Kidney Disease,Left Ventricular Dysfunction,Congestive Heart Failure,Nephropathy,Diabetes Mellitus,Heart Failure,Heart Attack,Echocardiogram .  Method of action: Agents Acting In The Renin-Angiotensin System,Antihypertensive,Hypotensive,Vasodilator',
-    price: 12,
-    img: 'https://pillintrip.com/style/images/medicines/aceril/aceril1.jpg',
-  },
-];
-
+type row = {
+  name: string;
+  description: string;
+  price: number;
+  img: string;
+};
 const AllProducts = () => {
-  // const [searchMedicine, setSearchMedicine] = useState('');
-  // const [searchPharmacy, setSearchPharmacy] = useState('');
-  const [allProducts] = useState(arrData);
+  const [searchMedicine, setSearchMedicine] = useState('');
+  const [searchPharmacy, setSearchPharmacy] = useState('');
+  const [products, setProducts] = useState<row[]>([] as row[]);
+  const [numOfApplications, setNumOfApplications] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [pageNum, setPageNum] = useState(1);
+  const getData = async () => {
+    setLoading(true);
+    let productsData;
+    if (searchMedicine && searchPharmacy) {
+      productsData = await axios.get(
+        `/product?page=${pageNum}&medicineName=${searchMedicine}&pharmacyName=${searchPharmacy}`
+      );
+    } else if (searchMedicine) {
+      productsData = await axios.get(
+        `/product?page=${pageNum}&medicineName=${searchMedicine}`
+      );
+    } else if (searchPharmacy) {
+      productsData = await axios.get(
+        `/product?page=${pageNum}&pharmacyName=${searchPharmacy}`
+      );
+    } else {
+      productsData = await axios.get(`/product?page=${pageNum}`);
+    }
+    const {
+      data: {
+        data: { rows, count },
+      },
+    } = productsData;
+    setProducts(rows);
+    setNumOfApplications(count);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getData();
+  }, [pageNum]);
+
   const gitAllProducts = () =>
-    allProducts.map((Products) => (
+    products.map((Product) => (
       <ProductCard
         product={{
-          img: Products.img,
-          name: Products.name,
-          description: Products.description,
-          price: Products.price,
+          img: Product.img,
+          name: Product.name,
+          description: Product.description,
+          price: Product.price,
         }}
       />
     ));
@@ -96,6 +100,8 @@ const AllProducts = () => {
             id="filled-basic"
             label="Search any medicine"
             variant="filled"
+            value={searchMedicine}
+            onChange={(e) => setSearchMedicine(e.target.value)}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -112,6 +118,8 @@ const AllProducts = () => {
             id="filled-basic"
             label="Search any pharmacy"
             variant="filled"
+            value={searchPharmacy}
+            onChange={(e) => setSearchPharmacy(e.target.value)}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -126,6 +134,10 @@ const AllProducts = () => {
           />
         </Box>
         <Box
+          onClick={() => {
+            getData();
+            setPageNum(1);
+          }}
           sx={{
             backgroundColor: '#83B239',
             width: '56px',
@@ -146,16 +158,43 @@ const AllProducts = () => {
           />
         </Box>
       </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          margin: 'auto',
-        }}
-      >
-        {gitAllProducts()}
-      </Box>
+      {loading && (
+        <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
+          <CircularProgress />
+        </Box>
+      )}
+      {!loading && products.length === 0 && (
+        <Box sx={{ width: '100%', height: '100%', margin: 'auto 7rem' }}>
+          <img src={empty} alt="Logo" />
+        </Box>
+      )}
+
+      {!loading && products.length !== 0 && (
+        <>
+          <Box
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              margin: 'auto',
+            }}
+          >
+            {gitAllProducts()}
+          </Box>
+          <Pagination
+            sx={{
+              margin: '5rem 0',
+              marginLeft: '2rem',
+            }}
+            count={Math.ceil(numOfApplications / 12)}
+            color="primary"
+            page={pageNum}
+            onChange={(event: React.ChangeEvent<unknown>, page: number) => {
+              setPageNum(page);
+            }}
+          />
+        </>
+      )}
     </Box>
   );
 };

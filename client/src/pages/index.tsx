@@ -4,6 +4,7 @@ import Overview from './Overview';
 import Pharmacies from './Pharmacies';
 import Products from './Products';
 import Requests from './Requests';
+import AllProducts from './AllProducts';
 import AllPharmacies from './AllPharmacies';
 
 export {
@@ -13,5 +14,6 @@ export {
   Pharmacies,
   Products,
   Requests,
+  AllProducts,
   AllPharmacies,
 };

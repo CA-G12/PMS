@@ -4,6 +4,7 @@ import {
   Pharmacies,
   Products,
   DashboardLayout,
+  AllProducts,
   AllPharmacies,
 } from './pages';
 import AllRequests from './components/admin/allRequests';
@@ -47,6 +48,10 @@ const App = () => {
           element: <ApplicationSection />,
         },
       ],
+    },
+    {
+      path: 'AllProducts',
+      element: <AllProducts />,
     },
     {
       path: 'pharmacies',

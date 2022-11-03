@@ -9,11 +9,15 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import Typography from '@mui/material/Typography';
 import { useState, useEffect } from 'react';
+import Skeleton from '@mui/material/Skeleton';
 import image31 from '../../assets/image31.png';
+import dataLoadingError from '../../assets/dataLoadingError.png';
 
 const SalesHistory = () => {
   const [dataRequests, setDataRequests] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
   useEffect(() => {
     (async () => {
       try {
@@ -21,13 +25,47 @@ const SalesHistory = () => {
         setDataRequests(res.data.SalesHistory.rows);
       } catch (err) {
         setError('Somethig went wrong.');
+      } finally {
+        setLoading(false);
       }
     })();
   }, []);
+
   if (error) {
-    return <Box>{error}</Box>;
+    return (
+      <Box
+        sx={{
+          textAlign: 'center',
+        }}
+      >
+        Something went wrong
+      </Box>
+    );
   }
-  return (
+
+  if (dataRequests.length === 0) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <img width="40%" alt="No Data" src={dataLoadingError} />
+        <h1>No Sales History Were Found</h1>
+      </Box>
+    );
+  }
+
+  return loading ? (
+    <Box sx={{ width: '53vw', marginTop: '50px' }}>
+      <Skeleton />
+      <Skeleton animation="wave" />
+      <Skeleton animation={false} />
+    </Box>
+  ) : (
     <Box
       sx={{
         margin: '6rem 5%',
@@ -71,7 +109,7 @@ const SalesHistory = () => {
                 </TableCell>
                 <TableCell align="left">{row.date}</TableCell>
                 <TableCell align="left">{row.quantity}</TableCell>
-                <TableCell align="left">{row.Product.price}</TableCell>
+                <TableCell align="left">{row.Product.price} $</TableCell>
               </TableRow>
             ))}
           </TableBody>

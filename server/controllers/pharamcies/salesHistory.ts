@@ -9,8 +9,6 @@ const pharmacyOverview = async (
 ) => {
   try {
     const { id } = req.user;
-    console.log(id);
-
     const { page = 1 } = req.query;
     const SalesHistory = await salesHistoryQuery(+id, +page);
     res.json({ SalesHistory, msg: 'Success' });

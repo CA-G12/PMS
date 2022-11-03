@@ -12,8 +12,8 @@ const salesHistoryQuery = async (pharmacyId: number, page: number) =>
         },
       },
     ],
-    offset: 8 * (page - 1),
-    limit: 8,
+    offset: 5 * (page - 1),
+    limit: 5,
   });
 
 export default salesHistoryQuery;

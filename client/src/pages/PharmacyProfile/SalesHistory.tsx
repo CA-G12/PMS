@@ -1,15 +1,18 @@
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
 import axios from 'axios';
-import Typography from '@mui/material/Typography';
-import { useState, useEffect } from 'react';
-import Skeleton from '@mui/material/Skeleton';
+import React, { useState, useEffect } from 'react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Box,
+  Typography,
+  Skeleton,
+  Pagination,
+} from '@mui/material';
 import image31 from '../../assets/image31.png';
 import dataLoadingError from '../../assets/dataLoadingError.png';
 
@@ -17,19 +20,26 @@ const SalesHistory = () => {
   const [dataRequests, setDataRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [numOfSales, setNumOfSales] = useState(0);
+  const [pageNum, setPageNum] = useState(1);
 
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get('/pharmacy/sales');
-        setDataRequests(res.data.SalesHistory.rows);
+        const {
+          data: {
+            SalesHistory: { rows, count },
+          },
+        } = await axios.get(`/pharmacy/sales?page=${pageNum}`);
+        setDataRequests(rows);
+        setNumOfSales(count);
       } catch (err) {
         setError('Somethig went wrong.');
       } finally {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [pageNum]);
 
   if (error) {
     return (
@@ -115,6 +125,18 @@ const SalesHistory = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      <Pagination
+        sx={{
+          margin: '5rem 0',
+          marginLeft: '2rem',
+        }}
+        count={Math.ceil(numOfSales / 5)}
+        color="primary"
+        page={pageNum}
+        onChange={(event: React.ChangeEvent<unknown>, page: number) => {
+          setPageNum(page);
+        }}
+      />
     </Box>
   );
 };

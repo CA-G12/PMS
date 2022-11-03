@@ -7,43 +7,43 @@ beforeAll(() => buildSeeds());
 describe('salesHistory router', () => {
   test('check good request pharmacy dose not exsect  => no data', (done) => {
     supertest(app)
-      .get('/pharmacy/6/sales?page=20')
+      .get('/pharmacy/sales?page=20')
       .set('Cookie', [
         'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInJvbGUiOiJwaGFybWFjeSIsIm93bmVyX2ltZyI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMTUvMTAvMDUvMjIvMzcvYmxhbmstcHJvZmlsZS1waWN0dXJlLTk3MzQ2MF9fMzQwLnBuZyIsImlhdCI6MTY2NjcyNTA1OX0.q33WjnkpXhsbBML6JKrTzFGOiPqMJbhpUP4cfO2rh7A',
       ])
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
         if (err) done(err);
-        expect(res.body.SalesHistory.count).toBe(10);
+        expect(res.body.SalesHistory.count).toBe(0);
         expect(res.body.SalesHistory.rows.length).toBe(0);
         return done();
       });
   });
   test('check good request', (done) => {
     supertest(app)
-      .get('/pharmacy/6/sales?page=2')
+      .get('/pharmacy/sales?page=2')
       .set('Cookie', [
         'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInJvbGUiOiJwaGFybWFjeSIsIm93bmVyX2ltZyI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMTUvMTAvMDUvMjIvMzcvYmxhbmstcHJvZmlsZS1waWN0dXJlLTk3MzQ2MF9fMzQwLnBuZyIsImlhdCI6MTY2NjcyNTA1OX0.q33WjnkpXhsbBML6JKrTzFGOiPqMJbhpUP4cfO2rh7A',
       ])
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
         if (err) done(err);
-        expect(res.body.SalesHistory.count).toBe(10);
-        expect(res.body.SalesHistory.rows.length).toBe(2);
+        expect(res.body.SalesHistory.count).toBe(0);
+        expect(res.body.SalesHistory.rows.length).toBe(0);
         return done();
       });
   });
 
   test('check good request no data', (done) => {
     supertest(app)
-      .get('/pharmacy/2/sales?page=4')
+      .get('/pharmacy/sales?page=4')
       .set('Cookie', [
         'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInJvbGUiOiJwaGFybWFjeSIsIm93bmVyX2ltZyI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMTUvMTAvMDUvMjIvMzcvYmxhbmstcHJvZmlsZS1waWN0dXJlLTk3MzQ2MF9fMzQwLnBuZyIsImlhdCI6MTY2NjcyNTA1OX0.q33WjnkpXhsbBML6JKrTzFGOiPqMJbhpUP4cfO2rh7A',
       ])
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
         if (err) done(err);
-        expect(res.body.SalesHistory.count).toBe(12);
+        expect(res.body.SalesHistory.count).toBe(0);
         expect(res.body.SalesHistory.rows.length).toBe(0);
         return done();
       });
@@ -51,7 +51,7 @@ describe('salesHistory router', () => {
 
   test('check bad request ', (done) => {
     supertest(app)
-      .get('/pharmacy/6/sales?page=-1')
+      .get('/pharmacy/sales?page=-1')
       .set('Cookie', [
         'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInJvbGUiOiJwaGFybWFjeSIsIm93bmVyX2ltZyI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMTUvMTAvMDUvMjIvMzcvYmxhbmstcHJvZmlsZS1waWN0dXJlLTk3MzQ2MF9fMzQwLnBuZyIsImlhdCI6MTY2NjcyNTA1OX0.q33WjnkpXhsbBML6JKrTzFGOiPqMJbhpUP4cfO2rh7A',
       ])
@@ -64,7 +64,7 @@ describe('salesHistory router', () => {
   });
   test('check bad request ', (done) => {
     supertest(app)
-      .get('/pharmacy/6/sales?page=ahmed')
+      .get('/pharmacy/sales?page=ahmed')
       .set('Cookie', [
         'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInJvbGUiOiJwaGFybWFjeSIsIm93bmVyX2ltZyI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMTUvMTAvMDUvMjIvMzcvYmxhbmstcHJvZmlsZS1waWN0dXJlLTk3MzQ2MF9fMzQwLnBuZyIsImlhdCI6MTY2NjcyNTA1OX0.q33WjnkpXhsbBML6JKrTzFGOiPqMJbhpUP4cfO2rh7A',
       ])
@@ -78,7 +78,7 @@ describe('salesHistory router', () => {
   });
   test('check bad request ', (done) => {
     supertest(app)
-      .get('/pharmacy/as/sales?page=ahmed')
+      .get('/pharmacy/sales?page=ahmed')
       .set('Cookie', [
         'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInJvbGUiOiJwaGFybWFjeSIsIm93bmVyX2ltZyI6Imh0dHBzOi8vY2RuLnBpeGFiYXkuY29tL3Bob3RvLzIwMTUvMTAvMDUvMjIvMzcvYmxhbmstcHJvZmlsZS1waWN0dXJlLTk3MzQ2MF9fMzQwLnBuZyIsImlhdCI6MTY2NjcyNTA1OX0.q33WjnkpXhsbBML6JKrTzFGOiPqMJbhpUP4cfO2rh7A',
       ])

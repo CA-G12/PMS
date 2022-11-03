@@ -69,7 +69,7 @@ const App = () => {
           element: <ActiveRequests />,
         },
         {
-          path: 'sales/history',
+          path: 'sales history',
           element: <SalesHistory />,
         },
       ],

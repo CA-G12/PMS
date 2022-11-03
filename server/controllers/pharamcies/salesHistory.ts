@@ -3,14 +3,16 @@ import { Request, Response, NextFunction } from 'express';
 import { salesHistoryQuery } from '../../queries';
 
 const pharmacyOverview = async (
-  req: Request,
+  req: any,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const { pharmacyId } = req.params;
+    const { id } = req.user;
+    console.log(id);
+
     const { page = 1 } = req.query;
-    const SalesHistory = await salesHistoryQuery(+pharmacyId, +page);
+    const SalesHistory = await salesHistoryQuery(+id, +page);
     res.json({ SalesHistory, msg: 'Success' });
   } catch (err: any) {
     next(err);

@@ -22,13 +22,13 @@ ul.MuiList-root.MuiList-padding.dash.css-h4y409-MuiList-root {
   flex-direction: column;
 }
 
-.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root:hover {
+/* .MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root:hover {
   background: navy;
   border-radius: 3px;
   transform: scale(1.05);
   color: white !important;
   transition: transform ease .3s;
-}
+} */
 
 .outlet.MuiBox-root.css-0 {
   background-color: white;
@@ -76,9 +76,9 @@ p.MuiTypography-root.MuiTypography-body1.username.css-ahj2mt-MuiTypography-root 
   justify-content: space-evenly;
 }
 
-svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
+/* svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
   color: navy;
-}
+} */
 
 svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root:hover {
   color: white;

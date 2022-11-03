@@ -48,7 +48,7 @@ const NavBar: React.FC<NavBarProps> = ({ handleDrawerToggle }) => {
         color: 'black',
       }}
     >
-      <Toolbar>
+      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <IconButton
           aria-label="open drawer"
           edge="start"

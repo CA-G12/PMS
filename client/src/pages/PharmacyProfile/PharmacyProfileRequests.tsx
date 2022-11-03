@@ -10,37 +10,38 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
   Pagination,
   CircularProgress,
-  Divider,
 } from '@mui/material';
-import { LongMenu } from '../../components/Extra';
-import image31 from '../../assets/image31.png';
+import LongMenu from '../../components/Extra/Options';
 import dataLoadingError from '../../assets/dataLoadingError.png';
 import 'typeface-mulish';
+import { useParams } from 'react-router-dom';
 
-type row = {
-  id: number;
-  status: string;
-  Pharmacy: { name: string };
-  Product: { name: string };
-};
-const options = ['Approved', 'Rejected'];
+type row =
+  | {
+      id: number;
+      status: string;
+      Pharmacy: { name: string };
+      Product: { name: string };
+    }
+  | any;
+const options = ['cancel'];
 
-const Requests = () => {
+const PharmacyProfileRequests = () => {
   const [data, setData] = useState<row[]>([]);
   const [pageNum, setPageNum] = useState(1);
   const [numRequests, setNumOfRequests] = useState(14);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const { pharmacyId: id } = useParams();
 
   const getMedicineRequests = useCallback(async () => {
     const {
       data: {
         data: { rows, count },
       },
-    } = await axios.get(`/admin/requests?numOffSet=${pageNum}`);
+    } = await axios.get(`/pharmacy/${id}/requests?page=${pageNum}`);
 
     return { rows, count };
   }, [pageNum]);
@@ -67,6 +68,7 @@ const Requests = () => {
       try {
         setLoading(true);
         const { rows, count } = await getMedicineRequests();
+
         setData(rows);
         setNumOfRequests(count);
         setLoading(false);
@@ -118,22 +120,7 @@ const Requests = () => {
           width: '80%',
         }}
       >
-        <TableContainer component={Paper}>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Typography
-              sx={{
-                fontSize: '25px',
-                fontFamily: 'Mulish',
-                fontWeight: 'bold',
-                marginLeft: '43px',
-                marginBottom: '20px',
-                marginTop: '15px',
-              }}
-            >
-              All Requests
-            </Typography>
-            <Divider sx={{ width: '90%', margin: '0 auto' }} />
-          </Box>
+        <TableContainer>
           <Table
             sx={{ Width: '100%', margin: '1rem 0%' }}
             aria-label="simple table"
@@ -151,7 +138,7 @@ const Requests = () => {
                       fontWeight: 'bold',
                     }}
                   >
-                    Pharmacy Name
+                    Product Name
                   </Typography>{' '}
                 </TableCell>
                 <TableCell align="center">
@@ -165,7 +152,7 @@ const Requests = () => {
                       fontWeight: 'bold',
                     }}
                   >
-                    Product Name
+                    Quantity
                   </Typography>{' '}
                 </TableCell>
                 <TableCell align="center">
@@ -218,43 +205,15 @@ const Requests = () => {
                       padding: '0',
                     }}
                   >
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <img src={image31} alt="Logo" />
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'flex-start',
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            fontWeight: 'bold',
-                            textAlign: 'left',
-                            marginBottom: '5px',
-                          }}
-                        >
-                          {row.Pharmacy.name}
-                        </Box>
-                        <Box
-                          sx={{
-                            opacity: 0.7,
-                            fontSize: '11px',
-                            fontWeight: '700',
-                          }}
-                        >
-                          54862053025
-                        </Box>
-                      </Box>
-                    </Box>
+                    <Box>{row.ProductsRequests[0].Product.name}</Box>
                   </TableCell>
 
                   <TableCell align="center" sx={{ padding: '0' }}>
-                    {row.Product.name}
+                    {row.ProductsRequests[0].quantity}
                   </TableCell>
                   <TableCell align="center" sx={{ padding: '0' }}>
                     {' '}
-                    {row.status}
+                    {row.ProductsRequests[0].status}
                   </TableCell>
                   <TableCell align="center" sx={{ padding: '0' }}>
                     <LongMenu
@@ -285,4 +244,4 @@ const Requests = () => {
   );
 };
 
-export default Requests;
+export default PharmacyProfileRequests;

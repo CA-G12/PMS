@@ -2,7 +2,7 @@ import { Pharmacy, Product, ProductsRequest } from '../../models';
 
 const getPharmacyRequestsQuery = async (page: number, pharmacyId: number) => {
   const limit = 1;
-  return Pharmacy.findAll({
+  return Pharmacy.findAndCountAll({
     include: [
       {
         model: ProductsRequest,

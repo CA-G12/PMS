@@ -25,10 +25,14 @@ const ProfileLayout = () => {
   const id = useParams();
 
   const TABS_CONFIG = [
-    { component: <Dialpad />, slug: 'Profile Overview' , link: 'overview'},
-    { component: <AttachFile />, slug: 'Pharmacy Products', link:'products' },
-    { component: <Category />, slug: 'Active Requests', link:'requests' },
-    { component: <RequestQuote />, slug: 'Sales History', link:'salesHistory' },
+    { component: <Dialpad />, slug: 'Profile Overview', link: 'overview' },
+    { component: <AttachFile />, slug: 'Pharmacy Products', link: 'products' },
+    { component: <Category />, slug: 'Active Requests', link: 'requests' },
+    {
+      component: <RequestQuote />,
+      slug: 'Sales History',
+      link: 'salesHistory',
+    },
   ];
   useEffect(() => {
     const controller = new AbortController();
@@ -73,11 +77,7 @@ const ProfileLayout = () => {
           </Box>
           <List className="dash">
             {TABS_CONFIG.map(({ component, slug, link }) => (
-              <Link
-                to={`/pharmacy/${link}`}
-                className="navLeft"
-                key={slug}
-              >
+              <Link to={`/pharmacy/${link}`} className="navLeft" key={slug}>
                 <ListItem className="dashLi">
                   <ListItemButton>
                     <ListItemIcon>{component}</ListItemIcon>

@@ -9,7 +9,7 @@ import {
 } from './pages/AdminDashboard';
 import AllPharmacies from './pages/AllPharmacies';
 import {
-  ActiveRequests,
+  PharmacyProfileRequests,
   PharmacyProducts,
   ProfileLayout,
   ProfileOverview,
@@ -54,7 +54,7 @@ const App = () => {
       element: <AllPharmacies />,
     },
     {
-      path: '/pharmacy',
+      path: 'pharmacy/:pharmacyId',
       element: <ProfileLayout />,
       children: [
         {
@@ -67,7 +67,7 @@ const App = () => {
         },
         {
           path: 'requests',
-          element: <ActiveRequests />,
+          element: <PharmacyProfileRequests />,
         },
         {
           path: 'salesHistory',

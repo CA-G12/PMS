@@ -22,17 +22,13 @@ import Navbar from '../../components/NavBar/Navbar';
 
 const ProfileLayout = () => {
   const [data, setData] = useState<pharmacyDataType | null>();
-  const id = useParams();
+  const { pharmacyId } = useParams();
 
   const TABS_CONFIG = [
     { component: <Dialpad />, slug: 'Profile Overview', link: 'overview' },
     { component: <AttachFile />, slug: 'Pharmacy Products', link: 'products' },
     { component: <Category />, slug: 'Active Requests', link: 'requests' },
-    {
-      component: <RequestQuote />,
-      slug: 'Sales History',
-      link: 'salesHistory',
-    },
+    { component: <RequestQuote />, slug: 'Sales-History', link: 'sales' },
   ];
   useEffect(() => {
     const controller = new AbortController();
@@ -40,7 +36,7 @@ const ProfileLayout = () => {
       try {
         const {
           data: { pharmacyData },
-        } = await axios.get(`/pharmacy/${id}`, {
+        } = await axios.get(`/pharmacy/${pharmacyId}`, {
           signal: controller.signal,
         });
         setData(pharmacyData[0]);
@@ -77,7 +73,11 @@ const ProfileLayout = () => {
           </Box>
           <List className="dash">
             {TABS_CONFIG.map(({ component, slug, link }) => (
-              <Link to={`/pharmacy/${link}`} className="navLeft" key={slug}>
+              <Link
+                to={`/pharmacy/${pharmacyId}/${link.toLowerCase()}`}
+                className="navLeft"
+                key={slug}
+              >
                 <ListItem className="dashLi">
                   <ListItemButton>
                     <ListItemIcon>{component}</ListItemIcon>

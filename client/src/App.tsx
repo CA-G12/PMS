@@ -54,7 +54,7 @@ const App = () => {
       element: <AllPharmacies />,
     },
     {
-      path: 'pharmacy/:pharmacyId',
+      path: '/pharmacy/:pharmacyId',
       element: <ProfileLayout />,
       children: [
         {
@@ -70,7 +70,7 @@ const App = () => {
           element: <PharmacyProfileRequests />,
         },
         {
-          path: 'salesHistory',
+          path: 'sales',
           element: <SalesHistory />,
         },
       ],

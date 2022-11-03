@@ -50,10 +50,6 @@ const App = () => {
       ],
     },
     {
-      path: 'AllProducts',
-      element: <AllProducts />,
-    },
-    {
       path: 'pharmacies',
       element: <AllPharmacies />,
     },

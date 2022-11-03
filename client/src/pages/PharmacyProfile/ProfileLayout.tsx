@@ -25,10 +25,10 @@ const ProfileLayout = () => {
   const id = useParams();
 
   const TABS_CONFIG = [
-    { component: <Dialpad />, slug: 'Profile Overview' },
-    { component: <AttachFile />, slug: 'Pharmacy Products' },
-    { component: <Category />, slug: 'Active Requests' },
-    { component: <RequestQuote />, slug: 'Sales History' },
+    { component: <Dialpad />, slug: 'Profile Overview' , link: 'overview'},
+    { component: <AttachFile />, slug: 'Pharmacy Products', link:'products' },
+    { component: <Category />, slug: 'Active Requests', link:'requests' },
+    { component: <RequestQuote />, slug: 'Sales History', link:'salesHistory' },
   ];
   useEffect(() => {
     const controller = new AbortController();
@@ -72,9 +72,9 @@ const ProfileLayout = () => {
             </Box>
           </Box>
           <List className="dash">
-            {TABS_CONFIG.map(({ component, slug }) => (
+            {TABS_CONFIG.map(({ component, slug, link }) => (
               <Link
-                to={`/pharmacy/${slug.toLowerCase()}`}
+                to={`/pharmacy/${link}`}
                 className="navLeft"
                 key={slug}
               >

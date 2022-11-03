@@ -18,6 +18,7 @@ const ApplicationCard = ({ card, setApproved, setRejected }: Props) => (
   <Box
     sx={{
       border: '2px solid #B6CAFD',
+      backgroundColor:'white',
       display: 'flex',
       width: '60%',
       padding: '17px 30px',

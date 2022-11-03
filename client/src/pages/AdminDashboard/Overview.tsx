@@ -13,6 +13,7 @@ import chart from '../../assets/chart1.png';
 import BoxComponent from '../../components/admin/BoxComponent';
 import ChartComponent from '../../components/admin/ChartComponent';
 import ListItemComponent from '../../components/admin/ListItemComponent';
+import { ToastContainer } from 'react-toastify';
 
 // eslint-disable-next-line import/no-unresolved
 import 'react-toastify/dist/ReactToastify.css';
@@ -327,4 +328,4 @@ const Overview = () => {
   );
 };
 
-// export default Overview;
+export default Overview;

@@ -41,7 +41,6 @@ pharmaciesRouter.get(
 );
 
 pharmaciesRouter.put('/pharmacy/requests', auth, pharmacyAuth, editRequests);
-
 pharmaciesRouter.post('/pharmacy/sales', auth, pharmacyAuth, addSales);
 pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
 

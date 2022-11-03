@@ -1,7 +1,7 @@
 
 .MuiBox-root.css-0 {
     padding: 16px;
-    background-color: white;
+    /* background-color: white; */
 }
 
 p.MuiTypography-root.MuiTypography-body1.GeneralInfo.css-ahj2mt-MuiTypography-root {
@@ -35,4 +35,8 @@ li.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.infoItem.css-1p823my
 
 span.MuiSkeleton-root.MuiSkeleton-text.MuiSkeleton-pulse.css-1n7gpw1-MuiSkeleton-root {
     height: 75px;
+}
+
+a{
+    text-decoration: none;
 }

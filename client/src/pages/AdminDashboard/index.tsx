@@ -4,7 +4,7 @@ import Overview from './Overview';
 import Pharmacies from './Pharmacies';
 import Products from './Products';
 import Requests from './Requests';
-import AllPharmacies from './AllPharmacies';
+// import AllPharmacies from './AllPharmacies';
 
 export {
   DashboardLayout,
@@ -13,5 +13,5 @@ export {
   Pharmacies,
   Products,
   Requests,
-  AllPharmacies,
+  // AllPharmacies,
 };

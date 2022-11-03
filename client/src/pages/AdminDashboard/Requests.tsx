@@ -218,8 +218,35 @@ const Requests = () => {
                       padding: '0',
                     }}
                   >
-                    <img src={image31} alt="Logo" />
-                    <Box>{row.Pharmacy.name}</Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      <img src={image31} alt="Logo" />
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'flex-start',
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            fontWeight: 'bold',
+                            textAlign:'left',
+                            marginBottom:'5px'
+                          }}
+                        >
+                          {row.Pharmacy.name}
+                        </Box>
+                        <Box
+                          sx={{
+                            opacity: 0.7,
+                            fontSize: '11px',
+                            fontWeight: '700',
+                          }}
+                        >
+                          54862053025
+                        </Box>
+                      </Box>
+                    </Box>
                   </TableCell>
 
                   <TableCell align="center" sx={{ padding: '0' }}>

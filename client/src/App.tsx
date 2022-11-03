@@ -7,7 +7,7 @@ import {
   Requests,
   Applications,
 } from './pages/AdminDashboard';
- import  AllPharmacies from './pages/AllPharmacies';
+import AllPharmacies from './pages/AllPharmacies';
 import {
   ActiveRequests,
   PharmacyProducts,
@@ -18,6 +18,8 @@ import {
 import { AuthProvider } from './context/authContext';
 import Login from './components/auth/login';
 import Signup from './components/auth/Signup';
+import './App.css';
+import Home from './pages/LandingPages/Home';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -68,7 +70,7 @@ const App = () => {
           element: <ActiveRequests />,
         },
         {
-          path: 'history',
+          path: 'salesHistory',
           element: <SalesHistory />,
         },
       ],
@@ -80,6 +82,11 @@ const App = () => {
     {
       path: '/signUp',
       element: <Signup />,
+    },
+    {
+      path: '/',
+      element: <Home />,
+      children: [{ path: 'home', element: <Home /> }],
     },
   ]);
   return (

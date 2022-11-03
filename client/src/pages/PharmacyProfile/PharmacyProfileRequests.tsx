@@ -16,6 +16,7 @@ import {
 import LongMenu from '../../components/Extra/Options';
 import dataLoadingError from '../../assets/dataLoadingError.png';
 import 'typeface-mulish';
+import { useParams } from 'react-router-dom';
 
 type row =
   | {
@@ -33,17 +34,14 @@ const PharmacyProfileRequests = () => {
   const [numRequests, setNumOfRequests] = useState(14);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const { pharmacyId: id } = useParams();
 
   const getMedicineRequests = useCallback(async () => {
-    console.log('before  getMedicineRequests');
-
     const {
       data: {
         data: { rows, count },
       },
-    } = await axios.get(`/pharmacy/1/requests?page=${pageNum}`);
-    console.log('rows');
-    console.log(rows);
+    } = await axios.get(`/pharmacy/${id}/requests?page=${pageNum}`);
 
     return { rows, count };
   }, [pageNum]);

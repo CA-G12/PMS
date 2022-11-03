@@ -11,7 +11,7 @@ import AllRequests from './components/admin/allRequests';
 import './App.css';
 import ApplicationSection from './components/admin/ApplicationSection';
 import {
-  ActiveRequests,
+  PharmacyProfileRequests,
   PharmacyProducts,
   ProfileLayout,
   ProfileOverview,
@@ -58,7 +58,7 @@ const App = () => {
       element: <AllPharmacies />,
     },
     {
-      path: '//pharmacy/:pharmacyId',
+      path: 'pharmacy/:pharmacyId',
       element: <ProfileLayout />,
       children: [
         {
@@ -71,7 +71,7 @@ const App = () => {
         },
         {
           path: 'requests',
-          element: <ActiveRequests />,
+          element: <PharmacyProfileRequests />,
         },
         {
           path: 'sales-history',

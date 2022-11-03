@@ -19,7 +19,7 @@ const Navbar = () => {
       <img alt="logo" src={Logo} width="150px" />
       <List sx={{ display: 'flex', flexDirection: 'row' }}>
         {navigationMenu.map((menu) => (
-          <Link to={`/${menu.toLowerCase()}`} key={menu}>
+          <Link to={`/${menu.toLowerCase()}`} key={menu} style={{textDecoration:'none'}}>
             <ListItem>
               <ListItemText primary={menu} />
             </ListItem>

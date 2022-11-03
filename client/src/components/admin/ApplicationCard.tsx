@@ -18,18 +18,23 @@ const ApplicationCard = ({ card, setApproved, setRejected }: Props) => (
   <Box
     sx={{
       border: '2px solid #B6CAFD',
-      borderRadius: '20px',
-      width: '95%',
-      margin: '2rem auto',
-      padding: '2rem 0',
-      paddingLeft: '3rem',
+      backgroundColor:'white',
       display: 'flex',
-      position: 'relative',
-      fontSize: '1.3rem',
-      backgroundColor: '#fff',
+      width: '60%',
+      padding: '17px 30px',
+      justifyContent: 'space-between',
+      borderRadius: '7px',
     }}
   >
-    <Box>
+    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Typography sx={{ fontSize: '1.3rem', margin: '0.5rem 0' }}>
+        <strong>Pharmacy name : </strong>
+        {card.pharmacyName}
+      </Typography>
+      <Typography sx={{ fontSize: '1.3rem', margin: '0.5rem 0' }}>
+        <strong>license number : </strong>
+        {card.licenseNumber}
+      </Typography>
       <Typography sx={{ fontSize: '1.3rem', margin: '0.5rem 0' }}>
         <strong>Owner’s name : </strong>
         {card.ownerName}
@@ -38,29 +43,21 @@ const ApplicationCard = ({ card, setApproved, setRejected }: Props) => (
         <strong>Owner’s Id : </strong>
         {card.ownerId}
       </Typography>
-      <Typography sx={{ fontSize: '1.3rem', margin: '0.5rem 0' }}>
-        <strong>license number : </strong>
-        {card.licenseNumber}
-      </Typography>
-      <Typography sx={{ fontSize: '1.3rem', margin: '0.5rem 0' }}>
-        <strong>Pharmacy name : </strong>
-        {card.pharmacyName}
-      </Typography>
     </Box>
     <Box
       sx={{
-        position: 'absolute',
-        right: '6rem',
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'space-evenly',
       }}
     >
       <Button
         sx={{
-          marginBottom: '1rem',
-          marginTop: '1rem',
           borderRadius: '50%',
-          fontSize: '2.5rem',
+          height: '65px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
         variant="contained"
         onClick={() => setApproved()}
@@ -72,8 +69,10 @@ const ApplicationCard = ({ card, setApproved, setRejected }: Props) => (
       <Button
         sx={{
           borderRadius: '50%',
-          marginTop: '1rem',
-          fontSize: '2.5rem',
+          height: '65px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
         variant="outlined"
         onClick={() => setRejected()}

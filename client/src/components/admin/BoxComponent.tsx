@@ -10,7 +10,6 @@ const BoxComponent: React.FC<BoxComponentProps> = ({ label, value }) => (
   <Box
     sx={{
       border: '1px solid #80808045',
-      backgroundColor: 'white',
       width: '150px',
       height: '90px',
       padding: '20px',

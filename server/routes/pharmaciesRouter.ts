@@ -35,6 +35,7 @@ pharmaciesRouter.get(
 );
 pharmaciesRouter.get('/product/:productId', oneProductId);
 pharmaciesRouter.put('/pharmacy/requests', auth, pharmacyAuth, editRequests);
+pharmaciesRouter.post('/pharmacy/sales', auth, pharmacyAuth, addSales);
 pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
 
 export default pharmaciesRouter;

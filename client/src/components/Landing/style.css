@@ -10,6 +10,7 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    width:100%
 }
 
 .headline.MuiBox-root.css-2sjag3 {
@@ -33,4 +34,21 @@ h1.MuiTypography-root.MuiTypography-h1.css-o2w69a-MuiTypography-root.title {
 p.MuiTypography-root.MuiTypography-body1.MuiTypography-paragraph.css-z2eky3-MuiTypography-root {
     max-width: 400px;
     color: #ffffff99;
+}
+
+.MuiListItemText-root.keyItem.css-tlelie-MuiListItemText-root span {
+    font-size: 15px;
+    font-weight: lighter !important;
+    color: #0000806b;
+}
+
+button.get {
+    color: #83B239;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid #83B239;
+    border-radius: 34px;
+    width: 192px;
+    margin-left: 14px;
+    background-color: #fff;
 }

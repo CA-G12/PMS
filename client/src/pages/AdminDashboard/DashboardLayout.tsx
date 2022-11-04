@@ -1,8 +1,7 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Box, Drawer } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import drawer from '../components/drawer';
-import NavBar from '../components/NavBar';
+import { drawer, NavBar } from '../../components';
 import './dashboard.css';
 
 const drawerWidth = 240;
@@ -14,7 +13,7 @@ interface Props {
 
 const DashboardLayout: React.FC = (props: Props) => {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);

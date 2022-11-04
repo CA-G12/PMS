@@ -1,13 +1,13 @@
 import ProfileOverview from './ProfileOverview';
 import SalesHistory from './SalesHistory';
-import ActiveRequests from './ActiveRequests';
+import PharmacyProfileRequests from './PharmacyProfileRequests';
 import PharmacyProducts from './PharmacyProducts';
 import ProfileLayout from './ProfileLayout';
 
 export {
   ProfileOverview,
   SalesHistory,
-  ActiveRequests,
+  PharmacyProfileRequests,
   PharmacyProducts,
   ProfileLayout,
 };

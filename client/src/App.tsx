@@ -4,14 +4,12 @@ import {
   Pharmacies,
   Products,
   DashboardLayout,
-  AllProducts,
-  AllPharmacies,
-} from './pages';
-import AllRequests from './components/admin/allRequests';
-import './App.css';
-import ApplicationSection from './components/admin/ApplicationSection';
+  Requests,
+  Applications,
+} from './pages/AdminDashboard';
+import AllPharmacies from './pages/AllPharmacies';
 import {
-  ActiveRequests,
+  PharmacyProfileRequests,
   PharmacyProducts,
   ProfileLayout,
   ProfileOverview,
@@ -20,6 +18,8 @@ import {
 import { AuthProvider } from './context/authContext';
 import Login from './components/auth/login';
 import Signup from './components/auth/Signup';
+import './App.css';
+import Home from './pages/LandingPages/Home';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -41,24 +41,20 @@ const App = () => {
         },
         {
           path: 'requests',
-          element: <AllRequests />,
+          element: <Requests />,
         },
         {
           path: 'applications',
-          element: <ApplicationSection />,
+          element: <Applications />,
         },
       ],
-    },
-    {
-      path: 'AllProducts',
-      element: <AllProducts />,
     },
     {
       path: 'pharmacies',
       element: <AllPharmacies />,
     },
     {
-      path: '//pharmacy/:pharmacyId',
+      path: '/pharmacy/:pharmacyId',
       element: <ProfileLayout />,
       children: [
         {
@@ -71,10 +67,10 @@ const App = () => {
         },
         {
           path: 'requests',
-          element: <ActiveRequests />,
+          element: <PharmacyProfileRequests />,
         },
         {
-          path: 'sales-history',
+          path: 'sales',
           element: <SalesHistory />,
         },
       ],
@@ -86,6 +82,11 @@ const App = () => {
     {
       path: '/signUp',
       element: <Signup />,
+    },
+    {
+      path: '/',
+      element: <Home />,
+      children: [{ path: 'home', element: <Home /> }],
     },
   ]);
   return (

@@ -5,6 +5,7 @@ import {
   addRequests,
   salesHistory,
   productsInStock,
+  getAllProducts,
 } from '../controllers';
 import {
   getPharmacyRequests,
@@ -16,12 +17,15 @@ import { auth, pharmacyAuth } from '../middlewares';
 
 const pharmaciesRouter = Router();
 
+pharmaciesRouter.get('/pharmacy/products', auth, pharmacyAuth, getAllProducts);
+
 pharmaciesRouter.get(
   '/pharmacy/productsInStock',
   auth,
   pharmacyAuth,
   productsInStock
 );
+pharmaciesRouter.get('/pharmacy/sales', auth, pharmacyAuth, salesHistory);
 pharmaciesRouter.get('/pharmacy/:pharmacyId', pharmacyOverview);
 pharmaciesRouter.get('/pharmacy/:pharmacyId/statistics', getPharmacyStatistics);
 pharmaciesRouter.post('/pharmacy/sales', auth, pharmacyAuth, addSales);
@@ -33,16 +37,7 @@ pharmaciesRouter.get(
   getPharmacyRequests
 );
 pharmaciesRouter.get('/product/:productId', oneProductId);
-pharmaciesRouter.get(
-  '/pharmacy/:pharmacyId/sales',
-  auth,
-  pharmacyAuth,
-  salesHistory
-);
-
 pharmaciesRouter.put('/pharmacy/requests', auth, pharmacyAuth, editRequests);
-
 pharmaciesRouter.post('/pharmacy/sales', auth, pharmacyAuth, addSales);
 pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
-
 export default pharmaciesRouter;

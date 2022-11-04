@@ -1,7 +1,7 @@
 
 .MuiBox-root.css-0 {
     padding: 16px;
-    background-color: white;
+    /* background-color: white; */
 }
 
 p.MuiTypography-root.MuiTypography-body1.GeneralInfo.css-ahj2mt-MuiTypography-root {
@@ -29,10 +29,14 @@ li.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.infoItem.css-1p823my
     padding: 0px 16px;
 }
 
-svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
+/* svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
     color: #00800096;
-}
+} */
 
 span.MuiSkeleton-root.MuiSkeleton-text.MuiSkeleton-pulse.css-1n7gpw1-MuiSkeleton-root {
     height: 75px;
+}
+
+a{
+    text-decoration: none;
 }

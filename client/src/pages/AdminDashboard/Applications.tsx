@@ -1,9 +1,11 @@
 import { Box, Typography, Pagination, CircularProgress } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import ApplicationCard from './ApplicationCard';
+import ApplicationCard from '../../components/admin/ApplicationCard';
 import empty from '../../assets/empty.webp';
+import 'typeface-mulish';
 
+/* eslint-disable camelcase */
 type row = {
   id: number;
   name: string;
@@ -12,20 +14,21 @@ type row = {
   location: string;
   image: string;
   description: string;
-  licenseNumber: number;
+  license_number: number;
   status: string;
-  ownerId: number;
-  ownerName: string;
+  owner_id: number;
+  owner_name: string;
   ownerImg: string;
   createdAt: string;
   updatedAt: string;
 };
 
-const ApplicationSection = () => {
+const Applications = () => {
   const [cards, setCards] = useState<row[]>([] as row[]);
   const [pageNum, setPageNum] = useState(1);
   const [numOfApplications, setNumOfApplications] = useState(1);
   const [loading, setLoading] = useState(true);
+  const drawerWidth = 240;
 
   const getData = async () => {
     setLoading(true);
@@ -54,15 +57,16 @@ const ApplicationSection = () => {
     arr.map((application) => (
       <ApplicationCard
         card={{
-          ownerName: application.ownerName,
-          ownerId: application.ownerId,
-          licenseNumber: application.licenseNumber,
+          ownerName: application.owner_name,
+          ownerId: application.owner_id,
+          licenseNumber: application.license_number,
           pharmacyName: application.name,
         }}
         setApproved={() => setStatus('Approved', application.id)}
         setRejected={() => setStatus('Rejected', application.id)}
       />
     ));
+
   if (loading) {
     return (
       <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
@@ -70,6 +74,7 @@ const ApplicationSection = () => {
       </Box>
     );
   }
+
   if (cards.length === 0) {
     return (
       <Box sx={{ width: '100%', height: '100%', margin: 'auto 7rem' }}>
@@ -77,26 +82,49 @@ const ApplicationSection = () => {
       </Box>
     );
   }
+
   return (
-    <Box sx={{ padding: '2rem 8%', width: '100%' }}>
-      <Typography
-        sx={{ margin: '4rem 3%', fontSize: '3rem' }}
-        variant="h1"
-        gutterBottom
-      >
-        Applications
-      </Typography>
-      {getAllTasksApplications(cards)}
-      <Pagination
-        count={Math.ceil(numOfApplications / 3)}
-        color="primary"
-        page={pageNum}
-        onChange={(event: React.ChangeEvent<unknown>, page: number) => {
-          setPageNum(page);
-        }}
-      />
+    <Box
+      component="main"
+      sx={{
+        flexGrow: 1,
+        p: 3,
+        width: { sm: `calc(100% - ${drawerWidth}px)`, md: '' },
+      }}
+    >
+      <Box sx={{ marginLeft: '80px' }}>
+        <Typography
+          sx={{
+            color: 'black',
+            fontSize: '25px',
+            fontWeight: '800',
+            fontFamily: 'mulish',
+            marginBottom: '20px',
+          }}
+        >
+          Applications
+        </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '30px',
+            marginBottom: '20px',
+          }}
+        >
+          {getAllTasksApplications(cards)}
+        </Box>
+        <Pagination
+          count={Math.ceil(numOfApplications / 3)}
+          color="primary"
+          page={pageNum}
+          onChange={(event: React.ChangeEvent<unknown>, page: number) => {
+            setPageNum(page);
+          }}
+        />
+      </Box>
     </Box>
   );
 };
 
-export default ApplicationSection;
+export default Applications;

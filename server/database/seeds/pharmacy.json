@@ -8,7 +8,7 @@
       "description": "Pharmacies licensed by the Ministry of Health All of their employees",
       "password": "$2y$10$038ZGt9SkWkMeCuRp6dJ..DgjoyZq8oTKWr43amGtneFWkbSvG/cG",
       "license_number": 548165,
-      "status": "Opened",
+      "status": "Pending",
       "owner_name": "Marlene Benadette",
       "owner_img": "http://images.assetsdelivery.com/compings_v2/mavoimage/mavoimage1601/mavoimage160100167.jpg",
       "owner_id": 405987
@@ -50,7 +50,7 @@
       "description": "Pharmacies licensed by the Ministry of Health All of their employees",
       "password": "$2y$10$038ZGt9SkWkMeCuRp6dJ..DgjoyZq8oTKWr43amGtneFWkbSvG/cG",
       "license_number": 54885,
-      "status": "Rejected",
+      "status": "Pending",
       "owner_name": "Gawen Wenman",
       "owner_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrPK_ieFdC_ILzKX1ejGhqE6x8_rTMcIDBjA&usqp=CAU",
       "owner_id": 955948
@@ -78,7 +78,7 @@
       "description": "Pharmacies licensed by the Ministry of Health All of their employees",
       "password": "$2y$10$038ZGt9SkWkMeCuRp6dJ..DgjoyZq8oTKWr43amGtneFWkbSvG/cG",
       "license_number": 548285,
-      "status": "Opened",
+      "status": "Pending",
       "owner_name": "Travus Breach",
       "owner_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR12THQzM5WtFHbYYpEx5VntalzMuQ4pku7Nw&usqp=CAU",
       "owner_id": 965948
@@ -120,7 +120,7 @@
       "description": "Pharmacies licensed by the Ministry of Health All of their employees",
       "password": "$2y$10$038ZGt9SkWkMeCuRp6dJ..DgjoyZq8oTKWr43amGtneFWkbSvG/cG",
       "license_number": 548285,
-      "status": "Rejected",
+      "status": "Pending",
       "owner_name": "Stafani Raccio",
       "owner_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6xQvz4erHtT1cwDIasVCJK9Qa2zgnHbT9yg&usqp=CAU",
       "owner_id": 955988

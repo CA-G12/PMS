@@ -1,14 +1,19 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-unused-vars */
-import { Box, List, ListItem, ListItemText, Typography } from '@mui/material';
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  CircularProgress,
+} from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import 'typeface-mulish';
 import { ToastContainer } from 'react-toastify';
-import chart from '../assets/chart1.png';
-import BoxComponent from '../components/admin/BoxComponent';
-import ChartComponent from '../components/admin/ChartComponent';
-import ListItemComponent from '../components/admin/ListItemComponent';
+import chart from '../../assets/chart1.png';
+import BoxComponent from '../../components/admin/BoxComponent';
+import ChartComponent from '../../components/admin/ChartComponent';
+import ListItemComponent from '../../components/admin/ListItemComponent';
 
 // eslint-disable-next-line import/no-unresolved
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,6 +22,7 @@ const Overview = () => {
   const drawerWidth = 240;
   const [productsQuantity, setProductsQuantity] = useState([]);
   const [productsQuantityOrder, setProductsQuantityOrder] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [statistics, setStatistics] = useState({
     pharmaciesNumber: 0,
     openedApplicationsNumber: 0,
@@ -41,9 +47,11 @@ const Overview = () => {
         setProductsQuantity(data.allKindProductsCount.rows);
         setProductsQuantityOrder(data.allKindProductsCountOrder.rows);
         setStatistics(data);
+        setLoading(false);
       } catch (err) {
         setProductsQuantity([]);
         setProductsQuantityOrder([]);
+        setLoading(false);
       }
     };
     getData();
@@ -73,6 +81,14 @@ const Overview = () => {
     }
   );
 
+  if (loading) {
+    return (
+      <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
+        <CircularProgress />
+      </Box>
+    );
+  }
+
   return (
     <Box
       component="main"
@@ -93,8 +109,11 @@ const Overview = () => {
             flexWrap: 'wrap',
           }}
         >
-          <Box className="cardStatistics">
-            <Box>
+          <Box
+            className="cardStatistics"
+            sx={{ display: 'flex', flexDirection: 'column' }}
+          >
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography
                 fontWeight="bold"
                 paragraph
@@ -112,7 +131,7 @@ const Overview = () => {
                 {statistics?.pharmaciesNumber}
               </Typography>
             </Box>
-            <List>
+            <List sx={{ display: 'flex', flexDirection: 'column' }}>
               <ListItem
                 sx={{ paddingTop: '0px', paddingBottom: '0px', gap: '15px' }}
               >
@@ -209,8 +228,11 @@ const Overview = () => {
             />
           </Box>
 
-          <Box className="cardStatistics">
-            <Box>
+          <Box
+            className="cardStatistics"
+            sx={{ display: 'flex', flexDirection: 'column' }}
+          >
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography
                 fontFamily="Mulish"
                 fontWeight="bold"
@@ -228,7 +250,7 @@ const Overview = () => {
                 {statistics?.productsNumber}
               </Typography>
             </Box>
-            <List>
+            <List sx={{ display: 'flex', flexDirection: 'column' }}>
               <ListItemComponent
                 bgcolor="#4D96BE"
                 value={statistics.productsNumber}
@@ -285,7 +307,6 @@ const Overview = () => {
         marginBottom="0px"
         fontFamily="Mulish"
         className="chart"
-        marginTop="240px"
         color="#706c6c"
       >
         Chart for Least used Products Quantity

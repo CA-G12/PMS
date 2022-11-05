@@ -6,9 +6,9 @@ const addSalesHistory = async (
   pharmacyId: number
 ) =>
   SalesHistory.create({
+    product_id: productId,
     quantity,
     pharmacy_id: pharmacyId,
-    product_id: productId,
   });
 
 export default addSalesHistory;

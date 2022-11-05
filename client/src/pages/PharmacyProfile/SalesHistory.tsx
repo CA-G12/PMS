@@ -23,7 +23,6 @@ const SalesHistory = () => {
   const [error, setError] = useState('');
   const [numOfSales, setNumOfSales] = useState(0);
   const [pageNum, setPageNum] = useState(1);
-  console.log(dataRequests);
   useEffect(() => {
     (async () => {
       try {
@@ -40,7 +39,7 @@ const SalesHistory = () => {
         setLoading(false);
       }
     })();
-  }, [pageNum]);
+  });
 
   if (error) {
     return (

@@ -7,11 +7,9 @@ const salesHistoryQuery = async (pharmacyId: number, page: number) =>
       {
         model: Product,
         attributes: ['id', 'name', 'price'],
-        where: {
-          id: pharmacyId,
-        },
       },
     ],
+    where: { pharmacy_id: pharmacyId },
     offset: 5 * (page - 1),
     limit: 5,
   });

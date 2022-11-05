@@ -25,7 +25,7 @@ const ProductCard = ({ product }: Props) => (
       minHeight: '240px',
       display: 'flex',
       alignItems: 'flex-end',
-      marginTop:'80px'
+      marginTop: '80px',
     }}
   >
     <img
@@ -47,7 +47,7 @@ const ProductCard = ({ product }: Props) => (
         flexDirection: 'column',
         height: '90px',
         justifyContent: 'center',
-        width: '-webkit-fill-available'
+        width: '-webkit-fill-available',
       }}
     >
       <Typography

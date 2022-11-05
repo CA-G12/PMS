@@ -7,32 +7,32 @@ beforeAll(() => buildSeeds());
 describe('login router', () => {
   test('check bad request', (done) => {
     supertest(app)
-      .get('/pharmacy/1')
+      .get('/pharmacy/1/overview')
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
         if (err) done(err);
-        expect(res.body.pharmacyData[0].id).toBe(1);
+        expect(res.statusCode).toBe(200);
         return done();
       });
   });
   test('check good request', (done) => {
     supertest(app)
-      .get('/pharmacy/11')
+      .get('/pharmacy/11/overview')
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
         if (err) done(err);
-        expect(res.body.pharmacyData[0].id).toBe(11);
+        expect(res.statusCode).toBe(200);
         return done();
       });
   });
 
   test('check good request no data', (done) => {
     supertest(app)
-      .get('/pharmacy/111')
+      .get('/pharmacy/111/overview')
       .expect('Content-Type', /json/)
       .end((err: any, res: any) => {
         if (err) done(err);
-        expect(res.body.pharmacyData.length).toBe(0);
+        expect(res.statusCode).toBe(200);
         done();
       });
   });

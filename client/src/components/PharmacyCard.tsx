@@ -31,7 +31,7 @@ const PharmacyCard = ({ pharmacy }: Props) => (
         minHeight: '220px',
         display: 'flex',
         alignItems: 'flex-end',
-        justifyContent:'center'
+        justifyContent: 'center',
       }}
     >
       <img

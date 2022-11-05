@@ -18,7 +18,9 @@ const PharmacyNavbar = () => {
   const handleClose = async () => setAnchorEl(null);
 
   const showProfile = () =>
-    role === 'admin' ? navigate('/admin') : navigate(`/pharmacy/${id}/overview`);
+    role === 'admin'
+      ? navigate('/admin')
+      : navigate(`/pharmacy/${id}/overview`);
 
   return (
     <Box

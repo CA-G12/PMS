@@ -80,8 +80,8 @@ const ProfileLayout = () => {
             </Box>
           </Box>
           <List className="dash">
-            {+(id!) == pharmacyId ? 
-              (TABS_CONFIG.map(({ component, slug, link }) => (
+            {+id! === pharmacyId ? (
+              TABS_CONFIG.map(({ component, slug, link }) => (
                 <Link
                   to={`/pharmacy/${id}/${link}`}
                   className="navLeft"
@@ -94,20 +94,19 @@ const ProfileLayout = () => {
                     </ListItemButton>
                   </ListItem>
                 </Link>
-              ))) :
-              <Link
-                  to={`/pharmacy/${id}/overview`}
-                  className="navLeft"
-                >
-                  <ListItem className="dashLi">
-                    <ListItemButton>
-                      <ListItemIcon><Dialpad /></ListItemIcon>
-                      <ListItemText primary='overview' />
-                    </ListItemButton>
-                  </ListItem>
-                </Link>
-
-            }
+              ))
+            ) : (
+              <Link to={`/pharmacy/${id}/overview`} className="navLeft">
+                <ListItem className="dashLi">
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <Dialpad />
+                    </ListItemIcon>
+                    <ListItemText primary="overview" />
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+            )}
           </List>
         </Box>
         <Box className="outlet">

@@ -1,6 +1,4 @@
-import { List, ListItem, ListItemText, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import React from 'react';
+import { List, ListItem, ListItemText, Typography, Box } from '@mui/material';
 import key1 from '../../assets/key1.png';
 import key2 from '../../assets/key2.png';
 import './style.css';
@@ -55,7 +53,9 @@ const KeyBenefits = () => (
               </ListItemText>
             </ListItem>
           </List>
-          <button className="get">Get prescription</button>
+          <button type="submit" className="get">
+            Get prescription
+          </button>
         </Box>
         <img src={key1} alt="key benefit 1" width="33%" />
       </Box>
@@ -99,7 +99,9 @@ const KeyBenefits = () => (
               </ListItemText>
             </ListItem>
           </List>
-          <button className="get">Start Now</button>
+          <button type="submit" className="get">
+            Start Now
+          </button>
         </Box>
       </Box>
     </Box>

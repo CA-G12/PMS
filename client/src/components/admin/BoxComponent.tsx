@@ -18,7 +18,7 @@ const BoxComponent: React.FC<BoxComponentProps> = ({ label, value }) => (
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor:'white'
+      backgroundColor: 'white',
     }}
   >
     <Typography

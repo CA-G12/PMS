@@ -21,11 +21,13 @@ pharmaciesRouter.get(
   auth,
   pharmacyAuth,
   productsInStock
-);
-pharmaciesRouter.get('/pharmacy/:pharmacyId', pharmacyOverview);
+  );
+  pharmaciesRouter.post('/pharmacy/sales', auth, pharmacyAuth, addSales);
+  pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
+  pharmaciesRouter.put('/pharmacy/requests', auth, pharmacyAuth, editRequests);
+
+pharmaciesRouter.get('/pharmacy/:pharmacyId/overview', pharmacyOverview);
 pharmaciesRouter.get('/pharmacy/:pharmacyId/statistics', getPharmacyStatistics);
-pharmaciesRouter.post('/pharmacy/sales', auth, pharmacyAuth, addSales);
-pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
 pharmaciesRouter.get(
   '/pharmacy/:pharmacyId/requests',
   auth,
@@ -40,8 +42,5 @@ pharmaciesRouter.get(
   salesHistory
 );
 
-pharmaciesRouter.put('/pharmacy/requests', auth, pharmacyAuth, editRequests);
-pharmaciesRouter.post('/pharmacy/sales', auth, pharmacyAuth, addSales);
-pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
 
 export default pharmaciesRouter;

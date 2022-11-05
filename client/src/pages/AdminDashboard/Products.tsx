@@ -81,7 +81,7 @@ const Products = () => {
           >
             <TableHead sx={{ padding: '2px 30px' }}>
               <TableRow sx={{ padding: '2px 30px' }}>
-                <TableCell align="center">
+                <TableCell align="center" sx={{ padding: '16px 67px' }}>
                   {' '}
                   <Typography
                     sx={{

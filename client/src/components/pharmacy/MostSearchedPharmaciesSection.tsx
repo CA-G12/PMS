@@ -39,6 +39,7 @@ const MostSearchedPharmaciesSection = () => {
           img: pharmacy.image,
           name: pharmacy.name,
           location: pharmacy.location,
+          id: pharmacy.id,
         }}
       />
     ));
@@ -58,7 +59,7 @@ const MostSearchedPharmaciesSection = () => {
           color: '#043CAA',
         }}
       >
-        Our Pharmacies
+        Our Most Searched Pharmacies
       </h2>
       {loading && (
         <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
@@ -79,7 +80,7 @@ const MostSearchedPharmaciesSection = () => {
           </Box>
           <Typography
             onClick={() => {
-              navigate('/');
+              navigate('/pharmacies');
             }}
             sx={{
               color: '#83B239',

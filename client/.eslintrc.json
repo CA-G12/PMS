@@ -26,6 +26,7 @@
         "prettier"
     ],
     "rules": {
+        "react/require-default-props": "off",
         "prettier/prettier": "error",
         "no-nested-ternary": 0,
         "no-use-before-define": "off",
@@ -45,7 +46,7 @@
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "import/prefer-default-export": "off",
-        "react/function-component-definition": [2, { "namedComponents": "arrow-function" }] 
+        "react/function-component-definition": [2, {"namedComponents": "arrow-function" }]
     },
     "settings": {
         "import/resolver": {

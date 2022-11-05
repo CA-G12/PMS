@@ -19,7 +19,7 @@ type dataType = {
 const Statistics = () => {
   const [usedData, setUsedData] = useState<dataType | null>(null);
   const [loading, setLoading] = useState(true);
-  const id = useParams();
+  const { id } = useParams();
   useEffect(() => {
     const controller = new AbortController();
     const getData = async () => {
@@ -72,7 +72,7 @@ const Statistics = () => {
             {usedData?.Requests?.count}
           </Typography>
         </Box>
-        <List>
+        <List sx={{ display: 'flex', flexDirection: 'column' }}>
           <ListItemComponent
             bgcolor="#4D96BE"
             value={35}

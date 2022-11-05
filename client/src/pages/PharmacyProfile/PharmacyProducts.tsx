@@ -24,10 +24,10 @@ const PharmacyProducts = () => {
   const [numOfApplications, setNumOfApplications] = useState(1);
   const [loading, setLoading] = useState(true);
   const [pageNum, setPageNum] = useState(1);
-  const { pharmacyId } = useParams();
+  const { id } = useParams();
 
   const getData = async () => {
-    let URL = `/product?page=${pageNum}&id=${pharmacyId}`;
+    let URL = `/product?page=${pageNum}&id=${id}`;
     if (searchMedicine) {
       URL += `&medicineName=${searchMedicine}`;
     }
@@ -61,9 +61,8 @@ const PharmacyProducts = () => {
   return (
     <Box
       sx={{
-        width: '90%',
-        justifyContent: 'center',
-        margin: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       <h4
@@ -148,8 +147,6 @@ const PharmacyProducts = () => {
             sx={{
               display: 'flex',
               flexWrap: 'wrap',
-              justifyContent: 'center',
-              margin: 'auto',
             }}
           >
             {gitAllProducts()}

@@ -9,7 +9,7 @@ const PharmacyNavbar = () => {
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
   const {
-    authData: { role },
+    authData: { role, id },
   } = useContext(authContext);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) =>
@@ -18,7 +18,7 @@ const PharmacyNavbar = () => {
   const handleClose = async () => setAnchorEl(null);
 
   const showProfile = () =>
-    role === 'admin' ? navigate('/admin') : navigate('/profile');
+    role === 'admin' ? navigate('/admin') : navigate(`/pharmacy/${id}/overview`);
 
   return (
     <Box

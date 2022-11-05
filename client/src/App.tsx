@@ -20,6 +20,7 @@ import Login from './components/auth/login';
 import Signup from './components/auth/Signup';
 import './App.css';
 import Home from './pages/LandingPages/Home';
+import AllProducts from './pages/AllProducts';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -50,11 +51,7 @@ const App = () => {
       ],
     },
     {
-      path: 'pharmacies',
-      element: <AllPharmacies />,
-    },
-    {
-      path: '/pharmacy',
+      path: '/pharmacy/:id',
       element: <ProfileLayout />,
       children: [
         {
@@ -84,9 +81,16 @@ const App = () => {
       element: <Signup />,
     },
     {
-      path: '/',
+      path: '/home',
       element: <Home />,
-      children: [{ path: 'home', element: <Home /> }],
+    },
+    {
+      path: '/pharmacies',
+      element: <AllPharmacies />,
+    },
+    {
+      path: '/products',
+      element: <AllProducts />,
     },
   ]);
   return (

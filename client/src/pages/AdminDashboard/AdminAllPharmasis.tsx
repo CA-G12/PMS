@@ -11,9 +11,9 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Divider } from '@mui/material';
 import { LongMenu } from '../../components/Extra';
 import image31 from '../../assets/image31.png';
-import { Divider } from '@mui/material';
 
 const options = ['Opened', 'Closed'];
 
@@ -117,80 +117,83 @@ const AllAdminPharmasis = () => {
           sx={{ minWidth: 650, marginLeft: '0px', marginTop: '0px' }}
           aria-label="simple table"
         >
-          <TableHead sx={{ padding: '2px 30px' }}>
-              <TableRow sx={{ padding: '2px 30px' }}>
-                <TableCell align="center">
-                  {' '}
-                  <Typography
-                    sx={{
-                      backgroundColor: '#80808036',
-                      borderRadius: '7px',
-                      padding: '3px',
-                      fontSize: '15px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Pharmacy Name
-                  </Typography>{' '}
-                </TableCell>
-                <TableCell align="center">
-                  {' '}
-                  <Typography
-                    sx={{
-                      backgroundColor: '#80808036',
-                      borderRadius: '7px',
-                      padding: '3px',
-                      fontSize: '15px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Pharmacy Owner
-                  </Typography>{' '}
-                </TableCell>
-                <TableCell align="center">
-                  {' '}
-                  <Typography
-                    sx={{
-                      backgroundColor: '#80808036',
-                      borderRadius: '7px',
-                      padding: '3px',
-                      fontSize: '15px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Pharmacy Location
-                  </Typography>{' '}
-                </TableCell>
-                <TableCell align="center">
-                  {' '}
-                  <Typography
-                    sx={{
-                      backgroundColor: '#80808036',
-                      borderRadius: '7px',
-                      padding: '3px',
-                      fontSize: '15px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Pharmacy Status
-                  </Typography>{' '}
-                </TableCell>
-                <TableCell align="center">
-                  {' '}
-                  <Typography
-                    sx={{
-                      backgroundColor: '#80808036',
-                      borderRadius: '7px',
-                      padding: '3px',
-                      fontSize: '15px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Options
-                  </Typography>{' '}
-                </TableCell>
-              </TableRow>
-            </TableHead>
+          <TableHead sx={{ padding: '9px' }}>
+            <TableRow sx={{ padding: '9px' }}>
+              <TableCell
+                align="center"
+                sx={{ padding: '6px', marginLeft: '15px' }}
+              >
+                {' '}
+                <Typography
+                  sx={{
+                    backgroundColor: '#80808036',
+                    borderRadius: '7px',
+                    padding: '3px',
+                    fontSize: '15px',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Pharmacy Name
+                </Typography>{' '}
+              </TableCell>
+              <TableCell align="center" sx={{ padding: '6px' }}>
+                {' '}
+                <Typography
+                  sx={{
+                    backgroundColor: '#80808036',
+                    borderRadius: '7px',
+                    padding: '3px',
+                    fontSize: '15px',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Pharmacy Owner
+                </Typography>{' '}
+              </TableCell>
+              <TableCell align="center">
+                {' '}
+                <Typography
+                  sx={{
+                    backgroundColor: '#80808036',
+                    borderRadius: '7px',
+                    padding: '3px',
+                    fontSize: '15px',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Pharmacy Location
+                </Typography>{' '}
+              </TableCell>
+              <TableCell align="center" sx={{ padding: '9px' }}>
+                {' '}
+                <Typography
+                  sx={{
+                    backgroundColor: '#80808036',
+                    borderRadius: '7px',
+                    padding: '3px',
+                    fontSize: '15px',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Pharmacy Status
+                </Typography>{' '}
+              </TableCell>
+              <TableCell align="center">
+                {' '}
+                <Typography
+                  sx={{
+                    backgroundColor: '#80808036',
+                    borderRadius: '7px',
+                    padding: '3px',
+                    fontSize: '15px',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Options
+                </Typography>{' '}
+              </TableCell>
+            </TableRow>
+          </TableHead>
           <TableBody>
             {data.map((row: any) => (
               <TableRow
@@ -198,54 +201,59 @@ const AllAdminPharmasis = () => {
                 sx={{
                   '&:last-child td, &:last-child th': {
                     border: 0,
-                    dispaly: 'flex',
                   },
                 }}
               >
                 <TableCell
-                    align="center"
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      fontWeight: 'bold',
-                      fontSize: '15px',
-                      padding: '0',
-                    }}
-                  >
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <img src={image31} alt="Logo" />
+                  align="center"
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    fontWeight: 'bold',
+                    fontSize: '15px',
+                    padding: '0',
+                  }}
+                >
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <img src={image31} alt="Logo" />
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                      }}
+                    >
                       <Box
                         sx={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'flex-start',
+                          fontWeight: 'bold',
+                          textAlign: 'left',
+                          marginBottom: '5px',
                         }}
                       >
-                        <Box
-                          sx={{
-                            fontWeight: 'bold',
-                            textAlign:'left',
-                            marginBottom:'5px'
-                          }}
-                        >
-                          {row.name}
-                        </Box>
-                        <Box
-                          sx={{
-                            opacity: 0.7,
-                            fontSize: '11px',
-                            fontWeight: '700',
-                          }}
-                        >
-                          54862053025
-                        </Box>
+                        {row.name}
+                      </Box>
+                      <Box
+                        sx={{
+                          opacity: 0.7,
+                          fontSize: '11px',
+                          fontWeight: '700',
+                        }}
+                      >
+                        54862053025
                       </Box>
                     </Box>
-                  </TableCell>
+                  </Box>
+                </TableCell>
 
-                <TableCell align="center" sx={{ padding: '0' }}>{row.owner_name}</TableCell>
-                <TableCell align="center" sx={{ padding: '0' }}>{row.location}</TableCell>
-                <TableCell align="center" sx={{ padding: '0' }}>{row.status}</TableCell>
+                <TableCell align="center" sx={{ padding: '0' }}>
+                  {row.owner_name}
+                </TableCell>
+                <TableCell align="center" sx={{ padding: '0' }}>
+                  {row.location}
+                </TableCell>
+                <TableCell align="center" sx={{ padding: '0' }}>
+                  {row.status}
+                </TableCell>
                 <TableCell align="center" sx={{ padding: '0' }}>
                   <LongMenu
                     id={row.id}

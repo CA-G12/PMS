@@ -87,6 +87,7 @@ const NavBar: React.FC<NavBarProps> = ({ handleDrawerToggle }) => {
             }}
           >
             <MenuItem onClick={handleClose}>Log Out</MenuItem>
+            <MenuItem onClick={() => navigate('/')}>Home</MenuItem>
           </Menu>
         </Box>
       </Toolbar>

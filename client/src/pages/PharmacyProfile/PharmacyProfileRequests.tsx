@@ -48,9 +48,7 @@ const PharmacyProfileRequests = () => {
     return { rows, count };
   }, [pageNum]);
 
-  // eslint-disable-next-line no-shadow
   const updateMedicineRequests = async (status: string, pharmacyId: number) =>
-    // eslint-disable-next-line no-shadow
     axios.put(`/admin/requests/${pharmacyId}`, {
       status,
     });

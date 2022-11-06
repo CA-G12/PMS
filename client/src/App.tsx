@@ -8,6 +8,7 @@ import {
   Applications,
 } from './pages/AdminDashboard';
 import AllPharmacies from './pages/AllPharmacies';
+import AllProducts from './pages/AllProducts';
 import {
   PharmacyProfileRequests,
   PharmacyProducts,
@@ -15,6 +16,7 @@ import {
   ProfileOverview,
   SalesHistory,
 } from './pages/PharmacyProfile';
+import Navbar from './components/NavBar/Navbar';
 import { AuthProvider } from './context/authContext';
 import Login from './components/auth/login';
 import Signup from './components/auth/Signup';
@@ -51,7 +53,19 @@ const App = () => {
     },
     {
       path: 'pharmacies',
-      element: <AllPharmacies />,
+      element: (
+        <>
+          <Navbar /> <AllPharmacies />
+        </>
+      ),
+    },
+    {
+      path: 'products',
+      element: (
+        <>
+          <Navbar /> <AllProducts />
+        </>
+      ),
     },
     {
       path: '/pharmacy/:pharmacyId',

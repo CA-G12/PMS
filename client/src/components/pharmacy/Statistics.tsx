@@ -36,7 +36,7 @@ const Statistics = () => {
       }
     };
     getData();
-
+    
     return () => {
       controller.abort();
     };

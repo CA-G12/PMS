@@ -213,7 +213,9 @@ const Signup: React.FC = () => {
             marginLeft="35px"
           >
             You already have an account?{' '}
-            <span style={{ color: '#83B239' }}>Login</span>
+            <a href="/login" style={{ color: '#83B239' }}>
+              Login
+            </a>
           </Typography>
         </Box>
         <Box

@@ -13,7 +13,7 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   type sendUserDataType = () => void;
-
+  
   const sendUserData: sendUserDataType = async () => {
     try {
       if (email && password) {
@@ -134,7 +134,9 @@ const Login: React.FC = () => {
           {/* end password */}
           <Typography variant="caption" fontFamily="mulish" marginLeft="150px">
             Don`t have an account?{' '}
-            <span style={{ color: '#83B239' }}>Sign up</span>
+            <a href="/signup" style={{ color: '#83B239' }}>
+              Sign up
+            </a>
           </Typography>
         </Box>
         <Box

@@ -6,22 +6,24 @@ import 'typeface-mulish';
 import { useNavigate } from 'react-router-dom';
 import ButtonComponent from '../Button';
 import Navbar from '../NavBar/Navbar';
+import { useAuth } from '../../context/authContext';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
+  const { login } = useAuth();
   type sendUserDataType = () => void;
 
   const sendUserData: sendUserDataType = async () => {
     try {
       if (email && password) {
-        const userData = {
-          email,
-          password,
-        };
-        await axios.post('/auth/login', userData);
+        // const userData = {
+        //   email,
+        //   password,
+        // };
+        await login(email, password);
+        // await axios.post('/auth/login', userData);
         navigate('/');
       } else {
         throw new Error(

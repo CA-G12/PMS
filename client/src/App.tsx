@@ -15,7 +15,7 @@ import {
   ProfileOverview,
   SalesHistory,
 } from './pages/PharmacyProfile';
-import { AuthProvider } from './context/authContext';
+import { ProvideAuth } from './context/authContext';
 import Login from './components/auth/login';
 import Signup from './components/auth/Signup';
 import './App.css';
@@ -90,9 +90,9 @@ const App = () => {
     },
   ]);
   return (
-    <AuthProvider>
+    <ProvideAuth>
       <RouterProvider router={router} />
-    </AuthProvider>
+    </ProvideAuth>
   );
 };
 export default App;

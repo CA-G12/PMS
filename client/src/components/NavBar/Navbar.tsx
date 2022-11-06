@@ -1,16 +1,15 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, List, ListItem, ListItemText } from '@mui/material';
 import PharmacyNavbar from './PharmacyNavbar';
 import UserNavbar from './UserNavbar';
 import Logo from '../../assets/logo.png';
 import './Navbar.css';
-import { authContext } from '../../context/authContext';
+import { useAuth } from '../../context/authContext';
 
 const Navbar = () => {
   const {
-    authData: { role },
-  } = useContext(authContext);
+    user: { role },
+  } = useAuth();
 
   const navigationMenu = ['Home', 'Pharmacies', 'Products', 'Contact Us'];
 

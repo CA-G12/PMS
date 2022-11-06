@@ -16,6 +16,8 @@ type row = {
   description: string;
   price: number;
   img: string;
+  productpharmacies: string;
+  pharmaciesimg: string;
 };
 const AllProducts = () => {
   const [searchMedicine, setSearchMedicine] = useState('');
@@ -56,17 +58,6 @@ const AllProducts = () => {
     getData();
   }, [pageNum]);
 
-  const gitAllProducts = () =>
-    products.map((Product) => (
-      <ProductCard
-        product={{
-          img: Product.img,
-          name: Product.name,
-          description: Product.description,
-          price: Product.price,
-        }}
-      />
-    ));
   return (
     <Box
       sx={{
@@ -179,7 +170,19 @@ const AllProducts = () => {
               margin: 'auto',
             }}
           >
-            {gitAllProducts()}
+            {products.map((product: any) => (
+              <ProductCard
+                key={product.id}
+                product={{
+                  img: product.img,
+                  name: product.name,
+                  description: product.description,
+                  price: product.price,
+                  productpharmacies: product.ProductPharmacies[0].Pharmacy.name,
+                  pharmaciesimg: product.ProductPharmacies[0].Pharmacy.image,
+                }}
+              />
+            ))}
           </Box>
           <Pagination
             sx={{

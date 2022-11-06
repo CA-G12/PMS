@@ -1,8 +1,11 @@
-import { Box, CircularProgress, Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { Slide } from 'react-awesome-reveal';
+import { Box, CircularProgress, Divider, Typography } from '@mui/material';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import 'typeface-mulish';
+
 import PharmacyCard from '../PharmacyCard';
 
 type row = {
@@ -47,20 +50,46 @@ const MostSearchedPharmaciesSection = () => {
   return (
     <Box
       sx={{
-        width: '90%',
         justifyContent: 'center',
         margin: 'auto',
+        backgroundColor: 'white',
+        paddingBottom: '30px',
       }}
     >
-      <h2
-        style={{
-          margin: '4rem 0',
-          textAlign: 'center',
-          color: '#043CAA',
-        }}
+      <Slide direction="down">
+        <h2
+          style={{
+            margin: '3rem 0',
+            textAlign: 'center',
+            color: '#043CAA',
+            marginBottom: '15px',
+            marginTop: '0',
+            fontFamily: 'mulish',
+          }}
+        >
+          Our Most Searched Pharmacies
+        </h2>
+      </Slide>
+      <Box
+        sx={{ display: 'flex', justifyContent: 'center', marginBottom: '55px' }}
       >
-        Our Most Searched Pharmacies
-      </h2>
+        <Divider
+          sx={{
+            width: '5%',
+            size: '20px',
+            height: '6px',
+            backgroundColor: 'navy',
+          }}
+        />
+        <Divider
+          sx={{
+            width: '5%',
+            size: '20px',
+            height: '6px',
+            backgroundColor: '#9bd342',
+          }}
+        />
+      </Box>
       {loading && (
         <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
           <CircularProgress />
@@ -87,9 +116,13 @@ const MostSearchedPharmaciesSection = () => {
               fontSize: '1.5rem',
               textAlign: 'end',
               marginRight: '5rem',
+              display: 'flex',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+              fontFamily: 'mulish',
             }}
           >
-            see all{' '}
+            See all{' '}
             <ArrowRightAltIcon
               sx={{
                 color: '#83B239',

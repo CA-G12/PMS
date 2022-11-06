@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet, Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import {
@@ -19,14 +19,14 @@ import {
 import './profile.css';
 import pharmacyDataType from '../../utils/PharmacyData';
 import Navbar from '../../components/NavBar/Navbar';
-import { authContext } from '../../context/authContext';
+import { useAuth } from '../../context/authContext';
 
 const ProfileLayout = () => {
   const [data, setData] = useState<pharmacyDataType | null>();
   const { id } = useParams();
   const {
-    authData: { id: pharmacyId },
-  } = useContext(authContext);
+    user: { id: pharmacyId },
+  } = useAuth();
 
   const TABS_CONFIG = [
     { component: <Dialpad />, slug: 'Profile Overview', link: 'overview' },

@@ -1,25 +1,29 @@
 import { AccountCircle, Notifications } from '@mui/icons-material';
 import { Box, IconButton, Menu, MenuItem } from '@mui/material';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { authContext } from '../../context/authContext';
+import { useAuth } from '../../context/authContext';
 
 const PharmacyNavbar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
   const {
-    authData: { role, id },
-  } = useContext(authContext);
+    user: { role, id },
+  } = useAuth();
+  const { logout } = useAuth();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) =>
     setAnchorEl(event.currentTarget);
 
-  const handleClose = async () => setAnchorEl(null);
+  const handleClose = async () => {
+    await logout();
+    navigate('/home');
+  };
 
   const showProfile = () =>
     role === 'admin'
-      ? navigate('/admin')
+      ? navigate('/admin/overview')
       : navigate(`/pharmacy/${id}/overview`);
 
   return (

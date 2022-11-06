@@ -1,32 +1,107 @@
 import {
   useState,
   useEffect,
+  useContext,
   createContext,
-  ReactNode,
-  FC,
-  useMemo,
+  ReactElement,
+  ReactChild,
 } from 'react';
 import axios from 'axios';
 
-type childrenProps = {
-  children: ReactNode;
+interface User {
+  id: number;
+  role: string;
+  image: string;
+}
+/* eslint-disable camelcase */
+type SignupData = {
+  owner_name: string;
+  owner_id: number;
+  name: string;
+  license_number: number;
+  location: string;
+  phone: number;
+  email: string;
+  password: string;
+  confirmPassword: string;
 };
+export interface AuthContext {
+  user: User;
+  login: Function;
+  logout: Function;
+  signup: Function;
+}
 
-export const authContext = createContext({
-  authData: {
-    id: 0,
-    role: '',
-    image: '',
-  },
-});
+const authContext = createContext<AuthContext | null>(null);
 
-export const AuthProvider: FC<childrenProps> = ({ children }) => {
-  const [authData, setAuthData] = useState({
+export const useAuth = (): any => useContext(authContext);
+
+const useProvideAuth = (): AuthContext => {
+  const [user, setUser] = useState({
     id: 0,
-    role: '',
-    image: '',
+    role: 'user',
+    image:
+      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png',
+    status: '',
   });
 
+  const login = async (
+    email: string,
+    password: string,
+    callback: any = null
+  ): Promise<any> => {
+    try {
+      const res = await axios.post('/auth/login', {
+        email,
+        password,
+      });
+
+      setUser({
+        id: res.data.data.id,
+        role: res.data.role,
+        image: res.data.data.image,
+        status: res.data.data.status,
+      });
+      if (callback) callback(null);
+    } catch (err) {
+      if (callback) callback(err);
+    }
+  };
+
+  const signup = async (
+    signupData: SignupData,
+    callback: any = null
+  ): Promise<any> => {
+    try {
+      const res = await axios.post('/auth/signup', signupData);
+      setUser({
+        id: res.data.data.id,
+        role: res.data.role,
+        image: res.data.data.image,
+        status: res.data.data.status,
+      });
+      if (callback) callback(null);
+    } catch (err) {
+      if (callback) callback(err);
+    }
+  };
+
+  const logout = async (callback: any = null): Promise<any> => {
+    try {
+      await axios.post('/logout');
+
+      setUser({
+        id: 0,
+        role: 'user',
+        image:
+          'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png',
+        status: '',
+      });
+      if (callback) callback(null);
+    } catch (err) {
+      if (callback) callback(err);
+    }
+  };
   useEffect(() => {
     const controller = new AbortController();
     const getAuthData = async () => {
@@ -34,13 +109,14 @@ export const AuthProvider: FC<childrenProps> = ({ children }) => {
         const { data } = await axios.get('/auth', {
           signal: controller.signal,
         });
-        setAuthData(data);
+        setUser(data);
       } catch (err) {
-        setAuthData({
+        setUser({
           id: 0,
           role: 'user',
           image:
             'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png',
+          status: '',
         });
       }
     };
@@ -51,9 +127,19 @@ export const AuthProvider: FC<childrenProps> = ({ children }) => {
     };
   }, []);
 
-  const passedValue = useMemo(() => ({ authData, setAuthData }), [authData]);
+  return {
+    user,
+    login,
+    signup,
+    logout,
+  };
+};
 
-  return (
-    <authContext.Provider value={passedValue}>{children}</authContext.Provider>
-  );
+interface ProvideAuthProps {
+  children: ReactChild;
+}
+
+export const ProvideAuth = ({ children }: ProvideAuthProps): ReactElement => {
+  const auth = useProvideAuth();
+  return <authContext.Provider value={auth}>{children}</authContext.Provider>;
 };

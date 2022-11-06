@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import ButtonComponent from '../Button';
 import InputForm from '../InputForm';
 import Navbar from '../NavBar/Navbar';
+import { useAuth } from '../../context/authContext';
 
 const Signup: React.FC = () => {
   const [fullName, setFullName] = useState('');
@@ -18,6 +19,7 @@ const Signup: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const { signup } = useAuth();
 
   const navigate = useNavigate();
 
@@ -47,9 +49,8 @@ const Signup: React.FC = () => {
             password,
             confirmPassword,
           };
-
-          await axios.post('/auth/signup', userData);
-          navigate('/');
+          await signup(userData);
+          navigate('/home');
         } else
           throw new Error('Password and confirm password have to be matched');
       } else {

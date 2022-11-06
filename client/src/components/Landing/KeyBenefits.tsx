@@ -1,4 +1,14 @@
-import { List, ListItem, ListItemText, Typography, Box } from '@mui/material';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  Box,
+  Divider,
+} from '@mui/material';
+import { Fade, Slide } from 'react-awesome-reveal';
+import { Link } from 'react-router-dom';
+
 import key1 from '../../assets/key1.png';
 import key2 from '../../assets/key2.png';
 import './style.css';
@@ -11,18 +21,40 @@ const KeyBenefits = () => (
         flexDirection: 'column',
         padding: '2% 9%',
         backgroundColor: 'white',
+        paddingBottom: '20px',
       }}
     >
-      <Typography
-        sx={{
-          fontSize: '26px',
-          textAlign: 'center',
-          fontWeight: 'bold',
-          color: 'navy',
-        }}
-      >
-        key Benefits
-      </Typography>
+      <Slide direction="down">
+        <Typography
+          sx={{
+            fontSize: '26px',
+            textAlign: 'center',
+            fontWeight: 'bold',
+            color: 'navy',
+            marginBottom: '15px',
+          }}
+        >
+          key Benefits
+        </Typography>
+      </Slide>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Divider
+          sx={{
+            width: '5%',
+            size: '20px',
+            height: '6px',
+            backgroundColor: 'navy',
+          }}
+        />
+        <Divider
+          sx={{
+            width: '5%',
+            size: '20px',
+            height: '6px',
+            backgroundColor: '#9bd342',
+          }}
+        />
+      </Box>
       <Box
         sx={{
           display: 'flex',
@@ -53,11 +85,23 @@ const KeyBenefits = () => (
               </ListItemText>
             </ListItem>
           </List>
-          <button type="submit" className="get">
-            Get prescription
-          </button>
+          <Link to="/pharmacies">
+            <button type="submit" className="get">
+              Get prescription
+            </button>
+          </Link>
         </Box>
-        <img src={key1} alt="key benefit 1" width="33%" />
+        <Fade
+          direction="right"
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+            marginTop: '30px',
+          }}
+        >
+          <img src={key1} alt="key benefit 1" width="73%" />
+        </Fade>
       </Box>
     </Box>
     <Box
@@ -77,7 +121,17 @@ const KeyBenefits = () => (
           marginTop: '20px',
         }}
       >
-        <img src={key2} alt="key benefit 1" width="33%" />
+        <Fade
+          direction="left"
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            marginTop: '30px',
+          }}
+        >
+          <img src={key2} alt="key benefit 1" width="73%" />
+        </Fade>
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Typography>
             Set up your profile and <br /> get refill easily
@@ -99,9 +153,11 @@ const KeyBenefits = () => (
               </ListItemText>
             </ListItem>
           </List>
-          <button type="submit" className="get">
-            Start Now
-          </button>
+          <Link to="/signup">
+            <button type="submit" className="get">
+              Start Now
+            </button>
+          </Link>
         </Box>
       </Box>
     </Box>

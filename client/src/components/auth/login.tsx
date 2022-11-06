@@ -1,28 +1,24 @@
 import React, { useState } from 'react';
 import swal from 'sweetalert';
-import axios from 'axios';
 import { Box, FormLabel, Input, Typography } from '@mui/material';
 import 'typeface-mulish';
 import { useNavigate } from 'react-router-dom';
 import ButtonComponent from '../Button';
 import Navbar from '../NavBar/Navbar';
+import { useAuth } from '../../context/authContext';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
+  const { login } = useAuth();
   type sendUserDataType = () => void;
 
   const sendUserData: sendUserDataType = async () => {
     try {
       if (email && password) {
-        const userData = {
-          email,
-          password,
-        };
-        await axios.post('/auth/login', userData);
-        navigate('/');
+        await login(email, password);
+        navigate('/home');
       } else {
         throw new Error(
           'In order to login, all of these inputs have to be filled'

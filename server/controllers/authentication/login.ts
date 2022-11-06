@@ -24,7 +24,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
       const token = await generateToken({ id, role: 'admin', image });
       return res
         .cookie('token', token, { httpOnly: true })
-        .json({ data: { id, image }, msg: 'Success' });
+        .json({ data: { id, image }, role: 'admin', msg: 'Success' });
     }
 
     const loginData = await loginQuery(email);
@@ -39,7 +39,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
     const token = await generateToken({ id, role: 'pharmacy', owner_img });
     res
       .cookie('token', token, { httpOnly: true })
-      .json({ data: { id, owner_img }, msg: 'Success' });
+      .json({ data: { id, owner_img }, role: 'pharmacy', msg: 'Success' });
   } catch (err) {
     if (err.name === 'ValidationError') {
       next(new CustomError(400, 'Something went wrong, Try again'));

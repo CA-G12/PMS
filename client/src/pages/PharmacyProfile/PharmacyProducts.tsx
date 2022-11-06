@@ -11,6 +11,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import ProductCard from '../../components/ProductCard';
 import empty from '../../assets/empty.webp';
+import 'typeface-mulish';
 
 type row = {
   name: string;
@@ -69,9 +70,10 @@ const PharmacyProducts = () => {
         style={{
           color: '#00007F',
           fontSize: '1.5rem',
-          margin: '5rem auto',
+          margin: '1rem auto',
           marginBottom: '2rem',
           marginLeft: '10px',
+          fontFamily: 'mulish',
         }}
       >
         Filter your Products

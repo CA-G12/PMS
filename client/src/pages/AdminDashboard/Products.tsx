@@ -147,7 +147,6 @@ const Products = () => {
                   sx={{
                     '&:last-child td, &:last-child th': {
                       border: 0,
-                      dispaly: 'flex',
                     },
                   }}
                 >

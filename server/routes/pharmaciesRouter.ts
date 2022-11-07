@@ -5,6 +5,7 @@ import {
   addRequests,
   salesHistory,
   productsInStock,
+  getAllProducts,
 } from '../controllers';
 import {
   getPharmacyRequests,
@@ -15,6 +16,8 @@ import {
 import { auth, pharmacyAuth } from '../middlewares';
 
 const pharmaciesRouter = Router();
+
+pharmaciesRouter.get('/pharmacy/products', getAllProducts);
 
 pharmaciesRouter.get(
   '/pharmacy/productsInStock',

@@ -5,6 +5,8 @@ import { IdValidator } from '../../validation';
 const addSales = async (req: any, res: Response, next: NextFunction) => {
   const { id } = req.user;
   const { productId, quantity } = req.body;
+  console.log(id);
+
   try {
     await IdValidator(+id, +quantity, +productId);
     const sales = await addSalesHistory(+productId, +quantity, +id);

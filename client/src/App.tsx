@@ -8,6 +8,7 @@ import {
   Applications,
 } from './pages/AdminDashboard';
 import AllPharmacies from './pages/AllPharmacies';
+import AllProducts from './pages/AllProducts';
 import {
   PharmacyProfileRequests,
   PharmacyProducts,
@@ -20,7 +21,6 @@ import Login from './components/auth/login';
 import Signup from './components/auth/Signup';
 import './App.css';
 import Home from './pages/LandingPages/Home';
-import AllProducts from './pages/AllProducts';
 import { ProtectedRoute } from './components/ProtectedRoutes';
 
 const App = () => {

@@ -11,6 +11,8 @@ type row = {
   description: string;
   price: number;
   img: string;
+  ProductPharmacies: [Pharmacy: any];
+  pharmaciesimg: string;
 };
 const AllProducts = () => {
   const [searchMedicine, setSearchMedicine] = useState('');
@@ -59,9 +61,12 @@ const AllProducts = () => {
           name: Product.name,
           description: Product.description,
           price: Product.price,
+          ProductPharmacies: Product?.ProductPharmacies[0]?.Pharmacy?.name,
+          pharmaciesImg: Product?.ProductPharmacies[0]?.Pharmacy?.image,
         }}
       />
     ));
+
   return (
     <>
       <Navbar />

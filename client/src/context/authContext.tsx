@@ -8,6 +8,8 @@ import {
 } from 'react';
 import axios from 'axios';
 import { Box, CircularProgress } from '@mui/material';
+import swal from 'sweetalert';
+import { Navigate } from 'react-router-dom';
 
 interface User {
   id: number;
@@ -58,7 +60,6 @@ const useProvideAuth = (): AuthContext => {
         email,
         password,
       });
-      console.log('res: ', res);
 
       setUser({
         id: res.data.data.id,
@@ -66,13 +67,25 @@ const useProvideAuth = (): AuthContext => {
         image: res.data.data.image,
         status: res.data.data.status,
       });
+
+      if (res.data.role === 'admin')
+        return <Navigate to="/admin/overview" replace />;
+      if (res.data.role === 'pharmacy')
+        return (
+          <Navigate to={`/pharmacy/${res.data.data.id}/overview`} replace />
+        );
       setLoading(false);
-      console.log('role: ', user);
       if (callback) callback(null);
-    } catch (err) {
+    } catch (err: any) {
+      if (err.response?.data?.msg) {
+        swal(err.response?.data?.msg);
+      } else {
+        swal(err.message);
+      }
       if (callback) callback(err);
       setLoading(false);
     }
+    return true;
   };
 
   const signup = async (
@@ -87,12 +100,19 @@ const useProvideAuth = (): AuthContext => {
         image: res.data.data.image,
         status: res.data.data.status,
       });
+      if (res.data.role === 'pharmacy')
+        return (
+          <Navigate to={`/pharmacy/${res.data.data.id}/overview`} replace />
+        );
       setLoading(false);
       if (callback) callback(null);
     } catch (err) {
       if (callback) callback(err);
+      if (axios.isAxiosError(err)) swal(err.response?.data?.msg);
+      else if (err instanceof Error) swal(err.message);
       setLoading(false);
     }
+    return true;
   };
 
   const logout = async (callback: any = null): Promise<any> => {
@@ -155,7 +175,6 @@ interface ProvideAuthProps {
 
 export const ProvideAuth = ({ children }: ProvideAuthProps): ReactElement => {
   const auth = useProvideAuth();
-  console.log('auth: ', auth.loading);
   if (auth.loading) {
     return (
       <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>

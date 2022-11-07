@@ -49,13 +49,15 @@ const PharmacyProducts = () => {
   }, [pageNum]);
 
   const gitAllProducts = () =>
-    products.map((Product) => (
+    products.map((Product: any) => (
       <ProductCard
         product={{
           img: Product.img,
           name: Product.name,
           description: Product.description,
           price: Product.price,
+          ProductPharmacies: Product.ProductPharmacies[0].Pharmacy.name,
+          pharmaciesImg: Product.ProductPharmacies[0].Pharmacy.image,
         }}
       />
     ));

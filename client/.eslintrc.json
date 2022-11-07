@@ -26,6 +26,7 @@
         "prettier"
     ],
     "rules": {
+        "consistent-return": "off",
         "react/require-default-props": "off",
         "prettier/prettier": "error",
         "no-nested-ternary": 0,

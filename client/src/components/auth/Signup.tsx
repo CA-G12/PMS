@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import swal from 'sweetalert';
-import axios from 'axios';
 import { Box, FormLabel, Input, Typography } from '@mui/material';
 import 'typeface-mulish';
-import { useNavigate } from 'react-router-dom';
+
 import ButtonComponent from '../Button';
 import InputForm from '../InputForm';
 import Navbar from '../NavBar/Navbar';
@@ -19,9 +18,8 @@ const Signup: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const { signup } = useAuth();
 
-  const navigate = useNavigate();
+  const { signup } = useAuth();
 
   type sendUserDataType = () => void;
 
@@ -50,7 +48,6 @@ const Signup: React.FC = () => {
             confirmPassword,
           };
           await signup(userData);
-          navigate('/home');
         } else
           throw new Error('Password and confirm password have to be matched');
       } else {
@@ -59,9 +56,7 @@ const Signup: React.FC = () => {
         );
       }
     } catch (err) {
-      if (axios.isAxiosError(err)) {
-        swal(err.response?.data?.msg);
-      } else if (err instanceof Error) {
+      if (err instanceof Error) {
         swal(err.message);
       }
     }

@@ -5,6 +5,7 @@ import {
   addRequests,
   salesHistory,
   productsInStock,
+  getAllProducts,
 } from '../controllers';
 import {
   getPharmacyRequests,
@@ -15,6 +16,8 @@ import {
 import { auth, pharmacyAuth } from '../middlewares';
 
 const pharmaciesRouter = Router();
+
+pharmaciesRouter.get('/pharmacy/products', getAllProducts);
 
 pharmaciesRouter.get(
   '/pharmacy/productsInStock',
@@ -37,5 +40,4 @@ pharmaciesRouter.get('/product/:productId', oneProductId);
 pharmaciesRouter.put('/pharmacy/requests', auth, pharmacyAuth, editRequests);
 pharmaciesRouter.post('/pharmacy/sales', auth, pharmacyAuth, addSales);
 pharmaciesRouter.post('/pharmacy/requests', auth, pharmacyAuth, addRequests);
-
 export default pharmaciesRouter;

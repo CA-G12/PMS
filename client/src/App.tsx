@@ -8,6 +8,7 @@ import {
   Applications,
 } from './pages/AdminDashboard';
 import AllPharmacies from './pages/AllPharmacies';
+import AllProducts from './pages/AllProducts';
 import {
   PharmacyProfileRequests,
   PharmacyProducts,
@@ -48,6 +49,10 @@ const App = () => {
           element: <Applications />,
         },
       ],
+    },
+    {
+      path: 'products',
+      element: <AllProducts />,
     },
     {
       path: 'pharmacies',

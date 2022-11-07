@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import image31 from '../../assets/image31.png';
 import dataLoadingError from '../../assets/dataLoadingError.png';
+import SalesPopUp from '../../components/pharmacy/AddSalesPopup';
 
 const SalesHistory = () => {
   const [dataRequests, setDataRequests] = useState([]);
@@ -22,7 +23,6 @@ const SalesHistory = () => {
   const [error, setError] = useState('');
   const [numOfSales, setNumOfSales] = useState(0);
   const [pageNum, setPageNum] = useState(1);
-
   useEffect(() => {
     (async () => {
       try {
@@ -39,7 +39,7 @@ const SalesHistory = () => {
         setLoading(false);
       }
     })();
-  }, [pageNum]);
+  });
 
   if (error) {
     return (
@@ -84,7 +84,13 @@ const SalesHistory = () => {
       }}
     >
       <TableContainer component={Paper}>
-        <Box>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            padding: '0 10px',
+          }}
+        >
           <Typography
             sx={{
               fontSize: '30px',
@@ -93,6 +99,14 @@ const SalesHistory = () => {
           >
             Sales History
           </Typography>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            <SalesPopUp />
+          </Box>
         </Box>
         <Table
           sx={{ Width: '100%', margin: '1rem 0%' }}

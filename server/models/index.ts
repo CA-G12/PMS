@@ -20,7 +20,7 @@ Pharmacy.hasMany(ProductsRequest, { foreignKey: 'pharmacy_id' });
 ProductsRequest.belongsTo(Pharmacy, { foreignKey: 'pharmacy_id' });
 
 Product.hasMany(SalesHistory, { foreignKey: 'product_id' });
-SalesHistory.belongsTo(Product, { foreignKey: 'pharmacy_id' });
+SalesHistory.belongsTo(Product, { foreignKey: 'product_id' });
 
 Product.hasOne(ProductsRequest, { foreignKey: 'product_id' });
 ProductsRequest.belongsTo(Product, { foreignKey: 'pharmacy_id' });

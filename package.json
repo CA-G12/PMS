@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon ./server/index.ts",
-    "start": "cross-env NODE_ENV=production ts-node ./server/index.ts",
+    "start": "npm run build && NODE_ENV=production node ./dist/index.js",
     "test": "cross-env NODE_ENV=test jest server/test --detectOpenHandles --runInBand",
     "lint": "eslint --ext .ts server/ --fix && cd client && npm run lint",
     "buildDb": "cross-env NODE_ENV=development ts-node server/database/config/buildDb.ts",
     "buildSeeds": "cross-env NODE_ENV=development ts-node server/database/seeds/buildSeeds.ts",
-    "add": "git add ."
+    "add": "git add .",
+    "build": "tsc",
+    "install": " npm i && cd client && npm i",
+    "heroku-postbuild": "cd client && npm run build"
   },
   "pre-commit": [
     "lint",

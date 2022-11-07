@@ -11,14 +11,20 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const {
+    login,
+    user: { role, id},
+  } = useAuth();
+  
   type sendUserDataType = () => void;
 
   const sendUserData: sendUserDataType = async () => {
     try {
       if (email && password) {
         await login(email, password);
-        navigate('/home');
+        if (role === 'admin') navigate('/admin/overview');
+        if (role === 'pharmacy') navigate(`/pharmacy/${id}/overview`);
+        navigate('/home')
       } else {
         throw new Error(
           'In order to login, all of these inputs have to be filled'

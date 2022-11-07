@@ -7,6 +7,7 @@ import {
   ReactChild,
 } from 'react';
 import axios from 'axios';
+import { Box, CircularProgress } from '@mui/material';
 
 interface User {
   id: number;
@@ -30,6 +31,7 @@ export interface AuthContext {
   login: Function;
   logout: Function;
   signup: Function;
+  loading: boolean;
 }
 
 const authContext = createContext<AuthContext | null>(null);
@@ -37,6 +39,7 @@ const authContext = createContext<AuthContext | null>(null);
 export const useAuth = (): any => useContext(authContext);
 
 const useProvideAuth = (): AuthContext => {
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({
     id: 0,
     role: 'user',
@@ -55,6 +58,7 @@ const useProvideAuth = (): AuthContext => {
         email,
         password,
       });
+      console.log('res: ', res);
 
       setUser({
         id: res.data.data.id,
@@ -62,9 +66,12 @@ const useProvideAuth = (): AuthContext => {
         image: res.data.data.image,
         status: res.data.data.status,
       });
+      setLoading(false);
+      console.log('role: ', user);
       if (callback) callback(null);
     } catch (err) {
       if (callback) callback(err);
+      setLoading(false);
     }
   };
 
@@ -80,9 +87,11 @@ const useProvideAuth = (): AuthContext => {
         image: res.data.data.image,
         status: res.data.data.status,
       });
+      setLoading(false);
       if (callback) callback(null);
     } catch (err) {
       if (callback) callback(err);
+      setLoading(false);
     }
   };
 
@@ -97,9 +106,11 @@ const useProvideAuth = (): AuthContext => {
           'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png',
         status: '',
       });
+      setLoading(false);
       if (callback) callback(null);
     } catch (err) {
       if (callback) callback(err);
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -110,6 +121,7 @@ const useProvideAuth = (): AuthContext => {
           signal: controller.signal,
         });
         setUser(data);
+        setLoading(false);
       } catch (err) {
         setUser({
           id: 0,
@@ -118,6 +130,7 @@ const useProvideAuth = (): AuthContext => {
             'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png',
           status: '',
         });
+        setLoading(false);
       }
     };
     getAuthData();
@@ -132,6 +145,7 @@ const useProvideAuth = (): AuthContext => {
     login,
     signup,
     logout,
+    loading,
   };
 };
 
@@ -141,5 +155,13 @@ interface ProvideAuthProps {
 
 export const ProvideAuth = ({ children }: ProvideAuthProps): ReactElement => {
   const auth = useProvideAuth();
+  console.log('auth: ', auth.loading);
+  if (auth.loading) {
+    return (
+      <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
+        <CircularProgress />
+      </Box>
+    );
+  }
   return <authContext.Provider value={auth}>{children}</authContext.Provider>;
 };

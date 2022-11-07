@@ -21,12 +21,19 @@ import Signup from './components/auth/Signup';
 import './App.css';
 import Home from './pages/LandingPages/Home';
 import AllProducts from './pages/AllProducts';
+import { ProtectedRoute } from './components/ProtectedRoutes';
 
 const App = () => {
   const router = createBrowserRouter([
     {
       path: '/admin',
-      element: <DashboardLayout />,
+      element: (
+        <ProvideAuth>
+          <ProtectedRoute isAdmin>
+            <DashboardLayout />
+          </ProtectedRoute>
+        </ProvideAuth>
+      ),
       children: [
         {
           path: 'overview',
@@ -52,7 +59,14 @@ const App = () => {
     },
     {
       path: '/pharmacy/:id',
-      element: <ProfileLayout />,
+
+      element: (
+        <ProvideAuth>
+          <ProtectedRoute isPharmacy>
+            <ProfileLayout />
+          </ProtectedRoute>
+        </ProvideAuth>
+      ),
       children: [
         {
           path: 'overview',

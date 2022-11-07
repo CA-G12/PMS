@@ -16,6 +16,7 @@ const PharmacyCard = ({ pharmacy }: Props) => (
   <Link
     to={`/pharmacy/${pharmacy.id}/overview`}
     style={{ width: '24%', marginTop: '70px' }}
+    key={pharmacy.name}
   >
     <Fade>
       <Box

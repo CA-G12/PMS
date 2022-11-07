@@ -10,12 +10,11 @@ const getPharmacyRequests = async (
   const { page = 1 } = req.query;
   const { pharmacyId } = req.params;
   try {
-    
     await pageIdSchema(+page, +pharmacyId);
     const requests = await getPharmacyRequestsQuery(
       page as number,
       +(pharmacyId as string)
-      );
+    );
     res.json({
       data: requests,
       msg: 'Success',

@@ -12,7 +12,7 @@
     "buildSeeds": "cross-env NODE_ENV=development ts-node server/database/seeds/buildSeeds.ts",
     "add": "git add .",
     "build": "tsc",
-    "install": " npm i && cd client && npm i",
+    "init": " npm i && cd client && npm i",
     "heroku-postbuild": "cd client && npm run build"
   },
   "pre-commit": [

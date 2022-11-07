@@ -10,6 +10,8 @@
     "lint": "eslint --ext .ts server/ --fix && cd client && npm run lint",
     "buildDb": "cross-env NODE_ENV=development ts-node server/database/config/buildDb.ts",
     "buildSeeds": "cross-env NODE_ENV=development ts-node server/database/seeds/buildSeeds.ts",
+    "buildDbP": "cross-env NODE_ENV=production ts-node server/database/config/buildDb.ts",
+    "buildSeedsP": "cross-env NODE_ENV=production ts-node server/database/seeds/buildSeeds.ts",
     "add": "git add .",
     "build": "tsc",
     "init": " npm i && cd client && npm i",

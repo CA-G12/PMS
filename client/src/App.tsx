@@ -60,13 +60,7 @@ const App = () => {
     {
       path: '/pharmacy/:id',
 
-      element: (
-        <ProvideAuth>
-          <ProtectedRoute isPharmacy>
-            <ProfileLayout />
-          </ProtectedRoute>
-        </ProvideAuth>
-      ),
+      element: <ProfileLayout />,
       children: [
         {
           path: 'overview',
@@ -78,11 +72,23 @@ const App = () => {
         },
         {
           path: 'requests',
-          element: <PharmacyProfileRequests />,
+          element: (
+            <ProvideAuth>
+              <ProtectedRoute isPharmacy>
+                <PharmacyProfileRequests />
+              </ProtectedRoute>
+            </ProvideAuth>
+          ),
         },
         {
           path: 'salesHistory',
-          element: <SalesHistory />,
+          element: (
+            <ProvideAuth>
+              <ProtectedRoute isPharmacy>
+                <SalesHistory />
+              </ProtectedRoute>
+            </ProvideAuth>
+          ),
         },
       ],
     },

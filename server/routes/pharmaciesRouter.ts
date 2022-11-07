@@ -17,7 +17,7 @@ import { auth, pharmacyAuth } from '../middlewares';
 
 const pharmaciesRouter = Router();
 
-pharmaciesRouter.get('/pharmacy/products', auth, pharmacyAuth, getAllProducts);
+pharmaciesRouter.get('/pharmacy/products', getAllProducts);
 
 pharmaciesRouter.get(
   '/pharmacy/productsInStock',

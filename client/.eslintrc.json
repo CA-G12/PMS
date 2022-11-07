@@ -26,7 +26,10 @@
         "prettier"
     ],
     "rules": {
-        "prettier/prettier": "error",
+        "linebreak-style":"off",
+        "prettier/prettier": ["error",{
+            "endOfLine": "auto"
+        }],
         "no-nested-ternary": 0,
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],

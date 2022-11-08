@@ -18,7 +18,7 @@ const PharmacyNavbar = () => {
 
   const handleClose = async () => {
     await logout();
-    navigate('/home');
+    navigate('/');
   };
 
   const showProfile = () =>

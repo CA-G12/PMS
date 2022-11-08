@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Slide } from 'react-awesome-reveal';
 import { Box, CircularProgress, Divider, Typography } from '@mui/material';
@@ -18,7 +18,7 @@ type row = {
 const MostSearchedPharmaciesSection = () => {
   const [pharmacies, setPharmacies] = useState<row[]>([] as row[]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+
   const getData = async () => {
     setLoading(true);
     const {
@@ -44,6 +44,7 @@ const MostSearchedPharmaciesSection = () => {
           location: pharmacy.location,
           id: pharmacy.id,
         }}
+        key={pharmacy.name}
       />
     ));
 
@@ -107,29 +108,28 @@ const MostSearchedPharmaciesSection = () => {
           >
             {gitAllPharmacies()}
           </Box>
-          <Typography
-            onClick={() => {
-              navigate('/pharmacies');
-            }}
-            sx={{
-              color: '#83B239',
-              fontSize: '1.5rem',
-              textAlign: 'end',
-              marginRight: '5rem',
-              display: 'flex',
-              justifyContent: 'flex-end',
-              alignItems: 'center',
-              fontFamily: 'mulish',
-            }}
-          >
-            See all{' '}
-            <ArrowRightAltIcon
+          <Link to="/pharmacies">
+            <Typography
               sx={{
                 color: '#83B239',
-                fontSize: '2rem',
+                fontSize: '20px',
+                textAlign: 'end',
+                marginRight: '5rem',
+                display: 'flex',
+                justifyContent: 'flex-end',
+                alignItems: 'center',
+                fontFamily: 'mulish',
               }}
-            />
-          </Typography>
+            >
+              See all{' '}
+              <ArrowRightAltIcon
+                sx={{
+                  color: '#83B239',
+                  fontSize: '2rem',
+                }}
+              />
+            </Typography>
+          </Link>
         </>
       )}
     </Box>

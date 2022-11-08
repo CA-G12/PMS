@@ -1,6 +1,5 @@
 import { Fade } from 'react-awesome-reveal';
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import { Box, Typography } from '@mui/material';
 
@@ -136,8 +135,6 @@ const ProductCard = ({ product }: Props) => {
           >
             <Box
               sx={{
-                height: '200px',
-                width: '200px',
                 margin: '10px',
                 display: 'flex',
                 justifyContent: 'center',
@@ -145,10 +142,10 @@ const ProductCard = ({ product }: Props) => {
             >
               <img
                 src={product.pharmaciesImg}
-                alt="Product Img"
+                alt="Pharmacy"
                 style={{
-                  height: '150px',
-                  width: '150px',
+                  height: '300px',
+                  width: '200px',
                 }}
               />
             </Box>
@@ -193,14 +190,7 @@ const ProductCard = ({ product }: Props) => {
             >
               {product.name}
             </Typography>
-            <Typography
-              sx={{
-                textAlign: 'end',
-                color: 'blue',
-              }}
-            >
-              {product.price} $
-            </Typography>
+
             <Typography
               sx={{
                 display: 'flex',
@@ -213,17 +203,16 @@ const ProductCard = ({ product }: Props) => {
             >
               {product.description}
             </Typography>
+            <Typography
+              sx={{
+                textAlign: 'end',
+                color: 'blue',
+              }}
+            >
+              {product.price} $
+            </Typography>
           </div>
         </div>
-
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          <Button onClick={handleClose}>Close</Button>
-        </Box>
       </Dialog>
     </>
   );

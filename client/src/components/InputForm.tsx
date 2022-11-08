@@ -5,9 +5,15 @@ type InputFormProps = {
   label: string;
   state: string;
   setState: React.Dispatch<React.SetStateAction<string>>;
+  type: string;
 };
 
-const InputForm: React.FC<InputFormProps> = ({ label, state, setState }) => (
+const InputForm: React.FC<InputFormProps> = ({
+  label,
+  state,
+  setState,
+  type,
+}) => (
   <Box sx={{ display: 'flex', flexDirection: 'column' }}>
     <FormLabel
       sx={{
@@ -28,6 +34,7 @@ const InputForm: React.FC<InputFormProps> = ({ label, state, setState }) => (
         width: '270px',
         marginTop: '10px  ',
       }}
+      type={type}
     />
   </Box>
 );

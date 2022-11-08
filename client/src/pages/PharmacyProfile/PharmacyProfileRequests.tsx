@@ -18,6 +18,7 @@ import { useParams } from 'react-router-dom';
 import LongMenu from '../../components/Extra/Options';
 import 'typeface-mulish';
 import image31 from '../../assets/image31.png';
+// import { useAuth } from '../../context/authContext';
 
 type row =
   | {
@@ -35,8 +36,10 @@ const PharmacyProfileRequests = () => {
   const [numRequests, setNumOfRequests] = useState(14);
   const [loading, setLoading] = useState(true);
   // eslint-disable-next-line no-shadow
-
   const { id: pharmacyId } = useParams();
+  // const {
+  //   user: { id },
+  // } = useAuth();
 
   const getMedicineRequests = useCallback(async () => {
     const {
@@ -46,7 +49,7 @@ const PharmacyProfileRequests = () => {
     } = await axios.get(`/pharmacy/${pharmacyId}/requests?page=${pageNum}`);
 
     return { rows, count };
-  }, [pageNum]);
+  }, [pageNum, pharmacyId]);
 
   const updateMedicineRequests = async (status: string, pharmacyId: number) =>
     axios.put(`/admin/requests/${pharmacyId}`, {

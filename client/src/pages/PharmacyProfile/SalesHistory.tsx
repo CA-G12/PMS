@@ -13,6 +13,7 @@ import {
   Skeleton,
   Pagination,
 } from '@mui/material';
+import { useParams } from 'react-router-dom';
 import image31 from '../../assets/image31.png';
 import dataLoadingError from '../../assets/dataLoadingError.png';
 import SalesPopUp from '../../components/pharmacy/AddSalesPopup';
@@ -23,6 +24,7 @@ const SalesHistory = () => {
   const [error, setError] = useState('');
   const [numOfSales, setNumOfSales] = useState(0);
   const [pageNum, setPageNum] = useState(1);
+  const { id } = useParams();
   useEffect(() => {
     (async () => {
       try {
@@ -30,7 +32,7 @@ const SalesHistory = () => {
           data: {
             SalesHistory: { rows, count },
           },
-        } = await axios.get(`/pharmacy/sales?page=${pageNum}`);
+        } = await axios.get(`/pharmacy/${id}/sales?page=${pageNum}`);
         setDataRequests(rows);
         setNumOfSales(count);
       } catch (err) {

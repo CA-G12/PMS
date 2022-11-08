@@ -19,6 +19,7 @@ type row = {
   price: number;
   img: string;
 };
+
 const PharmacyProducts = () => {
   const [searchMedicine, setSearchMedicine] = useState('');
   const [products, setProducts] = useState<row[]>([] as row[]);
@@ -56,8 +57,6 @@ const PharmacyProducts = () => {
           name: Product.name,
           description: Product.description,
           price: Product.price,
-          ProductPharmacies: Product.ProductPharmacies[0].Pharmacy.name,
-          pharmaciesImg: Product.ProductPharmacies[0].Pharmacy.image,
         }}
       />
     ));

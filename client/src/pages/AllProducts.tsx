@@ -5,6 +5,7 @@ import ProductCard from '../components/ProductCard';
 import empty from '../assets/empty.webp';
 import Navbar from '../components/NavBar/Navbar';
 import { FilterComponent } from '../components';
+import Footer from '../components/Landing/Footer';
 
 type row = {
   name: string;
@@ -121,6 +122,7 @@ const AllProducts = () => {
           </>
         )}
       </Box>
+      <Footer />
     </>
   );
 };

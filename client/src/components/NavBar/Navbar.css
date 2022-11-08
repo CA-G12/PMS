@@ -20,11 +20,9 @@ li.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.css-1p823my-MuiListI
   text-align: center;
 }
 
-span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-10hburv-MuiTypography-root {
-  font-weight:900;
-  color:#9bd342;
-}
-
+#navbarItem span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-10hburv-MuiTypography-root{
+  font-weight: 900;
+} 
 .MuiBox-root.css-0 {
   display: flex;
   flex-direction: row;
@@ -33,10 +31,6 @@ span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-10hburv-
 button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-l396rh-MuiButtonBase-root-MuiButton-root {
   margin-bottom: 0;
   margin-right: 21px;
-}
-
-a{
-  color: navy;
 }
 
 .first-nav{

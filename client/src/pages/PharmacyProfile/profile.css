@@ -77,10 +77,6 @@ p.MuiTypography-root.MuiTypography-body1.username.css-ahj2mt-MuiTypography-root 
   justify-content: space-evenly;
 }
 
-/* svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
-  color: navy;
-} */
-
 svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root:hover {
   color: white;
 }

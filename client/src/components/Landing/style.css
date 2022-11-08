@@ -5,6 +5,7 @@ body {
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.css-1ps6pg7-MuiPaper-root {
     background-image: url('../../assets/landing.png');
+    background-size: cover;
     height: 100vh;
     border-radius: 0;
     display: flex;
@@ -51,4 +52,14 @@ button.get {
     width: 192px;
     margin-left: 14px;
     background-color: #fff;
+}
+
+li.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.footerItem.css-1p823my-MuiListItem-root{
+    width: 100%;
+    padding: 0;
+    margin-right: 35px;
+    text-align: left;
+    margin-top: 5px;
+    color: #83B239 !important;
+    font-weight: 100 !important;
 }

@@ -5,6 +5,7 @@ import PharmacyCard from '../components/PharmacyCard';
 import empty from '../assets/empty.webp';
 import Navbar from '../components/NavBar/Navbar';
 import { FilterComponent } from '../components';
+import Footer from '../components/Landing/Footer';
 
 type row = {
   id: number;
@@ -105,6 +106,7 @@ const AllPharmacies = () => {
           </>
         )}
       </Box>
+      <Footer />
     </>
   );
 };

@@ -101,7 +101,7 @@ const App = () => {
       element: <Signup />,
     },
     {
-      path: '/home',
+      path: '/',
       element: <Home />,
     },
     {

@@ -19,7 +19,7 @@ const KeyBenefits = () => (
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        padding: '2% 9%',
+        padding: '4% 9%',
         backgroundColor: 'white',
         paddingBottom: '20px',
       }}

@@ -3,6 +3,7 @@ import { Box, FormLabel, Input, Typography } from '@mui/material';
 import 'typeface-mulish';
 import swal from 'sweetalert';
 
+import { useNavigate, Link } from 'react-router-dom';
 import ButtonComponent from '../Button';
 import Navbar from '../NavBar/Navbar';
 import { useAuth } from '../../context/authContext';
@@ -11,12 +12,15 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   type sendUserDataType = () => void;
 
   const sendUserData: sendUserDataType = async () => {
     if (email && password) {
-      await login(email, password);
+      const { role, id } = await login(email, password);
+      if (role === 'admin') navigate('/admin/overview');
+      if (role === 'pharmacy') navigate(`/pharmacy/${id}/overview`);
     } else {
       swal('In order to login, all of these inputs have to be filled');
     }
@@ -113,13 +117,17 @@ const Login: React.FC = () => {
                   height: '45px',
                   marginTop: '10px  ',
                 }}
+                type="password"
               />
             </Box>
           </Box>
           {/* end password */}
           <Typography variant="caption" fontFamily="mulish" marginLeft="150px">
             Don`t have an account?{' '}
-            <span style={{ color: '#83B239' }}>Sign up</span>
+            <span style={{ color: '#83B239' }}>
+              {' '}
+              <Link to="/signup">Sign up</Link>
+            </span>
           </Typography>
         </Box>
         <Box

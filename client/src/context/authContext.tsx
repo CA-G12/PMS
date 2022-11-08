@@ -9,7 +9,6 @@ import {
 import axios from 'axios';
 import { Box, CircularProgress } from '@mui/material';
 import swal from 'sweetalert';
-import { Navigate } from 'react-router-dom';
 
 interface User {
   id: number;
@@ -41,7 +40,7 @@ const authContext = createContext<AuthContext | null>(null);
 export const useAuth = (): any => useContext(authContext);
 
 const useProvideAuth = (): AuthContext => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const [user, setUser] = useState({
     id: 0,
     role: 'user',
@@ -68,14 +67,9 @@ const useProvideAuth = (): AuthContext => {
         status: res.data.data.status,
       });
 
-      if (res.data.role === 'admin')
-        return <Navigate to="/admin/overview" replace />;
-      if (res.data.role === 'pharmacy')
-        return (
-          <Navigate to={`/pharmacy/${res.data.data.id}/overview`} replace />
-        );
-      setLoading(false);
       if (callback) callback(null);
+      setLoading(false);
+      return { role: res.data.role, id: res.data.data.id };
     } catch (err: any) {
       if (err.response?.data?.msg) {
         swal(err.response?.data?.msg);
@@ -100,12 +94,9 @@ const useProvideAuth = (): AuthContext => {
         image: res.data.data.image,
         status: res.data.data.status,
       });
-      if (res.data.role === 'pharmacy')
-        return (
-          <Navigate to={`/pharmacy/${res.data.data.id}/overview`} replace />
-        );
       setLoading(false);
       if (callback) callback(null);
+      return { id: res.data.data.id };
     } catch (err) {
       if (callback) callback(err);
       if (axios.isAxiosError(err)) swal(err.response?.data?.msg);

@@ -26,9 +26,12 @@
         "prettier"
     ],
     "rules": {
+        "linebreak-style":"off",
+        "prettier/prettier": ["error",{
+            "endOfLine": "auto"
+        }],
         "consistent-return": "off",
         "react/require-default-props": "off",
-        "prettier/prettier": "error",
         "no-nested-ternary": 0,
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],

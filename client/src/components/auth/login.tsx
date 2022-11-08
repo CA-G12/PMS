@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import swal from 'sweetalert';
 import { Box, FormLabel, Input, Typography } from '@mui/material';
 import 'typeface-mulish';
 import swal from 'sweetalert';

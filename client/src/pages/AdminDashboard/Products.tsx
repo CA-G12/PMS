@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import axios from 'axios';
 import {
   Box,
@@ -10,7 +10,7 @@ import {
   TableHead,
   TableRow,
   Paper,
-  // Pagination,
+  Pagination,
   CircularProgress,
   Divider,
 } from '@mui/material';
@@ -18,20 +18,34 @@ import image31 from '../../assets/image31.png';
 
 const Products = () => {
   const [adminProducts, setAdminProducts] = useState([]);
+  const [pageNum, setPageNum] = useState(1);
+  const [numProducts, setNumOfProducts] = useState(14);
   const [loading, setLoading] = useState(true);
   const drawerWidth = 240;
+
+  const getAllMedicine = useCallback(async () => {
+    const {
+      data: {
+        data: { rows, count },
+      },
+    } = await axios.get(`/admin/products?page=${pageNum}`);
+
+    return { rows, count };
+  }, [pageNum]);
 
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get('/admin/products');
-        setAdminProducts(res.data.data);
+        setLoading(true);
+        const { rows, count } = await getAllMedicine();
+        setAdminProducts(rows);
+        setNumOfProducts(count);
         setLoading(false);
       } catch (err) {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [getAllMedicine]);
 
   if (loading) {
     return (
@@ -210,6 +224,20 @@ const Products = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        <Pagination
+          count={Math.ceil(numProducts / 7)}
+          color="primary"
+          page={pageNum}
+          onChange={(event: React.ChangeEvent<unknown>, page: number) => {
+            setPageNum(page);
+          }}
+          sx={{
+            marginTop: '2rem',
+            marginBottom: '60px',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        />
       </Box>
     </Box>
   );

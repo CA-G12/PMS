@@ -45,7 +45,7 @@ const Requests = () => {
     return { rows, count };
   }, [pageNum]);
 
-  const updateMedicineRequests = async (status: string, pharmacyId: number) =>
+  const updateMedicineRequests = (status: string, pharmacyId: number) =>
     axios.put(`/admin/requests/${pharmacyId}`, {
       status,
     });
@@ -54,7 +54,9 @@ const Requests = () => {
     try {
       setLoading(true);
       await updateMedicineRequests(status, pharmacyId);
-      await getMedicineRequests();
+      const { rows, count } = await getMedicineRequests();
+      setData(rows);
+      setNumOfRequests(count);
       setLoading(false);
     } catch (err) {
       setLoading(false);

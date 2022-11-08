@@ -20,7 +20,6 @@ body {
     align-items: flex-start;
     gap: 20px;
     margin: 40px;
-    max-width: 491px !important;
     color: white;
     margin-top: 220px;
     margin-left: 70px;
@@ -29,12 +28,13 @@ body {
 h1.MuiTypography-root.MuiTypography-h1.css-o2w69a-MuiTypography-root.title {
     color: white;
     font-weight: 800;
-    font-size: 47px;
+    font-size: 50px;
 }
 
 p.MuiTypography-root.MuiTypography-body1.MuiTypography-paragraph.css-z2eky3-MuiTypography-root {
     max-width: 400px;
     color: #ffffff99;
+    font-size: 18px;
 }
 
 .MuiListItemText-root.keyItem.css-tlelie-MuiListItemText-root span {

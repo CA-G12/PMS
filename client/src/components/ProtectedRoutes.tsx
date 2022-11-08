@@ -17,7 +17,7 @@ const ProtectedRoute: React.FC<ProtectedRoutesProps> = ({
 }) => {
   const { pathname } = useLocation();
   const {
-    user: { role },
+    user: { role, status },
   } = useAuth();
 
   if (role === 'user') {
@@ -38,6 +38,13 @@ const ProtectedRoute: React.FC<ProtectedRoutesProps> = ({
       return (
         <Navigate to="/login" replace state={{ currentLocation: pathname }} />
       );
+    }
+    if (role === 'pharmacy' && status === 'Pending') {
+      <Navigate
+        to="/pharmacy/pending"
+        replace
+        state={{ currentLocation: pathname }}
+      />;
     }
   }
 

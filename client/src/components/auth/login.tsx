@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import swal from 'sweetalert';
 import { Box, FormLabel, Input, Typography } from '@mui/material';
 import 'typeface-mulish';
-import swal from 'sweetalert';
 
 import { useNavigate, Link } from 'react-router-dom';
 import ButtonComponent from '../Button';
@@ -19,9 +18,13 @@ const Login: React.FC = () => {
 
   const sendUserData: sendUserDataType = async () => {
     if (email && password) {
-      const { role, id } = await login(email, password);
+      const { role, id, status } = await login(email, password);
       if (role === 'admin') navigate('/admin/overview');
-      if (role === 'pharmacy') navigate(`/pharmacy/${id}/overview`);
+      if (role === 'pharmacy') {
+        if(status === 'Pending'){
+          navigate('/pharmacy/pending')
+        }else navigate(`/pharmacy/${id}/overview`);
+      }
     } else {
       swal('In order to login, all of these inputs have to be filled');
     }

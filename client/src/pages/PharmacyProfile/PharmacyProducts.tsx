@@ -11,6 +11,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import ProductCard from '../../components/ProductCard';
 import empty from '../../assets/empty.webp';
+import 'typeface-mulish';
 
 type row = {
   name: string;
@@ -18,16 +19,17 @@ type row = {
   price: number;
   img: string;
 };
+
 const PharmacyProducts = () => {
   const [searchMedicine, setSearchMedicine] = useState('');
   const [products, setProducts] = useState<row[]>([] as row[]);
   const [numOfApplications, setNumOfApplications] = useState(1);
   const [loading, setLoading] = useState(true);
   const [pageNum, setPageNum] = useState(1);
-  const { pharmacyId } = useParams();
+  const { id } = useParams();
 
   const getData = async () => {
-    let URL = `/product?page=${pageNum}&id=${pharmacyId}`;
+    let URL = `/product?page=${pageNum}&id=${id}`;
     if (searchMedicine) {
       URL += `&medicineName=${searchMedicine}`;
     }
@@ -55,26 +57,24 @@ const PharmacyProducts = () => {
           name: Product.name,
           description: Product.description,
           price: Product.price,
-          productpharmacies: Product.ProductPharmacies[0].Pharmacy.name,
-          pharmaciesimg: Product.ProductPharmacies[0].Pharmacy.image,
         }}
       />
     ));
   return (
     <Box
       sx={{
-        width: '90%',
-        justifyContent: 'center',
-        margin: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       <h4
         style={{
           color: '#00007F',
           fontSize: '1.5rem',
-          margin: '5rem auto',
+          margin: '1rem auto',
           marginBottom: '2rem',
           marginLeft: '10px',
+          fontFamily: 'mulish',
         }}
       >
         Filter your Products
@@ -150,8 +150,6 @@ const PharmacyProducts = () => {
             sx={{
               display: 'flex',
               flexWrap: 'wrap',
-              justifyContent: 'center',
-              margin: 'auto',
             }}
           >
             {gitAllProducts()}

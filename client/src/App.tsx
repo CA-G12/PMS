@@ -21,12 +21,19 @@ import Login from './components/auth/login';
 import Signup from './components/auth/Signup';
 import './App.css';
 import Home from './pages/LandingPages/Home';
+import { ProtectedRoute } from './components/ProtectedRoutes';
 
 const App = () => {
   const router = createBrowserRouter([
     {
       path: '/admin',
-      element: <DashboardLayout />,
+      element: (
+        <ProvideAuth>
+          <ProtectedRoute isAdmin>
+            <DashboardLayout />
+          </ProtectedRoute>
+        </ProvideAuth>
+      ),
       children: [
         {
           path: 'overview',
@@ -51,15 +58,8 @@ const App = () => {
       ],
     },
     {
-      path: 'products',
-      element: <AllProducts />,
-    },
-    {
-      path: 'pharmacies',
-      element: <AllPharmacies />,
-    },
-    {
-      path: '/pharmacy/:pharmacyId',
+      path: '/pharmacy/:id',
+
       element: <ProfileLayout />,
       children: [
         {
@@ -72,11 +72,23 @@ const App = () => {
         },
         {
           path: 'requests',
-          element: <PharmacyProfileRequests />,
+          element: (
+            <ProvideAuth>
+              <ProtectedRoute isPharmacy>
+                <PharmacyProfileRequests />
+              </ProtectedRoute>
+            </ProvideAuth>
+          ),
         },
         {
-          path: 'sales',
-          element: <SalesHistory />,
+          path: 'salesHistory',
+          element: (
+            <ProvideAuth>
+              <ProtectedRoute isPharmacy>
+                <SalesHistory />
+              </ProtectedRoute>
+            </ProvideAuth>
+          ),
         },
       ],
     },
@@ -91,7 +103,14 @@ const App = () => {
     {
       path: '/',
       element: <Home />,
-      children: [{ path: 'home', element: <Home /> }],
+    },
+    {
+      path: '/pharmacies',
+      element: <AllPharmacies />,
+    },
+    {
+      path: '/products',
+      element: <AllProducts />,
     },
   ]);
   return (

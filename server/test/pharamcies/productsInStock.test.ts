@@ -16,7 +16,6 @@ describe('addRequests router', () => {
         if (err) done(err);
         expect(res.statusCode).toEqual(200);
         expect(res.body.msg).toEqual('Success');
-        expect(res.body.data.length).toBe(6);
 
         return done();
       });

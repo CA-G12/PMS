@@ -1,74 +1,63 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Search, LocationOn } from '@mui/icons-material';
 import { Box, Paper, Typography, InputBase, IconButton } from '@mui/material';
 import './style.css';
 import 'typeface-mulish';
-import axios, { AxiosResponse } from 'axios';
 
 type FilterComponentProps = {
   text: string;
+  getData: () => Promise<void>;
+  setSearchLocation?: Function;
+  setSearchPharmacy: Function;
+  setSearchMedicine?: Function;
 };
-const FilterComponent: React.FC<FilterComponentProps> = ({ text }) => {
-  // type e = {
-  //     e:React.ChangeEvent<HTMLInputElement>
-  // }
 
-  const [pharmacy, setPharmacy] = useState('');
-  const [location, setLocation] = useState('');
-  const [medicine, setMedicine] = useState('');
-  const [, setFilteredData] = useState<AxiosResponse | null>(null);
-
-  const getFilteredData = async () => {
-    try {
-      if (medicine && pharmacy) {
-        const result = await axios.get(
-          `/product?pharmacyName=${pharmacy}&medicineName=${medicine}`
-        );
-        setFilteredData(result);
-      } else if (pharmacy && location) {
-        const result = await axios.get(
-          `/pharmacy?location=${location}&name=${pharmacy}`
-        );
-        setFilteredData(result);
-      }
-    } catch (err) {
-      setLocation('');
-      setMedicine('');
-      setPharmacy('');
-    }
+const FilterComponent: React.FC<FilterComponentProps> = ({
+  text,
+  getData,
+  setSearchLocation,
+  setSearchPharmacy,
+  setSearchMedicine,
+}) => {
+  const paperStyle = {
+    width: '50%',
+    height: '54px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   };
 
   return (
     <Box className="filterComponent">
       <Typography>Filter Any {text}</Typography>
       <Box className="filtered-inputs">
-        <Paper>
+        <Paper sx={paperStyle}>
           <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
             <Search />
           </IconButton>
           <InputBase
             placeholder="Set Any Pharmacy"
-            onChange={(e) => setPharmacy(e.target.value)}
+            onChange={(e) => setSearchPharmacy(e.target.value)}
           />
         </Paper>
         {text === 'Pharmacies' ? (
-          <Paper>
+          <Paper sx={paperStyle}>
             <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
               <LocationOn />
             </IconButton>
             <InputBase
               placeholder="Set Your Location"
-              onChange={(e) => setLocation(e.target.value)}
+              onChange={(e) => setSearchLocation?.(e.target.value)}
             />
           </Paper>
         ) : (
-          <Paper>
+          <Paper sx={paperStyle}>
             <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
               <Search />
             </IconButton>
             <InputBase
               placeholder="Search Any Medicine"
-              onChange={(e) => setMedicine(e.target.value)}
+              onChange={(e) => setSearchMedicine?.(e.target.value)}
             />
           </Paper>
         )}
@@ -77,7 +66,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({ text }) => {
           sx={{ p: '10px' }}
           aria-label="search"
           className="SearchButton"
-          onClick={getFilteredData}
+          onClick={getData}
         >
           <Search className="searchIcon" />
         </IconButton>

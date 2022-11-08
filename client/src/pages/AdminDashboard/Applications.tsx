@@ -43,9 +43,11 @@ const Applications = () => {
   };
 
   const setStatus = async (status: string, id: number) => {
+    setLoading(true);
     const allApplications = await axios.put(`/admin/pharmacy/${id}`, {
       status,
     });
+    setLoading(false);
     setCards(allApplications.data.rows);
   };
 
@@ -62,7 +64,7 @@ const Applications = () => {
           licenseNumber: application.license_number,
           pharmacyName: application.name,
         }}
-        setApproved={() => setStatus('Approved', application.id)}
+        setApproved={() => setStatus('Opened', application.id)}
         setRejected={() => setStatus('Rejected', application.id)}
       />
     ));

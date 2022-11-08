@@ -2,8 +2,7 @@
   background-color: #031737;
 }
 
-.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.dashboardItem.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root:hover,
-:focus {
+.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.dashboardItem.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root:hover{
   background: #6f7c9e;
   border-radius: 3px;
   transition: transform ease 0.3s;

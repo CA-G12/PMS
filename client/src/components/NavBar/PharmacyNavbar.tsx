@@ -9,7 +9,7 @@ const PharmacyNavbar = () => {
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
   const {
-    user: { role },
+    user: { role, id },
   } = useAuth();
   const { logout } = useAuth();
 
@@ -18,12 +18,13 @@ const PharmacyNavbar = () => {
 
   const handleClose = async () => {
     await logout();
-    setAnchorEl(null);
     navigate('/');
   };
 
   const showProfile = () =>
-    role === 'admin' ? navigate('/admin') : navigate('/profile');
+    role === 'admin'
+      ? navigate('/admin/overview')
+      : navigate(`/pharmacy/${id}/overview`);
 
   return (
     <Box

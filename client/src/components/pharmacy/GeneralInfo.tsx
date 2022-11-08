@@ -25,7 +25,7 @@ type pharmacyData = {
 const GeneralInfo = () => {
   const [data, setData] = useState<pharmacyData | null>();
   const [loading, setLoading] = useState(true);
-  const id = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -33,7 +33,9 @@ const GeneralInfo = () => {
       try {
         const {
           data: { pharmacyData },
-        } = await axios.get(`/pharmacy/${id}`, { signal: controller.signal });
+        } = await axios.get(`/pharmacy/${id}/overview`, {
+          signal: controller.signal,
+        });
         setData(pharmacyData[0]);
         setLoading(false);
       } catch (err) {
@@ -57,14 +59,22 @@ const GeneralInfo = () => {
       <Typography className="GeneralInfo">General Info</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Typography className="name">{data?.name}</Typography>
-        <Typography className="desc" paragraph>
+        <Typography
+          paragraph
+          sx={{
+            color: 'black',
+            maxWidth: '35vw',
+            lineHeight: '28px',
+            fontSize: '16px',
+          }}
+        >
           {data?.description}
         </Typography>
-        <List className="info">
+        <List sx={{ display: 'flex', flexDirection: 'column' }}>
           <ListItem className="infoItem">
             <ListItemButton className="InfoButton">
               <IconButton>
-                <LocalPhone />
+                <LocalPhone color="success" />
               </IconButton>
               <ListItemText primary={data?.phone} className="infoText" />
             </ListItemButton>
@@ -72,7 +82,7 @@ const GeneralInfo = () => {
           <ListItem className="infoItem">
             <ListItemButton className="InfoButton">
               <IconButton>
-                <Email />
+                <Email color="success" />
               </IconButton>
               <ListItemText primary={data?.email} className="infoText" />
             </ListItemButton>
@@ -80,7 +90,7 @@ const GeneralInfo = () => {
           <ListItem className="infoItem">
             <ListItemButton className="InfoButton">
               <IconButton>
-                <LocationOn />
+                <LocationOn color="success" />
               </IconButton>
               <ListItemText primary={data?.location} className="infoText" />
             </ListItemButton>

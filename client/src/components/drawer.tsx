@@ -26,7 +26,7 @@ const DRAWER_TABS_CONFIG = [
 
 const drawer = (
   <div>
-    <Link to="/admin">
+    <Link to="/">
       <img
         alt="logo"
         src={logo}

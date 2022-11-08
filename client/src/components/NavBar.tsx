@@ -35,7 +35,6 @@ const NavBar: React.FC<NavBarProps> = ({ handleDrawerToggle }) => {
     } catch (err) {
       swal('Something went wrong when trying to log out');
     }
-    setAnchorEl(null);
   };
 
   return (
@@ -81,7 +80,7 @@ const NavBar: React.FC<NavBarProps> = ({ handleDrawerToggle }) => {
             id="basic-menu"
             anchorEl={anchorEl}
             open={open}
-            onClose={handleClose}
+            onClose={handleClick}
             MenuListProps={{
               'aria-labelledby': 'basic-button',
             }}

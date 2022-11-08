@@ -41,10 +41,11 @@ const signUp = async (req: Request, res: Response, next: NextFunction) => {
       status: 'Panding',
     });
 
-    return res
-      .status(201)
-      .cookie('token', token)
-      .json({ data: pharamcyData, msg: 'You have signed up successfully' });
+    return res.status(201).cookie('token', token).json({
+      data: pharamcyData,
+      role: 'pharmacy',
+      msg: 'Success',
+    });
   } catch (err) {
     if (err.name === 'ValidationError') {
       return next(new CustomError(400, 'Something went wrong, sign up again'));

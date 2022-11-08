@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   List,
   ListItem,
@@ -6,7 +7,6 @@ import {
   ListItemText,
   Divider,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
 import {
   Dialpad,
   AttachFile,
@@ -26,7 +26,7 @@ const DRAWER_TABS_CONFIG = [
 
 const drawer = (
   <div>
-    <Link to="/admin">
+    <Link to="/">
       <img
         alt="logo"
         src={logo}
@@ -36,12 +36,18 @@ const drawer = (
     </Link>
     <Divider />
 
-    <List>
+    <List
+      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flexStart' }}
+    >
       {DRAWER_TABS_CONFIG.map(({ component, slug }) => (
-        <Link to={`/admin/${slug.toLowerCase()}`} key={slug}>
-          <ListItem>
-            <ListItemButton>
-              <ListItemIcon>{component}</ListItemIcon>
+        <Link
+          to={`/admin/${slug.toLowerCase()}`}
+          key={slug}
+          style={{ textDecoration: 'none', color: 'white' }}
+        >
+          <ListItem sx={{ width: '100%' }}>
+            <ListItemButton className="dashboardItem">
+              <ListItemIcon sx={{ color: 'white' }}>{component}</ListItemIcon>
               <ListItemText primary={slug} />
             </ListItemButton>
           </ListItem>

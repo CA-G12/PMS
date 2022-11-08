@@ -3,17 +3,37 @@ import {
   Overview,
   Pharmacies,
   Products,
-  Requests,
   DashboardLayout,
-} from './pages';
+  Requests,
+  Applications,
+} from './pages/AdminDashboard';
+import AllPharmacies from './pages/AllPharmacies';
+import AllProducts from './pages/AllProducts';
+import {
+  PharmacyProfileRequests,
+  PharmacyProducts,
+  ProfileLayout,
+  ProfileOverview,
+  SalesHistory,
+} from './pages/PharmacyProfile';
+import { ProvideAuth } from './context/authContext';
+import Login from './components/auth/login';
+import Signup from './components/auth/Signup';
 import './App.css';
-import ApplicationSection from './components/admin/ApplicationSection';
+import Home from './pages/LandingPages/Home';
+import { ProtectedRoute } from './components/ProtectedRoutes';
 
 const App = () => {
   const router = createBrowserRouter([
     {
       path: '/admin',
-      element: <DashboardLayout />,
+      element: (
+        <ProvideAuth>
+          <ProtectedRoute isAdmin>
+            <DashboardLayout />
+          </ProtectedRoute>
+        </ProvideAuth>
+      ),
       children: [
         {
           path: 'overview',
@@ -33,11 +53,70 @@ const App = () => {
         },
         {
           path: 'applications',
-          element: <ApplicationSection />,
+          element: <Applications />,
         },
       ],
     },
+    {
+      path: '/pharmacy/:id',
+
+      element: <ProfileLayout />,
+      children: [
+        {
+          path: 'overview',
+          element: <ProfileOverview />,
+        },
+        {
+          path: 'products',
+          element: <PharmacyProducts />,
+        },
+        {
+          path: 'requests',
+          element: (
+            <ProvideAuth>
+              <ProtectedRoute isPharmacy>
+                <PharmacyProfileRequests />
+              </ProtectedRoute>
+            </ProvideAuth>
+          ),
+        },
+        {
+          path: 'salesHistory',
+          element: (
+            <ProvideAuth>
+              <ProtectedRoute isPharmacy>
+                <SalesHistory />
+              </ProtectedRoute>
+            </ProvideAuth>
+          ),
+        },
+      ],
+    },
+    {
+      path: '/login',
+      element: <Login />,
+    },
+    {
+      path: '/signUp',
+      element: <Signup />,
+    },
+    {
+      path: '/',
+      element: <Home />,
+    },
+    {
+      path: '/pharmacies',
+      element: <AllPharmacies />,
+    },
+    {
+      path: '/products',
+      element: <AllProducts />,
+    },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <ProvideAuth>
+      <RouterProvider router={router} />
+    </ProvideAuth>
+  );
 };
 export default App;

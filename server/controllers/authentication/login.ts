@@ -1,15 +1,15 @@
 /* eslint-disable camelcase */
 import { Request, Response, NextFunction } from 'express';
 import { compare } from 'bcryptjs';
-
 import { loginSchema } from '../../validation';
 import { loginQuery, adminLoginQuery } from '../../queries';
 import { generateToken, CustomError } from '../../utils';
 
 const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { email, loginPassword } = req.body;
-    await loginSchema.validateAsync(req.body);
+    const { email, password: loginPassword } = req.body;
+
+    await loginSchema(email, loginPassword);
 
     const data = await adminLoginQuery(email);
     const admin = data[0];
@@ -19,31 +19,32 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
 
       const passwordCompare = await compare(loginPassword, password);
       if (!passwordCompare)
-        throw new CustomError(400, 'invalid email or password');
+        throw new CustomError(400, 'Wrong Password, Try again');
 
       const token = await generateToken({ id, role: 'admin', image });
       return res
         .cookie('token', token, { httpOnly: true })
-        .json({ data: { id, image }, msg: 'successful' });
+        .json({ data: { id, image }, role: 'admin', msg: 'Success' });
     }
+
     const loginData = await loginQuery(email);
     if (loginData.length === 0)
-      throw new CustomError(400, 'invalid email or password');
+      throw new CustomError(400, 'Invalid email or password, Try again');
 
     const { password, id, owner_img , status} = loginData[0];
     const passwordCompare = await compare(loginPassword, password);
     if (!passwordCompare)
-      throw new CustomError(400, 'invalid email or password');
+      throw new CustomError(400, 'Wrong Password, Try again');
 
     const token = await generateToken({ id, role: 'pharmacy', owner_img, status });
     return res
       .cookie('token', token, { httpOnly: true })
-      .json({ data: { id, owner_img, status }, msg: 'successful' });
+      .json({ data: { id, owner_img, status }, role: 'pharmacy', msg: 'successful' });
   } catch (err) {
     if (err.name === 'ValidationError') {
-      return next(new CustomError(400, 'Something went wrong, sign up again'));
+      next(new CustomError(400, 'Something went wrong, Try again'));
     }
-    return next(err);
+    next(err);
   }
 };
 

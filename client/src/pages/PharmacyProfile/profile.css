@@ -1,0 +1,82 @@
+.MuiBox-root.css-0.layout {
+  display: flex;
+  flex-direction: row;
+  padding: 30px 61px;
+  justify-content: space-between;
+}
+
+.dashboard.MuiBox-root.css-0 {
+  background-color: white;
+  display: flex;
+  width: 20vw;
+  margin-top: 62px;
+  box-shadow: 0px 4px 12px 12px #c3c3c3bd;
+  flex-direction: column;
+  padding: 30px 15px;
+  justify-content: flex-start;
+}
+
+ul.MuiList-root.MuiList-padding.dash.css-h4y409-MuiList-root {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+/* .MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListItemButton-root.MuiListItemButton-gutters.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root:hover {
+  background: navy;
+  border-radius: 3px;
+  transform: scale(1.05);
+  color: white !important;
+  transition: transform ease .3s;
+} */
+
+.outlet.MuiBox-root.css-0 {
+  background-color: white;
+  width: 63%;
+  margin-top: 62px;
+  box-shadow: 0px 4px 12px 12px #c3c3c3bd;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.navLeft {
+  width: 100%;
+  color: navy;
+}
+
+li.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.dashLi.css-1p823my-MuiListItem-root {
+  width: 100%;
+  text-align: left;
+}
+
+img {
+  border-radius: 5px;
+}
+
+.info.MuiBox-root.css-0 {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  justify-content: flex-start;
+  color: navy;
+}
+
+p.MuiTypography-root.MuiTypography-body1.job.css-ahj2mt-MuiTypography-root {
+  color: #80808094;
+  font-weight: lighter;
+  font-size: 18px;
+}
+
+p.MuiTypography-root.MuiTypography-body1.username.css-ahj2mt-MuiTypography-root {
+  font-weight: 800;
+}
+
+.personInfo.MuiBox-root.css-0 {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root:hover {
+  color: white;
+}

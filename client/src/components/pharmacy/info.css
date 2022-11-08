@@ -1,0 +1,33 @@
+
+p.MuiTypography-root.MuiTypography-body1.GeneralInfo.css-ahj2mt-MuiTypography-root {
+    color: #8080808c;
+    font-weight: bold;
+    font-size: larger;
+    margin-bottom: 17px;
+}
+
+p.MuiTypography-root.MuiTypography-body1.name.css-ahj2mt-MuiTypography-root {
+    color: #00800073;
+    font-weight: 600;
+    font-size: larger;
+    margin-bottom: 12px;
+}
+
+p.MuiTypography-root.MuiTypography-body1.MuiTypography-paragraph.desc.css-z2eky3-MuiTypography-root {
+    max-width: 35vw;
+    line-height: 28px;
+    font-size: 16px;
+}
+
+li.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.infoItem.css-1p823my-MuiListItem-root {
+    width: 60%;
+    padding: 0px 16px;
+}
+
+span.MuiSkeleton-root.MuiSkeleton-text.MuiSkeleton-pulse.css-1n7gpw1-MuiSkeleton-root {
+    height: 75px;
+}
+
+a{
+    text-decoration: none;
+}

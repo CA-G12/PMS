@@ -3,14 +3,13 @@ import React from 'react';
 
 type BoxComponentProps = {
   label: string;
-  value: string;
+  value: string | null;
 };
 
 const BoxComponent: React.FC<BoxComponentProps> = ({ label, value }) => (
   <Box
     sx={{
       border: '1px solid #80808045',
-      backgroundColor: 'white',
       width: '150px',
       height: '90px',
       padding: '20px',
@@ -19,6 +18,7 @@ const BoxComponent: React.FC<BoxComponentProps> = ({ label, value }) => (
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
+      backgroundColor: 'white',
     }}
   >
     <Typography
@@ -27,7 +27,7 @@ const BoxComponent: React.FC<BoxComponentProps> = ({ label, value }) => (
       paragraph
       marginBottom="0px"
       fontSize="1.2rem"
-      sx={{ color: 'grey' }}
+      sx={{ color: 'grey', textAlign: 'center' }}
     >
       {label}
     </Typography>

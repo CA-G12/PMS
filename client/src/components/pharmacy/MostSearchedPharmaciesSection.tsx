@@ -1,8 +1,11 @@
-import { Box, CircularProgress, Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Slide } from 'react-awesome-reveal';
+import { Box, CircularProgress, Divider, Typography } from '@mui/material';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import { useNavigate } from 'react-router-dom';
+import 'typeface-mulish';
+
 import PharmacyCard from '../PharmacyCard';
 
 type row = {
@@ -15,7 +18,7 @@ type row = {
 const MostSearchedPharmaciesSection = () => {
   const [pharmacies, setPharmacies] = useState<row[]>([] as row[]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+
   const getData = async () => {
     setLoading(true);
     const {
@@ -39,27 +42,55 @@ const MostSearchedPharmaciesSection = () => {
           img: pharmacy.image,
           name: pharmacy.name,
           location: pharmacy.location,
+          id: pharmacy.id,
         }}
+        key={pharmacy.name}
       />
     ));
 
   return (
     <Box
       sx={{
-        width: '90%',
         justifyContent: 'center',
         margin: 'auto',
+        backgroundColor: 'white',
+        paddingBottom: '30px',
       }}
     >
-      <h2
-        style={{
-          margin: '4rem 0',
-          textAlign: 'center',
-          color: '#043CAA',
-        }}
+      <Slide direction="down">
+        <h2
+          style={{
+            margin: '3rem 0',
+            textAlign: 'center',
+            color: '#043CAA',
+            marginBottom: '15px',
+            marginTop: '0',
+            fontFamily: 'mulish',
+          }}
+        >
+          Our Most Searched Pharmacies
+        </h2>
+      </Slide>
+      <Box
+        sx={{ display: 'flex', justifyContent: 'center', marginBottom: '55px' }}
       >
-        Our Pharmacies
-      </h2>
+        <Divider
+          sx={{
+            width: '5%',
+            size: '20px',
+            height: '6px',
+            backgroundColor: 'navy',
+          }}
+        />
+        <Divider
+          sx={{
+            width: '5%',
+            size: '20px',
+            height: '6px',
+            backgroundColor: '#9bd342',
+          }}
+        />
+      </Box>
       {loading && (
         <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
           <CircularProgress />
@@ -77,25 +108,28 @@ const MostSearchedPharmaciesSection = () => {
           >
             {gitAllPharmacies()}
           </Box>
-          <Typography
-            onClick={() => {
-              navigate('/');
-            }}
-            sx={{
-              color: '#83B239',
-              fontSize: '1.5rem',
-              textAlign: 'end',
-              marginRight: '5rem',
-            }}
-          >
-            see all{' '}
-            <ArrowRightAltIcon
+          <Link to="/pharmacies">
+            <Typography
               sx={{
                 color: '#83B239',
-                fontSize: '2rem',
+                fontSize: '20px',
+                textAlign: 'end',
+                marginRight: '5rem',
+                display: 'flex',
+                justifyContent: 'flex-end',
+                alignItems: 'center',
+                fontFamily: 'mulish',
               }}
-            />
-          </Typography>
+            >
+              See all{' '}
+              <ArrowRightAltIcon
+                sx={{
+                  color: '#83B239',
+                  fontSize: '2rem',
+                }}
+              />
+            </Typography>
+          </Link>
         </>
       )}
     </Box>

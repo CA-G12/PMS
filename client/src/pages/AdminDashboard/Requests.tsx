@@ -140,7 +140,7 @@ const Requests = () => {
           >
             <TableHead sx={{ padding: '2px 30px' }}>
               <TableRow sx={{ padding: '2px 30px' }}>
-                <TableCell align="center">
+                <TableCell align="center" sx={{ padding: '16px 52px' }}>
                   {' '}
                   <Typography
                     sx={{
@@ -218,7 +218,13 @@ const Requests = () => {
                       padding: '0',
                     }}
                   >
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginLeft: '20px',
+                      }}
+                    >
                       <img src={image31} alt="Logo" />
                       <Box
                         sx={{

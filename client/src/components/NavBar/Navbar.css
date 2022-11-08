@@ -1,6 +1,5 @@
 header.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation4.MuiAppBar-root.MuiAppBar-colorPrimary.MuiAppBar-positionFixed.mui-fixed.css-11b3ww9-MuiPaper-root-MuiAppBar-root {
   height: 61px;
-  background-color: transparent;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -21,10 +20,9 @@ li.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.css-1p823my-MuiListI
   text-align: center;
 }
 
-span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-10hburv-MuiTypography-root {
-  font-weight: bold;
-}
-
+#navbarItem span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-10hburv-MuiTypography-root{
+  font-weight: 900;
+} 
 .MuiBox-root.css-0 {
   display: flex;
   flex-direction: row;
@@ -35,6 +33,31 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
   margin-right: 21px;
 }
 
-a{
-  color: navy;
+.first-nav{
+  background-color: transparent !important;
+  animation: first-anim .5s both;
+}
+
+.fixed{
+  position: fixed !important;
+  background-color: white !important;
+  animation: fixed-anim .8s both;
+}
+
+@keyframes fixed-anim {
+  from{
+    transform: translateY(-60px);
+  }
+  to{
+    transform: translateY(0);
+  }
+}
+
+@keyframes first-anim {
+  from{
+    transform: translateY(80px);
+  }
+  to{
+    transform: translateY(0);
+  }
 }

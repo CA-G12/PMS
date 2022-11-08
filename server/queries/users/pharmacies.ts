@@ -18,8 +18,8 @@ const pharmaciesQuery = (
       status: 'Opened',
     },
     attributes: ['id', 'name', 'location', 'image'],
-    offset: 12 * (page - 1),
-    limit: 12,
+    offset: 9 * (page - 1),
+    limit: 9,
   });
 
 export default pharmaciesQuery;

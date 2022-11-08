@@ -117,9 +117,12 @@ const AllAdminPharmasis = () => {
           sx={{ minWidth: 650, marginLeft: '0px', marginTop: '0px' }}
           aria-label="simple table"
         >
-          <TableHead sx={{ padding: '2px 30px' }}>
-            <TableRow sx={{ padding: '2px 30px' }}>
-              <TableCell align="center">
+          <TableHead sx={{ padding: '9px' }}>
+            <TableRow sx={{ padding: '9px' }}>
+              <TableCell
+                align="center"
+                sx={{ padding: '6px', marginLeft: '15px' }}
+              >
                 {' '}
                 <Typography
                   sx={{
@@ -133,7 +136,7 @@ const AllAdminPharmasis = () => {
                   Pharmacy Name
                 </Typography>{' '}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" sx={{ padding: '6px' }}>
                 {' '}
                 <Typography
                   sx={{
@@ -161,7 +164,7 @@ const AllAdminPharmasis = () => {
                   Pharmacy Location
                 </Typography>{' '}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" sx={{ padding: '9px' }}>
                 {' '}
                 <Typography
                   sx={{
@@ -198,7 +201,6 @@ const AllAdminPharmasis = () => {
                 sx={{
                   '&:last-child td, &:last-child th': {
                     border: 0,
-                    dispaly: 'flex',
                   },
                 }}
               >

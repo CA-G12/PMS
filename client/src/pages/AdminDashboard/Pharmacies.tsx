@@ -17,7 +17,12 @@ const Pharmacies = () => {
     >
       <Typography
         paragraph
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+        }}
       >
         <ToastContainer
           position="bottom-left"

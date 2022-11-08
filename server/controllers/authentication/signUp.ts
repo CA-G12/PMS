@@ -38,6 +38,7 @@ const signUp = async (req: Request, res: Response, next: NextFunction) => {
       id: pharamcyData.id,
       role: 'pharmacy',
       owner_img: pharamcyData.owner_img,
+      status: 'Panding',
     });
 
     return res.status(201).cookie('token', token).json({

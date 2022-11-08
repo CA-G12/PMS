@@ -143,7 +143,6 @@ const Requests = () => {
             <TableHead sx={{ padding: '2px 30px' }}>
               <TableRow sx={{ padding: '2px 30px' }}>
                 <TableCell align="center">
-                  {' '}
                   <Typography
                     sx={{
                       backgroundColor: '#80808036',
@@ -154,10 +153,9 @@ const Requests = () => {
                     }}
                   >
                     Pharmacy Name
-                  </Typography>{' '}
+                  </Typography>
                 </TableCell>
                 <TableCell align="center">
-                  {' '}
                   <Typography
                     sx={{
                       backgroundColor: '#80808036',
@@ -168,10 +166,9 @@ const Requests = () => {
                     }}
                   >
                     Product Name
-                  </Typography>{' '}
+                  </Typography>
                 </TableCell>
                 <TableCell align="center">
-                  {' '}
                   <Typography
                     sx={{
                       backgroundColor: '#80808036',
@@ -182,10 +179,9 @@ const Requests = () => {
                     }}
                   >
                     Request Status
-                  </Typography>{' '}
+                  </Typography>
                 </TableCell>
                 <TableCell align="center">
-                  {' '}
                   <Typography
                     sx={{
                       backgroundColor: '#80808036',
@@ -196,7 +192,7 @@ const Requests = () => {
                     }}
                   >
                     Options
-                  </Typography>{' '}
+                  </Typography>
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -255,7 +251,6 @@ const Requests = () => {
                     {row.Product.name}
                   </TableCell>
                   <TableCell align="center" sx={{ padding: '0' }}>
-                    {' '}
                     {row.status}
                   </TableCell>
                   <TableCell align="center" sx={{ padding: '0' }}>
@@ -272,7 +267,6 @@ const Requests = () => {
             </TableBody>
           </Table>
         </TableContainer>
-
         <Pagination
           count={Math.ceil(numRequests / 7)}
           color="primary"
@@ -280,7 +274,12 @@ const Requests = () => {
           onChange={(event: React.ChangeEvent<unknown>, page: number) => {
             setPageNum(page);
           }}
-          sx={{ marginTop: '2rem', marginBottom: '60px' }}
+          sx={{
+            marginTop: '2rem',
+            marginBottom: '60px',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
         />
       </Box>
     </Box>

@@ -51,16 +51,16 @@ const PharmacyProfileRequests = () => {
     return { rows, count };
   }, [pageNum, pharmacyId]);
 
-  const updateMedicineRequests = async (status: string, pharmacyId: number) =>
-    axios.put(`/admin/requests/${pharmacyId}`, {
+  const updateMedicineRequests = async (status: string, pharmacyId1: number) =>
+    axios.put(`/admin/requests/${pharmacyId1}`, {
       status,
     });
 
   // eslint-disable-next-line no-shadow
-  const setStatus = async (status: string, pharmacyId: number) => {
+  const setStatus = async (status: string, pharmacyId2: number) => {
     try {
       setLoading(true);
-      await updateMedicineRequests(status, pharmacyId);
+      await updateMedicineRequests(status, pharmacyId2);
       await getMedicineRequests();
       setLoading(false);
     } catch (err) {

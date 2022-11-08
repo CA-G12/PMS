@@ -48,8 +48,12 @@ const Signup: React.FC = () => {
           password,
           confirmPassword,
         };
-        const { id } = await signup(userData);
-        navigate(`/pharmacy/${id}/overview`);
+        const { id, status } = await signup(userData);
+        if (status !== 'Pending') {
+          navigate(`/pharmacy/${id}/overview`);
+        } else {
+          navigate('/pharmacy/pending');
+        }
       } else swal('Password and confirm password have to be matched');
     } else {
       swal('In order to sign up, all of these inputs have to be filled');

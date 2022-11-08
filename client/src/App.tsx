@@ -22,6 +22,7 @@ import Signup from './components/auth/Signup';
 import './App.css';
 import Home from './pages/LandingPages/Home';
 import { ProtectedRoute } from './components/ProtectedRoutes';
+import YourApplicationIsInReview from './components/YourApplicationIsInReview';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -111,6 +112,10 @@ const App = () => {
     {
       path: '/products',
       element: <AllProducts />,
+    },
+    {
+      path: 'pharmacy/pending',
+      element: <YourApplicationIsInReview />,
     },
   ]);
   return (

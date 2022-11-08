@@ -32,17 +32,17 @@ const signUp = async (req: Request, res: Response, next: NextFunction) => {
     }
 
     const hashed = await hash(req.body.password, 10);
-    const pharamcyData = await signup(req.body, hashed);
+    const pharmacyData = await signup(req.body, hashed);
 
     const token = await generateToken({
-      id: pharamcyData.id,
+      id: pharmacyData.id,
       role: 'pharmacy',
-      owner_img: pharamcyData.owner_img,
-      status: 'Panding',
+      owner_img: pharmacyData.owner_img,
+      status: 'Pending',
     });
 
     return res.status(201).cookie('token', token).json({
-      data: pharamcyData,
+      data: pharmacyData,
       role: 'pharmacy',
       msg: 'Success',
     });

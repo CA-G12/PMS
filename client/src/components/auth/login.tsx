@@ -18,9 +18,13 @@ const Login: React.FC = () => {
 
   const sendUserData: sendUserDataType = async () => {
     if (email && password) {
-      const { role, id } = await login(email, password);
+      const { role, id, status } = await login(email, password);
       if (role === 'admin') navigate('/admin/overview');
-      if (role === 'pharmacy') navigate(`/pharmacy/${id}/overview`);
+      if (role === 'pharmacy') {
+        if(status === 'Pending'){
+          navigate('/pharmacy/pending')
+        }else navigate(`/pharmacy/${id}/overview`);
+      }
     } else {
       swal('In order to login, all of these inputs have to be filled');
     }

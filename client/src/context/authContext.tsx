@@ -69,7 +69,11 @@ const useProvideAuth = (): AuthContext => {
 
       if (callback) callback(null);
       setLoading(false);
-      return { role: res.data.role, id: res.data.data.id };
+      return {
+        role: res.data.role,
+        id: res.data.data.id,
+        status: res.data.data.status,
+      };
     } catch (err: any) {
       if (err.response?.data?.msg) {
         swal(err.response?.data?.msg);
@@ -96,7 +100,7 @@ const useProvideAuth = (): AuthContext => {
       });
       setLoading(false);
       if (callback) callback(null);
-      return { id: res.data.data.id };
+      return { id: res.data.data.id, status: res.data.data.status };
     } catch (err) {
       if (callback) callback(err);
       if (axios.isAxiosError(err)) swal(err.response?.data?.msg);

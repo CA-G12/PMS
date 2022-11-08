@@ -225,7 +225,7 @@ const Products = () => {
           </Table>
         </TableContainer>
         <Pagination
-          count={Math.ceil(numProducts / 7)}
+          count={Math.floor(numProducts / 7)}
           color="primary"
           page={pageNum}
           onChange={(event: React.ChangeEvent<unknown>, page: number) => {

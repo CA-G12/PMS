@@ -7,12 +7,15 @@ import {
   ReactChild,
 } from 'react';
 import axios from 'axios';
+import { Box, CircularProgress } from '@mui/material';
+import swal from 'sweetalert';
 
 interface User {
   id: number;
   role: string;
   image: string;
 }
+/* eslint-disable camelcase */
 type SignupData = {
   owner_name: string;
   owner_id: number;
@@ -29,6 +32,7 @@ export interface AuthContext {
   login: Function;
   logout: Function;
   signup: Function;
+  loading: boolean;
 }
 
 const authContext = createContext<AuthContext | null>(null);
@@ -36,11 +40,13 @@ const authContext = createContext<AuthContext | null>(null);
 export const useAuth = (): any => useContext(authContext);
 
 const useProvideAuth = (): AuthContext => {
+  const [loading, setLoading] = useState<boolean>(true);
   const [user, setUser] = useState({
     id: 0,
     role: 'user',
     image:
       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png',
+    status: '',
   });
 
   const login = async (
@@ -58,11 +64,26 @@ const useProvideAuth = (): AuthContext => {
         id: res.data.data.id,
         role: res.data.role,
         image: res.data.data.image,
+        status: res.data.data.status,
       });
+
       if (callback) callback(null);
-    } catch (err) {
+      setLoading(false);
+      return {
+        role: res.data.role,
+        id: res.data.data.id,
+        status: res.data.data.status,
+      };
+    } catch (err: any) {
+      if (err.response?.data?.msg) {
+        swal(err.response?.data?.msg);
+      } else {
+        swal(err.message);
+      }
       if (callback) callback(err);
+      setLoading(false);
     }
+    return true;
   };
 
   const signup = async (
@@ -75,11 +96,18 @@ const useProvideAuth = (): AuthContext => {
         id: res.data.data.id,
         role: res.data.role,
         image: res.data.data.image,
+        status: res.data.data.status,
       });
+      setLoading(false);
       if (callback) callback(null);
+      return { id: res.data.data.id, status: res.data.data.status };
     } catch (err) {
       if (callback) callback(err);
+      if (axios.isAxiosError(err)) swal(err.response?.data?.msg);
+      else if (err instanceof Error) swal(err.message);
+      setLoading(false);
     }
+    return true;
   };
 
   const logout = async (callback: any = null): Promise<any> => {
@@ -91,10 +119,13 @@ const useProvideAuth = (): AuthContext => {
         role: 'user',
         image:
           'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png',
+        status: '',
       });
+      setLoading(false);
       if (callback) callback(null);
     } catch (err) {
       if (callback) callback(err);
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -105,13 +136,16 @@ const useProvideAuth = (): AuthContext => {
           signal: controller.signal,
         });
         setUser(data);
+        setLoading(false);
       } catch (err) {
         setUser({
           id: 0,
           role: 'user',
           image:
             'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png',
+          status: '',
         });
+        setLoading(false);
       }
     };
     getAuthData();
@@ -126,6 +160,7 @@ const useProvideAuth = (): AuthContext => {
     login,
     signup,
     logout,
+    loading,
   };
 };
 
@@ -135,5 +170,12 @@ interface ProvideAuthProps {
 
 export const ProvideAuth = ({ children }: ProvideAuthProps): ReactElement => {
   const auth = useProvideAuth();
+  if (auth.loading) {
+    return (
+      <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
+        <CircularProgress />
+      </Box>
+    );
+  }
   return <authContext.Provider value={auth}>{children}</authContext.Provider>;
 };

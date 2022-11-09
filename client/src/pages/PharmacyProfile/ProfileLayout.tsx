@@ -1,5 +1,5 @@
-import { Outlet, Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Outlet, Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import {
   Box,
@@ -19,16 +19,24 @@ import {
 import './profile.css';
 import pharmacyDataType from '../../utils/PharmacyData';
 import Navbar from '../../components/NavBar/Navbar';
+import { useAuth } from '../../context/authContext';
 
 const ProfileLayout = () => {
   const [data, setData] = useState<pharmacyDataType | null>();
-  const { pharmacyId } = useParams();
+  const { id } = useParams();
+  const {
+    user: { id: pharmacyId },
+  } = useAuth();
 
   const TABS_CONFIG = [
     { component: <Dialpad />, slug: 'Profile Overview', link: 'overview' },
     { component: <AttachFile />, slug: 'Pharmacy Products', link: 'products' },
     { component: <Category />, slug: 'Active Requests', link: 'requests' },
-    { component: <RequestQuote />, slug: 'Sales-History', link: 'sales' },
+    {
+      component: <RequestQuote />,
+      slug: 'Sales History',
+      link: 'salesHistory',
+    },
   ];
   useEffect(() => {
     const controller = new AbortController();
@@ -36,7 +44,7 @@ const ProfileLayout = () => {
       try {
         const {
           data: { pharmacyData },
-        } = await axios.get(`/pharmacy/${pharmacyId}`, {
+        } = await axios.get(`/pharmacy/${id}/overview`, {
           signal: controller.signal,
         });
         setData(pharmacyData[0]);
@@ -48,7 +56,7 @@ const ProfileLayout = () => {
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [id]);
   return (
     <>
       <Navbar />
@@ -72,20 +80,33 @@ const ProfileLayout = () => {
             </Box>
           </Box>
           <List className="dash">
-            {TABS_CONFIG.map(({ component, slug, link }) => (
-              <Link
-                to={`/pharmacy/${pharmacyId}/${link.toLowerCase()}`}
-                className="navLeft"
-                key={slug}
-              >
+            {+id! === pharmacyId ? (
+              TABS_CONFIG.map(({ component, slug, link }) => (
+                <Link
+                  to={`/pharmacy/${id}/${link}`}
+                  className="navLeft"
+                  key={slug}
+                >
+                  <ListItem className="dashLi">
+                    <ListItemButton>
+                      <ListItemIcon>{component}</ListItemIcon>
+                      <ListItemText primary={slug} />
+                    </ListItemButton>
+                  </ListItem>
+                </Link>
+              ))
+            ) : (
+              <Link to={`/pharmacy/${id}/overview`} className="navLeft">
                 <ListItem className="dashLi">
                   <ListItemButton>
-                    <ListItemIcon>{component}</ListItemIcon>
-                    <ListItemText primary={slug} />
+                    <ListItemIcon>
+                      <Dialpad />
+                    </ListItemIcon>
+                    <ListItemText primary="overview" />
                   </ListItemButton>
                 </ListItem>
               </Link>
-            ))}
+            )}
           </List>
         </Box>
         <Box className="outlet">

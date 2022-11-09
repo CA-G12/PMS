@@ -1,7 +1,6 @@
-// import { useEffect } from 'react';
-import Card from '@mui/material/Card';
+/* eslint-disable import/no-unresolved */
 import * as React from 'react';
-import Button from '@mui/material/Button';
+import { Fade } from 'react-awesome-reveal';
 import Dialog from '@mui/material/Dialog';
 import { Box, Typography } from '@mui/material';
 
@@ -10,8 +9,8 @@ type Product = {
   name: string;
   description: string;
   price: number;
-  productpharmacies: string;
-  pharmaciesimg: string;
+  ProductPharmacies?: string;
+  pharmaciesImg?: string;
 };
 interface Props {
   product: Product;
@@ -30,51 +29,93 @@ const ProductCard = ({ product }: Props) => {
 
   return (
     <>
-      <Card
-        onClick={handleClickOpen}
-        sx={{
-          maxWidth: 345,
-          borderTopLeftRadius: '40px',
-          borderBottomRightRadius: '40px',
-          width: '23%',
-          padding: '0 1% 35px 1%',
-          textAlign: 'center',
-          boxShadow: '2px 2px 5px 2px #aaa',
-          position: 'relative',
-          backgroundColor: '#F5F5F5',
-          margin: '30px',
+      <Fade
+        style={{
+          width: '25%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: '30px',
         }}
       >
-        <img src={product.img} alt="product img" width="80%" height="40%" />
-        <h4
-          style={{ color: '#00007F', fontSize: '1.5rem', margin: '5px auto' }}
-        >
-          {product.name}
-        </h4>
-        <p
-          style={{
-            fontSize: '14px',
-            fontWeight: '500',
-            width: '90%',
+        <Box
+          sx={{
+            borderTopLeftRadius: '25px',
+            borderBottomRightRadius: '25px',
+            width: '70%',
+            padding: '0 3% 25px 3%',
+            textAlign: 'center',
+            boxShadow: '2px 2px 5px 2px #aaa',
+            position: 'relative',
+            margin: ' 10rem 1rem 1rem 1rem',
+            backgroundColor: '#F5F5F5',
+            minHeight: '240px',
             display: 'flex',
-            flex: 'wrap',
+            alignItems: 'flex-end',
+            marginTop: '80px',
           }}
+          onClick={handleClickOpen}
         >
-          {product.description}
-        </p>
-        <h5
-          style={{
-            color: '#00007F',
-            fontSize: '1.5rem',
-            position: 'absolute',
-            right: '1.5rem',
-            bottom: '15px',
-            margin: '0',
-          }}
-        >
-          {product.price} $
-        </h5>
-      </Card>
+          <img
+            src={product.img}
+            alt="product img"
+            width="80%"
+            height="180px"
+            style={{
+              position: 'absolute',
+              left: '10%',
+              top: '-30%',
+              borderTopLeftRadius: '25px',
+              borderBottomRightRadius: '25px',
+            }}
+          />
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              height: '90px',
+              justifyContent: 'center',
+              width: '-webkit-fill-available',
+            }}
+          >
+            <Typography
+              variant="h4"
+              style={{
+                color: '#00007F',
+                fontFamily: 'mulish',
+                fontWeight: '600',
+                fontSize: '19px',
+              }}
+            >
+              {product.name}
+            </Typography>
+            <Typography
+              variant="h6"
+              style={{
+                fontFamily: 'mulish',
+                fontWeight: '400',
+                fontSize: '14px',
+              }}
+            >
+              {product.description.split(/\s+/).slice(0, 8).join(' ')}
+            </Typography>
+            <Typography
+              paragraph
+              style={{
+                fontFamily: 'mulish',
+                fontWeight: '400',
+                fontSize: '14px',
+                display: 'flex',
+                justifyContent: 'flex-end',
+                color: 'navy',
+              }}
+            >
+              {product.price}$
+            </Typography>
+          </Box>
+        </Box>
+      </Fade>
+
       <Dialog
         open={open}
         onClose={handleClose}
@@ -95,19 +136,17 @@ const ProductCard = ({ product }: Props) => {
           >
             <Box
               sx={{
-                height: '200px',
-                width: '200px',
                 margin: '10px',
                 display: 'flex',
                 justifyContent: 'center',
               }}
             >
               <img
-                src={product.pharmaciesimg}
-                alt="Product Img"
+                src={product.pharmaciesImg}
+                alt="Pharmacy"
                 style={{
-                  height: '150px',
-                  width: '150px',
+                  height: '300px',
+                  width: '200px',
                 }}
               />
             </Box>
@@ -118,7 +157,7 @@ const ProductCard = ({ product }: Props) => {
                 paddingTop: '20px',
               }}
             >
-              {product.productpharmacies}
+              {product.ProductPharmacies}
             </Typography>
           </div>
           <div
@@ -152,14 +191,7 @@ const ProductCard = ({ product }: Props) => {
             >
               {product.name}
             </Typography>
-            <Typography
-              sx={{
-                textAlign: 'end',
-                color: 'blue',
-              }}
-            >
-              {product.price} $
-            </Typography>
+
             <Typography
               sx={{
                 display: 'flex',
@@ -172,17 +204,16 @@ const ProductCard = ({ product }: Props) => {
             >
               {product.description}
             </Typography>
+            <Typography
+              sx={{
+                textAlign: 'end',
+                color: 'blue',
+              }}
+            >
+              {product.price} $
+            </Typography>
           </div>
         </div>
-
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          <Button onClick={handleClose}>Close</Button>
-        </Box>
       </Dialog>
     </>
   );

@@ -8,7 +8,7 @@
       "description": "Pharmacies licensed by the Ministry of Health All of their employees",
       "password": "$2y$10$038ZGt9SkWkMeCuRp6dJ..DgjoyZq8oTKWr43amGtneFWkbSvG/cG",
       "license_number": 548165,
-      "status": "Pending",
+      "status": "Opened",
       "owner_name": "Marlene Benadette",
       "owner_img": "http://images.assetsdelivery.com/compings_v2/mavoimage/mavoimage1601/mavoimage160100167.jpg",
       "owner_id": 405987
@@ -22,7 +22,7 @@
       "description": "Pharmacies licensed by the Ministry of Health All of their employees",
       "password": "$2y$10$038ZGt9SkWkMeCuRp6dJ..DgjoyZq8oTKWr43amGtneFWkbSvG/cG",
       "license_number": 54821,
-      "status": "Closed",
+      "status": "Pending",
       "owner_name": "Rafaello Bambrough",
       "owner_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrPK_ieFdC_ILzKX1ejGhqE6x8_rTMcIDBjA&usqp=CAU",
       "owner_id": 40598

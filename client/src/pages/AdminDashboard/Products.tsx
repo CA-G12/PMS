@@ -95,7 +95,7 @@ const Products = () => {
           >
             <TableHead sx={{ padding: '2px 30px' }}>
               <TableRow sx={{ padding: '2px 30px' }}>
-                <TableCell align="center">
+                <TableCell align="center" sx={{ padding: '16px 67px' }}>
                   {' '}
                   <Typography
                     sx={{
@@ -161,7 +161,6 @@ const Products = () => {
                   sx={{
                     '&:last-child td, &:last-child th': {
                       border: 0,
-                      dispaly: 'flex',
                     },
                   }}
                 >
@@ -225,7 +224,7 @@ const Products = () => {
           </Table>
         </TableContainer>
         <Pagination
-          count={Math.floor(numProducts / 7)}
+          count={Math.ceil(numProducts / 7)}
           color="primary"
           page={pageNum}
           onChange={(event: React.ChangeEvent<unknown>, page: number) => {

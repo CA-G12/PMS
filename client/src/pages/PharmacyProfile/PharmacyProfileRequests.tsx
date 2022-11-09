@@ -12,11 +12,13 @@ import {
   TableRow,
   Pagination,
   CircularProgress,
+  Divider,
 } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import LongMenu from '../../components/Extra/Options';
-import dataLoadingError from '../../assets/dataLoadingError.png';
 import 'typeface-mulish';
+import image31 from '../../assets/image31.png';
+// import { useAuth } from '../../context/authContext';
 
 type row =
   | {
@@ -33,28 +35,32 @@ const PharmacyProfileRequests = () => {
   const [pageNum, setPageNum] = useState(1);
   const [numRequests, setNumOfRequests] = useState(14);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const { pharmacyId: id } = useParams();
+  // eslint-disable-next-line no-shadow
+  const { id: pharmacyId } = useParams();
+  // const {
+  //   user: { id },
+  // } = useAuth();
 
   const getMedicineRequests = useCallback(async () => {
     const {
       data: {
         data: { rows, count },
       },
-    } = await axios.get(`/pharmacy/${id}/requests?page=${pageNum}`);
+    } = await axios.get(`/pharmacy/${pharmacyId}/requests?page=${pageNum}`);
 
     return { rows, count };
-  }, [pageNum]);
+  }, [pageNum, pharmacyId]);
 
-  const updateMedicineRequests = async (status: string, pharmacyId: number) =>
-    axios.put(`/admin/requests/${pharmacyId}`, {
+  const updateMedicineRequests = async (status: string, pharmacyId1: number) =>
+    axios.put(`/admin/requests/${pharmacyId1}`, {
       status,
     });
 
-  const setStatus = async (status: string, pharmacyId: number) => {
+  // eslint-disable-next-line no-shadow
+  const setStatus = async (status: string, pharmacyId2: number) => {
     try {
       setLoading(true);
-      await updateMedicineRequests(status, pharmacyId);
+      await updateMedicineRequests(status, pharmacyId2);
       await getMedicineRequests();
       setLoading(false);
     } catch (err) {
@@ -68,13 +74,11 @@ const PharmacyProfileRequests = () => {
       try {
         setLoading(true);
         const { rows, count } = await getMedicineRequests();
-
         setData(rows);
         setNumOfRequests(count);
         setLoading(false);
       } catch (err) {
         setLoading(false);
-        setError('Something went wrong');
       }
     })();
   }, [getMedicineRequests]);
@@ -87,46 +91,43 @@ const PharmacyProfileRequests = () => {
     );
   }
 
-  if (error) {
-    return (
-      <Box
-        sx={{
-          margin: '6rem 5%',
-          borderRadius: '5px',
-          width: '80%',
-        }}
-      >
-        <img src={dataLoadingError} alt="Logo" />
-      </Box>
-    );
-  }
-
-  const drawerWidth = 240;
   return (
     <Box
       component="main"
       sx={{
         flexGrow: 1,
-        width: { sm: `calc(100% - ${drawerWidth}px)`, md: '' },
+        width: '100%',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
       }}
     >
       <Box
         sx={{
-          marginTop: '100px',
-          borderRadius: '5px',
-          width: '80%',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
         }}
       >
         <TableContainer>
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <Typography
+              sx={{
+                fontSize: '22px',
+                fontFamily: 'Mulish',
+                fontWeight: 'bold',
+                marginBottom: '10px',
+              }}
+            >
+              All Requests
+            </Typography>
+            <Divider sx={{ width: '100%', margin: '0 auto' }} />
+          </Box>
           <Table
             sx={{ Width: '100%', margin: '1rem 0%' }}
             aria-label="simple table"
           >
-            <TableHead sx={{ padding: '2px 30px' }}>
-              <TableRow sx={{ padding: '2px 30px' }}>
+            <TableHead>
+              <TableRow>
                 <TableCell align="center">
                   {' '}
                   <Typography
@@ -186,15 +187,9 @@ const PharmacyProfileRequests = () => {
               </TableRow>
             </TableHead>
             <TableBody>
+              {/* eslint-disable-next-line no-shadow */}
               {data.map((row) => (
-                <TableRow
-                  sx={{
-                    '&:last-child td, &:last-child th': {
-                      border: 0,
-                      dispaly: 'flex',
-                    },
-                  }}
-                >
+                <TableRow>
                   <TableCell
                     align="center"
                     sx={{
@@ -205,7 +200,33 @@ const PharmacyProfileRequests = () => {
                       padding: '0',
                     }}
                   >
-                    <Box>{row.ProductsRequests[0].Product.name}</Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      <img src={image31} alt="Logo" />
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'flex-start',
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            fontWeight: 'bold',
+                          }}
+                        >
+                          {row.ProductsRequests[0].Product.name}
+                        </Box>
+                        <Box
+                          sx={{
+                            opacity: 0.7,
+                            fontSize: '11px',
+                            fontWeight: '700',
+                          }}
+                        >
+                          54862053025
+                        </Box>
+                      </Box>
+                    </Box>
                   </TableCell>
 
                   <TableCell align="center" sx={{ padding: '0' }}>
@@ -237,7 +258,7 @@ const PharmacyProfileRequests = () => {
           onChange={(event: React.ChangeEvent<unknown>, page: number) => {
             setPageNum(page);
           }}
-          sx={{ marginTop: '2rem', marginBottom: '60px' }}
+          sx={{ marginTop: '2rem' }}
         />
       </Box>
     </Box>

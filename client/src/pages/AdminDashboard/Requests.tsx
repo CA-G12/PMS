@@ -142,7 +142,8 @@ const Requests = () => {
           >
             <TableHead sx={{ padding: '2px 30px' }}>
               <TableRow sx={{ padding: '2px 30px' }}>
-                <TableCell align="center">
+                <TableCell align="center" sx={{ padding: '16px 52px' }}>
+                  {' '}
                   <Typography
                     sx={{
                       backgroundColor: '#80808036',
@@ -216,7 +217,13 @@ const Requests = () => {
                       padding: '0',
                     }}
                   >
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginLeft: '20px',
+                      }}
+                    >
                       <img src={image31} alt="Logo" />
                       <Box
                         sx={{
@@ -268,7 +275,7 @@ const Requests = () => {
           </Table>
         </TableContainer>
         <Pagination
-          count={Math.floor(numRequests / 7)}
+          count={Math.ceil(numRequests / 7)}
           color="primary"
           page={pageNum}
           onChange={(event: React.ChangeEvent<unknown>, page: number) => {

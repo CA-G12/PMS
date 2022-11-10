@@ -15,7 +15,7 @@ import {
 } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import image31 from '../../assets/image31.png';
-import dataLoadingError from '../../assets/dataLoadingError.png';
+import empty from '../../assets/no-data.png';
 import SalesPopUp from '../../components/pharmacy/AddSalesPopup';
 
 const SalesHistory = () => {
@@ -36,7 +36,7 @@ const SalesHistory = () => {
         setDataRequests(rows);
         setNumOfSales(count);
       } catch (err) {
-        setError('Somethig went wrong.');
+        setError('Something went wrong.');
       } finally {
         setLoading(false);
       }
@@ -65,8 +65,7 @@ const SalesHistory = () => {
           alignItems: 'center',
         }}
       >
-        <img width="40%" alt="No Data" src={dataLoadingError} />
-        <h1>No Sales History Were Found</h1>
+        <img width="40%" alt="No Data" src={empty} />
       </Box>
     );
   }

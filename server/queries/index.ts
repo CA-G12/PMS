@@ -14,6 +14,7 @@ import {
   checkStatusRequest,
   salesHistoryQuery,
   getProductId,
+  getproductsQuery,
 } from './pharamcies';
 
 export {
@@ -31,4 +32,5 @@ export {
   pharmacyOverviewQuery,
   pharmaciesQuery,
   checkStatusRequest,
+  getproductsQuery,
 };

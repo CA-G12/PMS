@@ -2,7 +2,7 @@ import { Box, Typography, Pagination, CircularProgress } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ApplicationCard from '../../components/admin/ApplicationCard';
-import empty from '../../assets/empty.webp';
+import empty from '../../assets/no-data.png';
 import 'typeface-mulish';
 
 /* eslint-disable camelcase */
@@ -44,11 +44,11 @@ const Applications = () => {
 
   const setStatus = async (status: string, id: number) => {
     setLoading(true);
-    const allApplications = await axios.put(`/admin/pharmacy/${id}`, {
+    await axios.put(`/admin/application/${id}`, {
       status,
     });
     setLoading(false);
-    setCards(allApplications.data.rows);
+    await getData();
   };
 
   useEffect(() => {
@@ -78,7 +78,7 @@ const Applications = () => {
     );
   }
 
-  if (cards.length === 0) {
+  if (cards?.length === 0) {
     return (
       <Box sx={{ width: '100%', height: '100%', margin: 'auto 7rem' }}>
         <img src={empty} alt="Logo" />

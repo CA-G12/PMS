@@ -7,6 +7,7 @@ import {
   updatePharmacyStatusId,
   getAllPharmacies,
   allRequests,
+  applicationUpdateStatus,
 } from './admin';
 import {
   oneProductId,
@@ -16,11 +17,13 @@ import {
   salesHistory,
   productsInStock,
   getAllProducts,
+  getProducts,
 } from './pharamcies';
 import pharmacies from './users';
 
 export {
   checkAuthData,
+  getProducts,
   allRequests,
   getAllProductsAdmin,
   updatePharmacyStatusId,
@@ -38,4 +41,5 @@ export {
   pharmacyOverview,
   pharmacies,
   getAllProducts,
+  applicationUpdateStatus,
 };

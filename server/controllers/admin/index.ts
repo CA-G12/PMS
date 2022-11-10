@@ -4,6 +4,7 @@ import updatePharmacyStatusId from './pharmacyStatus';
 import requestStatus from './requestStatus';
 import getAdminOverview from './overview';
 import getAllPharmacies from './allPharmacies';
+import applicationUpdateStatus from './applicationStatus';
 
 export {
   getAllProductsAdmin,
@@ -12,4 +13,5 @@ export {
   requestStatus,
   allRequests,
   getAllPharmacies,
+  applicationUpdateStatus,
 };

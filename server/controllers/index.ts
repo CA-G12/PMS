@@ -6,7 +6,6 @@ import {
   getAllProductsAdmin,
   updatePharmacyStatusId,
   getAllPharmacies,
-  
   allRequests,
 } from './admin';
 import {

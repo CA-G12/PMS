@@ -31,15 +31,22 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
     if (loginData.length === 0)
       throw new CustomError(400, 'Invalid email or password, Try again');
 
-    const { password, id, owner_img , status} = loginData[0];
+    const { password, id, owner_img, status } = loginData[0];
     const passwordCompare = await compare(loginPassword, password);
     if (!passwordCompare)
       throw new CustomError(400, 'Wrong Password, Try again');
 
-    const token = await generateToken({ id, role: 'pharmacy', owner_img, status });
-    return res
-      .cookie('token', token, { httpOnly: true })
-      .json({ data: { id, owner_img, status }, role: 'pharmacy', msg: 'successful' });
+    const token = await generateToken({
+      id,
+      role: 'pharmacy',
+      owner_img,
+      status,
+    });
+    return res.cookie('token', token, { httpOnly: true }).json({
+      data: { id, owner_img, status },
+      role: 'pharmacy',
+      msg: 'successful',
+    });
   } catch (err) {
     if (err.name === 'ValidationError') {
       next(new CustomError(400, 'Something went wrong, Try again'));

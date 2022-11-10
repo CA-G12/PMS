@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import * as React from 'react';
 import { Fade } from 'react-awesome-reveal';
 import Dialog from '@mui/material/Dialog';

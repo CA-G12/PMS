@@ -18,6 +18,9 @@ import { useParams } from 'react-router-dom';
 import LongMenu from '../../components/Extra/Options';
 import 'typeface-mulish';
 import image31 from '../../assets/image31.png';
+import empty from '../../assets/no-data.png';
+import AddRequestPopUp from '../../components/pharmacy/AddRequest';
+
 // import { useAuth } from '../../context/authContext';
 
 type row =
@@ -90,7 +93,13 @@ const PharmacyProfileRequests = () => {
       </Box>
     );
   }
-
+  if (data[0].ProductsRequests?.length === 0) {
+    return (
+      <Box sx={{ width: '100%', height: '100%' }}>
+        <img src={empty} alt="Logo" />
+      </Box>
+    );
+  }
   return (
     <Box
       component="main"
@@ -121,6 +130,14 @@ const PharmacyProfileRequests = () => {
               All Requests
             </Typography>
             <Divider sx={{ width: '100%', margin: '0 auto' }} />
+          </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            <AddRequestPopUp />
           </Box>
           <Table
             sx={{ Width: '100%', margin: '1rem 0%' }}
@@ -214,7 +231,7 @@ const PharmacyProfileRequests = () => {
                             fontWeight: 'bold',
                           }}
                         >
-                          {row.ProductsRequests[0].Product.name}
+                          {row.ProductsRequests[0]?.Product?.name}
                         </Box>
                         <Box
                           sx={{
@@ -230,11 +247,11 @@ const PharmacyProfileRequests = () => {
                   </TableCell>
 
                   <TableCell align="center" sx={{ padding: '0' }}>
-                    {row.ProductsRequests[0].quantity}
+                    {row.ProductsRequests[0]?.quantity}
                   </TableCell>
                   <TableCell align="center" sx={{ padding: '0' }}>
                     {' '}
-                    {row.ProductsRequests[0].status}
+                    {row.ProductsRequests[0]?.status}
                   </TableCell>
                   <TableCell align="center" sx={{ padding: '0' }}>
                     <LongMenu

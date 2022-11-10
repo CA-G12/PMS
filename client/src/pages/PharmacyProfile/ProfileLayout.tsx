@@ -63,15 +63,13 @@ const ProfileLayout = () => {
       <Box className="layout">
         <Box className="dashboard">
           <Box className="personInfo">
-            <Link to="/pharmacy">
-              <img
-                alt="profile"
-                src={data?.owner_img}
-                width="80px"
-                height="80px"
-                style={{ marginRight: '10px' }}
-              />
-            </Link>
+            <img
+              alt="profile"
+              src={data?.owner_img}
+              width="80px"
+              height="80px"
+              style={{ marginRight: '10px' }}
+            />
             <Box className="info">
               <Typography sx={{ fontWeight: '500px', fontSize: '19px' }}>
                 {data?.owner_name}

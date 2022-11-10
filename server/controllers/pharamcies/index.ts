@@ -8,9 +8,11 @@ import getPharmacyRequests from './pharamcyRequests';
 import salesHistory from './salesHistory';
 import addRequests from './addRequests';
 import productsInStock from './productsInStock';
+import getProducts from './getProducts';
 
 export {
   editRequests,
+  getProducts,
   getAllProducts,
   pharmacyOverview,
   getPharmacyRequests,

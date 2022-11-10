@@ -20,9 +20,10 @@ li.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.css-1p823my-MuiListI
   text-align: center;
 }
 
-#navbarItem span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-10hburv-MuiTypography-root{
+span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-10hburv-MuiTypography-root#navbarItem{
   font-weight: 900;
 } 
+
 .MuiBox-root.css-0 {
   display: flex;
   flex-direction: row;

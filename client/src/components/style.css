@@ -47,9 +47,9 @@ p.MuiTypography-root.MuiTypography-body1.css-ahj2mt-MuiTypography-root {
   background-color: #e0e0e047 !important ;
 }
 
-.css-1gtpq4r-MuiButtonBase-root-MuiIconButton-root {
+/* .css-1gtpq4r-MuiButtonBase-root-MuiIconButton-root {
   padding: 17px;
-}
+} */
 
 .MuiInputBase-root.MuiInputBase-colorPrimary.css-1le28he-MuiInputBase-root {
   width: 90%;
@@ -65,6 +65,7 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.searchIcon.css-i4bv87-MuiSvgIcon-r
   color: white !important;
 }
 
-button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-1gtpq4r-MuiButtonBase-root-MuiIconButton-root {
+/* button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-1gtpq4r-MuiButtonBase-root-MuiIconButton-root {
   padding: 15px;
-}
+} */
+

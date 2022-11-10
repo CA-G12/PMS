@@ -46,6 +46,9 @@ const AllAdminPharmasis = () => {
     try {
       setLoading(true);
       await updatePharmacyStatus(status, pharmacyId);
+      const { rows, count } = await getPharmacies();
+      setData(rows);
+      setNumOfRequests(count);
       toast.success('updated status', {
         position: 'bottom-left',
         autoClose: 5000,

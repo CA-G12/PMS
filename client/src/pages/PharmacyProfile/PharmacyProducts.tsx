@@ -47,6 +47,7 @@ const PharmacyProducts = () => {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNum]);
 
   const gitAllProducts = () =>

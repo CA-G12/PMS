@@ -96,9 +96,21 @@ const Overview = () => {
         flexGrow: 1,
         p: 3,
         width: { sm: `calc(100% - ${drawerWidth}px)`, md: '' },
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
       }}
     >
-      <Box sx={{ display: 'flex', height: '40vh', flexWrap: 'wrap' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          height: '40vh',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          marginTop: '70px',
+          marginLeft: '55px',
+        }}
+      >
         <Box
           sx={{
             height: '40vh',
@@ -107,6 +119,7 @@ const Overview = () => {
             alignItems: 'flex-start',
             width: '53%',
             flexWrap: 'wrap',
+            marginRight: '7px',
           }}
         >
           <Box

@@ -31,7 +31,18 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   });
   return (
-    <AppBar className={scroll ? 'fixed' : 'first-nav'}>
+    <AppBar
+      className={scroll ? 'fixed' : 'first-nav'}
+      sx={{
+        height: '61px',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        boxShadow: 'none',
+        fontFamily: 'mulish',
+      }}
+    >
       <Link to="/">
         <img alt="logo" src={Logo} width="150px" />
       </Link>

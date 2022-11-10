@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 
 import key1 from '../../assets/key1.png';
 import key2 from '../../assets/key2.png';
-import './style.css';
 
 const KeyBenefits = () => (
   <>
@@ -65,28 +64,68 @@ const KeyBenefits = () => (
         }}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Typography>
+          <Typography
+            sx={{
+              color: 'navy',
+              fontSize: '22px',
+              fontWeight: '800',
+              fontFamily: 'mulish',
+            }}
+          >
             All your Medicine needs <br /> in one place
           </Typography>
           <List sx={{ display: 'flex', flexDirection: 'column' }}>
             <ListItem sx={{ width: '100%' }}>
-              <ListItemText className="keyItem">
+              <ListItemText
+                className="keyItem"
+                sx={{
+                  fontSize: '15px',
+                  fontWeight: 'lighter !important',
+                  color: '#0000806b',
+                }}
+              >
                 Search and find all kind of drugs
               </ListItemText>
             </ListItem>
             <ListItem sx={{ width: '100%' }}>
-              <ListItemText className="keyItem">
+              <ListItemText
+                className="keyItem"
+                sx={{
+                  fontSize: '15px',
+                  fontWeight: 'lighter !important',
+                  color: '#0000806b',
+                }}
+              >
                 We have drugs for soecial case treatments
               </ListItemText>
             </ListItem>
             <ListItem sx={{ width: '100%' }}>
-              <ListItemText className="keyItem">
+              <ListItemText
+                className="keyItem"
+                sx={{
+                  fontSize: '15px',
+                  fontWeight: 'lighter !important',
+                  color: '#0000806b',
+                }}
+              >
                 Get notified when your drug is available
               </ListItemText>
             </ListItem>
           </List>
           <Link to="/pharmacies">
-            <button type="submit" className="get">
+            <button
+              type="submit"
+              style={{
+                color: '#83B239',
+                fontWeight: 'bold',
+                padding: '10px',
+                border: '1px solid #83B239',
+                borderRadius: '34px',
+                width: '192px',
+                marginLeft: '14px',
+                backgroundColor: '#fff',
+              }}
+            >
               Get prescription
             </button>
           </Link>
@@ -133,28 +172,68 @@ const KeyBenefits = () => (
           <img src={key2} alt="key benefit 1" width="73%" />
         </Fade>
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Typography>
+          <Typography
+            sx={{
+              color: 'navy',
+              fontSize: '22px',
+              fontWeight: '800',
+              fontFamily: 'mulish',
+            }}
+          >
             Set up your profile and <br /> get refill easily
           </Typography>
           <List sx={{ display: 'flex', flexDirection: 'column' }}>
             <ListItem sx={{ width: '100%' }}>
-              <ListItemText className="keyItem">
+              <ListItemText
+                className="keyItem"
+                sx={{
+                  fontSize: '15px',
+                  fontWeight: 'lighter !important',
+                  color: '#0000806b',
+                }}
+              >
                 When you are a member your refill is easier
               </ListItemText>
             </ListItem>
             <ListItem sx={{ width: '100%' }}>
-              <ListItemText className="keyItem">
+              <ListItemText
+                className="keyItem"
+                sx={{
+                  fontSize: '15px',
+                  fontWeight: 'lighter !important',
+                  color: '#0000806b',
+                }}
+              >
                 With one click your medicine is on it’s way
               </ListItemText>
             </ListItem>
             <ListItem sx={{ width: '100%' }}>
-              <ListItemText className="keyItem">
+              <ListItemText
+                className="keyItem"
+                sx={{
+                  fontSize: '15px',
+                  fontWeight: 'lighter !important',
+                  color: '#0000806b',
+                }}
+              >
                 Select a health care specialist
               </ListItemText>
             </ListItem>
           </List>
           <Link to="/signup">
-            <button type="submit" className="get">
+            <button
+              type="submit"
+              style={{
+                color: '#83B239',
+                fontWeight: 'bold',
+                padding: '10px',
+                border: '1px solid #83B239',
+                borderRadius: '34px',
+                width: '192px',
+                marginLeft: '14px',
+                backgroundColor: '#fff',
+              }}
+            >
               Start Now
             </button>
           </Link>

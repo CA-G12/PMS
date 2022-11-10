@@ -50,7 +50,7 @@ const Statistics = () => {
       <Skeleton animation={false} />
     </Box>
   ) : (
-    <Box className="boxes">
+    <Box className="boxes" sx={{ display: 'flex' }}>
       <Box
         className="cardStatistics"
         sx={{ display: 'flex', flexDirection: 'column', marginRight: '70px' }}

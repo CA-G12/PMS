@@ -12,6 +12,7 @@ import {
   Typography,
   Skeleton,
   Pagination,
+  Divider,
 } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import image31 from '../../assets/image31.png';
@@ -78,80 +79,171 @@ const SalesHistory = () => {
     </Box>
   ) : (
     <Box
+      component="main"
       sx={{
-        margin: '6rem 5%',
-        borderRadius: '5px',
+        flexGrow: 1,
         width: '100%',
+        display: 'flex',
       }}
     >
-      <TableContainer component={Paper}>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            padding: '0 10px',
-          }}
-        >
-          <Typography
-            sx={{
-              fontSize: '30px',
-              padding: '10px',
-            }}
-          >
-            Sales History
-          </Typography>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
-            <SalesPopUp />
-          </Box>
-        </Box>
-        <Table
-          sx={{ Width: '100%', margin: '1rem 0%' }}
-          aria-label="simple table"
-        >
-          <TableHead>
-            <TableRow>
-              <TableCell align="center">Product Name</TableCell>
-              <TableCell align="left">Date</TableCell>
-              <TableCell align="left">Quantity</TableCell>
-              <TableCell align="left">Price</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {dataRequests.map((row: any) => (
-              <TableRow>
-                <TableCell align="left" component="th" scope="row">
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Box>
-                      <img src={image31} alt="Logo" />
-                    </Box>
-                    <Box>{row.Product.name}</Box>
-                  </Box>
-                </TableCell>
-                <TableCell align="left">{row.date}</TableCell>
-                <TableCell align="left">{row.quantity}</TableCell>
-                <TableCell align="left">{row.Product.price} $</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <Pagination
+      <Box
         sx={{
-          margin: '5rem 0',
-          marginLeft: '2rem',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
         }}
-        count={Math.ceil(numOfSales / 5)}
-        color="primary"
-        page={pageNum}
-        onChange={(event: React.ChangeEvent<unknown>, page: number) => {
-          setPageNum(page);
-        }}
-      />
+      >
+        <TableContainer component={Paper}>
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <Typography
+              sx={{
+                fontSize: '22px',
+                fontFamily: 'Mulish',
+                fontWeight: 'bold',
+                marginBottom: '10px',
+              }}
+            >
+              Sales History
+            </Typography>
+            <Divider sx={{ width: '100%', margin: '0 auto' }} />
+
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                marginTop: '15px',
+              }}
+            >
+              <SalesPopUp />
+            </Box>
+          </Box>
+          <Table
+            sx={{ Width: '100%', margin: '1rem 0%' }}
+            aria-label="simple table"
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell align="center">
+                  {' '}
+                  <Typography
+                    sx={{
+                      backgroundColor: '#80808036',
+                      borderRadius: '7px',
+                      padding: '3px',
+                      fontSize: '15px',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    Product Name
+                  </Typography>{' '}
+                </TableCell>
+                <TableCell align="center">
+                  {' '}
+                  <Typography
+                    sx={{
+                      backgroundColor: '#80808036',
+                      borderRadius: '7px',
+                      padding: '3px',
+                      fontSize: '15px',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    Date
+                  </Typography>{' '}
+                </TableCell>
+                <TableCell align="center">
+                  {' '}
+                  <Typography
+                    sx={{
+                      backgroundColor: '#80808036',
+                      borderRadius: '7px',
+                      padding: '3px',
+                      fontSize: '15px',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    Quantity
+                  </Typography>{' '}
+                </TableCell>
+                <TableCell align="center">
+                  {' '}
+                  <Typography
+                    sx={{
+                      backgroundColor: '#80808036',
+                      borderRadius: '7px',
+                      padding: '3px',
+                      fontSize: '15px',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    Price
+                  </Typography>{' '}
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {dataRequests.map((row: any) => (
+                <TableRow>
+                  <TableCell
+                    align="center"
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      fontWeight: 'bold',
+                      fontSize: '15px',
+                      padding: '0',
+                    }}
+                  >
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      <img src={image31} alt="Logo" />
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'flex-start',
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            fontWeight: 'bold',
+                          }}
+                        >
+                          {row.Product.name}
+                        </Box>
+                        <Box
+                          sx={{
+                            opacity: 0.7,
+                            fontSize: '11px',
+                            fontWeight: '700',
+                          }}
+                        >
+                          54862053025
+                        </Box>
+                      </Box>
+                    </Box>
+                  </TableCell>
+                  <TableCell align="center">{row.date}</TableCell>
+                  <TableCell align="center">{row.quantity}</TableCell>
+                  <TableCell align="center">{row.Product.price} $</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Pagination
+          sx={{
+            margin: '5rem 0',
+            marginLeft: '2rem',
+          }}
+          count={Math.ceil(numOfSales / 5)}
+          color="primary"
+          page={pageNum}
+          onChange={(event: React.ChangeEvent<unknown>, page: number) => {
+            setPageNum(page);
+          }}
+        />
+      </Box>
     </Box>
   );
 };

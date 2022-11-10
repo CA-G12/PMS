@@ -134,7 +134,8 @@ const PharmacyProfileRequests = () => {
           <Box
             sx={{
               display: 'flex',
-              justifyContent: 'space-between',
+              justifyContent: 'flex-end',
+              marginTop: '15px',
             }}
           >
             <AddRequestPopUp />

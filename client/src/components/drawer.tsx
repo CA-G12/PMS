@@ -25,7 +25,7 @@ const DRAWER_TABS_CONFIG = [
 ];
 
 const drawer = (
-  <div>
+  <div style={{ backgroundColor: '#031737' }}>
     <Link to="/">
       <img
         alt="logo"

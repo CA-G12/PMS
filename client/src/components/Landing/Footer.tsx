@@ -1,8 +1,6 @@
 import { Box, List, ListItem, ListItemText, Typography } from '@mui/material';
 import 'typeface-mulish';
 
-import './style.css';
-
 const Footer = () => (
   <Box
     sx={{
@@ -102,46 +100,166 @@ const Footer = () => (
           health is our priority
         </Typography>
       </Box>
-      <Box>
+      <Box sx={{ display: 'flex' }}>
         <List sx={{ display: 'flex', flexDirection: 'column' }}>
-          <ListItem className="footerItem">
+          <ListItem
+            sx={{
+              width: '100%',
+              padding: '0',
+              marginRight: '35px',
+              textAlign: 'left',
+              marginTop: '5px',
+              color: '#83B239 !important',
+              fontWeight: '100 !important',
+            }}
+          >
             <ListItemText primary="Quick Links" />
           </ListItem>
-          <ListItem className="footerItem">
+          <ListItem
+            sx={{
+              width: '100%',
+              padding: '0',
+              marginRight: '35px',
+              textAlign: 'left',
+              marginTop: '5px',
+              color: '#83B239 !important',
+              fontWeight: '100 !important',
+            }}
+          >
             <ListItemText primary="Contact Us" />
           </ListItem>
-          <ListItem className="footerItem">
+          <ListItem
+            sx={{
+              width: '100%',
+              padding: '0',
+              marginRight: '35px',
+              textAlign: 'left',
+              marginTop: '5px',
+              color: '#83B239 !important',
+              fontWeight: '100 !important',
+            }}
+          >
             <ListItemText primary="About us" />
           </ListItem>
-          <ListItem className="footerItem">
+          <ListItem
+            sx={{
+              width: '100%',
+              padding: '0',
+              marginRight: '35px',
+              textAlign: 'left',
+              marginTop: '5px',
+              color: '#83B239 !important',
+              fontWeight: '100 !important',
+            }}
+          >
             <ListItemText primary="Pharmacies" />
           </ListItem>
         </List>
         <List sx={{ display: 'flex', flexDirection: 'column' }}>
-          <ListItem className="footerItem">
+          <ListItem
+            sx={{
+              width: '100%',
+              padding: '0',
+              marginRight: '35px',
+              textAlign: 'left',
+              marginTop: '5px',
+              color: '#83B239 !important',
+              fontWeight: '100 !important',
+            }}
+          >
             <ListItemText primary="Services" />
           </ListItem>
-          <ListItem className="footerItem">
+          <ListItem
+            sx={{
+              width: '100%',
+              padding: '0',
+              marginRight: '35px',
+              textAlign: 'left',
+              marginTop: '5px',
+              color: '#83B239 !important',
+              fontWeight: '100 !important',
+            }}
+          >
             <ListItemText primary="Delivery" />
           </ListItem>
-          <ListItem className="footerItem">
+          <ListItem
+            sx={{
+              width: '100%',
+              padding: '0',
+              marginRight: '35px',
+              textAlign: 'left',
+              marginTop: '5px',
+              color: '#83B239 !important',
+              fontWeight: '100 !important',
+            }}
+          >
             <ListItemText primary="Purchase" />
           </ListItem>
-          <ListItem className="footerItem">
+          <ListItem
+            sx={{
+              width: '100%',
+              padding: '0',
+              marginRight: '35px',
+              textAlign: 'left',
+              marginTop: '5px',
+              color: '#83B239 !important',
+              fontWeight: '100 !important',
+            }}
+          >
             <ListItemText primary="Consultant" />
           </ListItem>
         </List>
         <List sx={{ display: 'flex', flexDirection: 'column' }}>
-          <ListItem className="footerItem">
+          <ListItem
+            sx={{
+              width: '100%',
+              padding: '0',
+              marginRight: '35px',
+              textAlign: 'left',
+              marginTop: '5px',
+              color: '#83B239 !important',
+              fontWeight: '100 !important',
+            }}
+          >
             <ListItemText primary="Social Media" />
           </ListItem>
-          <ListItem className="footerItem">
+          <ListItem
+            sx={{
+              width: '100%',
+              padding: '0',
+              marginRight: '35px',
+              textAlign: 'left',
+              marginTop: '5px',
+              color: '#83B239 !important',
+              fontWeight: '100 !important',
+            }}
+          >
             <ListItemText primary="Facebook" />
           </ListItem>
-          <ListItem className="footerItem">
+          <ListItem
+            sx={{
+              width: '100%',
+              padding: '0',
+              marginRight: '35px',
+              textAlign: 'left',
+              marginTop: '5px',
+              color: '#83B239 !important',
+              fontWeight: '100 !important',
+            }}
+          >
             <ListItemText primary="Instagram" />
           </ListItem>
-          <ListItem className="footerItem">
+          <ListItem
+            sx={{
+              width: '100%',
+              padding: '0',
+              marginRight: '35px',
+              textAlign: 'left',
+              marginTop: '5px',
+              color: '#83B239 !important',
+              fontWeight: '100 !important',
+            }}
+          >
             <ListItemText primary="Twitter" />
           </ListItem>
         </List>

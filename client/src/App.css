@@ -1,4 +1,5 @@
 body{
     background-color: #D9D9D9;
-    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    border-radius: 0;
 }

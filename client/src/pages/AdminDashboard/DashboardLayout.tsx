@@ -56,6 +56,7 @@ const DashboardLayout: React.FC = (props: Props) => {
               boxSizing: 'border-box',
               width: drawerWidth,
             },
+            backgroundColor: '#031737',
           }}
           open
         >

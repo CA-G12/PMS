@@ -1,39 +1,3 @@
-header.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation4.MuiAppBar-root.MuiAppBar-colorPrimary.MuiAppBar-positionFixed.mui-fixed.css-11b3ww9-MuiPaper-root-MuiAppBar-root {
-  height: 61px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  box-shadow: none;
-  font-family: 'mulish', 'Courier New', Courier, monospace;
-}
-
-ul.MuiList-root.MuiList-padding.css-h4y409-MuiList-root {
-  display: flex;
-  align-items: center;
-  gap: 1px;
-}
-
-li.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.css-1p823my-MuiListItem-root {
-  width: 116px;
-  padding: 12px;
-  text-align: center;
-}
-
-span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-10hburv-MuiTypography-root#navbarItem{
-  font-weight: 900;
-} 
-
-.MuiBox-root.css-0 {
-  display: flex;
-  flex-direction: row;
-}
-
-button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-l396rh-MuiButtonBase-root-MuiButton-root {
-  margin-bottom: 0;
-  margin-right: 21px;
-}
-
 .first-nav{
   background-color: transparent !important;
   animation: first-anim .5s both;

@@ -19,6 +19,8 @@ app.use([
   express.urlencoded({ extended: false }),
   express.json(),
 ]);
+app.use(router);
+app.use(ErrorMiddleware);
 
 if (NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));
@@ -27,7 +29,5 @@ if (NODE_ENV === 'production') {
   });
 }
 
-app.use(router);
-app.use(ErrorMiddleware);
 
 export default app;

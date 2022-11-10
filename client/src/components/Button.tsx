@@ -12,7 +12,7 @@ const ButtonComponent: React.FC<ButtonComponentType> = ({
       color: 'white',
       borderRadius: '24px',
       width: '115px',
-      marginBottom: '20px',
+      marginRight: '15px',
     }}
     onClick={sendUserData}
   >

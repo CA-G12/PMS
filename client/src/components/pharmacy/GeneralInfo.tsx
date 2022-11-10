@@ -46,7 +46,7 @@ const GeneralInfo = () => {
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [id]);
 
   return loading ? (
     <Box sx={{ width: '53vw', marginTop: '50px' }}>

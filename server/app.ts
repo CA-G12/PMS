@@ -19,15 +19,16 @@ app.use([
   express.urlencoded({ extended: false }),
   express.json(),
 ]);
+app.use(router);
 
 if (NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));
+
   app.get('*', (req: Request, res: Response) => {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }
 
-app.use(router);
 app.use(ErrorMiddleware);
 
 export default app;

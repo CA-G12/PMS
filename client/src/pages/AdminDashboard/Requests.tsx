@@ -45,7 +45,7 @@ const Requests = () => {
     return { rows, count };
   }, [pageNum]);
 
-  const updateMedicineRequests = (status: string, pharmacyId: number) =>
+  const updateMedicineRequests = async (status: string, pharmacyId: number) =>
     axios.put(`/admin/requests/${pharmacyId}`, {
       status,
     });
@@ -54,9 +54,7 @@ const Requests = () => {
     try {
       setLoading(true);
       await updateMedicineRequests(status, pharmacyId);
-      const { rows, count } = await getMedicineRequests();
-      setData(rows);
-      setNumOfRequests(count);
+      await getMedicineRequests();
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -154,9 +152,10 @@ const Requests = () => {
                     }}
                   >
                     Pharmacy Name
-                  </Typography>
+                  </Typography>{' '}
                 </TableCell>
                 <TableCell align="center">
+                  {' '}
                   <Typography
                     sx={{
                       backgroundColor: '#80808036',
@@ -167,9 +166,10 @@ const Requests = () => {
                     }}
                   >
                     Product Name
-                  </Typography>
+                  </Typography>{' '}
                 </TableCell>
                 <TableCell align="center">
+                  {' '}
                   <Typography
                     sx={{
                       backgroundColor: '#80808036',
@@ -180,9 +180,10 @@ const Requests = () => {
                     }}
                   >
                     Request Status
-                  </Typography>
+                  </Typography>{' '}
                 </TableCell>
                 <TableCell align="center">
+                  {' '}
                   <Typography
                     sx={{
                       backgroundColor: '#80808036',
@@ -193,7 +194,7 @@ const Requests = () => {
                     }}
                   >
                     Options
-                  </Typography>
+                  </Typography>{' '}
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -258,6 +259,7 @@ const Requests = () => {
                     {row.Product.name}
                   </TableCell>
                   <TableCell align="center" sx={{ padding: '0' }}>
+                    {' '}
                     {row.status}
                   </TableCell>
                   <TableCell align="center" sx={{ padding: '0' }}>
@@ -274,6 +276,7 @@ const Requests = () => {
             </TableBody>
           </Table>
         </TableContainer>
+
         <Pagination
           count={Math.ceil(numRequests / 7)}
           color="primary"
@@ -281,12 +284,7 @@ const Requests = () => {
           onChange={(event: React.ChangeEvent<unknown>, page: number) => {
             setPageNum(page);
           }}
-          sx={{
-            marginTop: '2rem',
-            marginBottom: '60px',
-            display: 'flex',
-            justifyContent: 'center',
-          }}
+          sx={{ marginTop: '2rem', marginBottom: '60px' }}
         />
       </Box>
     </Box>

@@ -6,9 +6,8 @@ const getAllProductsAdmin = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { page = 1 } = req.query;
   try {
-    const data = await getProductsAdmin(+page);
+    const data = await getProductsAdmin();
     res.json({
       data,
       msg: 'Success',

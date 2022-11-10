@@ -1,7 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { ToastContainer } from 'react-toastify';
 import AllAdminPharmasis from './AdminAllPharmasis';
-import './dashboard.css';
 
 const Pharmacies = () => {
   const drawerWidth = 240;

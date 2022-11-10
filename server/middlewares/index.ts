@@ -5,3 +5,4 @@ import Error from './Error';
 import checkStatus from './checkStatus';
 
 export { pharmacyAuth, auth, adminAuth, Error, checkStatus };
+

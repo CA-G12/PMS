@@ -1,8 +1,7 @@
 import { AdminProduct, Product, ProductPharmacy } from '../../models';
 
-const getProductsAdmin = async (page: number) => {
-  const limit = 8;
-  return Product.findAndCountAll({
+const getProductsAdmin = async () =>
+  Product.findAll({
     attributes: ['id', 'name'],
     include: [
       {
@@ -14,9 +13,6 @@ const getProductsAdmin = async (page: number) => {
         attributes: ['quantity'],
       },
     ],
-    offset: (page - 1) * limit,
-    limit,
   });
-};
 
 export default getProductsAdmin;

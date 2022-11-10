@@ -14,7 +14,6 @@ const getAllPharmaciesGeneral = async (status: string, page: number) => {
   return Pharmacy.findAndCountAll({
     offset: (page - 1) * limit,
     limit,
-    order: ['id'],
   });
 };
 export default getAllPharmaciesGeneral;

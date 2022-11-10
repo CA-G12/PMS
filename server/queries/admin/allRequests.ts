@@ -19,7 +19,6 @@ const requestQuery = (numOffSet: number) =>
     ],
     offset: 7 * (numOffSet - 1),
     limit: 7,
-    order: ['id'],
   });
 
 export default requestQuery;

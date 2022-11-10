@@ -1,20 +1,17 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import {
-  Table,
-  Pagination,
-  Divider,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Box,
-  Typography,
-} from '@mui/material';
+import { useEffect, useState } from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Divider } from '@mui/material';
 import { LongMenu } from '../../components/Extra';
 import image31 from '../../assets/image31.png';
 
@@ -22,33 +19,26 @@ const options = ['Opened', 'Closed'];
 
 const AllAdminPharmasis = () => {
   const [data, setData] = useState([]);
-  const [pageNum, setPageNum] = useState(1);
-  const [numRequests, setNumOfRequests] = useState(14);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-
-  const getPharmacies = useCallback(async () => {
-    const {
-      data: {
-        data: { rows, count },
-      },
-    } = await axios.get(`/admin/pharmacies?page=${pageNum}`);
-
-    return { rows, count };
-  }, [pageNum]);
 
   const updatePharmacyStatus = (status: string, pharmacyId: number) =>
     axios.put(`/admin/pharmacy/${pharmacyId}`, {
       status,
     });
 
+  const getPharmacies = async () => {
+    const res = await axios.get('/admin/pharmacies');
+    return res.data.data.rows;
+  };
+
   const setStatus = async (status: string, pharmacyId: number) => {
     try {
       setLoading(true);
+
       await updatePharmacyStatus(status, pharmacyId);
-      const { rows, count } = await getPharmacies();
-      setData(rows);
-      setNumOfRequests(count);
+      const pharmacies = await getPharmacies();
+      setData(pharmacies);
       toast.success('updated status', {
         position: 'bottom-left',
         autoClose: 5000,
@@ -79,16 +69,17 @@ const AllAdminPharmasis = () => {
     (async () => {
       try {
         setLoading(true);
-        const { rows, count } = await getPharmacies();
-        setData(rows);
-        setNumOfRequests(count);
+
+        const pharmacies = await getPharmacies();
+
+        setData(pharmacies);
         setLoading(false);
       } catch (err) {
         setError('Somethig went wrong.');
         setLoading(false);
       }
     })();
-  }, [getPharmacies]);
+  }, []);
 
   if (loading) {
     return <Box>loading</Box>;
@@ -277,20 +268,6 @@ const AllAdminPharmasis = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <Pagination
-        count={Math.ceil(numRequests / 7)}
-        color="primary"
-        page={pageNum}
-        onChange={(event: React.ChangeEvent<unknown>, page: number) => {
-          setPageNum(page);
-        }}
-        sx={{
-          marginTop: '2rem',
-          marginBottom: '60px',
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      />
     </Box>
   );
 };

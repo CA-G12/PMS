@@ -2,7 +2,7 @@ import { Box, Pagination, CircularProgress } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PharmacyCard from '../components/PharmacyCard';
-import empty from '../assets/empty.webp';
+import empty from '../assets/no-data.png';
 import Navbar from '../components/NavBar/Navbar';
 import { FilterComponent } from '../components';
 import Footer from '../components/Landing/Footer';

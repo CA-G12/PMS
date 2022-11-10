@@ -17,7 +17,6 @@ const Navbar = () => {
     { menuItem: 'Home', link: '' },
     { menuItem: 'Pharmacies', link: 'pharmacies' },
     { menuItem: 'Products', link: 'products' },
-    { menuItem: 'Contact Us', link: '' },
   ];
 
   useEffect(() => {

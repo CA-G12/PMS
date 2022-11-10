@@ -10,7 +10,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import ProductCard from '../../components/ProductCard';
-import empty from '../../assets/empty.webp';
+import empty from '../../assets/no-data.png';
 import 'typeface-mulish';
 
 type row = {

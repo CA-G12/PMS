@@ -6,6 +6,7 @@ import {
   getAllProductsAdmin,
   updatePharmacyStatusId,
   allRequests,
+  applicationUpdateStatus,
 } from '../controllers';
 import { auth, adminAuth } from '../middlewares';
 
@@ -22,6 +23,12 @@ adminRouter.put(
   auth,
   adminAuth,
   updatePharmacyStatusId
+);
+adminRouter.put(
+  '/admin/application/:pharmacyId',
+  auth,
+  adminAuth,
+  applicationUpdateStatus
 );
 
 export default adminRouter;

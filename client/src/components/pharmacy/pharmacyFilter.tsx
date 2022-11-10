@@ -30,7 +30,6 @@ const PharmacyFilter: React.FC<PharmacyFilterProps> = ({ setFilteredData }) => {
     return () => {
       controller.abort();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product]);
   return (
     <Box>

@@ -97,7 +97,6 @@ SECRET_KEY= # Your token Secret key
 * [Typescript](https://www.typescriptlang.org/)
 * [Sequelize](https://sequelize.org/)
 * [Material UI](https://mui.com/)
-* [PostgreSQL](https://www.postgresql.org/)
 * [Jest](https://jestjs.io/)
 * [React Chart JS](https://react-chartjs-2.js.org/)
 * [React Awesome Reveal](https://react-awesome-reveal.morello.dev/)

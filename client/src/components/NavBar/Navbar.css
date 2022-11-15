@@ -1,6 +1,7 @@
 .first-nav{
   background-color: transparent !important;
   animation: first-anim .5s both;
+  margin-top: 10px;
 }
 
 .fixed{

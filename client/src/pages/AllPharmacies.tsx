@@ -6,6 +6,7 @@ import empty from '../assets/no-data.png';
 import Navbar from '../components/NavBar/Navbar';
 import { FilterComponent } from '../components';
 import Footer from '../components/Landing/Footer';
+import ScrollToTopOnMount from '../utils/ScrollToTop';
 
 type row = {
   id: number;
@@ -45,6 +46,7 @@ const AllPharmacies = () => {
   const gitAllPharmacies = () =>
     pharmacies.map((pharmacy) => (
       <PharmacyCard
+        key={pharmacy.id}
         pharmacy={{
           img: pharmacy.image,
           name: pharmacy.name,
@@ -56,6 +58,7 @@ const AllPharmacies = () => {
 
   return (
     <>
+      <ScrollToTopOnMount />
       <Navbar />
       <FilterComponent
         text="Pharmacies"

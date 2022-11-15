@@ -29,7 +29,16 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
 
   return (
     <Box className="filterComponent">
-      <Typography>Filter Any {text}</Typography>
+      <Typography
+        sx={{
+          color: 'navy',
+          fontSize: '22px',
+          fontWeight: '800',
+          fontFamily: 'mulish',
+        }}
+      >
+        Filter Any {text}
+      </Typography>
       <Box className="filtered-inputs">
         <Paper sx={paperStyle}>
           <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
@@ -63,12 +72,16 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
         )}
         <IconButton
           type="button"
-          sx={{ p: '10px' }}
+          sx={{
+            backgroundColor: '#83b239',
+            borderRadius: '4px',
+            padding: '10px',
+          }}
           aria-label="search"
           className="SearchButton"
           onClick={getData}
         >
-          <Search className="searchIcon" />
+          <Search className="searchIcon" color="disabled" />
         </IconButton>
       </Box>
     </Box>

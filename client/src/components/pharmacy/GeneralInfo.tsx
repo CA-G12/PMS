@@ -75,7 +75,7 @@ const GeneralInfo = () => {
           <ListItem className="infoItem">
             <ListItemButton className="InfoButton">
               <IconButton>
-                <LocalPhone color="success" />
+                <LocalPhone htmlColor="#a7c88c" />
               </IconButton>
               <ListItemText primary={data?.phone} className="infoText" />
             </ListItemButton>
@@ -83,7 +83,7 @@ const GeneralInfo = () => {
           <ListItem className="infoItem">
             <ListItemButton className="InfoButton">
               <IconButton>
-                <Email color="success" />
+                <Email htmlColor="#a7c88c" />
               </IconButton>
               <ListItemText primary={data?.email} className="infoText" />
             </ListItemButton>
@@ -91,7 +91,7 @@ const GeneralInfo = () => {
           <ListItem className="infoItem">
             <ListItemButton className="InfoButton">
               <IconButton>
-                <LocationOn color="success" />
+                <LocationOn htmlColor="#a7c88c" />
               </IconButton>
               <ListItemText primary={data?.location} className="infoText" />
             </ListItemButton>

@@ -21,38 +21,15 @@ import image31 from '../../assets/image31.png';
 import empty from '../../assets/no-data.png';
 import AddRequestPopUp from '../../components/pharmacy/AddRequest';
 
-// import { useAuth } from '../../context/authContext';
-
-type row =
-  | {
-      id: number;
-      status: string;
-      Pharmacy: { name: string };
-      Product: { name: string };
-    }
-  | any;
 const options = ['cancel'];
 
 const PharmacyProfileRequests = () => {
-  const [data, setData] = useState<row[]>([]);
+  const [data, setData] = useState<any>([]);
   const [pageNum, setPageNum] = useState(1);
   const [numRequests, setNumOfRequests] = useState(14);
   const [loading, setLoading] = useState(true);
   // eslint-disable-next-line no-shadow
   const { id: pharmacyId } = useParams();
-  // const {
-  //   user: { id },
-  // } = useAuth();
-
-  const getMedicineRequests = useCallback(async () => {
-    const {
-      data: {
-        data: { rows, count },
-      },
-    } = await axios.get(`/pharmacy/${pharmacyId}/requests?page=${pageNum}`);
-
-    return { rows, count };
-  }, [pageNum, pharmacyId]);
 
   const updateMedicineRequests = async (status: string, pharmacyId1: number) =>
     axios.put(`/admin/requests/${pharmacyId1}`, {
@@ -64,7 +41,6 @@ const PharmacyProfileRequests = () => {
     try {
       setLoading(true);
       await updateMedicineRequests(status, pharmacyId2);
-      await getMedicineRequests();
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -75,28 +51,24 @@ const PharmacyProfileRequests = () => {
   useEffect(() => {
     (async () => {
       try {
-        setLoading(true);
-        const { rows, count } = await getMedicineRequests();
-        setData(rows);
+        const {
+          data: {
+            data: { rows, count },
+          },
+        } = await axios.get(`/pharmacy/${pharmacyId}/requests?page=${pageNum}`);
+        setData(rows[0].ProductsRequests);
         setNumOfRequests(count);
         setLoading(false);
       } catch (err) {
         setLoading(false);
       }
     })();
-  }, [getMedicineRequests]);
+  });
 
   if (loading) {
     return (
       <Box sx={{ display: 'flex', margin: '20rem 30rem' }}>
         <CircularProgress />
-      </Box>
-    );
-  }
-  if (data[0].ProductsRequests?.length === 0) {
-    return (
-      <Box sx={{ width: '100%', height: '100%' }}>
-        <img src={empty} alt="Logo" />
       </Box>
     );
   }
@@ -140,6 +112,15 @@ const PharmacyProfileRequests = () => {
           >
             <AddRequestPopUp />
           </Box>
+          {
+            (data?.length === 0)? 
+               (
+                <Box sx={{ width: '100%', height: '100%' }}>
+                  <img src={empty} alt="Logo" />
+                </Box>
+              ):
+            
+          
           <Table
             sx={{ Width: '100%', margin: '1rem 0%' }}
             aria-label="simple table"
@@ -206,8 +187,8 @@ const PharmacyProfileRequests = () => {
             </TableHead>
             <TableBody>
               {/* eslint-disable-next-line no-shadow */}
-              {data.map((row) => (
-                <TableRow>
+              {data.map((row: any) => (
+                <TableRow key={row?.Product?.name}>
                   <TableCell
                     align="center"
                     sx={{
@@ -232,7 +213,7 @@ const PharmacyProfileRequests = () => {
                             fontWeight: 'bold',
                           }}
                         >
-                          {row.ProductsRequests[0]?.Product?.name}
+                          {row?.Product?.name}
                         </Box>
                         <Box
                           sx={{
@@ -248,11 +229,11 @@ const PharmacyProfileRequests = () => {
                   </TableCell>
 
                   <TableCell align="center" sx={{ padding: '0' }}>
-                    {row.ProductsRequests[0]?.quantity}
+                    {row?.quantity}
                   </TableCell>
                   <TableCell align="center" sx={{ padding: '0' }}>
                     {' '}
-                    {row.ProductsRequests[0]?.status}
+                    {row?.status}
                   </TableCell>
                   <TableCell align="center" sx={{ padding: '0' }}>
                     <LongMenu
@@ -266,7 +247,7 @@ const PharmacyProfileRequests = () => {
                 </TableRow>
               ))}
             </TableBody>
-          </Table>
+          </Table>}
         </TableContainer>
 
         <Pagination

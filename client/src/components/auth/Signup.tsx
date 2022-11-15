@@ -8,6 +8,7 @@ import ButtonComponent from '../Button';
 import InputForm from '../InputForm';
 import Navbar from '../NavBar/Navbar';
 import { useAuth } from '../../context/authContext';
+import ScrollToTopOnMount from '../../utils/ScrollToTop';
 
 const Signup: React.FC = () => {
   const [fullName, setFullName] = useState('');
@@ -62,6 +63,7 @@ const Signup: React.FC = () => {
 
   return (
     <>
+      <ScrollToTopOnMount />
       <Navbar />
       <Box
         sx={{

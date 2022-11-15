@@ -7,7 +7,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
   Box,
   Typography,
   Skeleton,
@@ -94,7 +93,7 @@ const SalesHistory = () => {
           justifyContent: 'space-between',
         }}
       >
-        <TableContainer component={Paper}>
+        <TableContainer>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Typography
               sx={{
@@ -184,7 +183,7 @@ const SalesHistory = () => {
             </TableHead>
             <TableBody>
               {dataRequests.map((row: any) => (
-                <TableRow>
+                <TableRow key={Math.random()}>
                   <TableCell
                     align="center"
                     sx={{
@@ -225,7 +224,9 @@ const SalesHistory = () => {
                   </TableCell>
                   <TableCell align="center">{row.date}</TableCell>
                   <TableCell align="center">{row.quantity}</TableCell>
-                  <TableCell align="center">{row.Product.price} $</TableCell>
+                  <TableCell align="center">
+                    {row.quantity * row.Product.price} $
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

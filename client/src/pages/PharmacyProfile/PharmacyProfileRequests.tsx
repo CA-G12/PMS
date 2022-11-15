@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
 import {
@@ -112,142 +112,139 @@ const PharmacyProfileRequests = () => {
           >
             <AddRequestPopUp />
           </Box>
-          {
-            (data?.length === 0)? 
-               (
-                <Box sx={{ width: '100%', height: '100%' }}>
-                  <img src={empty} alt="Logo" />
-                </Box>
-              ):
-            
-          
-          <Table
-            sx={{ Width: '100%', margin: '1rem 0%' }}
-            aria-label="simple table"
-          >
-            <TableHead>
-              <TableRow>
-                <TableCell align="center">
-                  {' '}
-                  <Typography
-                    sx={{
-                      backgroundColor: '#80808036',
-                      borderRadius: '7px',
-                      padding: '3px',
-                      fontSize: '15px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Product Name
-                  </Typography>{' '}
-                </TableCell>
-                <TableCell align="center">
-                  {' '}
-                  <Typography
-                    sx={{
-                      backgroundColor: '#80808036',
-                      borderRadius: '7px',
-                      padding: '3px',
-                      fontSize: '15px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Quantity
-                  </Typography>{' '}
-                </TableCell>
-                <TableCell align="center">
-                  {' '}
-                  <Typography
-                    sx={{
-                      backgroundColor: '#80808036',
-                      borderRadius: '7px',
-                      padding: '3px',
-                      fontSize: '15px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Request Status
-                  </Typography>{' '}
-                </TableCell>
-                <TableCell align="center">
-                  {' '}
-                  <Typography
-                    sx={{
-                      backgroundColor: '#80808036',
-                      borderRadius: '7px',
-                      padding: '3px',
-                      fontSize: '15px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Options
-                  </Typography>{' '}
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {/* eslint-disable-next-line no-shadow */}
-              {data.map((row: any) => (
-                <TableRow key={row?.Product?.name}>
-                  <TableCell
-                    align="center"
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      fontWeight: 'bold',
-                      fontSize: '15px',
-                      padding: '0',
-                    }}
-                  >
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <img src={image31} alt="Logo" />
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'flex-start',
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            fontWeight: 'bold',
-                          }}
-                        >
-                          {row?.Product?.name}
-                        </Box>
-                        <Box
-                          sx={{
-                            opacity: 0.7,
-                            fontSize: '11px',
-                            fontWeight: '700',
-                          }}
-                        >
-                          54862053025
-                        </Box>
-                      </Box>
-                    </Box>
-                  </TableCell>
-
-                  <TableCell align="center" sx={{ padding: '0' }}>
-                    {row?.quantity}
-                  </TableCell>
-                  <TableCell align="center" sx={{ padding: '0' }}>
+          {data?.length === 0 ? (
+            <Box sx={{ width: '100%', height: '100%' }}>
+              <img src={empty} alt="Logo" />
+            </Box>
+          ) : (
+            <Table
+              sx={{ Width: '100%', margin: '1rem 0%' }}
+              aria-label="simple table"
+            >
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center">
                     {' '}
-                    {row?.status}
+                    <Typography
+                      sx={{
+                        backgroundColor: '#80808036',
+                        borderRadius: '7px',
+                        padding: '3px',
+                        fontSize: '15px',
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      Product Name
+                    </Typography>{' '}
                   </TableCell>
-                  <TableCell align="center" sx={{ padding: '0' }}>
-                    <LongMenu
-                      id={row.id}
-                      setStatus={(status, PharmacyId) =>
-                        setStatus(status, PharmacyId)
-                      }
-                      options={options}
-                    />
+                  <TableCell align="center">
+                    {' '}
+                    <Typography
+                      sx={{
+                        backgroundColor: '#80808036',
+                        borderRadius: '7px',
+                        padding: '3px',
+                        fontSize: '15px',
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      Quantity
+                    </Typography>{' '}
+                  </TableCell>
+                  <TableCell align="center">
+                    {' '}
+                    <Typography
+                      sx={{
+                        backgroundColor: '#80808036',
+                        borderRadius: '7px',
+                        padding: '3px',
+                        fontSize: '15px',
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      Request Status
+                    </Typography>{' '}
+                  </TableCell>
+                  <TableCell align="center">
+                    {' '}
+                    <Typography
+                      sx={{
+                        backgroundColor: '#80808036',
+                        borderRadius: '7px',
+                        padding: '3px',
+                        fontSize: '15px',
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      Options
+                    </Typography>{' '}
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>}
+              </TableHead>
+              <TableBody>
+                {/* eslint-disable-next-line no-shadow */}
+                {data.map((row: any) => (
+                  <TableRow key={row?.Product?.name}>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        fontWeight: 'bold',
+                        fontSize: '15px',
+                        padding: '0',
+                      }}
+                    >
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <img src={image31} alt="Logo" />
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'flex-start',
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              fontWeight: 'bold',
+                            }}
+                          >
+                            {row?.Product?.name}
+                          </Box>
+                          <Box
+                            sx={{
+                              opacity: 0.7,
+                              fontSize: '11px',
+                              fontWeight: '700',
+                            }}
+                          >
+                            54862053025
+                          </Box>
+                        </Box>
+                      </Box>
+                    </TableCell>
+
+                    <TableCell align="center" sx={{ padding: '0' }}>
+                      {row?.quantity}
+                    </TableCell>
+                    <TableCell align="center" sx={{ padding: '0' }}>
+                      {' '}
+                      {row?.status}
+                    </TableCell>
+                    <TableCell align="center" sx={{ padding: '0' }}>
+                      <LongMenu
+                        id={row.id}
+                        setStatus={(status, PharmacyId) =>
+                          setStatus(status, PharmacyId)
+                        }
+                        options={options}
+                      />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
         </TableContainer>
 
         <Pagination

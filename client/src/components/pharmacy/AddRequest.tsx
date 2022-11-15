@@ -9,6 +9,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const AddRequestPopUp = () => {
   const [open, setOpen] = React.useState(false);
@@ -20,6 +21,8 @@ const AddRequestPopUp = () => {
   const handleChange = (event: SelectChangeEvent) => {
     setProductId(event.target.value as string);
   };
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     (async () => {
@@ -59,9 +62,13 @@ const AddRequestPopUp = () => {
   const sendData = () => {
     (async () => {
       try {
-        await axios.post(`/pharmacy/sales`, { productId, quantity });
+        await axios.post(`/pharmacy/addRequests`, {
+          productId,
+          quantity,
+        });
+        navigate(`/pharmacy/${id}/requests`);
       } catch (err) {
-        setError('Somethig went wrong.');
+        setError('Something went wrong.');
       }
     })();
     handleClose();
@@ -120,17 +127,19 @@ const AddRequestPopUp = () => {
           <Box sx={{ minWidth: 300 }}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">
-                Add Sales Product
+                Request Product
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={productId}
-                label="Add Sales Product"
+                label="Request Products"
                 onChange={handleChange}
               >
                 {allProducts.map((row: any) => (
-                  <MenuItem value={row.id}>{row.name}</MenuItem>
+                  <MenuItem value={row.id} key={row.id}>
+                    {row.name}
+                  </MenuItem>
                 ))}
               </Select>
             </FormControl>

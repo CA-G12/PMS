@@ -29,11 +29,23 @@ const ProfileLayout = () => {
   } = useAuth();
 
   const TABS_CONFIG = [
-    { component: <Dialpad />, slug: 'Profile Overview', link: 'overview' },
-    { component: <AttachFile />, slug: 'Pharmacy Products', link: 'products' },
-    { component: <Category />, slug: 'Active Requests', link: 'requests' },
     {
-      component: <RequestQuote />,
+      component: <Dialpad htmlColor="navy" />,
+      slug: 'Profile Overview',
+      link: 'overview',
+    },
+    {
+      component: <AttachFile htmlColor="navy" />,
+      slug: 'Pharmacy Products',
+      link: 'products',
+    },
+    {
+      component: <Category htmlColor="navy" />,
+      slug: 'Active Requests',
+      link: 'requests',
+    },
+    {
+      component: <RequestQuote htmlColor="navy" />,
       slug: 'Sales History',
       link: 'salesHistory',
     },

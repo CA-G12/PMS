@@ -58,6 +58,7 @@ const AllProducts = () => {
   const gitAllProducts = () =>
     products.map((Product) => (
       <ProductCard
+        key={Product.name}
         product={{
           img: Product.img,
           name: Product.name,

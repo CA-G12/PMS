@@ -58,8 +58,8 @@ const Navbar = () => {
                 primary={menuItem}
                 sx={{
                   color: '#9bd342!important',
+                  fontWeight: 'bolder !important',
                 }}
-                id="navbarItem"
               />
             </ListItem>
           </Link>

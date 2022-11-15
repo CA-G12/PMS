@@ -1,7 +1,7 @@
 import { Pharmacy, Product, ProductsRequest } from '../../models';
 
 const getPharmacyRequestsQuery = async (page: number, pharmacyId: number) => {
-  const limit = 1;
+  const limit = 7;
   return Pharmacy.findAndCountAll({
     include: [
       {
@@ -21,6 +21,7 @@ const getPharmacyRequestsQuery = async (page: number, pharmacyId: number) => {
       id: pharmacyId,
     },
     offset: (page - 1) * limit,
+    order: [['createdAt', 'DESC']],
   });
 };
 

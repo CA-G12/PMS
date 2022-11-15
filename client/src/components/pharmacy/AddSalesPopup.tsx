@@ -130,7 +130,9 @@ const SalesPopUp = () => {
                 onChange={handleChange}
               >
                 {allProducts.map((row: any) => (
-                  <MenuItem value={row.id}>{row.name}</MenuItem>
+                  <MenuItem value={row.id} key={row.name}>
+                    {row.name}
+                  </MenuItem>
                 ))}
               </Select>
             </FormControl>

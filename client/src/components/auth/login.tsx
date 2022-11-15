@@ -7,6 +7,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import ButtonComponent from '../Button';
 import Navbar from '../NavBar/Navbar';
 import { useAuth } from '../../context/authContext';
+import ScrollToTopOnMount from '../../utils/ScrollToTop';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -32,6 +33,7 @@ const Login: React.FC = () => {
 
   return (
     <>
+      <ScrollToTopOnMount />
       <Navbar />
       <Box
         sx={{

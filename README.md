@@ -7,7 +7,7 @@
   <h3 align="center">
     Pharmacies Managment System ::
   </h3>
-    <a href="https://pharmacies-mangement-system.herokuapp.com/"> Live link</a>
+    <a href="https://pharmacies-mangement-system.onrender.com/"> Live link</a>
     ..
     <a href="https://www.figma.com/file/luuxkgeFHCVIRP8xejMMZG/Pharmacy-Project?node-id=0%3A1&t=LnQy4241n2VW93u2-0">Figma</a>
 </div>
@@ -113,5 +113,5 @@ SECRET_KEY= # Your token Secret key
 - [Ahmed Abu Sharar](https://github.com/AhmedAbuSharar)
 - [Nader Shakshak](https://github.com/Nader-SH)
 
-<p align="right"><a href="#top">back to top</a></p>
+<p align="right"><a href="#top"Back to top</a></p>
 

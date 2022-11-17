@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 import {
   Box,
@@ -13,6 +11,7 @@ import {
 } from '@mui/material';
 import { AccountCircle, Notifications } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useAuth } from '../context/authContext';
 
 type NavBarProps = {
   handleDrawerToggle: () => void;
@@ -23,18 +22,15 @@ const NavBar: React.FC<NavBarProps> = ({ handleDrawerToggle }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = async () => {
-    try {
-      await axios.post('/logout');
-      navigate('/');
-    } catch (err) {
-      swal('Something went wrong when trying to log out');
-    }
+    await logout();
+    navigate('/');
   };
 
   return (

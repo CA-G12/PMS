@@ -48,7 +48,7 @@ const PharmacyNavbar = () => {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={handleClick}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}

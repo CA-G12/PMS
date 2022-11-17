@@ -55,21 +55,6 @@ const SalesHistory = () => {
     );
   }
 
-  if (dataRequests.length === 0) {
-    return (
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <img width="40%" alt="No Data" src={empty} />
-      </Box>
-    );
-  }
-
   return loading ? (
     <Box sx={{ width: '53vw', marginTop: '50px' }}>
       <Skeleton />
@@ -117,120 +102,126 @@ const SalesHistory = () => {
               <SalesPopUp />
             </Box>
           </Box>
-          <Table
-            sx={{ Width: '100%', margin: '1rem 0%' }}
-            aria-label="simple table"
-          >
-            <TableHead>
-              <TableRow>
-                <TableCell align="center">
-                  {' '}
-                  <Typography
-                    sx={{
-                      backgroundColor: '#80808036',
-                      borderRadius: '7px',
-                      padding: '3px',
-                      fontSize: '15px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Product Name
-                  </Typography>{' '}
-                </TableCell>
-                <TableCell align="center">
-                  {' '}
-                  <Typography
-                    sx={{
-                      backgroundColor: '#80808036',
-                      borderRadius: '7px',
-                      padding: '3px',
-                      fontSize: '15px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Date
-                  </Typography>{' '}
-                </TableCell>
-                <TableCell align="center">
-                  {' '}
-                  <Typography
-                    sx={{
-                      backgroundColor: '#80808036',
-                      borderRadius: '7px',
-                      padding: '3px',
-                      fontSize: '15px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Quantity
-                  </Typography>{' '}
-                </TableCell>
-                <TableCell align="center">
-                  {' '}
-                  <Typography
-                    sx={{
-                      backgroundColor: '#80808036',
-                      borderRadius: '7px',
-                      padding: '3px',
-                      fontSize: '15px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Price
-                  </Typography>{' '}
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {dataRequests.map((row: any) => (
-                <TableRow key={Math.random()}>
-                  <TableCell
-                    align="center"
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      fontWeight: 'bold',
-                      fontSize: '15px',
-                      padding: '0',
-                    }}
-                  >
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <img src={image31} alt="Logo" />
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'flex-start',
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            fontWeight: 'bold',
-                          }}
-                        >
-                          {row.Product.name}
-                        </Box>
-                        <Box
-                          sx={{
-                            opacity: 0.7,
-                            fontSize: '11px',
-                            fontWeight: '700',
-                          }}
-                        >
-                          54862053025
-                        </Box>
-                      </Box>
-                    </Box>
-                  </TableCell>
-                  <TableCell align="center">{row.date}</TableCell>
-                  <TableCell align="center">{row.quantity}</TableCell>
+          {dataRequests?.length === 0 ? (
+            <Box sx={{ width: '100%', height: '100%' }}>
+              <img src={empty} alt="Logo" />
+            </Box>
+          ) : (
+            <Table
+              sx={{ Width: '100%', margin: '1rem 0%' }}
+              aria-label="simple table"
+            >
+              <TableHead>
+                <TableRow>
                   <TableCell align="center">
-                    {row.quantity * row.Product.price} $
+                    {' '}
+                    <Typography
+                      sx={{
+                        backgroundColor: '#80808036',
+                        borderRadius: '7px',
+                        padding: '3px',
+                        fontSize: '15px',
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      Product Name
+                    </Typography>{' '}
+                  </TableCell>
+                  <TableCell align="center">
+                    {' '}
+                    <Typography
+                      sx={{
+                        backgroundColor: '#80808036',
+                        borderRadius: '7px',
+                        padding: '3px',
+                        fontSize: '15px',
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      Date
+                    </Typography>{' '}
+                  </TableCell>
+                  <TableCell align="center">
+                    {' '}
+                    <Typography
+                      sx={{
+                        backgroundColor: '#80808036',
+                        borderRadius: '7px',
+                        padding: '3px',
+                        fontSize: '15px',
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      Quantity
+                    </Typography>{' '}
+                  </TableCell>
+                  <TableCell align="center">
+                    {' '}
+                    <Typography
+                      sx={{
+                        backgroundColor: '#80808036',
+                        borderRadius: '7px',
+                        padding: '3px',
+                        fontSize: '15px',
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      Price
+                    </Typography>{' '}
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHead>
+              <TableBody>
+                {dataRequests.map((row: any) => (
+                  <TableRow key={Math.random()}>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        fontWeight: 'bold',
+                        fontSize: '15px',
+                        padding: '0',
+                      }}
+                    >
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <img src={image31} alt="Logo" />
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'flex-start',
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              fontWeight: 'bold',
+                            }}
+                          >
+                            {row.Product.name}
+                          </Box>
+                          <Box
+                            sx={{
+                              opacity: 0.7,
+                              fontSize: '11px',
+                              fontWeight: '700',
+                            }}
+                          >
+                            54862053025
+                          </Box>
+                        </Box>
+                      </Box>
+                    </TableCell>
+                    <TableCell align="center">{row.date}</TableCell>
+                    <TableCell align="center">{row.quantity}</TableCell>
+                    <TableCell align="center">
+                      {row.quantity * row.Product.price} $
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
         </TableContainer>
         <Pagination
           sx={{

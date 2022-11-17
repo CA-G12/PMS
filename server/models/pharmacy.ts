@@ -8,7 +8,7 @@ export default class Pharmacy extends Model {
 
   declare email: string;
 
-  declare phone: number;
+  declare phone: string;
 
   declare location: string;
 
@@ -49,7 +49,7 @@ Pharmacy.init(
       allowNull: false,
     },
     phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     location: {

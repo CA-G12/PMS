@@ -23,5 +23,30 @@
     "product_id": 10,
     "expired_quantity": 49,
     "in_stock_quantity": 334
+  },
+ {
+    "product_id": 1,
+    "expired_quantity": 43,
+    "in_stock_quantity": 207
+  }, {
+    "product_id": 2,
+    "expired_quantity": 31,
+    "in_stock_quantity": 346
+  },  {
+    "product_id": 3,
+    "expired_quantity": 74,
+    "in_stock_quantity": 103
+  }, {
+    "product_id": 4,
+    "expired_quantity": 64,
+    "in_stock_quantity": 130
+  }, {
+    "product_id": 6,
+    "expired_quantity": 92,
+    "in_stock_quantity": 143
+  },  {
+    "product_id": 7,
+    "expired_quantity": 49,
+    "in_stock_quantity": 334
   }
 ]

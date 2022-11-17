@@ -29,7 +29,11 @@ const buildSeeds = async () => {
   await salesHistoryModel.bulkCreate(salesHistory);
   await adminModel.bulkCreate(admin);
 };
-if (process.env.NODE_ENV === 'development') {
+
+if (
+  process.env.NODE_ENV === 'development' ||
+  process.env.NODE_ENV === 'production'
+) {
   buildSeeds();
 }
 

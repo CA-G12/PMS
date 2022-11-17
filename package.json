@@ -14,7 +14,7 @@
     "buildSeedsP": "cross-env NODE_ENV=production ts-node server/database/seeds/buildSeeds.ts",
     "add": "git add .",
     "build": "tsc",
-    "heroku-postbuild": "cd client && npm i && npm run build"
+    "heroku-postbuild": "cd client && npm i && npm run build && cd .. & npm i && npm run build"
   },
   "pre-commit": [
     "lint",

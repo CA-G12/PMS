@@ -7,7 +7,7 @@
   <h3 align="center">
     Pharmacies Managment System ::
   </h3>
-    <a href="https://pharmacies-mangement-system.onrender.com/"> Live link</a>
+    <a href="https://pharmacies-management-system.onrender.com"> Live link</a>
     ..
     <a href="https://www.figma.com/file/luuxkgeFHCVIRP8xejMMZG/Pharmacy-Project?node-id=0%3A1&t=LnQy4241n2VW93u2-0">Figma</a>
 </div>
